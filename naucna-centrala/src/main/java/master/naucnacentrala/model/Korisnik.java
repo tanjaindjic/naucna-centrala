@@ -1,5 +1,7 @@
 package master.naucnacentrala.model;
 
+import master.naucnacentrala.model.enums.NaucnaOblast;
+
 import javax.persistence.*;
 import java.util.Collection;
 
