@@ -34,7 +34,7 @@ public class Rad {
 	@NotNull
     @Column(nullable = false)
     @ElementCollection(targetClass = String.class)
-    private Collection<String> kljucniPojmovi;
+    private String[] kljucniPojmovi;
 
 	@NotNull
     @Column(nullable = false)
@@ -95,11 +95,11 @@ public class Rad {
         this.naslov = naslov;
     }
 
-    public  Collection<String> getKljucniPojmovi() {
+    public  String[] getKljucniPojmovi() {
         return kljucniPojmovi;
     }
 
-    public void setKljucniPojmovi( Collection<String> kljucniPojmovi) {
+    public void setKljucniPojmovi( String[] kljucniPojmovi) {
         this.kljucniPojmovi = kljucniPojmovi;
     }
 
