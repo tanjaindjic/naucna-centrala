@@ -3,11 +3,13 @@ package master.naucnacentrala.service.serviceImpl;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import master.naucnacentrala.model.Rad;
 import master.naucnacentrala.repository.RadRepository;
 import master.naucnacentrala.service.RadService;
 
+@Service
 public class RadServiceImpl implements RadService {
 	
 	@Autowired

@@ -33,7 +33,6 @@ public class Rad {
 
 	@NotNull
     @Column(nullable = false)
-    @ElementCollection(targetClass = String.class)
     private String[] kljucniPojmovi;
 
 	@NotNull
@@ -41,9 +40,7 @@ public class Rad {
     private String apstrakt;
 
 	@NotNull
-    @Column(nullable = false)
-	//@ElementCollection(targetClass = NaucnaOblast.class)
-	@JoinTable(name = "naucnaOblast", joinColumns = @JoinColumn(name = "id"))
+    @Column(nullable = false)	
 	@Enumerated(EnumType.STRING)
     private NaucnaOblast naucnaOblast;
 

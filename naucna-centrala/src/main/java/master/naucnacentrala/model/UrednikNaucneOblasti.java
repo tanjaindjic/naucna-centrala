@@ -34,8 +34,6 @@ public class UrednikNaucneOblasti {
     
     @NotNull
     @Column(nullable = false)
-	//@ElementCollection(targetClass = NaucnaOblast.class)
-	@JoinTable(name = "naucnaOblast", joinColumns = @JoinColumn(name = "id"))
 	@Enumerated(EnumType.STRING)
     private NaucnaOblast naucnaOblast;
 	

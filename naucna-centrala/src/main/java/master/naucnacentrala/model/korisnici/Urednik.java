@@ -1,7 +1,9 @@
 package master.naucnacentrala.model.korisnici;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -20,19 +22,18 @@ import master.naucnacentrala.model.enums.NaucnaOblast;
 @Entity
 public class Urednik extends Korisnik {
 
-
 	@NotNull
 	@Column
 	private String titula;
 
 	@NotNull
-	@Column
 	@ElementCollection(targetClass = NaucnaOblast.class)
-	@JoinTable(name = "naucnaOblast", joinColumns = @JoinColumn(name = "id"))
+	@CollectionTable(name = "urednik_naucnaOblast", joinColumns = @JoinColumn(name = "urednik_id"))
 	@Enumerated(EnumType.STRING)
+	@Column(name = "naucnaOblast_id")
 	private Collection<NaucnaOblast> naucneOblasti;
 
-	@OneToOne
+	@OneToOne(optional = true)
 	private Casopis uredjuje;
 
 	@Column
@@ -41,6 +42,17 @@ public class Urednik extends Korisnik {
 
 	public Urednik() {
 		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Urednik(String string, String string2, String string3, String string4, String string5, String string6,
+			String string7, ArrayList arrayList, ArrayList arrayList2, String titula,
+			Collection<NaucnaOblast> naucneOblasti, Casopis uredjuje, Collection<Rad> recenzira) {
+		super(string, string2, string3, string4, string5, string6, string7, arrayList, arrayList2);
+		this.titula = titula;
+		this.naucneOblasti = naucneOblasti;
+		this.uredjuje = uredjuje;
+		this.recenzira = recenzira;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -75,6 +87,5 @@ public class Urednik extends Korisnik {
 	public void setRecenzira(Collection<Rad> recenzira) {
 		this.recenzira = recenzira;
 	}
-	
-	
+
 }

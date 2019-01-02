@@ -3,11 +3,13 @@ package master.naucnacentrala.service.serviceImpl;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import master.naucnacentrala.model.korisnici.Korisnik;
 import master.naucnacentrala.repository.KorisnikRepository;
 import master.naucnacentrala.service.KorisnikService;
 
+@Service
 public class KorisnikServiceImpl implements KorisnikService{
 	
 	@Autowired

@@ -24,11 +24,11 @@ public class Casopis {
     private String issn;
 
 	@NotNull
-    @Column
-    @ElementCollection(targetClass = NaucnaOblast.class)
-    @JoinTable(name = "naucnaOblast", joinColumns = @JoinColumn(name = "id"))
-    @Enumerated(EnumType.STRING)
-    private Collection<NaucnaOblast> naucneOblasti;
+	@ElementCollection(targetClass = NaucnaOblast.class)
+	@CollectionTable(name = "casopis_naucnaOblast", joinColumns = @JoinColumn(name = "casopis_id"))
+	@Enumerated(EnumType.STRING)
+	@Column(name = "naucnaOblast_id")
+	private Collection<NaucnaOblast> naucneOblasti;
 
     @Column
     @OneToMany
@@ -53,8 +53,25 @@ public class Casopis {
     public Casopis() {
     }
     
+    
 
-    public String getNaziv() {
+    public Casopis(@NotNull String naziv, @NotNull String issn, @NotNull Collection<NaucnaOblast> naucneOblasti,
+			Collection<Rad> radovi, @NotNull boolean isOpenAccess, Korisnik glavniUrednik,
+			Collection<Korisnik> uredniciNaucnihOblasti, Collection<Korisnik> recenzenti) {
+		super();
+		this.naziv = naziv;
+		this.issn = issn;
+		this.naucneOblasti = naucneOblasti;
+		this.radovi = radovi;
+		this.isOpenAccess = isOpenAccess;
+		this.glavniUrednik = glavniUrednik;
+		this.uredniciNaucnihOblasti = uredniciNaucnihOblasti;
+		this.recenzenti = recenzenti;
+	}
+
+
+
+	public String getNaziv() {
         return naziv;
     }
 

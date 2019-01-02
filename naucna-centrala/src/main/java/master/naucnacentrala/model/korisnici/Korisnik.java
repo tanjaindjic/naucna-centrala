@@ -61,6 +61,25 @@ public class Korisnik {
 	public Korisnik() {
 	}
 
+	
+	
+	public Korisnik(@NotNull String username, @NotNull String pass, @NotNull String ime, @NotNull String prezime,
+			@NotNull String grad, @NotNull String drzava, @NotNull String email, Collection<Clanarina> placeniCasopisi,
+			Collection<Rad> placeniRadovi) {
+		super();
+		this.username = username;
+		this.pass = pass;
+		this.ime = ime;
+		this.prezime = prezime;
+		this.grad = grad;
+		this.drzava = drzava;
+		this.email = email;
+		this.placeniCasopisi = placeniCasopisi;
+		this.placeniRadovi = placeniRadovi;
+	}
+
+
+
 	public String getUsername() {
 		return username;
 	}
