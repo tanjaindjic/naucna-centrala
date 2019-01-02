@@ -10,7 +10,7 @@ public class Clanarina {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @OneToOne
     private Casopis casopis;
 
     @Column(nullable = false)

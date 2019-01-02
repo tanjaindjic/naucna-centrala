@@ -1,36 +1,53 @@
 package master.naucnacentrala.model;
 
 import master.naucnacentrala.model.enums.NaucnaOblast;
+import master.naucnacentrala.model.korisnici.Koautor;
+import master.naucnacentrala.model.korisnici.Korisnik;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import java.util.Collection;
 
 @Entity
 public class Rad {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //dobija se nakon objave
     private String doi;
 
+	@NotNull
     @Column(nullable = false, length=256)
     private String naslov;
+	
+	@NotNull
+    @OneToOne
+    private Korisnik autor;
 
-    //TODO smisliti kako ovo resiti, moze biti i samo string
-    @Column(nullable = false)
+    @Column
     @OneToMany
-    private Collection<Korisnik> autori;
+    private Collection<Koautor> koautori;
 
+	@NotNull
     @Column(nullable = false)
-    private String kljucniPojmovi;
+    @ElementCollection(targetClass = String.class)
+    private Collection<String> kljucniPojmovi;
 
+	@NotNull
     @Column(nullable = false)
     private String apstrakt;
 
+	@NotNull
     @Column(nullable = false)
+	//@ElementCollection(targetClass = NaucnaOblast.class)
+	@JoinTable(name = "naucnaOblast", joinColumns = @JoinColumn(name = "id"))
+	@Enumerated(EnumType.STRING)
     private NaucnaOblast naucnaOblast;
 
-    @Column(nullable = false)
+    @Column
     private String adresaNacrta;
 
     @Column
@@ -38,8 +55,31 @@ public class Rad {
 
     public Rad() {
     }
+    
+    
 
-    public String getDoi() {
+    public Korisnik getAutor() {
+		return autor;
+	}
+
+	public void setAutor(Korisnik autor) {
+		this.autor = autor;
+	}
+
+	public Collection<Koautor> getKoautori() {
+		return koautori;
+	}
+
+	public void setKoautori(Collection<Koautor> koautori) {
+		this.koautori = koautori;
+	}
+
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getDoi() {
         return doi;
     }
 
@@ -55,19 +95,11 @@ public class Rad {
         this.naslov = naslov;
     }
 
-    public Collection<Korisnik> getAutori() {
-        return autori;
-    }
-
-    public void setAutori(Collection<Korisnik> autori) {
-        this.autori = autori;
-    }
-
-    public String getKljucniPojmovi() {
+    public  Collection<String> getKljucniPojmovi() {
         return kljucniPojmovi;
     }
 
-    public void setKljucniPojmovi(String kljucniPojmovi) {
+    public void setKljucniPojmovi( Collection<String> kljucniPojmovi) {
         this.kljucniPojmovi = kljucniPojmovi;
     }
 

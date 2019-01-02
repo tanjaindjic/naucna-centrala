@@ -1,8 +1,11 @@
 package master.naucnacentrala.model;
 
 import master.naucnacentrala.model.enums.NaucnaOblast;
+import master.naucnacentrala.model.korisnici.Korisnik;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import java.util.Collection;
 
 @Entity
@@ -12,24 +15,30 @@ public class Casopis {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+	@NotNull
     @Column(nullable = false, length=256)
     private String naziv;
 
+	@NotNull
     @Column(nullable = false, length=256)
     private String issn;
 
-    @Column(nullable = false)
+	@NotNull
+    @Column
+    @ElementCollection(targetClass = NaucnaOblast.class)
+    @JoinTable(name = "naucnaOblast", joinColumns = @JoinColumn(name = "id"))
     @Enumerated(EnumType.STRING)
     private Collection<NaucnaOblast> naucneOblasti;
 
-    @Column(nullable = false)
+    @Column
     @OneToMany
     private Collection<Rad> radovi;
 
+	@NotNull
     @Column(nullable = false)
     private boolean isOpenAccess;
 
-    @Column(nullable = false)
+    @OneToOne
     private Korisnik glavniUrednik;
 
     @Column
@@ -39,9 +48,11 @@ public class Casopis {
     @Column
     @OneToMany
     private Collection<Korisnik> recenzenti;
+    
 
     public Casopis() {
     }
+    
 
     public String getNaziv() {
         return naziv;

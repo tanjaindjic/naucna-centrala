@@ -1,8 +1,11 @@
 package master.naucnacentrala.model;
 
 import master.naucnacentrala.model.enums.Rezultat;
+import master.naucnacentrala.model.korisnici.Korisnik;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import java.util.Date;
 
 @Entity
@@ -12,15 +15,20 @@ public class Recenzija {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+	@NotNull
+    @OneToOne
     private Casopis casopis;
 
-    @Column(nullable = false)
+	@NotNull
+    @OneToOne
     private Rad rad;
 
-    @Column(nullable = false)
+	@NotNull
+    @OneToOne
+    //moze biti urednik ili recenzent
     private Korisnik recenzent;
 
+	@NotNull
     @Column(nullable = false)
     private Date rok;
 
