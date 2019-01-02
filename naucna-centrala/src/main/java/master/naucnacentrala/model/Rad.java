@@ -7,6 +7,7 @@ import master.naucnacentrala.model.korisnici.Korisnik;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
@@ -33,7 +34,7 @@ public class Rad {
 
 	@NotNull
     @Column(nullable = false)
-    private String[] kljucniPojmovi;
+    private ArrayList<String> kljucniPojmovi;
 
 	@NotNull
     @Column(nullable = false)
@@ -49,13 +50,42 @@ public class Rad {
 
     @Column
     private String adresaKonacnogRada;
+    
+    @ManyToOne
+    @JoinColumn(name="casopis_id", nullable=false)
+    private Casopis casopis;
 
-    public Rad() {
+
+	public Rad() {
     }
-    
-    
 
-    public Korisnik getAutor() {
+    public Rad(String doi, @NotNull String naslov, @NotNull Korisnik autor, Collection<Koautor> koautori,
+			@NotNull ArrayList<String> kljucniPojmovi, @NotNull String apstrakt, @NotNull NaucnaOblast naucnaOblast,
+			String adresaNacrta, String adresaKonacnogRada, Casopis casopis) {
+		super();
+		this.doi = doi;
+		this.naslov = naslov;
+		this.autor = autor;
+		this.koautori = koautori;
+		this.kljucniPojmovi = kljucniPojmovi;
+		this.apstrakt = apstrakt;
+		this.naucnaOblast = naucnaOblast;
+		this.adresaNacrta = adresaNacrta;
+		this.adresaKonacnogRada = adresaKonacnogRada;
+		this.casopis = casopis;
+	}
+
+
+
+    public Casopis getCasopis() {
+		return casopis;
+	}
+
+	public void setCasopis(Casopis casopis) {
+		this.casopis = casopis;
+	}
+	
+	public Korisnik getAutor() {
 		return autor;
 	}
 
@@ -92,11 +122,11 @@ public class Rad {
         this.naslov = naslov;
     }
 
-    public  String[] getKljucniPojmovi() {
+    public ArrayList<String> getKljucniPojmovi() {
         return kljucniPojmovi;
     }
 
-    public void setKljucniPojmovi( String[] kljucniPojmovi) {
+    public void setKljucniPojmovi( ArrayList<String> kljucniPojmovi) {
         this.kljucniPojmovi = kljucniPojmovi;
     }
 
@@ -131,4 +161,13 @@ public class Rad {
     public void setAdresaKonacnogRada(String adresaKonacnogRada) {
         this.adresaKonacnogRada = adresaKonacnogRada;
     }
+
+	public ArrayList<String> getListaKoautora() {
+		if(koautori == null)
+			return new ArrayList<String>();
+		ArrayList<String> lista = new ArrayList<>();
+		for(Koautor k : koautori)
+			lista.add(k.getIme() + " " + k.getPrezime());
+		return lista;
+	}
 }

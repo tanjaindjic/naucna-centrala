@@ -22,7 +22,8 @@ public class Config {
     @Bean
     public Client client() throws Exception {
 
-    	TransportClient client = new PreBuiltTransportClient(Settings.EMPTY);
+    	TransportClient client = new PreBuiltTransportClient(Settings.EMPTY)
+    			.addTransportAddress(new TransportAddress(new InetSocketAddress("localhost", 9300)));
         return client;
 
     }

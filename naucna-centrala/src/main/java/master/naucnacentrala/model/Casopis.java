@@ -31,7 +31,7 @@ public class Casopis {
 	private Collection<NaucnaOblast> naucneOblasti;
 
     @Column
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="casopis")
     private Collection<Rad> radovi;
 
 	@NotNull

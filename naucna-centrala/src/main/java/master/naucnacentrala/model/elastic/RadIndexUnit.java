@@ -1,5 +1,6 @@
 package master.naucnacentrala.model.elastic;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Id;
@@ -14,7 +15,7 @@ import master.naucnacentrala.model.korisnici.Korisnik;
 
 @Document(indexName = RadIndexUnit.INDEX_NAME, type = RadIndexUnit.TYPE_NAME, shards = 1, replicas = 0)
 public class RadIndexUnit {
-	public static final String INDEX_NAME = "naucnacentrala";
+	public static final String INDEX_NAME = "naucnirad";
 	public static final String TYPE_NAME = "rad";
 	
 	@Id
@@ -27,13 +28,13 @@ public class RadIndexUnit {
 	private String sadrzaj;
 	
 	@Field(type = FieldType.Text, store = true)
-	private Korisnik autor;
+	private String autor;
 	
 	@Field(type = FieldType.Nested, store = true)
-	private Collection<Koautor> koautori;
+	private  ArrayList<String> koautori;
 	
 	@Field(type = FieldType.Text, store = true)
-	private String[] kljucniPojmovi;
+	private ArrayList<String> kljucniPojmovi;
 	
 	@Field(type = FieldType.Text, store = true)
 	private String apstrakt;
@@ -46,6 +47,102 @@ public class RadIndexUnit {
 	
 	@Field(type = FieldType.Text, store = true)
 	private String casopis;
+
+	public RadIndexUnit(String naslov, String sadrzaj, String autor,  ArrayList<String> koautori,
+			 ArrayList<String> kljucniPojmovi, String apstrakt, NaucnaOblast naucnaOblast, boolean isOpenAccess, String casopis) {
+		super();
+		this.naslov = naslov;
+		this.sadrzaj = sadrzaj;
+		this.autor = autor;
+		this.koautori = koautori;
+		this.kljucniPojmovi = kljucniPojmovi;
+		this.apstrakt = apstrakt;
+		this.naucnaOblast = naucnaOblast;
+		this.isOpenAccess = isOpenAccess;
+		this.casopis = casopis;
+	}
+
+	public RadIndexUnit() {
+		super();
+	}
+
+	public String getNaslov() {
+		return naslov;
+	}
+
+	public void setNaslov(String naslov) {
+		this.naslov = naslov;
+	}
+
+	public String getSadrzaj() {
+		return sadrzaj;
+	}
+
+	public void setSadrzaj(String sadrzaj) {
+		this.sadrzaj = sadrzaj;
+	}
+
+	public String getAutor() {
+		return autor;
+	}
+
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
+
+	public  ArrayList<String> getKoautori() {
+		return koautori;
+	}
+
+	public void setKoautori( ArrayList<String> koautori) {
+		this.koautori = koautori;
+	}
+
+	public  ArrayList<String> getKljucniPojmovi() {
+		return kljucniPojmovi;
+	}
+
+	public void setKljucniPojmovi( ArrayList<String> kljucniPojmovi) {
+		this.kljucniPojmovi = kljucniPojmovi;
+	}
+
+	public String getApstrakt() {
+		return apstrakt;
+	}
+
+	public void setApstrakt(String apstrakt) {
+		this.apstrakt = apstrakt;
+	}
+
+	public NaucnaOblast getNaucnaOblast() {
+		return naucnaOblast;
+	}
+
+	public void setNaucnaOblast(NaucnaOblast naucnaOblast) {
+		this.naucnaOblast = naucnaOblast;
+	}
+
+	public boolean isOpenAccess() {
+		return isOpenAccess;
+	}
+
+	public void setOpenAccess(boolean isOpenAccess) {
+		this.isOpenAccess = isOpenAccess;
+	}
+
+	public String getCasopis() {
+		return casopis;
+	}
+
+	public void setCasopis(String casopis) {
+		this.casopis = casopis;
+	}
+
+	public Long getId() {
+		return id;
+	}
+	
+	
 	
 
 }
