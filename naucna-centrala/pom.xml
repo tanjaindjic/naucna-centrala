@@ -80,9 +80,78 @@
 			<artifactId>android-json</artifactId>
 			<version>0.0.20131108.vaadin1</version>
 		</dependency>
+		<!-- camunda -->
+		<!-- https://mvnrepository.com/artifact/org.camunda.bpm/camunda-engine -->
+		<dependency>
+			<groupId>org.camunda.bpm</groupId>
+			<artifactId>camunda-engine</artifactId>
+			<version>7.10.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.camunda.bpm/camunda-engine-spring -->
+		<dependency>
+			<groupId>org.camunda.bpm</groupId>
+			<artifactId>camunda-engine-spring</artifactId>
+			<version>7.10.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.camunda.template-engines/camunda-template-engines-freemarker -->
+		<dependency>
+			<groupId>org.camunda.template-engines</groupId>
+			<artifactId>camunda-template-engines-freemarker</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+
+
+		<!-- apache velocity -->
+		<dependency>
+			<groupId>org.camunda.template-engines</groupId>
+			<artifactId>camunda-template-engines-velocity</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.camunda.connect/camunda-connect-core -->
+		<dependency>
+			<groupId>org.camunda.connect</groupId>
+			<artifactId>camunda-connect-core</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.camunda.connect/camunda-connect-connectors-all -->
+		<dependency>
+			<groupId>org.camunda.connect</groupId>
+			<artifactId>camunda-connect-connectors-all</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.camunda.bpm.springboot</groupId>
+			<artifactId>camunda-bpm-spring-boot-starter</artifactId>
+			<version>3.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.camunda.bpm</groupId>
+			<artifactId>camunda-bom</artifactId>
+			<version>7.10.0</version>
+			<scope>import</scope>
+			<type>pom</type>
+		</dependency>
 
 
 	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<!-- https://mvnrepository.com/artifact/org.camunda.connect/camunda-connect-bom -->
+			<dependency>
+				<groupId>org.camunda.connect</groupId>
+				<artifactId>camunda-connect-bom</artifactId>
+				<version>1.1.1</version>
+				<type>pom</type>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<plugins>
