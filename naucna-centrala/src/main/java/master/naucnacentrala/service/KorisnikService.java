@@ -10,5 +10,6 @@ public interface KorisnikService {
 	public Korisnik getKorisnik(Long id);
 	public Korisnik updateKorisnik(Korisnik k);
 	public Collection<Korisnik> getAll();
+	public String createToken(String string);
 
 }

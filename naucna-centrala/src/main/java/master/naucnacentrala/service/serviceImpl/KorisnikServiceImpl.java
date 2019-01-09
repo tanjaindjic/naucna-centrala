@@ -5,12 +5,17 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+
 import master.naucnacentrala.model.korisnici.Korisnik;
 import master.naucnacentrala.repository.KorisnikRepository;
 import master.naucnacentrala.service.KorisnikService;
 
 @Service
 public class KorisnikServiceImpl implements KorisnikService{
+	
+	private Algorithm algorithm = Algorithm.HMAC256("secret");
 	
 	@Autowired
 	private KorisnikRepository korisnikRepository;
@@ -35,6 +40,14 @@ public class KorisnikServiceImpl implements KorisnikService{
 	@Override
 	public Collection<Korisnik> getAll() {
 		return korisnikRepository.findAll();
+	}
+
+	@Override
+	public String createToken(String username) {
+		// TODO Auto-generated method stub
+		return JWT.create()
+				.withSubject(username)
+				.sign(algorithm);
 	}
 
 }

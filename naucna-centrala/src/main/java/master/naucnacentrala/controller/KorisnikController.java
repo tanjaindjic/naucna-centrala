@@ -3,6 +3,7 @@ package master.naucnacentrala.controller;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Collection;
+import java.util.HashMap;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -19,6 +20,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +32,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import connectjar.org.apache.http.protocol.HTTP;
 import master.naucnacentrala.model.dto.LoginDTO;
 import master.naucnacentrala.model.korisnici.Korisnik;
 import master.naucnacentrala.service.KorisnikService;
@@ -60,11 +63,9 @@ public class KorisnikController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public void login(@RequestBody LoginDTO dto) throws ClientProtocolException, IOException, JSONException {
+	public ResponseEntity<HashMap> login(@RequestBody LoginDTO dto) throws ClientProtocolException, IOException, JSONException {
 		System.out.println("Primio: " + dto.toString());
-		HttpHeaders headers = new HttpHeaders();
-		headers.set("Content-Type", "application/json");
-
+		
 		HttpEntity entity = new StringEntity(dto.toJson());
 		HttpPost post = new HttpPost("http://localhost:8080/engine-rest/identity/verify");
 		post.setEntity(entity);
@@ -79,9 +80,19 @@ public class KorisnikController {
 		// Getting the response body.
 		String responseBody = EntityUtils.toString(response.getEntity());
 		JSONObject jsonObj = new JSONObject(responseBody);
-		System.out.println("Saljem: " + dto.toJson());
-		System.out.println("status: " + statusCode + " , responseBody: " + responseBody);
-		System.out.println("Autenthicated: " + jsonObj.getString("authenticated"));//ako je true setovati token ili cookie
+		System.out.println("Autenthicated: " + jsonObj.getString("authenticated"));
+		
+		if(jsonObj.getBoolean("authenticated")) {
+			String token = korisnikService.createToken(dto.getUsername());
+			System.out.println(token);
+			HashMap<String, String> mapa = new HashMap<>();
+			mapa.put("token", token);
+			ResponseEntity<HashMap> responseEntity = new ResponseEntity<HashMap>(mapa, HttpStatus.OK);
+			return responseEntity;
+		}
+		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			
+		
 	}
 
 }
