@@ -1,4 +1,5 @@
 const ROOT_PATH = "http://localhost:8096/";
+const JWT_TOKEN = "token";
 
 var mainModule = angular.module('mainModule', [ 'ui.router', 'ngStorage', 'angular-jwt' ]);
 
@@ -8,7 +9,8 @@ mainModule.config(function($stateProvider, $urlRouterProvider) {
 
     $stateProvider.state('home', {
         url: '/home',
-        templateUrl : 'appParts/home/home.html'
+        templateUrl : 'appParts/home/home.html',
+        controller : 'homeController'
     })
     .state('login', {
         url: '/login',

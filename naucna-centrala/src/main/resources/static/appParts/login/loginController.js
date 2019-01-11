@@ -1,12 +1,15 @@
 (function() { "use strict";
 
-    mainModule.controller('loginController', [ '$scope', '$http', '$window','$localStorage','$location', '$stateParams',
-        function($scope,  $http, $location, $window, $localStorage, $stateParams) {
+    mainModule.controller('loginController', [ '$scope', '$http', '$window','$localStorage','$location', '$stateParams', 'mainService',
+        function($scope,  $http, $location, $window, $localStorage, $stateParams, mainService) {
             
 
             $scope.init = function(){
                 $scope.username="";
                 $scope.pass="";
+                if (mainService.getJwtToken()) {
+                    mainService.goToState("home")
+    			}
             }
 
           
@@ -23,7 +26,7 @@
                         console.log("Uspeh: " + JSON.stringify(response.data))
                         window.localStorage.setItem('token', response.data.token)
                         console.log("Postavljen: " + window.localStorage.getItem('token'))
-                       // $location.path(response.data.Location);
+                       	mainService.goToState("home")
                     }, function errorCallback(response) {
                          console.log("grerska " + JSON.stringify(response.data))
                         
