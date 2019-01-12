@@ -5,9 +5,15 @@ var mainModule = angular.module('mainModule', [ 'ui.router', 'ngStorage', 'angul
 
 mainModule.config(function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/core.home');
 
-    $stateProvider.state('home', {
+    $stateProvider
+    .state('core', {
+			 url: '/',
+			 templateUrl: 'appParts/core/core.html',
+			 controller: 'coreController'
+		 })
+    .state('core.home', {
         url: '/home',
         templateUrl : 'appParts/home/home.html',
         controller : 'homeController'

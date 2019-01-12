@@ -4,10 +4,10 @@
         function($scope,  $http, $location, $window, $localStorage, $stateParams, $state, mainService) {
             
 
-            var init = function(){
+            var init = function () {
                 if (!mainService.getJwtToken()) {
-                    mainService.goToState("login")
-    			}else $scope.sub = mainService.getSub();
+                    mainService.goToState("login", false)
+                } else $scope.sub = mainService.getSub();
 
             }
             init();

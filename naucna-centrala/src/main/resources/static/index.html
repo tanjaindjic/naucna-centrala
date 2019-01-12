@@ -1,37 +1,39 @@
-
 <!DOCTYPE html>
 <html ng-app="mainModule">
+
 <head>
-	<meta http-equiv="Cоntent-Type" content="text/html" charset="utf-8">
-	<title>Naucna centrala</title>
+    <meta http-equiv="Cоntent-Type" content="text/html" charset="utf-8">
+    <title>Naucna centrala</title>
 
-	<!-- Stilovi -->
-  	<link rel="stylesheet" href="styles/bootstrap.min.css">
-  	<link rel="stylesheet" href="styles/mainStyles.css">
-    
-  	<!-- Glavni JavaScript  -->
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/angular.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/angular-cookies.js"></script>
-	<script type="text/javascript" src="js/angular-ui-router.js"></script>
-	<script type="text/javascript" src="js/ngStorage.min.js"></script>
-	<script type="text/javascript" src="js/angular-jwt.min.js"></script>
+    <!-- Stilovi -->
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/mainStyles.css">
 
-	<!-- Glavni modul i Rutiranje  -->
-	<script type="text/javascript" src="appParts/mainModule.js"></script>
+    <!-- Glavni JavaScript  -->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/angular-cookies.js"></script>
+    <script type="text/javascript" src="js/angular-ui-router.js"></script>
+    <script type="text/javascript" src="js/ngStorage.min.js"></script>
+    <script type="text/javascript" src="js/angular-jwt.min.js"></script>
 
-	<!-- Servisi  -->
-	<script type="text/javascript" src="appParts/services/mainService.js"></script>
+    <!-- Glavni modul i Rutiranje  -->
+    <script type="text/javascript" src="appParts/mainModule.js"></script>
 
-	<!-- JavaScript za Komponente  -->
-	<script type="text/javascript" src="appParts/login/loginController.js"></script>
-	<script type="text/javascript" src="appParts/home/homeController.js"></script>
+    <!-- Servisi  -->
+    <script type="text/javascript" src="appParts/services/mainService.js"></script>
+
+    <!-- JavaScript za Komponente  -->
+    <script type="text/javascript" src="appParts/login/loginController.js"></script>
+    <script type="text/javascript" src="appParts/home/homeController.js"></script>
+    <script type="text/javascript" src="appParts/core/coreController.js"></script>
 
 </head>
-<body background="assets/images/bgImg.png">
 
-	<div>
-		<ui-view></ui-view>
-	</div>
+<body>
+    
+    <div>
+        <ui-view></ui-view>
+    </div>
 </body>

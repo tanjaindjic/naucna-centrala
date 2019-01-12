@@ -4,8 +4,8 @@
     mainModule.service('mainService', ['$http', '$window', '$localStorage', '$state',
         function ($http, $window, $localStorage, $state) {
 
-            this.goToState = function (state) {
-                $state.go(state, {"sub": this.getSub()}, { reload: true });
+            this.goToState = function (state, reload) {
+                $state.go(state, {"sub": this.getSub()}, { reload: reload });
             }
 
             this.parseJwt = function (token) {
