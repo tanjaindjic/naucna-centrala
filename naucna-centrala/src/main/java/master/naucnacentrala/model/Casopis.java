@@ -2,6 +2,7 @@ package master.naucnacentrala.model;
 
 import master.naucnacentrala.model.enums.NaucnaOblast;
 import master.naucnacentrala.model.korisnici.Korisnik;
+import master.naucnacentrala.model.korisnici.Urednik;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -39,7 +40,7 @@ public class Casopis {
     private boolean isOpenAccess;
 
     @OneToOne
-    private Korisnik glavniUrednik;
+    private Urednik glavniUrednik;
 
     @Column
     @OneToMany
@@ -56,7 +57,7 @@ public class Casopis {
     
 
     public Casopis(@NotNull String naziv, @NotNull String issn, @NotNull Collection<NaucnaOblast> naucneOblasti,
-			Collection<Rad> radovi, @NotNull boolean isOpenAccess, Korisnik glavniUrednik,
+			Collection<Rad> radovi, @NotNull boolean isOpenAccess, Urednik glavniUrednik,
 			Collection<Korisnik> uredniciNaucnihOblasti, Collection<Korisnik> recenzenti) {
 		super();
 		this.naziv = naziv;
@@ -111,11 +112,11 @@ public class Casopis {
         isOpenAccess = openAccess;
     }
 
-    public Korisnik getGlavniUrednik() {
+    public Urednik getGlavniUrednik() {
         return glavniUrednik;
     }
 
-    public void setGlavniUrednik(Korisnik glavniUrednik) {
+    public void setGlavniUrednik(Urednik glavniUrednik) {
         this.glavniUrednik = glavniUrednik;
     }
 

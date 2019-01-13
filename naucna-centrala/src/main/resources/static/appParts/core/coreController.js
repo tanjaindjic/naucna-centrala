@@ -17,6 +17,17 @@
                 mainService.goToState("core.home", true);
             }
 
+            $scope.novirad = function(){
+ 
+                $http({
+                    method: 'POST',
+                    url: ROOT_PATH + "rad",
+                    headers : createAuthorizationTokenHeader()
+                }).then(function successCallback(response) {
+                    mainService.goToState("core.prijavarada", true);
+                });
+            }
+
 
         }
     ]);

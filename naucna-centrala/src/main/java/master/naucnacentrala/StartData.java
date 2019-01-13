@@ -6,6 +6,8 @@ import java.util.EnumSet;
 
 import javax.annotation.PostConstruct;
 
+import org.camunda.bpm.engine.IdentityService;
+import org.camunda.bpm.engine.identity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -39,10 +41,13 @@ public class StartData {
 	@Autowired
 	private RadIndexingUnitRepository riuRepository;
 	
+	@Autowired 
+	private IdentityService identityService;
+	
 	@PostConstruct
 	private void init() {
 		
-		Korisnik autor = korisnikService.addKorisnik(new Korisnik("autor", "autor", "Autor", "Autor", "Beograd", "Srbija", "autor@gmail.com", new ArrayList<>(), new ArrayList<>())); 
+		Korisnik autor = korisnikService.addKorisnik(new Korisnik("demo", "demo", "Autor", "Autor", "Beograd", "Srbija", "autor@gmail.com", new ArrayList<>(), new ArrayList<>())); 
 		Korisnik autor2 = korisnikService.addKorisnik(new Korisnik("autor2", "autor2", "Autor2", "Autor2", "Beograd", "Srbija", "autor2@gmail.com", new ArrayList<>(), new ArrayList<>()));
 		Urednik urednik = urednikService.addUrednik(new Urednik("urednik", "urednik", "Urednik", "Urednik", "Beograd", "Srbija", "urednik@gmail.com", new ArrayList<>(), new ArrayList<>(), "dr", new ArrayList(), null, new ArrayList()));
 		Urednik urednik2 = urednikService.addUrednik(new Urednik("urednik2", "urednik2", "Urednik2", "Urednik2", "Beograd", "Srbija", "urednik2@gmail.com", new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
@@ -70,6 +75,22 @@ public class StartData {
 		
 		autor.getPlaceniRadovi().add(rad2);
 		korisnikService.updateKorisnik(autor);
+		
+		
+		User camundaUser = identityService.newUser("autor");
+		camundaUser.setFirstName(autor.getIme());
+		camundaUser.setLastName(autor.getPrezime());
+		camundaUser.setEmail(autor.getEmail());
+		camundaUser.setPassword(autor.getPass());
+		identityService.saveUser(camundaUser);
+		
+		camundaUser = identityService.newUser("autor2");
+		camundaUser.setFirstName(autor2.getIme());
+		camundaUser.setLastName(autor2.getPrezime());
+		camundaUser.setEmail(autor2.getEmail());
+		camundaUser.setPassword(autor2.getPass());
+		identityService.saveUser(camundaUser);
+		
 		//RadIndexUnit riu = new RadIndexUnit(rad.getNaslov(), "sadrzaj ovde", rad.getAutor().getIme() + " " + rad.getAutor().getPrezime(), rad.getListaKoautora(), rad.getKljucniPojmovi(), rad.getApstrakt(), rad.getNaucnaOblast(), rad.getCasopis().isOpenAccess(), rad.getCasopis().getNaziv());
 		//riuRepository.save(riu);
 	}

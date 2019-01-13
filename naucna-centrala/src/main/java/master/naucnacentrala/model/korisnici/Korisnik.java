@@ -80,6 +80,12 @@ public class Korisnik {
 
 
 
+	public Long getId() {
+		return id;
+	}
+
+
+
 	public String getUsername() {
 		return username;
 	}

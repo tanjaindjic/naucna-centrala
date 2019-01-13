@@ -15,17 +15,18 @@
 
 
             $scope.login = function () {
+
                 var payload = {
                     "username": $scope.username,
-                    "pass": $scope.pass
+                    "password": $scope.pass
                 }
                 $http({
                     method: 'POST',
                     url: ROOT_PATH + "korisnik/login",
-                    data: payload
+                    data: JSON.stringify(payload)
                 }).then(function successCallback(response) {
-                    console.log("Uspeh: " + JSON.stringify(response.data))
-                    window.localStorage.setItem('token', response.data.token)
+                    console.log(response.data.token)
+                    mainService.setJwtToken(response.data.token);
                     console.log("Postavljen: " + window.localStorage.getItem('token'))
                     mainService.goToState("core.home", true)
                 }, function errorCallback(response) {

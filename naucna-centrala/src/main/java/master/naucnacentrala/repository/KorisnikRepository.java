@@ -6,4 +6,6 @@ import master.naucnacentrala.model.korisnici.Korisnik;
 
 public interface KorisnikRepository extends JpaRepository<Korisnik, Long> {
 
+	Korisnik findByUsername(String username);
+
 }

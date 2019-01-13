@@ -5,7 +5,11 @@
         function ($http, $window, $localStorage, $state) {
 
             this.goToState = function (state, reload) {
-                $state.go(state, {"sub": this.getSub()}, { reload: reload });
+                $state.go(state, {
+                    "sub": this.getSub()
+                }, {
+                    reload: reload
+                });
             }
 
             this.parseJwt = function (token) {
@@ -20,7 +24,7 @@
                     console.log("token: " + token)
                     console.log("subject : " + token["sub"])
                     return token["sub"];
-                }else return "";
+                } else return "";
             }
 
             this.getJwtToken = function () {
@@ -31,6 +35,11 @@
             this.removeJwtToken = function () {
                 localStorage.removeItem(JWT_TOKEN);
             }
+
+            this.setJwtToken = function (token) {
+                localStorage.setItem(JWT_TOKEN, token);
+            }
+
 
             this.createAuthorizationTokenHeader = function () {
                 var token = this.getJwtToken();
