@@ -7,6 +7,9 @@ import java.util.EnumSet;
 import javax.annotation.PostConstruct;
 
 import org.camunda.bpm.engine.IdentityService;
+import org.camunda.bpm.engine.ProcessEngine;
+import org.camunda.bpm.engine.ProcessEngineConfiguration;
+import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.identity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,6 +22,7 @@ import master.naucnacentrala.model.enums.NaucnaOblast;
 import master.naucnacentrala.model.korisnici.Korisnik;
 import master.naucnacentrala.model.korisnici.Urednik;
 import master.naucnacentrala.repository.RadIndexingUnitRepository;
+import master.naucnacentrala.service.CamundaService;
 import master.naucnacentrala.service.CasopisService;
 import master.naucnacentrala.service.KorisnikService;
 import master.naucnacentrala.service.RadService;
@@ -41,15 +45,17 @@ public class StartData {
 	
 	@Autowired
 	private RadIndexingUnitRepository riuRepository;
-	
-	@Autowired 
-	private IdentityService identityService;
-	
+
+	@Autowired
+	private CamundaService camundaService;
 	
 	private BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
 	
 	@PostConstruct
-	private void init() {
+	private void init() throws Exception {
+	
+		//camundaService.startProcessEngine();
+		
 		
 		Korisnik autor = korisnikService.addKorisnik(new Korisnik("autor1", bcrypt.encode("autor1"), "Autor1", "Autor1", "Beograd", "Srbija", "autor1@gmail.com", new ArrayList<>(), new ArrayList<>())); 
 		Korisnik autor2 = korisnikService.addKorisnik(new Korisnik("autor2", bcrypt.encode("autor2"), "Autor2", "Autor2", "Beograd", "Srbija", "autor2@gmail.com", new ArrayList<>(), new ArrayList<>()));
@@ -83,19 +89,6 @@ public class StartData {
 		korisnikService.updateKorisnik(autor);
 		
 		
-		User camundaUser = identityService.newUser("autor");
-		camundaUser.setFirstName(autor.getIme());
-		camundaUser.setLastName(autor.getPrezime());
-		camundaUser.setEmail(autor.getEmail());
-		camundaUser.setPassword(autor.getPass());
-		identityService.saveUser(camundaUser);
-		
-		camundaUser = identityService.newUser("autor2");
-		camundaUser.setFirstName(autor2.getIme());
-		camundaUser.setLastName(autor2.getPrezime());
-		camundaUser.setEmail(autor2.getEmail());
-		camundaUser.setPassword(autor2.getPass());
-		identityService.saveUser(camundaUser);
 		
 		//RadIndexUnit riu = new RadIndexUnit(rad.getNaslov(), "sadrzaj ovde", rad.getAutor().getIme() + " " + rad.getAutor().getPrezime(), rad.getListaKoautora(), rad.getKljucniPojmovi(), rad.getApstrakt(), rad.getNaucnaOblast(), rad.getCasopis().isOpenAccess(), rad.getCasopis().getNaziv());
 		//riuRepository.save(riu);

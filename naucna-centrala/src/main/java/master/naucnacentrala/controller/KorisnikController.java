@@ -18,7 +18,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
-import org.camunda.bpm.engine.IdentityService;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,14 +41,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import connectjar.org.apache.http.protocol.HTTP;
 import master.naucnacentrala.exception.AuthenticationException;
 import master.naucnacentrala.model.dto.LoginDTO;
+import master.naucnacentrala.model.dto.RegisterDTO;
 import master.naucnacentrala.model.korisnici.Korisnik;
 import master.naucnacentrala.security.JwtAuthenticationRequest;
 import master.naucnacentrala.security.JwtAuthenticationResponse;
 import master.naucnacentrala.security.JwtTokenUtil;
 import master.naucnacentrala.security.JwtUser;
+import master.naucnacentrala.service.CamundaService;
 import master.naucnacentrala.service.KorisnikService;
 
 @RestController
@@ -60,11 +60,11 @@ public class KorisnikController {
 	private KorisnikService korisnikService;
 
 	@Autowired
-	private IdentityService identityService;
-
-	@Autowired
 	private AuthenticationManager authenticationManager;
 
+	@Autowired
+	private CamundaService camundaService;
+	
 	@Autowired
 	private UserDetailsService userDetailsService;
 	
@@ -86,7 +86,31 @@ public class KorisnikController {
 	public Korisnik getKorisnik(@PathVariable Long id) {
 		return korisnikService.getKorisnik(id);
 	}
+	
+	@GetMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getRegistrationFOrm() throws JSONException, UnsupportedOperationException, IOException, org.apache.tomcat.util.json.ParseException {
+		String processInstanceId = camundaService.startRegistrationProcess();
+		System.out.println("Process isnstance id: " + processInstanceId);
+		HashMap mapa = new HashMap();
+		mapa.put("processInstanceId", processInstanceId);
+		return new ResponseEntity<HashMap>(mapa, HttpStatus.OK);
+		
+	}
 
+	@RequestMapping(value = "/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> createAuthenticationToken(@RequestBody RegisterDTO registerDTO) throws AuthenticationException, ParseException, IOException, JSONException {
+		
+		JwtAuthenticationRequest authenticationRequest = new JwtAuthenticationRequest(registerDTO.getUsername(), registerDTO.getPass());
+		
+		Boolean camundaUserExists = korisnikService.verifyOnCamunda(authenticationRequest);
+
+		if (camundaUserExists) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		 
+		System.out.println("HIHI");
+		System.out.println("Registration process id: " + registerDTO.getRegistrationProcessId());
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException, ParseException, IOException, JSONException {
 		

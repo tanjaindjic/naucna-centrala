@@ -5,11 +5,13 @@ public class RegisterDTO {
 	private String username;
 	private String pass;
 	private String email;
-	public RegisterDTO(String username, String pass, String email) {
+	private String registrationProcessId;
+	public RegisterDTO(String username, String pass, String email, String registrationProcessId) {
 		super();
 		this.username = username;
 		this.pass = pass;
 		this.email = email;
+		this.registrationProcessId = registrationProcessId;
 	}
 	public RegisterDTO() {
 		super();
@@ -31,6 +33,12 @@ public class RegisterDTO {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getRegistrationProcessId() {
+		return registrationProcessId;
+	}
+	public void setRegistrationProcessId(String registrationProcessId) {
+		this.registrationProcessId = registrationProcessId;
 	}
 	
 	

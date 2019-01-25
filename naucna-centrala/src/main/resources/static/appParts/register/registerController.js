@@ -12,6 +12,19 @@
                 if (mainService.getJwtToken()) {
                     mainService.goToState("core.home", true)
                 }
+
+                 $http({
+                    method: 'GET',
+                    url: ROOT_PATH + "korisnik/register"
+                }).then(function successCallback(response) {
+                    console.log(response.data)
+                    window.localStorage.setItem('registrationProcessId', response.data.processInstanceId);
+                    console.log("Postavljen: " + window.localStorage.getItem('registrationProcessId'))
+                }, function errorCallback(response) {
+                    console.log("grerska " + JSON.stringify(response))
+
+                });
+
             }
 
 
@@ -20,7 +33,8 @@
                 var payload = {
                     "username": $scope.username,
                     "password": $scope.pass,
-                    "email": $scope.email
+                    "email": $scope.email,
+                    "registrationProcessId" : window.localStorage.getItem('registrationProcessId')
                 }
                 $http({
                     method: 'POST',

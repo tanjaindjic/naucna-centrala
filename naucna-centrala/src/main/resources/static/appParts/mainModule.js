@@ -23,5 +23,10 @@ mainModule.config(function($stateProvider, $urlRouterProvider) {
         templateUrl : 'appParts/login/login.html',
         controller : 'loginController'
     })
+     .state('register', {
+        url: '/register',
+        templateUrl : 'appParts/register/register.html',
+        controller : 'registerController'
+    })
 
 });

@@ -35,6 +35,10 @@
                 });
 
             }
+
+            $scope.registracija = function(){
+                mainService.goToState("register", true);
+            }
         }
     ]);
 })();

@@ -1,5 +1,7 @@
 package master.naucnacentrala.delegate;
 
+import org.camunda.bpm.engine.ProcessEngine;
+import org.camunda.bpm.engine.ProcessEngines;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.task.Task;
@@ -13,16 +15,16 @@ import master.naucnacentrala.service.KorisnikService;
 
 @Service
 public class DelegateService {
-	
 
-	@Autowired
-	private TaskService taskService;
 	
 	@Autowired
 	private CasopisService casopisService;
 	
 	@Autowired
 	private KorisnikService korisnikService;
+	
+	private ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+	private TaskService taskService = null;
 
 	public Korisnik getAssignee(DelegateExecution execution) {
 		String username = getAssigneeName(execution);
