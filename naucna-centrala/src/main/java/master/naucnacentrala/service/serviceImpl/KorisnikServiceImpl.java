@@ -59,7 +59,7 @@ public class KorisnikServiceImpl implements KorisnikService{
 	@Override
 	public Korisnik getKorisnikByUsername(String username) {
 		// TODO Auto-generated method stub
-		return korisnikRepository.findByUsername(username);
+		return korisnikRepository.findByUsernameIgnoreCase(username);
 	}
 
 	@Override

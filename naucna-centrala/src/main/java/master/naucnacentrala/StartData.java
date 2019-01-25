@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 import org.camunda.bpm.engine.IdentityService;
 import org.camunda.bpm.engine.identity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import master.naucnacentrala.model.Casopis;
@@ -44,13 +45,18 @@ public class StartData {
 	@Autowired 
 	private IdentityService identityService;
 	
+	
+	private BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
+	
 	@PostConstruct
 	private void init() {
 		
-		Korisnik autor = korisnikService.addKorisnik(new Korisnik("demo", "demo", "Autor", "Autor", "Beograd", "Srbija", "autor@gmail.com", new ArrayList<>(), new ArrayList<>())); 
-		Korisnik autor2 = korisnikService.addKorisnik(new Korisnik("autor2", "autor2", "Autor2", "Autor2", "Beograd", "Srbija", "autor2@gmail.com", new ArrayList<>(), new ArrayList<>()));
-		Urednik urednik = urednikService.addUrednik(new Urednik("urednik", "urednik", "Urednik", "Urednik", "Beograd", "Srbija", "urednik@gmail.com", new ArrayList<>(), new ArrayList<>(), "dr", new ArrayList(), null, new ArrayList()));
-		Urednik urednik2 = urednikService.addUrednik(new Urednik("urednik2", "urednik2", "Urednik2", "Urednik2", "Beograd", "Srbija", "urednik2@gmail.com", new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
+		Korisnik autor = korisnikService.addKorisnik(new Korisnik("autor1", bcrypt.encode("autor1"), "Autor1", "Autor1", "Beograd", "Srbija", "autor1@gmail.com", new ArrayList<>(), new ArrayList<>())); 
+		Korisnik autor2 = korisnikService.addKorisnik(new Korisnik("autor2", bcrypt.encode("autor2"), "Autor2", "Autor2", "Beograd", "Srbija", "autor2@gmail.com", new ArrayList<>(), new ArrayList<>()));
+		Korisnik demo = korisnikService.addKorisnik(new Korisnik("demo", bcrypt.encode("demo"), "Demo", "Demo", "Beograd", "Srbija", "demo@gmail.com", new ArrayList<>(), new ArrayList<>())); 
+		
+		Urednik urednik = urednikService.addUrednik(new Urednik("urednik", bcrypt.encode("urednik1"), "Urednik", "Urednik", "Beograd", "Srbija", "urednik@gmail.com", new ArrayList<>(), new ArrayList<>(), "dr", new ArrayList(), null, new ArrayList()));
+		Urednik urednik2 = urednikService.addUrednik(new Urednik("urednik2", bcrypt.encode("urednik2"), "Urednik2", "Urednik2", "Beograd", "Srbija", "urednik2@gmail.com", new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
 		Casopis casopis = casopisService.addCasopis(new Casopis("Casopis1", "issn1", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), true, urednik, new ArrayList<>(), new ArrayList<>()));
 		Casopis casopis2 = casopisService.addCasopis(new Casopis("Casopis2", "issn2", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), true, urednik, new ArrayList<>(), new ArrayList<>()));
 		

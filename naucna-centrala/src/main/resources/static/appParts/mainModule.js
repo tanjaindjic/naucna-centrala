@@ -5,7 +5,7 @@ var mainModule = angular.module('mainModule', [ 'ui.router', 'ngStorage', 'angul
 
 mainModule.config(function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/');
 
     $stateProvider
     .state('core', {
@@ -13,8 +13,8 @@ mainModule.config(function($stateProvider, $urlRouterProvider) {
 			 templateUrl: 'appParts/core/core.html',
 			 controller: 'coreController'
 		 })
-    .state('home', {
-        url: '/home',
+    .state('core.home', {
+        url: 'home',
         templateUrl : 'appParts/home/home.html',
         controller : 'homeController'
     })

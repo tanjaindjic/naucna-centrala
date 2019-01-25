@@ -5,16 +5,25 @@
 
 
             var init = function () {
-                if (!mainService.getJwtToken()) {
-                    mainService.goToState("login")
-                } else $scope.sub = mainService.getSub();
-
+                 console.log("init core")
+                if (mainService.getJwtToken()) {
+                    document.getElementById("prijava").style.display = "none";
+                    document.getElementById("odjava").style.display = "block";
+                } else {
+                    document.getElementById("prijava").style.display = "block";
+                    document.getElementById("odjava").style.display = "none";
+                }
+                mainService.goToState("core.home", false);
             }
             init();
 
             $scope.odjava = function () {
                 mainService.removeJwtToken();
                 mainService.goToState("core.home", true);
+            }
+
+            $scope.prijava = function () {
+                mainService.goToState("login", true);
             }
 
             $scope.novirad = function(){
@@ -24,7 +33,7 @@
                     url: ROOT_PATH + "rad",
                     headers : createAuthorizationTokenHeader()
                 }).then(function successCallback(response) {
-                    mainService.goToState("core.prijavarada", true);
+                    mainService.goToState("prijavarada", true);
                 });
             }
 

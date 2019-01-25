@@ -5,10 +5,8 @@
             
 
             var init = function () {
-                if (!mainService.getJwtToken()) {
-                    mainService.goToState("login", false)
-                } else $scope.sub = mainService.getSub();
-
+                console.log("init home")
+                $scope.sub = mainService.getSub();
             }
             init();
 

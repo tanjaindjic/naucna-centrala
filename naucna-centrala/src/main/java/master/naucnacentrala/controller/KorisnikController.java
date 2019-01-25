@@ -65,7 +65,10 @@ public class KorisnikController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
+	@Autowired
 	private UserDetailsService userDetailsService;
+	
+	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
 	private String tokenHeader;
 
