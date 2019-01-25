@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -22,11 +22,11 @@
     <property name="processEnginePlugins">
       <list>
         <bean class="org.camunda.connect.plugin.impl.ConnectProcessEnginePlugin" />
-        <bean class="org.camunda.spin.plugin.impl.SpinProcessEnginePlugin" />
+        
       </list>
     </property>
 
   </bean>
 
   <!--<bean id="uuidGenerator" class="org.camunda.bpm.engine.impl.persistence.StrongUuidGenerator" />-->
-</beans>
+</beans> -->

@@ -18,8 +18,8 @@
                     url: ROOT_PATH + "korisnik/register"
                 }).then(function successCallback(response) {
                     console.log(response.data)
-                    window.localStorage.setItem('registrationProcessId', response.data.processInstanceId);
-                    console.log("Postavljen: " + window.localStorage.getItem('registrationProcessId'))
+                    window.localStorage.setItem('taskId', response.data.taskId);
+                    console.log("Postavljen: " + window.localStorage.getItem('taskid'))
                 }, function errorCallback(response) {
                     console.log("grerska " + JSON.stringify(response))
 
@@ -34,7 +34,7 @@
                     "username": $scope.username,
                     "password": $scope.pass,
                     "email": $scope.email,
-                    "registrationProcessId" : window.localStorage.getItem('registrationProcessId')
+                    "taskId" : window.localStorage.getItem('taskId')
                 }
                 $http({
                     method: 'POST',

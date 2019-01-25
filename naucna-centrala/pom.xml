@@ -18,6 +18,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<elasticsearch.version>6.4.0</elasticsearch.version>
+		<camunda-bpm-spring-boot-starter.version>3.2.0</camunda-bpm-spring-boot-starter.version>
 	</properties>
 
 	<dependencies>
@@ -124,6 +125,36 @@
 			<version>1.1.1</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.camunda.bpm/camunda-engine-plugin-connect -->
+		<dependency>
+			<groupId>org.camunda.bpm</groupId>
+			<artifactId>camunda-engine-plugin-connect</artifactId>
+			<version>7.10.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.camunda.connect/camunda-connect-http-client -->
+		<dependency>
+			<groupId>org.camunda.connect</groupId>
+			<artifactId>camunda-connect-http-client</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.camunda.bpm.springboot/camunda-bpm-spring-boot-starter-webapp -->
+		<!-- <dependency>
+			<groupId>org.camunda.bpm.springboot</groupId>
+			<artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
+			<version>3.2.0</version>
+		</dependency> -->
+
+
+
+		<!-- https://mvnrepository.com/artifact/org.camunda.bpm.extension/camunda-bpm-mail-core -->
+		<dependency>
+			<groupId>org.camunda.bpm.extension</groupId>
+			<artifactId>camunda-bpm-mail-core</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/org.camunda.connect/camunda-connect-connectors-all -->
 		<dependency>
@@ -154,6 +185,21 @@
 			<artifactId>jjwt</artifactId>
 			<version>0.9.0</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.25</version>
+		</dependency>
+
 
 	</dependencies>
 	<dependencyManagement>
