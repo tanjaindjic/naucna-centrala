@@ -22,7 +22,6 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.camunda.bpm.engine.FormService;
 import org.camunda.bpm.engine.IdentityService;
-import org.camunda.bpm.engine.ProcessEngineServices;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.form.FormField;
@@ -58,6 +57,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import master.naucnacentrala.exception.AuthenticationException;
+import master.naucnacentrala.model.dto.FieldIdValueDTO;
+import master.naucnacentrala.model.dto.FormFieldsDTO;
 import master.naucnacentrala.model.dto.LoginDTO;
 import master.naucnacentrala.model.dto.RegisterDTO;
 import master.naucnacentrala.model.korisnici.Korisnik;
@@ -94,9 +95,6 @@ public class KorisnikController {
 	private TaskService taskService;
 	
 	@Autowired
-	private ProcessEngineServices processEngineServices;
-	
-	@Autowired
 	private FormService formService;
 	
 	@Autowired
@@ -120,66 +118,29 @@ public class KorisnikController {
 	
 	@GetMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getRegistrationFOrm() throws JSONException, UnsupportedOperationException, IOException, org.apache.tomcat.util.json.ParseException {
-		String processInstanceId = camundaService.startRegistrationProcess();
-		Task task = taskService.createTaskQuery().active().processInstanceId(processInstanceId).list().get(0);
+		ProcessInstance pi = runtimeService.startProcessInstanceByKey("registration_process");
+		Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
 		TaskFormData tfd = formService.getTaskFormData(task.getId());
 		List<FormField> properties = tfd.getFormFields();
 		
-		System.out.println("task id: " + task.getId());
-		HashMap mapa = new HashMap();
-		mapa.put("taskId", task.getId());
-		return new ResponseEntity<HashMap>(mapa, HttpStatus.OK);
-		
+		return new ResponseEntity<>(new FormFieldsDTO(task.getId(), pi.getId(), properties),HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity createAuthenticationToken(@RequestBody RegisterDTO registerDTO) {
+	public ResponseEntity finishRegistration(@RequestBody RegisterDTO registerDTO) {
+
+		Task task = taskService.createTaskQuery().taskId(registerDTO.getTaskId()).singleResult();
+		HashMap<String, Object> mapa = new HashMap<String, Object>();
+		for(FieldIdValueDTO pair : registerDTO.getFormFields())
+			mapa.put(pair.getFieldId(), pair.getFieldValue());
 		
-		List<User> users = identityService.createUserQuery().userId(registerDTO.getUsername()).list();
-		List<User> mails = identityService.createUserQuery().userEmail(registerDTO.getEmail()).list();
-		
-		Task task = taskService.createTaskQuery().active().processInstanceId(registerDTO.getTaskId()).list().get(0);
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		//for(FieldIdNamePairDto pair:dto)
-			//map.put(pair.getFieldId(), pair.getFieldValue());
-		
-		//runtimeService.setVariable(task.getProcessInstanceId(), "registerData", dto);
-		formService.submitTaskForm(registerDTO.getTaskId(), map);
-		return new ResponseEntity<>(HttpStatus.OK);
-		
-		/*
-		 * if(users.isEmpty() && mails.isEmpty()) { User user =
-		 * identityService.newUser(registerDTO.getUsername());
-		 * user.setEmail(registerDTO.getEmail());
-		 * user.setPassword(registerDTO.getPass()); identityService.saveUser(user);
-		 * 
-		 * runtimeService.setVariable(task.getExecutionId(), "email",
-		 * registerDTO.getEmail()); runtimeService.setVariable(task.getExecutionId(),
-		 * "valid", true);
-		 * 
-		 * taskService.complete(task.getId()); return new ResponseEntity(
-		 * HttpStatus.OK);
-		 * 
-		 * } runtimeService.setVariable(task.getExecutionId(), "valid", false);
-		 * taskService.complete(task.getId()); return new
-		 * ResponseEntity(HttpStatus.BAD_REQUEST);
-		 */
-		
-		
-		/*
-		 * JwtAuthenticationRequest authenticationRequest = new
-		 * JwtAuthenticationRequest(registerDTO.getUsername(), registerDTO.getPass());
-		 * 
-		 * Boolean camundaUserExists =
-		 * korisnikService.verifyOnCamunda(authenticationRequest);
-		 * 
-		 * if (camundaUserExists) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		 * 
-		 * System.out.println("HIHI"); System.out.println("Registration process id: " +
-		 * registerDTO.getRegistrationProcessId()); return new
-		 * ResponseEntity<>(HttpStatus.OK);
-		 */
-		
+		formService.submitTaskForm(registerDTO.getTaskId(), mapa);
+		List<Task> task2 = taskService.createTaskQuery().processInstanceId(registerDTO.getProcessInstanceId()).list();
+				
+		Boolean valid = (Boolean) runtimeService.getVariable(task.getProcessInstanceId(), "valid");
+		if(valid)
+			return new ResponseEntity<>(HttpStatus.OK);	
+		else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);	
 		
 	}
 	

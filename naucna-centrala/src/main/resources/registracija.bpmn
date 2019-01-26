@@ -5,14 +5,14 @@
       <bpmn:outgoing>SequenceFlow_0n9gd4z</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:exclusiveGateway id="ExclusiveGateway_0mre9gi" name="podaci dobri?">
-      <bpmn:incoming>SequenceFlow_0xjso1u</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1jw89bt</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_19cvfbu</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_0cz2qxk</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:endEvent id="EndEvent_1cqsm0w" name="uspesna registracija">
       <bpmn:incoming>SequenceFlow_1arkakt</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:serviceTask id="ServiceTask_00ai5je" name="verifikacioni mejl">
+    <bpmn:serviceTask id="SlanjeMejla_ServiceTask" name="verifikacioni mejl">
       <bpmn:extensionElements>
         <camunda:connector>
           <camunda:inputOutput>
@@ -29,43 +29,48 @@
     <bpmn:endEvent id="EndEvent_1wibv9w" name="neuspela registracija">
       <bpmn:incoming>SequenceFlow_0cz2qxk</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:userTask id="UserTask_0irr46q" name="unos podataka" camunda:assignee="demo">
+    <bpmn:userTask id="unosPodataka_UserTask" name="unos podataka" camunda:assignee="demo">
       <bpmn:extensionElements>
-        <camunda:inputOutput>
-          <camunda:outputParameter name="valid" />
-          <camunda:outputParameter name="email" />
-        </camunda:inputOutput>
         <camunda:formData>
-          <camunda:formField id="username" label="username" type="string" />
-          <camunda:formField id="password" label="password" type="string" />
-          <camunda:formField id="email" label="email" type="string" />
+          <camunda:formField id="username" label="Korisnicko ime" type="string" />
+          <camunda:formField id="password" label="Lozinka" type="string" />
+          <camunda:formField id="ime" label="Ime" type="string" />
+          <camunda:formField id="prezime" label="Prezime" type="string" />
+          <camunda:formField id="email" label="Email" type="string" />
+          <camunda:formField id="grad" label="Grad" type="string" />
+          <camunda:formField id="drzava" label="Drzava" type="string" />
         </camunda:formData>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0n9gd4z</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0xjso1u</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="SequenceFlow_0n9gd4z" sourceRef="StartEvent_0e3umwc" targetRef="UserTask_0irr46q" />
-    <bpmn:sequenceFlow id="SequenceFlow_0xjso1u" sourceRef="UserTask_0irr46q" targetRef="ExclusiveGateway_0mre9gi" />
-    <bpmn:sequenceFlow id="SequenceFlow_19cvfbu" name="da" sourceRef="ExclusiveGateway_0mre9gi" targetRef="ServiceTask_00ai5je">
+    <bpmn:sequenceFlow id="SequenceFlow_0n9gd4z" sourceRef="StartEvent_0e3umwc" targetRef="unosPodataka_UserTask" />
+    <bpmn:sequenceFlow id="SequenceFlow_0xjso1u" sourceRef="unosPodataka_UserTask" targetRef="ProveraPodataka_ServiceTask" />
+    <bpmn:sequenceFlow id="SequenceFlow_19cvfbu" name="da" sourceRef="ExclusiveGateway_0mre9gi" targetRef="SlanjeMejla_ServiceTask">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{valid}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0cz2qxk" name="ne" sourceRef="ExclusiveGateway_0mre9gi" targetRef="EndEvent_1wibv9w">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{not valid}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="SequenceFlow_1arkakt" sourceRef="ServiceTask_00ai5je" targetRef="EndEvent_1cqsm0w" />
+    <bpmn:sequenceFlow id="SequenceFlow_1arkakt" sourceRef="SlanjeMejla_ServiceTask" targetRef="EndEvent_1cqsm0w" />
+    <bpmn:sequenceFlow id="SequenceFlow_1jw89bt" sourceRef="ProveraPodataka_ServiceTask" targetRef="ExclusiveGateway_0mre9gi" />
+    <bpmn:serviceTask id="ProveraPodataka_ServiceTask" name="provera podataka" camunda:class="master.naucnacentrala.delegate.RegistracijaDelegate">
+      <bpmn:incoming>SequenceFlow_0xjso1u</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1jw89bt</bpmn:outgoing>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="registration_process">
       <bpmndi:BPMNShape id="StartEvent_0e3umwc_di" bpmnElement="StartEvent_0e3umwc">
-        <dc:Bounds x="176" y="138" width="36" height="36" />
+        <dc:Bounds x="150" y="138" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="156" y="181" width="78" height="14" />
+          <dc:Bounds x="130" y="181" width="78" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ExclusiveGateway_0mre9gi_di" bpmnElement="ExclusiveGateway_0mre9gi" isMarkerVisible="true">
-        <dc:Bounds x="512" y="131" width="50" height="50" />
+        <dc:Bounds x="556" y="131" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="503" y="109" width="67" height="14" />
+          <dc:Bounds x="547" y="109" width="67" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_1cqsm0w_di" bpmnElement="EndEvent_1cqsm0w">
@@ -74,44 +79,51 @@
           <dc:Bounds x="819" y="181" width="54" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="ServiceTask_00ai5je_di" bpmnElement="ServiceTask_00ai5je">
+      <bpmndi:BPMNShape id="ServiceTask_00ai5je_di" bpmnElement="SlanjeMejla_ServiceTask">
         <dc:Bounds x="683" y="116" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_1wibv9w_di" bpmnElement="EndEvent_1wibv9w">
-        <dc:Bounds x="519" y="282" width="36" height="36" />
+        <dc:Bounds x="563" y="282" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="511" y="325" width="54" height="27" />
+          <dc:Bounds x="555" y="325" width="54" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="UserTask_0irr46q_di" bpmnElement="UserTask_0irr46q">
-        <dc:Bounds x="322" y="116" width="100" height="80" />
+      <bpmndi:BPMNShape id="UserTask_0irr46q_di" bpmnElement="unosPodataka_UserTask">
+        <dc:Bounds x="249" y="116" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0n9gd4z_di" bpmnElement="SequenceFlow_0n9gd4z">
-        <di:waypoint x="212" y="156" />
-        <di:waypoint x="322" y="156" />
+        <di:waypoint x="186" y="156" />
+        <di:waypoint x="249" y="156" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0xjso1u_di" bpmnElement="SequenceFlow_0xjso1u">
-        <di:waypoint x="422" y="156" />
-        <di:waypoint x="512" y="156" />
+        <di:waypoint x="349" y="156" />
+        <di:waypoint x="395" y="156" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_19cvfbu_di" bpmnElement="SequenceFlow_19cvfbu">
-        <di:waypoint x="562" y="156" />
+        <di:waypoint x="606" y="156" />
         <di:waypoint x="683" y="156" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="617.5" y="138" width="13" height="14" />
+          <dc:Bounds x="639" y="138" width="13" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0cz2qxk_di" bpmnElement="SequenceFlow_0cz2qxk">
-        <di:waypoint x="537" y="181" />
-        <di:waypoint x="537" y="282" />
+        <di:waypoint x="581" y="181" />
+        <di:waypoint x="581" y="282" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="541" y="226.5" width="13" height="14" />
+          <dc:Bounds x="585" y="236" width="13" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1arkakt_di" bpmnElement="SequenceFlow_1arkakt">
         <di:waypoint x="783" y="156" />
         <di:waypoint x="828" y="156" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1jw89bt_di" bpmnElement="SequenceFlow_1jw89bt">
+        <di:waypoint x="495" y="156" />
+        <di:waypoint x="556" y="156" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0hqowyw_di" bpmnElement="ProveraPodataka_ServiceTask">
+        <dc:Bounds x="395" y="116" width="100" height="80" />
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

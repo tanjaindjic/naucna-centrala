@@ -1,28 +1,39 @@
 package master.naucnacentrala.model.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class RegisterDTO {
+import org.camunda.bpm.engine.form.FormField;
+
+public class FormFieldsDTO implements Serializable{
 	
 	String taskId;
 	String processInstanceId;
-	List<FieldIdValueDTO> formFields;
+	List<FormField> formFields;
 	
 	
-	public RegisterDTO(String taskId, String processInstanceId, List<FieldIdValueDTO> formFields) {
+	public FormFieldsDTO(){}
+	
+	
+	public FormFieldsDTO(String taskId, String processInstanceId,List<FormField> formFields) {
 		super();
 		this.taskId = taskId;
-		this.processInstanceId = processInstanceId;
 		this.formFields = formFields;
+		this.processInstanceId = processInstanceId;
 	}
-	public RegisterDTO() {
-		super();
-	}
+
+
 	public String getTaskId() {
 		return taskId;
 	}
 	public void setTaskId(String taskId) {
 		this.taskId = taskId;
+	}
+	public List<FormField> getFormField() {
+		return formFields;
+	}
+	public void setFormField(List<FormField> formFields) {
+		this.formFields = formFields;
 	}
 	public String getProcessInstanceId() {
 		return processInstanceId;
@@ -30,16 +41,6 @@ public class RegisterDTO {
 	public void setProcessInstanceId(String processInstanceId) {
 		this.processInstanceId = processInstanceId;
 	}
-	public List<FieldIdValueDTO> getFormFields() {
-		return formFields;
-	}
-	public void setFormFields(List<FieldIdValueDTO> formFields) {
-		this.formFields = formFields;
-	}
-	
-	
-	
-	
 	
 	
 

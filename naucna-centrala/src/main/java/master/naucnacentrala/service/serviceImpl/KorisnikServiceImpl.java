@@ -2,7 +2,9 @@ package master.naucnacentrala.service.serviceImpl;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -79,6 +81,12 @@ public class KorisnikServiceImpl implements KorisnikService{
 		JSONObject jsonObj = new JSONObject(responseBody);
 		System.out.println("Autenthicated: " + jsonObj.getString("authenticated"));
 		return jsonObj.getBoolean("authenticated");
+	}
+
+
+	@Override
+	public void createUser(String username, String pass, String email, String ime, String prezime, String drzava, String grad) {
+		korisnikRepository.save(new Korisnik(username, pass, ime, prezime, grad, drzava, email, new ArrayList<>(), new ArrayList<>() ));
 	}
 
 }
