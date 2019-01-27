@@ -12,13 +12,13 @@
     <bpmn:endEvent id="EndEvent_1cqsm0w" name="uspesna registracija">
       <bpmn:incoming>SequenceFlow_1arkakt</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:serviceTask id="SlanjeMejla_ServiceTask" name="verifikacioni mejl">
+    <bpmn:serviceTask id="SlanjeMejla_ServiceTask" name="verifikacioni mejl" camunda:asyncBefore="true">
       <bpmn:extensionElements>
         <camunda:connector>
           <camunda:inputOutput>
-            <camunda:inputParameter name="name">Registration Confirmation</camunda:inputParameter>
+            <camunda:inputParameter name="subject">Registration Confirmation</camunda:inputParameter>
             <camunda:inputParameter name="text">Your account is ready!</camunda:inputParameter>
-            <camunda:inputParameter name="email">#{email}</camunda:inputParameter>
+            <camunda:inputParameter name="to">${email}</camunda:inputParameter>
           </camunda:inputOutput>
           <camunda:connectorId>mail-send</camunda:connectorId>
         </camunda:connector>

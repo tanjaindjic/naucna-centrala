@@ -123,6 +123,7 @@
 			<groupId>org.camunda.connect</groupId>
 			<artifactId>camunda-connect-core</artifactId>
 			<version>1.1.1</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.camunda.bpm/camunda-engine-plugin-connect -->
@@ -153,6 +154,7 @@
 			<groupId>org.camunda.bpm.extension</groupId>
 			<artifactId>camunda-bpm-mail-core</artifactId>
 			<version>1.2.0</version>
+			<scope>provided</scope>
 		</dependency>
 
 
