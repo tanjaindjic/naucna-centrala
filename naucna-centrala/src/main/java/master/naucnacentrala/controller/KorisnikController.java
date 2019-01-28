@@ -9,12 +9,10 @@ import java.util.Objects;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.http.ParseException;
-import org.camunda.bpm.engine.FormService;
-import org.camunda.bpm.engine.IdentityService;
-import org.camunda.bpm.engine.RuntimeService;
-import org.camunda.bpm.engine.TaskService;
+import org.camunda.bpm.engine.*;
 import org.camunda.bpm.engine.form.FormField;
 import org.camunda.bpm.engine.form.TaskFormData;
+import org.camunda.bpm.engine.history.HistoricVariableInstance;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.task.Task;
 import org.json.JSONException;
@@ -72,6 +70,9 @@ public class KorisnikController {
 	
 	@Autowired
 	private FormService formService;
+
+	@Autowired
+	private HistoryService historyService;
 	
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
@@ -111,8 +112,10 @@ public class KorisnikController {
 			mapa.put(pair.getFieldId(), pair.getFieldValue());
 		
 		formService.submitTaskForm(registerDTO.getTaskId(), mapa);
-		return new ResponseEntity(HttpStatus.OK);
-
+		Boolean valid = (Boolean) historyService.createHistoricVariableInstanceQuery().processInstanceId(task.getProcessInstanceId()).variableName("valid").singleResult().getValue();
+		if(valid)
+			return new ResponseEntity(HttpStatus.OK);
+		else return new ResponseEntity(HttpStatus.BAD_REQUEST);
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
