@@ -42,18 +42,12 @@ public class RegistracijaDelegate implements JavaDelegate {
 			newUser.setLastName(execution.getVariable("prezime").toString());
 			newUser.setPassword(execution.getVariable("password").toString());
 			identityService.saveUser(newUser);
-
-			/*
-			 * korisnikService.createUser(execution.getVariable( "username").toString(),
-			 * execution.getVariable( "password").toString(), execution.getVariable(
-			 * "email").toString(), execution.getVariable( "ime").toString(),
-			 * execution.getVariable( "prezime").toString(), execution.getVariable(
-			 * "drzava").toString(), execution.getVariable( "grad").toString());
-			 */
 			execution.setVariable("valid", true);
 					
+		}else {
+			execution.setVariable("valid", false);
+			System.out.println("Postoji nalog");
 		}
-		else execution.setVariable("valid", false);
 
 	}
 

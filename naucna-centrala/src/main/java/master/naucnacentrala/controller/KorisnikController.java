@@ -111,13 +111,8 @@ public class KorisnikController {
 			mapa.put(pair.getFieldId(), pair.getFieldValue());
 		
 		formService.submitTaskForm(registerDTO.getTaskId(), mapa);
-		List<Task> task2 = taskService.createTaskQuery().processInstanceId(registerDTO.getProcessInstanceId()).list();
-				
-		Boolean valid = (Boolean) runtimeService.getVariable(task.getProcessInstanceId(), "valid");
-		if(valid)
-			return new ResponseEntity<>(HttpStatus.OK);	
-		else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);	
-		
+		return new ResponseEntity(HttpStatus.OK);
+
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
