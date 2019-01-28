@@ -5,6 +5,9 @@ import java.util.Arrays;
 
 import javax.annotation.PostConstruct;
 
+import org.camunda.bpm.engine.IdentityService;
+import org.camunda.bpm.engine.identity.Group;
+import org.camunda.bpm.engine.identity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -19,6 +22,7 @@ import master.naucnacentrala.service.CasopisService;
 import master.naucnacentrala.service.KorisnikService;
 import master.naucnacentrala.service.RadService;
 import master.naucnacentrala.service.UrednikService;
+import org.springframework.web.client.RestTemplate;
 
 @Component
 public class StartData {
@@ -34,19 +38,18 @@ public class StartData {
 	
 	@Autowired
 	private RadService radService;
-	
+
+	@Autowired
+	private IdentityService identityService;
+
 	@Autowired
 	private RadIndexingUnitRepository riuRepository;
 
-	
 	private BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
 	
 	@PostConstruct
 	private void init() throws Exception {
-	
-		//camundaService.startProcessEngine();
-		
-		
+
 		Korisnik autor = korisnikService.addKorisnik(new Korisnik("autor1", bcrypt.encode("autor1"), "Autor1", "Autor1", "Beograd", "Srbija", "autor1@gmail.com", new ArrayList<>(), new ArrayList<>())); 
 		Korisnik autor2 = korisnikService.addKorisnik(new Korisnik("autor2", bcrypt.encode("autor2"), "Autor2", "Autor2", "Beograd", "Srbija", "autor2@gmail.com", new ArrayList<>(), new ArrayList<>()));
 		Korisnik demo = korisnikService.addKorisnik(new Korisnik("demo", bcrypt.encode("demo"), "Demo", "Demo", "Beograd", "Srbija", "demo@gmail.com", new ArrayList<>(), new ArrayList<>())); 
@@ -77,11 +80,36 @@ public class StartData {
 		
 		autor.getPlaceniRadovi().add(rad2);
 		korisnikService.updateKorisnik(autor);
-		
-		
+
+		saveCamundaUser(autor);
+		saveCamundaUser(autor2);
+		saveCamundaUser(urednik);
+		saveCamundaUser(urednik2);
+		saveCamundaUser(demo);
 		
 		//RadIndexUnit riu = new RadIndexUnit(rad.getNaslov(), "sadrzaj ovde", rad.getAutor().getIme() + " " + rad.getAutor().getPrezime(), rad.getListaKoautora(), rad.getKljucniPojmovi(), rad.getApstrakt(), rad.getNaucnaOblast(), rad.getCasopis().isOpenAccess(), rad.getCasopis().getNaziv());
 		//riuRepository.save(riu);
+	}
+
+	public void saveCamundaUser (Korisnik autor){
+		/*String payload = "{\"profile\": \n" +
+				"  {\"id\": " + autor.getUsername() + ",\n" +
+				"  \"firstName\": " + autor.getIme() + ",\n" +
+				"  \"lastName\": " + autor.getPrezime() + ",\n" +
+				"  \"email\": " + autor.getEmail() + "},\n" +
+				"\"credentials\": \n" +
+				"  {\"password\": " + autor.getPass() + "}\n" +
+				"}";
+		RestTemplate rt = new RestTemplate();
+		rt.postForEntity("http://localhost:8096/rest/user/create", payload, String.class);*/
+		User newUser = identityService.newUser(autor.getUsername());
+		newUser.setEmail(autor.getEmail());
+		newUser.setFirstName(autor.getIme());
+		newUser.setLastName(autor.getPrezime());
+		newUser.setPassword(autor.getUsername());//zbog bcrypta sve se cuva tako
+		identityService.saveUser(newUser);
+		System.out.println(newUser.getId());
+
 	}
 
 }
