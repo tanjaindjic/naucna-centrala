@@ -17,6 +17,7 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.auth0.jwt.JWT;
@@ -31,6 +32,11 @@ import master.naucnacentrala.service.KorisnikService;
 public class KorisnikServiceImpl implements KorisnikService{
 	
 	private Algorithm algorithm = Algorithm.HMAC256("secret");
+	
+
+	@Value("${camunda.url}")
+	private String camundaUrl;
+	
 	
 	@Autowired
 	private KorisnikRepository korisnikRepository;
@@ -68,7 +74,7 @@ public class KorisnikServiceImpl implements KorisnikService{
 	public Boolean verifyOnCamunda(JwtAuthenticationRequest authenticationRequest) throws ClientProtocolException, IOException, JSONException {
 
 		HttpEntity entity = new StringEntity(authenticationRequest.toJson());
-		HttpPost post = new HttpPost("http://localhost:8080/engine-rest/identity/verify");
+		HttpPost post = new HttpPost(camundaUrl + "identity/verify");
 		post.setEntity(entity);
 		post.addHeader("Content-Type", "application/json");
 		post.addHeader("Accept", "text/plain, application/json");

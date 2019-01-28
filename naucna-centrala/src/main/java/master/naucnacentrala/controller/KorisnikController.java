@@ -1,42 +1,24 @@
 package master.naucnacentrala.controller;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
-import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
 import org.camunda.bpm.engine.FormService;
 import org.camunda.bpm.engine.IdentityService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.form.FormField;
 import org.camunda.bpm.engine.form.TaskFormData;
-import org.camunda.bpm.engine.identity.User;
-import org.camunda.bpm.engine.runtime.Execution;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.task.Task;
-import org.camunda.bpm.model.bpmn.instance.UserTask;
-import org.camunda.bpm.model.bpmn.instance.camunda.CamundaProperties;
-import org.camunda.bpm.model.bpmn.instance.camunda.CamundaProperty;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -54,19 +36,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import master.naucnacentrala.exception.AuthenticationException;
 import master.naucnacentrala.model.dto.FieldIdValueDTO;
 import master.naucnacentrala.model.dto.FormFieldsDTO;
-import master.naucnacentrala.model.dto.LoginDTO;
 import master.naucnacentrala.model.dto.RegisterDTO;
 import master.naucnacentrala.model.korisnici.Korisnik;
 import master.naucnacentrala.security.JwtAuthenticationRequest;
 import master.naucnacentrala.security.JwtAuthenticationResponse;
 import master.naucnacentrala.security.JwtTokenUtil;
 import master.naucnacentrala.security.JwtUser;
-import master.naucnacentrala.service.CamundaService;
 import master.naucnacentrala.service.KorisnikService;
 
 @RestController
@@ -78,9 +57,6 @@ public class KorisnikController {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
-
-	@Autowired
-	private CamundaService camundaService;
 	
 	@Autowired
 	private UserDetailsService userDetailsService;

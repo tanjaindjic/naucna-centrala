@@ -18,17 +18,14 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<elasticsearch.version>6.4.0</elasticsearch.version>
-		<camunda-bpm-spring-boot-starter.version>3.2.0</camunda-bpm-spring-boot-starter.version>
 	</properties>
 
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
 		<dependency>
 			<groupId>com.auth0</groupId>
 			<artifactId>java-jwt</artifactId>
 			<version>3.4.1</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -37,7 +34,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -53,15 +49,21 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch -->
-		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-elasticsearch -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.0</version>
+		</dependency>
+		<!--elasticsearch-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
 			<version>2.1.1.RELEASE</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.elasticsearch.client/transport -->
 		<dependency>
 			<groupId>org.elasticsearch.client</groupId>
 			<artifactId>transport</artifactId>
@@ -71,12 +73,6 @@
 			<groupId>org.elasticsearch</groupId>
 			<artifactId>elasticsearch</artifactId>
 			<version>6.4.0</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.pdfbox</groupId>
@@ -88,132 +84,58 @@
 			<artifactId>android-json</artifactId>
 			<version>0.0.20131108.vaadin1</version>
 		</dependency>
-		<!-- camunda -->
-		<!-- https://mvnrepository.com/artifact/org.camunda.bpm/camunda-engine -->
-		<dependency>
-			<groupId>org.camunda.bpm</groupId>
-			<artifactId>camunda-engine</artifactId>
-			<version>7.10.0</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.camunda.bpm/camunda-engine-spring -->
-		<dependency>
-			<groupId>org.camunda.bpm</groupId>
-			<artifactId>camunda-engine-spring</artifactId>
-			<version>7.10.0</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.camunda.template-engines/camunda-template-engines-freemarker -->
-		<dependency>
-			<groupId>org.camunda.template-engines</groupId>
-			<artifactId>camunda-template-engines-freemarker</artifactId>
-			<version>1.1.0</version>
-		</dependency>
-
-
-		<!-- apache velocity -->
-		<dependency>
-			<groupId>org.camunda.template-engines</groupId>
-			<artifactId>camunda-template-engines-velocity</artifactId>
-			<version>1.1.0</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.camunda.connect/camunda-connect-core -->
+		<!--camunda-->
 		<dependency>
 			<groupId>org.camunda.connect</groupId>
 			<artifactId>camunda-connect-core</artifactId>
-			<version>1.1.1</version>
-			<scope>provided</scope>
+			<version>1.1.2</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.camunda.bpm/camunda-engine-plugin-connect -->
+		<dependency>
+			<groupId>org.camunda.connect</groupId>
+			<artifactId>camunda-connect-connectors-all</artifactId>
+			<version>1.1.2</version>
+		</dependency>
 		<dependency>
 			<groupId>org.camunda.bpm</groupId>
 			<artifactId>camunda-engine-plugin-connect</artifactId>
 			<version>7.10.0</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.camunda.connect/camunda-connect-http-client -->
 		<dependency>
-			<groupId>org.camunda.connect</groupId>
-			<artifactId>camunda-connect-http-client</artifactId>
-			<version>1.1.1</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.camunda.bpm.springboot/camunda-bpm-spring-boot-starter-webapp -->
-		<!-- <dependency>
 			<groupId>org.camunda.bpm.springboot</groupId>
 			<artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
 			<version>3.2.0</version>
-		</dependency> -->
-
-
-
-		<!-- https://mvnrepository.com/artifact/org.camunda.bpm.extension/camunda-bpm-mail-core -->
+		</dependency>
 		<dependency>
 			<groupId>org.camunda.bpm.extension</groupId>
 			<artifactId>camunda-bpm-mail-core</artifactId>
 			<version>1.2.0</version>
 			<scope>provided</scope>
 		</dependency>
-
-
-		<!-- https://mvnrepository.com/artifact/org.camunda.connect/camunda-connect-connectors-all -->
-		<dependency>
-			<groupId>org.camunda.connect</groupId>
-			<artifactId>camunda-connect-connectors-all</artifactId>
-			<version>1.1.1</version>
-		</dependency>
-
 		<dependency>
 			<groupId>org.camunda.bpm.springboot</groupId>
-			<artifactId>camunda-bpm-spring-boot-starter</artifactId>
+			<artifactId>camunda-bpm-spring-boot-starter-rest</artifactId>
 			<version>3.2.0</version>
 		</dependency>
-		<dependency>
-			<groupId>org.camunda.bpm</groupId>
-			<artifactId>camunda-bom</artifactId>
-			<version>7.10.0</version>
-			<scope>import</scope>
-			<type>pom</type>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt</artifactId>
-			<version>0.9.0</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>javax.mail-api</artifactId>
 			<version>1.6.2</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.25</version>
 		</dependency>
-
-
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
-			<!-- https://mvnrepository.com/artifact/org.camunda.connect/camunda-connect-bom -->
 			<dependency>
 				<groupId>org.camunda.connect</groupId>
 				<artifactId>camunda-connect-bom</artifactId>
-				<version>1.1.1</version>
+				<scope>import</scope>
 				<type>pom</type>
+				<version>1.0.0</version>
 			</dependency>
-
 		</dependencies>
 	</dependencyManagement>
 

@@ -2,27 +2,19 @@ package master.naucnacentrala;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.EnumSet;
 
 import javax.annotation.PostConstruct;
 
-import org.camunda.bpm.engine.IdentityService;
-import org.camunda.bpm.engine.ProcessEngine;
-import org.camunda.bpm.engine.ProcessEngineConfiguration;
-import org.camunda.bpm.engine.RuntimeService;
-import org.camunda.bpm.engine.identity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import master.naucnacentrala.model.Casopis;
 import master.naucnacentrala.model.Rad;
-import master.naucnacentrala.model.elastic.RadIndexUnit;
 import master.naucnacentrala.model.enums.NaucnaOblast;
 import master.naucnacentrala.model.korisnici.Korisnik;
 import master.naucnacentrala.model.korisnici.Urednik;
 import master.naucnacentrala.repository.RadIndexingUnitRepository;
-import master.naucnacentrala.service.CamundaService;
 import master.naucnacentrala.service.CasopisService;
 import master.naucnacentrala.service.KorisnikService;
 import master.naucnacentrala.service.RadService;
@@ -46,8 +38,6 @@ public class StartData {
 	@Autowired
 	private RadIndexingUnitRepository riuRepository;
 
-	@Autowired
-	private CamundaService camundaService;
 	
 	private BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
 	
