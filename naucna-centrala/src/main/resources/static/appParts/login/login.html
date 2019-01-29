@@ -1,10 +1,11 @@
 <div class="container" ng-init="init()">
 
-	<label for="username"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="username" required ng-model="username">
-
-    <label for="pass"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="pass" required ng-model="pass">
+    <form id="registrationForm">
+        <div ng-repeat="field in loginFields">
+            <label><b>{{field.label}}</b></label>
+            <input type="text" id="{{field.id}}">
+        </div>
+    </form>
 
     <button type="submit" ng-click="login()">Login</button>
     <br>

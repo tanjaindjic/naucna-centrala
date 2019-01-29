@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0bq6jym" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="2.0.3">
-  <bpmn:process id="registration_process" name="registration process" isExecutable="true" camunda:candidateStarterUsers="demo">
+  <bpmn:process id="registrationProcess" name="registration process" isExecutable="true" camunda:candidateStarterUsers="demo">
     <bpmn:startEvent id="StartEvent_0e3umwc" name="start registracije">
       <bpmn:outgoing>SequenceFlow_0n9gd4z</bpmn:outgoing>
     </bpmn:startEvent>

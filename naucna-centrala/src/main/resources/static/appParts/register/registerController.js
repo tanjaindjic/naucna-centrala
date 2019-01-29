@@ -30,21 +30,9 @@
 
             }
 
-            function getFormData(){
-                var data = [];
-                $scope.formFields.forEach(element => {
-                    var field = {
-                        "fieldId": element.id,
-                        "fieldValue": document.getElementById(element.id).value
-                        }
-                    data.push(field);
-                });
-                return data;
-            }
-
             $scope.register = function () {
 
-                var formData = getFormData();
+                var formData = mainService.getFormData($scope.formFields);
                 var payload = {
                     "taskId" : window.localStorage.getItem('taskId'),
                     "processInstanceId" : window.localStorage.getItem('processInstanceId'),

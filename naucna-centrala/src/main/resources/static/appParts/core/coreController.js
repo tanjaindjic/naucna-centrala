@@ -30,8 +30,8 @@
  
                 $http({
                     method: 'POST',
-                    url: ROOT_PATH + "rad",
-                    headers : createAuthorizationTokenHeader()
+                    url: ROOT_PATH + "rad/prijavaRada",
+                    headers : mainService.createAuthorizationTokenHeader()
                 }).then(function successCallback(response) {
                     mainService.goToState("prijavarada", true);
                 });

@@ -12,6 +12,18 @@
                 });
             }
 
+            this.getFormData = function(formFields){
+                var data = [];
+                formFields.forEach(element => {
+                    var field = {
+                        "fieldId": element.id,
+                        "fieldValue": document.getElementById(element.id).value
+                        }
+                    data.push(field);
+                });
+                return data;
+            }
+
             this.parseJwt = function (token) {
                 var base64Url = token.split('.')[1];
                 var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');

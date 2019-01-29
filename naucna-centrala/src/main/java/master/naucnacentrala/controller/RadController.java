@@ -25,6 +25,12 @@ public class RadController {
 	
 	private JwtTokenUtil jwtTokenUtil;
 
+	@PostMapping(value = "prijavaRada", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public void startPrijava(@RequestHeader(value="Authorization") String Authorization) {
+		String username = jwtTokenUtil.getUsernameFromToken(Authorization.substring(7));
+	}
+
+
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public void addRad(@RequestHeader(value="Authorization") String Authorization) {
 		String username = jwtTokenUtil.getUsernameFromToken(Authorization.substring(7));

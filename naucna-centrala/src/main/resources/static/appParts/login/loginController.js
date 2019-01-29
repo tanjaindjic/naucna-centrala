@@ -4,21 +4,42 @@
     mainModule.controller('loginController', ['$scope', '$http', '$window', '$localStorage', '$location', '$stateParams', 'mainService',
         function ($scope, $http, $location, $window, $localStorage, $stateParams, mainService) {
 
+            $scope.loginFields = [];
+            $scope.registrationField;
+            var init = function () {
 
-            $scope.init = function () {
-                $scope.username = "";
-                $scope.pass = "";
                 if (mainService.getJwtToken()) {
                     mainService.goToState("core", true)
                 }
-            }
 
+                $http({
+                    method: 'GET',
+                    url: ROOT_PATH + "korisnik/login"
+                }).then(function successCallback(response) {
+                    console.log(JSON.stringify(response.data))
+                    var obj = response.data;
+                    $scope.formFields = obj["formField"];
+                    console.log(obj["taskId"])
+                    console.log(obj["processInstanceId"])
+                    console.log($scope.formFields)
+                    window.localStorage.setItem('taskId', obj["taskId"]);
+                    window.localStorage.setItem('processInstanceId', obj["processInstanceId"]);
+                    $scope.loginFields = $scope.formFields;
+                    $scope.registrationField = $scope.loginFields.pop();
+                    console.log(JSON.stringify( $scope.registrationField))
+                }, function errorCallback(response) {
+                    console.log("grerska " + JSON.stringify(response))
+
+                });
+
+            }
+            init();
 
             $scope.login = function () {
 
                 var payload = {
-                    "username": $scope.username,
-                    "password": $scope.pass
+                    "username": document.getElementById("username").value,
+                    "password": document.getElementById("password").value
                 }
                 $http({
                     method: 'POST',
@@ -37,7 +58,29 @@
             }
 
             $scope.registracija = function(){
-                mainService.goToState("register", true);
+                var formData = mainService.getFormData($scope.loginFields);
+                var regField = {
+                    "fieldId": $scope.registrationField.id,
+                    "fieldValue": true
+                }
+                formData.push(regField);
+                var payload = {
+                    "taskId" : window.localStorage.getItem('taskId'),
+                    "processInstanceId" : window.localStorage.getItem('processInstanceId'),
+                    "formFields" : formData
+                }
+                $http({
+                    method: 'POST',
+                    url: ROOT_PATH + "korisnik/noAccount",
+                    data: JSON.stringify(payload)
+                }).then(function successCallback(response) {
+                    mainService.goToState("register", true);
+                }, function errorCallback(response) {
+                    console.log("grerska " + JSON.stringify(response.data))
+
+                });
+
+
             }
         }
     ]);

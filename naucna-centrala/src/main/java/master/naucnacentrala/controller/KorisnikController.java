@@ -17,6 +17,7 @@ import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.task.Task;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -76,6 +77,13 @@ public class KorisnikController {
 	
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
+
+	@Value("${camunda.registrationProcessKey}")
+	private String registrationProcessKey;
+
+	@Value("${camunda.loginProcessKey}")
+	private String loginProcessKey;
+
 	private String tokenHeader;
 
 	@PostMapping
@@ -95,7 +103,7 @@ public class KorisnikController {
 	
 	@GetMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getRegistrationFOrm() throws JSONException, UnsupportedOperationException, IOException, org.apache.tomcat.util.json.ParseException {
-		ProcessInstance pi = runtimeService.startProcessInstanceByKey("registration_process");
+		ProcessInstance pi = runtimeService.startProcessInstanceByKey(registrationProcessKey);
 		Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
 		TaskFormData tfd = formService.getTaskFormData(task.getId());
 		List<FormField> properties = tfd.getFormFields();
@@ -116,6 +124,27 @@ public class KorisnikController {
 		if(valid)
 			return new ResponseEntity(HttpStatus.OK);
 		else return new ResponseEntity(HttpStatus.BAD_REQUEST);
+	}
+
+	@GetMapping(value = "/login")
+	public ResponseEntity<?> getLoginPage(){
+		ProcessInstance pi = runtimeService.startProcessInstanceByKey(loginProcessKey);
+		Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
+		TaskFormData tfd = formService.getTaskFormData(task.getId());
+		List<FormField> properties = tfd.getFormFields();
+
+		return new ResponseEntity<>(new FormFieldsDTO(task.getId(), pi.getId(), properties),HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/noAccount", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public void initRegistration(@RequestBody RegisterDTO registerDTO) {
+
+		Task task = taskService.createTaskQuery().taskId(registerDTO.getTaskId()).singleResult();
+		HashMap<String, Object> mapa = new HashMap<String, Object>();
+		for(FieldIdValueDTO pair : registerDTO.getFormFields())
+			mapa.put(pair.getFieldId(), pair.getFieldValue());
+
+		formService.submitTaskForm(registerDTO.getTaskId(), mapa);
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
