@@ -10,6 +10,9 @@
       <bpmn:outgoing>SequenceFlow_0cz2qxk</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:endEvent id="EndEvent_1cqsm0w" name="uspesna registracija">
+      <bpmn:extensionElements>
+        <camunda:executionListener class="master.naucnacentrala.delegate.LoggerDelegate" event="end" />
+      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_1arkakt</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:serviceTask id="SlanjeMejla_ServiceTask" name="verifikacioni mejl" camunda:asyncBefore="true" camunda:class="master.naucnacentrala.delegate.EmailDelegate">
@@ -17,6 +20,9 @@
       <bpmn:outgoing>SequenceFlow_1arkakt</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:endEvent id="EndEvent_1wibv9w" name="neuspela registracija">
+      <bpmn:extensionElements>
+        <camunda:executionListener class="master.naucnacentrala.delegate.LoggerDelegate" event="end" />
+      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0cz2qxk</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:userTask id="unosPodataka_UserTask" name="unos podataka" camunda:assignee="demo">
@@ -50,7 +56,7 @@
     </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="registration_process">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="registrationProcess">
       <bpmndi:BPMNShape id="StartEvent_0e3umwc_di" bpmnElement="StartEvent_0e3umwc">
         <dc:Bounds x="150" y="138" width="36" height="36" />
         <bpmndi:BPMNLabel>

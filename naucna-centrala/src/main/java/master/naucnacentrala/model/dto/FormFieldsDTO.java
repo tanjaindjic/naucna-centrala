@@ -10,6 +10,7 @@ public class FormFieldsDTO implements Serializable{
 	String taskId;
 	String processInstanceId;
 	List<FormField> formFields;
+	String location;
 	
 	
 	public FormFieldsDTO(){}
@@ -40,6 +41,13 @@ public class FormFieldsDTO implements Serializable{
 	}
 	public void setProcessInstanceId(String processInstanceId) {
 		this.processInstanceId = processInstanceId;
+	}
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 	
 	

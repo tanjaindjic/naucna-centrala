@@ -28,5 +28,10 @@ mainModule.config(function($stateProvider, $urlRouterProvider) {
         templateUrl : 'appParts/register/register.html',
         controller : 'registerController'
     })
+     .state('noviRad', {
+        url: '/noviRad',
+        templateUrl : 'appParts/noviRad/noviRad.html',
+        controller : 'noviRadController'
+    })
 
 });

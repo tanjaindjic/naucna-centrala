@@ -33,12 +33,18 @@
             $scope.novirad = function(){
  
                 $http({
-                    method: 'POST',
+                    method: 'GET',
                     url: ROOT_PATH + "rad/prijavaRada",
                     headers : mainService.createAuthorizationTokenHeader()
                 }).then(function successCallback(response) {
-                    mainService.goToState("prijavarada", true);
-                });
+                    console.log("Response:")
+                    console.log(JSON.stringify(response));
+                    var obj = response.data;
+                    mainService.goToState(obj["location"], true);
+                }, function errorCallback(response) {
+                     console.log("grerska " + JSON.stringify(response))
+
+                 });
             }
 
 

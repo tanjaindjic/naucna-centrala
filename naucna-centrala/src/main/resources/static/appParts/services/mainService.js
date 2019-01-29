@@ -60,7 +60,9 @@
                         "Authorization": "Bearer " + token
                     };
                 } else {
-                    return {};
+                    return {
+                        "Authorization": "Bearer " + ""
+                    };
                 }
             }
 
