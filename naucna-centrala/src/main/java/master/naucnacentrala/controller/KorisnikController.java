@@ -10,9 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.http.ParseException;
 import org.camunda.bpm.engine.*;
+import org.camunda.bpm.engine.authorization.Authorization;
+import org.camunda.bpm.engine.authorization.Permissions;
+import org.camunda.bpm.engine.authorization.Resources;
 import org.camunda.bpm.engine.form.FormField;
 import org.camunda.bpm.engine.form.TaskFormData;
 import org.camunda.bpm.engine.history.HistoricVariableInstance;
+import org.camunda.bpm.engine.impl.identity.Authentication;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.task.Task;
 import org.json.JSONException;
@@ -47,6 +51,8 @@ import master.naucnacentrala.security.JwtTokenUtil;
 import master.naucnacentrala.security.JwtUser;
 import master.naucnacentrala.service.KorisnikService;
 
+import static org.camunda.bpm.engine.authorization.Authorization.AUTH_TYPE_GRANT;
+
 @RestController
 @RequestMapping("/korisnik")
 public class KorisnikController {
@@ -74,6 +80,9 @@ public class KorisnikController {
 
 	@Autowired
 	private HistoryService historyService;
+
+	@Autowired
+    private AuthorizationService authorizationService;
 	
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
@@ -121,15 +130,19 @@ public class KorisnikController {
 		
 		formService.submitTaskForm(registerDTO.getTaskId(), mapa);
 		Boolean valid = (Boolean) historyService.createHistoricVariableInstanceQuery().processInstanceId(task.getProcessInstanceId()).variableName("valid").singleResult().getValue();
-		if(valid)
-			return new ResponseEntity(HttpStatus.OK);
+		if(valid) {
+		    korisnikService.createUser(mapa.get("username").toString(), mapa.get("password").toString(), mapa.get("email").toString(), mapa.get("ime").toString(), mapa.get("prezime").toString(), mapa.get("drzava").toString(), mapa.get("grad").toString());
+            return new ResponseEntity(HttpStatus.OK);
+        }
 		else return new ResponseEntity(HttpStatus.BAD_REQUEST);
 	}
 
 	@GetMapping(value = "/login")
 	public ResponseEntity<?> getLoginPage(){
 		ProcessInstance pi = runtimeService.startProcessInstanceByKey(loginProcessKey);
+		System.out.println("Zapocet proces " +loginProcessKey);
 		Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
+        System.out.println("Zapocet task " +task.getName());
 		TaskFormData tfd = formService.getTaskFormData(task.getId());
 		List<FormField> properties = tfd.getFormFields();
 
@@ -148,24 +161,46 @@ public class KorisnikController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException, ParseException, IOException, JSONException {
-		
-		Boolean camundaUserExists = korisnikService.verifyOnCamunda(authenticationRequest);
+    public ResponseEntity<?> submitLoginData(@RequestBody RegisterDTO registerDTO) throws AuthenticationException, ParseException, IOException, JSONException {
 
-		if (camundaUserExists){
+        HashMap<String, Object> mapa = new HashMap<String, Object>();
+        for(FieldIdValueDTO pair : registerDTO.getFormFields())
+            mapa.put(pair.getFieldId(), pair.getFieldValue());
 
-			authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
-			Korisnik k = korisnikService.getKorisnikByUsername(authenticationRequest.getUsername());
+        formService.submitTaskForm(registerDTO.getTaskId(), mapa);
+        String token = (String) historyService.createHistoricVariableInstanceQuery().processInstanceId(registerDTO.getProcessInstanceId()).variableName("token").singleResult().getValue();
+        if(token.equals(""))
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        else return ResponseEntity.ok(new JwtAuthenticationResponse(token));
 
-			// Reload password post-security so we can generate the token
-			final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-			final String token = jwtTokenUtil.generateToken(userDetails);
+    }
 
-			// Return the token
-			return ResponseEntity.ok(new JwtAuthenticationResponse(token));
-			
-		} else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-	}
+    @RequestMapping(value = "/finishLogin", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException, ParseException, IOException, JSONException {
+
+        Boolean camundaUserExists = korisnikService.verifyOnCamunda(authenticationRequest);
+
+        if (camundaUserExists){
+            authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
+            // Reload password post-security so we can generate the token
+            final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+            final String token = jwtTokenUtil.generateToken(userDetails);
+
+            Authentication auth = new Authentication(authenticationRequest.getUsername(), null);
+            identityService.setAuthentication(auth);
+            System.out.println("Auth pre: " + identityService.getCurrentAuthentication().getUserId());
+            return ResponseEntity.ok(token);
+
+        } else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+	@GetMapping(value = "logout")
+    public void logout(){
+	    //TODO ne radi authentification, vezano samo za jedan thread, ne znam kako da pamtim ulogovanog korisnika na kamundi
+        //System.out.println("Auth pre: " + identityService.getCurrentAuthentication().getUserId());
+	    identityService.clearAuthentication();
+	    //System.out.println("Auth posle: " + identityService.getCurrentAuthentication());
+    }
 
 	@RequestMapping(value = "${jwt.route.authentication.refresh}", method = RequestMethod.GET)
 	public ResponseEntity<?> refreshAndGetAuthenticationToken(HttpServletRequest request) {

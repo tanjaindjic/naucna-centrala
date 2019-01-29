@@ -19,6 +19,10 @@
 
             $scope.odjava = function () {
                 mainService.removeJwtToken();
+                $http({
+                    method: 'GET',
+                    url: ROOT_PATH + "korisnik/logout"
+                })
                 mainService.goToState("core.home", true);
             }
 

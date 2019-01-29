@@ -36,10 +36,11 @@
             init();
 
             $scope.login = function () {
-
+                var formData = mainService.getFormData($scope.loginFields);
                 var payload = {
-                    "username": document.getElementById("username").value,
-                    "password": document.getElementById("password").value
+                    "taskId" : window.localStorage.getItem('taskId'),
+                    "processInstanceId" : window.localStorage.getItem('processInstanceId'),
+                    "formFields" : formData
                 }
                 $http({
                     method: 'POST',
