@@ -1,1 +1,11 @@
-Tadaaaaaa
+<form id="casopisForm">
+    <div ng-repeat="field in formFields">
+        <label><b>{{field.label}}</b></label>
+        <select id="selectedCar" ng-init="selectedCar = casopisi[0]" ng-model="selectedCar" ng-options="c.naziv for c in casopisi">
+            <option value="" selected hidden />
+        </select>
+
+        <h1>You selected: {{selectedCar.id}}</h1>
+    </div>
+    <button ng-click="dalje()">Dalje</button>
+</form>

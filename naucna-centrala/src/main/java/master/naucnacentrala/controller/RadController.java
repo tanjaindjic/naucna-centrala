@@ -6,10 +6,12 @@ import java.util.*;
 
 import master.naucnacentrala.model.dto.FormFieldsDTO;
 import org.camunda.bpm.engine.FormService;
+import org.camunda.bpm.engine.IdentityService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.form.FormField;
 import org.camunda.bpm.engine.form.TaskFormData;
+import org.camunda.bpm.engine.identity.User;
 import org.camunda.bpm.engine.impl.form.FormFieldImpl;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.task.Task;
@@ -74,19 +76,22 @@ public class RadController {
 
 		if(username.equals("")){
 		    //FIXME ne znam kako da dodjem do subprocesa i posaljem na login
-		    ProcessInstance sub = runtimeService.createProcessInstanceQuery().processInstanceBusinessKey(pi.getBusinessKey(), "loginProcess").singleResult();
+		   /* ProcessInstance sub = runtimeService.createProcessInstanceQuery().processInstanceBusinessKey(pi.getBusinessKey(), "loginProcess").singleResult();
             Task task = taskService.createTaskQuery().processInstanceId(sub.getId()).list().get(0);
             TaskFormData tfd = formService.getTaskFormData(task.getId());
             List<FormField> properties = tfd.getFormFields();
             ResponseEntity re = new ResponseEntity(new FormFieldsDTO(task.getId(), pi.getId(), properties), HttpStatus.OK);
             re.getHeaders().set("Location", "login");
-            return re;
+            return re;*/
+			FormFieldsDTO dto = new FormFieldsDTO(null, null, null);
+			dto.setLocation("login");
+		   return new ResponseEntity<>(dto, HttpStatus.OK);
 
 		}else {
 			Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
-			TaskFormData tfd = formService.getTaskFormData(task.getId());
-			List<FormField> properties = tfd.getFormFields();
-			FormFieldsDTO dto = new FormFieldsDTO(task.getId(), pi.getId(), properties);
+			task.setAssignee(username);
+			taskService.saveTask(task);
+            FormFieldsDTO dto = new FormFieldsDTO(task.getId(), pi.getId(), null);
 			dto.setLocation("noviRad");
             ResponseEntity re =  new ResponseEntity(dto, HttpStatus.OK);
 
@@ -94,6 +99,15 @@ public class RadController {
 		}
 
 	}
+
+    @GetMapping(value = "odabirCasopisa/{taskId}")
+    public ResponseEntity getCasopisi(@PathVariable String taskId){
+        Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
+        TaskFormData tfd = formService.getTaskFormData(task.getId());
+        List<FormField> properties = tfd.getFormFields();
+        FormFieldsDTO dto = new FormFieldsDTO(task.getId(), task.getProcessInstanceId(), properties);
+        return new ResponseEntity(dto, HttpStatus.OK);
+    }
 
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

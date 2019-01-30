@@ -1,5 +1,6 @@
 package master.naucnacentrala.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import master.naucnacentrala.model.enums.NaucnaOblast;
 import master.naucnacentrala.model.korisnici.Koautor;
 import master.naucnacentrala.model.korisnici.Korisnik;
@@ -53,6 +54,7 @@ public class Rad {
     
     @ManyToOne
     @JoinColumn(name="casopis_id", nullable=false)
+    @JsonBackReference
     private Casopis casopis;
 
 

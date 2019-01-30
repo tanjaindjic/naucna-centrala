@@ -98,20 +98,16 @@
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{not isOpenAccess}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_08d7339" sourceRef="ExclusiveGateway_0simme9" targetRef="clanarinaResena_ExclusiveGateway" />
-    <bpmn:sequenceFlow id="neprijavljenKorisnik_SequenceFlow" name="ne" sourceRef="ulogovanGateway" targetRef="prijava_CallActivity">
+    <bpmn:sequenceFlow id="neprijavljenKorisnik_SequenceFlow" name="ne" sourceRef="ulogovanGateway" targetRef="EndEvent_1sdjiv8">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{not ulogovan}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:callActivity id="prijava_CallActivity" name="prijava" camunda:asyncBefore="true" calledElement="loginProcess">
-      <bpmn:incoming>neprijavljenKorisnik_SequenceFlow</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0d79031</bpmn:outgoing>
-    </bpmn:callActivity>
+    <!--<bpmn:callActivity id="prijava_CallActivity" name="prijava" camunda:asyncBefore="true" calledElement="loginProcess" />-->
     <bpmn:endEvent id="EndEvent_1sdjiv8">
       <bpmn:extensionElements>
         <camunda:executionListener class="master.naucnacentrala.delegate.LoggerDelegate" event="end" />
       </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_0d79031</bpmn:incoming>
+      <bpmn:incoming>neprijavljenKorisnik_SequenceFlow</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_0d79031" sourceRef="prijava_CallActivity" targetRef="EndEvent_1sdjiv8" />
     <bpmn:callActivity id="Task_0rodoth" name="uplata clanarine" calledElement="placanjeClanarineProcess">
       <bpmn:incoming>SequenceFlow_09u30il</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1hi8mia</bpmn:outgoing>
@@ -252,22 +248,17 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_06xn0qn_di" bpmnElement="neprijavljenKorisnik_SequenceFlow">
         <di:waypoint x="87" y="145" />
-        <di:waypoint x="87" y="234" />
-        <di:waypoint x="200" y="234" />
+        <di:waypoint x="87" y="237" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="96" y="187" width="13" height="14" />
+          <dc:Bounds x="96" y="168" width="13" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="CallActivity_1fpvaew_di" bpmnElement="prijava_CallActivity">
-        <dc:Bounds x="200" y="194" width="100" height="80" />
-      </bpmndi:BPMNShape>
+      <!--<bpmndi:BPMNShape id="CallActivity_1fpvaew_di" bpmnElement="prijava_CallActivity">
+        <dc:Bounds x="220" y="353" width="100" height="80" />
+      </bpmndi:BPMNShape>-->
       <bpmndi:BPMNShape id="EndEvent_1sdjiv8_di" bpmnElement="EndEvent_1sdjiv8">
-        <dc:Bounds x="388" y="216" width="36" height="36" />
+        <dc:Bounds x="69" y="237" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_0d79031_di" bpmnElement="SequenceFlow_0d79031">
-        <di:waypoint x="300" y="234" />
-        <di:waypoint x="388" y="234" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="CallActivity_16bwv1i_di" bpmnElement="Task_0rodoth">
         <dc:Bounds x="913" y="288" width="100" height="80" />
       </bpmndi:BPMNShape>

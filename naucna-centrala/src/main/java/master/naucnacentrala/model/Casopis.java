@@ -135,4 +135,12 @@ public class Casopis {
     public void setRecenzenti(Collection<Korisnik> recenzenti) {
         this.recenzenti = recenzenti;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

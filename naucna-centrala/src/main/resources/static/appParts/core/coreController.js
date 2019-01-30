@@ -40,14 +40,14 @@
                     console.log("Response:")
                     console.log(JSON.stringify(response));
                     var obj = response.data;
+                    window.localStorage.setItem('taskId', obj["taskId"]);
+                    window.localStorage.setItem('processInstanceId', obj["processInstanceId"]);
                     mainService.goToState(obj["location"], true);
                 }, function errorCallback(response) {
                      console.log("grerska " + JSON.stringify(response))
 
                  });
             }
-
-
         }
     ]);
 })();
