@@ -1,9 +1,8 @@
 package master.naucnacentrala.controller;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
+import master.naucnacentrala.model.enums.NaucnaOblast;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,6 +34,11 @@ public class CasopisController {
 	@GetMapping("/id")
 	public Casopis getRad(@PathVariable Long id) {
 		return casopisService.getCasopis(id);
+	}
+
+	@GetMapping("/naucneOblasti")
+	public ArrayList<NaucnaOblast> getNaucneOblasti(){
+		return new ArrayList<NaucnaOblast>(EnumSet.allOf(NaucnaOblast.class));
 	}
 
 }

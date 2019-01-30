@@ -4,7 +4,13 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
 
+import master.naucnacentrala.model.dto.FieldIdValueDTO;
 import master.naucnacentrala.model.dto.FormFieldsDTO;
+import master.naucnacentrala.model.dto.RegisterDTO;
+import master.naucnacentrala.model.dto.UploadFileResponse;
+import master.naucnacentrala.service.CasopisService;
+import master.naucnacentrala.service.FileStorageService;
+import master.naucnacentrala.service.KorisnikService;
 import org.camunda.bpm.engine.FormService;
 import org.camunda.bpm.engine.IdentityService;
 import org.camunda.bpm.engine.RuntimeService;
@@ -23,17 +29,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import master.naucnacentrala.model.Rad;
 import master.naucnacentrala.security.JwtTokenUtil;
 import master.naucnacentrala.service.RadService;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
@@ -53,6 +55,15 @@ public class RadController {
 
 	@Autowired
 	private RuntimeService runtimeService;
+
+	@Autowired
+    private CasopisService casopisService;
+
+	@Autowired
+    private KorisnikService korisniService;
+
+	@Autowired
+    private FileStorageService fileStorageService;
 
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
@@ -101,7 +112,7 @@ public class RadController {
 	}
 
     @GetMapping(value = "odabirCasopisa/{taskId}")
-    public ResponseEntity getCasopisi(@PathVariable String taskId){
+    public ResponseEntity<?> getCasopisi(@PathVariable String taskId){
         Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
         TaskFormData tfd = formService.getTaskFormData(task.getId());
         List<FormField> properties = tfd.getFormFields();
@@ -109,11 +120,47 @@ public class RadController {
         return new ResponseEntity(dto, HttpStatus.OK);
     }
 
+    @PostMapping(value = "odabirCasopisa", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity setCasopis(@RequestBody RegisterDTO registerDTO){
+	    System.out.println(registerDTO.toString());
+	    System.out.println("Odabrao casopis");
 
-	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public void addRad(@RequestHeader(value="Authorization") String Authorization) {
-		String username = jwtTokenUtil.getUsernameFromToken(Authorization.substring(7));
-	}
+        Task task = taskService.createTaskQuery().taskId(registerDTO.getTaskId()).singleResult();
+        String assignee = task.getAssignee();
+        HashMap<String, Object> mapa = new HashMap<String, Object>();
+        for(FieldIdValueDTO pair : registerDTO.getFormFields())
+            mapa.put(pair.getFieldId(), pair.getFieldValue());
+        System.out.println(mapa.get("odabraniCasopis").toString());
+        Long id = Long.parseLong(mapa.get("odabraniCasopis").toString());
+        Boolean isOpenAccess = casopisService.getCasopis(id).isOpenAccess();
+        runtimeService.setVariable(registerDTO.getProcessInstanceId(), "isOpenAccess", isOpenAccess);
+        formService.submitTaskForm(registerDTO.getTaskId(), mapa);
+
+        if(!isOpenAccess){
+            task = taskService.createTaskQuery().processInstanceId(registerDTO.getProcessInstanceId().toString()).list().get(0);
+            System.out.println("Zapocet task " + task.getName());
+            task.setAssignee(assignee);
+            taskService.saveTask(task);
+            TaskFormData tfd = formService.getTaskFormData(task.getId());
+            List<FormField> properties = tfd.getFormFields();
+            FormFieldsDTO dto = new FormFieldsDTO(task.getId(), task.getProcessInstanceId(), properties);
+            return new ResponseEntity(dto, HttpStatus.OK);
+        }
+        else return ResponseEntity.ok(null);
+    }
+
+    @PostMapping("/rad")
+    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
+        String fileName = fileStorageService.storeFile(file);
+
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/downloadFile/")
+                .path(fileName)
+                .toUriString();
+
+        return new UploadFileResponse(fileName, fileDownloadUri,
+                file.getContentType(), file.getSize());
+    }
 
 	@GetMapping
 	public Collection<Rad> getAll() {

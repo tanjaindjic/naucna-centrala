@@ -1,11 +1,28 @@
 <form id="casopisForm">
-    <div ng-repeat="field in formFields">
-        <label><b>{{field.label}}</b></label>
-        <select id="selectedCar" ng-init="selectedCar = casopisi[0]" ng-model="selectedCar" ng-options="c.naziv for c in casopisi">
-            <option value="" selected hidden />
-        </select>
+    <div  ng-show="firstForm">
+        <div ng-repeat="field in formFields" id="odabirCasopisa">
+            <label><b>{{field.label}}</b></label>
+            <select id="selectedCar" ng-init="selectedCar = casopisi[0]" ng-model="selectedCar" ng-options="c.naziv for c in casopisi">
+                <option value="" selected hidden />
+            </select>
 
-        <h1>You selected: {{selectedCar.id}}</h1>
+            <h1>You selected: {{selectedCar.id}}</h1>
+            <button ng-click="dalje()">Dalje</button>
+        </div>
     </div>
-    <button ng-click="dalje()">Dalje</button>
+    <div ng-hide="firstForm">
+        <div ng-repeat="field in formFields" id="unosPodataka" >
+            <label><b>{{field.label}}</b></label>
+            <button ng-if="field.id=='koautori'" ng-click="dodajKoautora()">Dodaj</button>
+            <input  type="file" file-model="myFile" id="file" ng-if="field.id=='rad'" ng-click="dodajRad()"></input>
+            <textarea ng-if="field.id=='kljucniPojmovi' || field.id=='apstrakt'" id="{{field.id}}"></textarea>
+            <input  ng-if="field.id=='naslov'" type="text" id="{{field.id}}">
+            <select ng-if="field.id=='naucnaOblast'" id="selectedNaucnaOblast" ng-init="naucnaOblast = oblasti[0]" ng-model="naucnaOblast" ng-options="n for n in oblasti">
+                <option value="" selected hidden />
+            </select>
+
+        </div>
+        <button ng-click="slanje()">Posalji</button>
+    </div>
+
 </form>

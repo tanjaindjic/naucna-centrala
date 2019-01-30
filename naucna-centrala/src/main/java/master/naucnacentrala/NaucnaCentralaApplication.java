@@ -29,6 +29,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpHeaders;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.client.RestTemplate;
@@ -46,6 +47,7 @@ import java.util.*;
 
 @SpringBootApplication
 @EnableAsync
+@EnableConfigurationProperties({FileStorageProperties.class})
 public class NaucnaCentralaApplication {
 
 	public static void main(String[] args) throws IOException, JSONException {
