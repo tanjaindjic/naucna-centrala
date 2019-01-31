@@ -17,10 +17,7 @@ public class ObavestenjeDelegate implements JavaDelegate {
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
 		// TODO Auto-generated method stub
-		Long casopisId = (Long) execution.getVariable("casopisId");
-		Urednik urednik = delegateService.getCasopis(casopisId).getGlavniUrednik();
-		Korisnik korisnik = delegateService.getAssignee(execution);
-		//pozvati email service
+		System.out.println("Usao u obavestenje delegate");
 	}
 
 }

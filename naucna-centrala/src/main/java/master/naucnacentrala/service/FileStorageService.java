@@ -3,6 +3,7 @@ package master.naucnacentrala.service;
 import master.naucnacentrala.FileStorageProperties;
 import master.naucnacentrala.exception.FileStorageException;
 import master.naucnacentrala.exception.MyFileNotFoundException;
+import master.naucnacentrala.model.Rad;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -16,6 +17,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+
 @Service
 public class FileStorageService {
 
@@ -23,6 +25,7 @@ public class FileStorageService {
 
     @Autowired
     public FileStorageService(FileStorageProperties fileStorageProperties) {
+
         this.fileStorageLocation = Paths.get(fileStorageProperties.getUploadDir())
                 .toAbsolutePath().normalize();
 
@@ -33,9 +36,11 @@ public class FileStorageService {
         }
     }
 
-    public String storeFile(MultipartFile file) {
+    public String storeFile(MultipartFile file, Boolean isNacrt) {
         // Normalize file name
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        if(isNacrt)
+            fileName.concat("_nacrt");
 
         try {
             // Check if the file's name contains invalid characters
@@ -45,9 +50,10 @@ public class FileStorageService {
 
             // Copy file to the target location (Replacing existing file with the same name)
             Path targetLocation = this.fileStorageLocation.resolve(fileName);
+            System.out.println(targetLocation);
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
 
-            return fileName;
+            return targetLocation.toString();
         } catch (IOException ex) {
             throw new FileStorageException("Could not store file " + fileName + ". Please try again!", ex);
         }

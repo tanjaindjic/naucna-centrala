@@ -33,7 +33,24 @@ public class Rad {
     @OneToMany
     private Collection<Koautor> koautori;
 
-	@NotNull
+    @Override
+    public String toString() {
+        return "Rad{" +
+                "id=" + id +
+                ", doi='" + doi + '\'' +
+                ", naslov='" + naslov + '\'' +
+                ", autor=" + autor +
+                ", koautori=" + koautori +
+                ", kljucniPojmovi=" + kljucniPojmovi +
+                ", apstrakt='" + apstrakt + '\'' +
+                ", naucnaOblast=" + naucnaOblast +
+                ", adresaNacrta='" + adresaNacrta + '\'' +
+                ", adresaKonacnogRada='" + adresaKonacnogRada + '\'' +
+                ", casopis=" + casopis +
+                '}';
+    }
+
+    @NotNull
     @Column(nullable = false)
     private ArrayList<String> kljucniPojmovi;
 

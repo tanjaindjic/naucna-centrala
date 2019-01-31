@@ -10,18 +10,23 @@
             <button ng-click="dalje()">Dalje</button>
         </div>
     </div>
-    <div ng-hide="firstForm">
+    <div id="radForm" ng-show="secondForm">
         <div ng-repeat="field in formFields" id="unosPodataka" >
             <label><b>{{field.label}}</b></label>
             <button ng-if="field.id=='koautori'" ng-click="dodajKoautora()">Dodaj</button>
-            <input  type="file" file-model="myFile" id="file" ng-if="field.id=='rad'" ng-click="dodajRad()"></input>
             <textarea ng-if="field.id=='kljucniPojmovi' || field.id=='apstrakt'" id="{{field.id}}"></textarea>
             <input  ng-if="field.id=='naslov'" type="text" id="{{field.id}}">
-            <select ng-if="field.id=='naucnaOblast'" id="selectedNaucnaOblast" ng-init="naucnaOblast = oblasti[0]" ng-model="naucnaOblast" ng-options="n for n in oblasti">
+            <select ng-if="field.id=='naucnaOblast'" id="naucnaOblast" ng-init="naucnaOblast = oblasti[0]" ng-model="naucnaOblast" ng-options="n for n in oblasti">
                 <option value="" selected hidden />
             </select>
-
         </div>
+        <button ng-click="dalje2()">Dalje</button>
+    </div>
+    <div id="uploadRad" ng-show="uploadForm">
+        <label><b>Rad </b></label>
+        <form id="singleUploadForm" name="singleUploadForm">
+            <input id="singleFileUploadInput" type="file" name="file" required />
+        </form>
         <button ng-click="slanje()">Posalji</button>
     </div>
 

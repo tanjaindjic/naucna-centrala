@@ -77,7 +77,7 @@
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_0njdihd" sourceRef="neuspesnoPlacanjeError" targetRef="EndEvent_1wg33b9" />
     <bpmn:sequenceFlow id="SequenceFlow_1mzipve" sourceRef="unosPodataka_UserTask" targetRef="obavestenje_ServiceTask" />
-    <bpmn:serviceTask id="obavestenje_ServiceTask" name="obavestenje o novom radu" camunda:class="master.naucnacentrala.delegate.obavestenjeDelegate">
+    <bpmn:serviceTask id="obavestenje_ServiceTask" name="obavestenje o novom radu" camunda:class="master.naucnacentrala.delegate.ObavestenjeDelegate">
       <bpmn:incoming>SequenceFlow_1mzipve</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_01aa16e</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -101,7 +101,6 @@
     <bpmn:sequenceFlow id="neprijavljenKorisnik_SequenceFlow" name="ne" sourceRef="ulogovanGateway" targetRef="EndEvent_1sdjiv8">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{not ulogovan}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <!--<bpmn:callActivity id="prijava_CallActivity" name="prijava" camunda:asyncBefore="true" calledElement="loginProcess" />-->
     <bpmn:endEvent id="EndEvent_1sdjiv8">
       <bpmn:extensionElements>
         <camunda:executionListener class="master.naucnacentrala.delegate.LoggerDelegate" event="end" />
@@ -253,9 +252,6 @@
           <dc:Bounds x="96" y="168" width="13" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <!--<bpmndi:BPMNShape id="CallActivity_1fpvaew_di" bpmnElement="prijava_CallActivity">
-        <dc:Bounds x="220" y="353" width="100" height="80" />
-      </bpmndi:BPMNShape>-->
       <bpmndi:BPMNShape id="EndEvent_1sdjiv8_di" bpmnElement="EndEvent_1sdjiv8">
         <dc:Bounds x="69" y="237" width="36" height="36" />
       </bpmndi:BPMNShape>

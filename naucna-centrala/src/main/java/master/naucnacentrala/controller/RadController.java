@@ -1,5 +1,6 @@
 package master.naucnacentrala.controller;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
@@ -8,6 +9,8 @@ import master.naucnacentrala.model.dto.FieldIdValueDTO;
 import master.naucnacentrala.model.dto.FormFieldsDTO;
 import master.naucnacentrala.model.dto.RegisterDTO;
 import master.naucnacentrala.model.dto.UploadFileResponse;
+import master.naucnacentrala.model.enums.NaucnaOblast;
+import master.naucnacentrala.model.korisnici.Koautor;
 import master.naucnacentrala.service.CasopisService;
 import master.naucnacentrala.service.FileStorageService;
 import master.naucnacentrala.service.KorisnikService;
@@ -23,6 +26,7 @@ import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -37,6 +41,8 @@ import master.naucnacentrala.service.RadService;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.print.attribute.standard.Media;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
 
@@ -149,17 +155,41 @@ public class RadController {
         else return ResponseEntity.ok(null);
     }
 
-    @PostMapping("/rad")
-    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
-        String fileName = fileStorageService.storeFile(file);
+    @PostMapping(value = "/nacrt", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity uploadNacrt(@RequestParam("file") MultipartFile file) {
+        String fileLocation = fileStorageService.storeFile(file, true);
 
-        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/downloadFile/")
-                .path(fileName)
-                .toUriString();
+        return new ResponseEntity<String>(fileLocation, HttpStatus.OK);
+    }
 
-        return new UploadFileResponse(fileName, fileDownloadUri,
-                file.getContentType(), file.getSize());
+    @PostMapping(value = "/final", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity uploadFinal(@RequestParam("file") MultipartFile file) {
+        String fileLocation = fileStorageService.storeFile(file, false);
+
+        return new ResponseEntity<String>(fileLocation, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void noviRad(@RequestBody RegisterDTO registerDTO){
+        Task task = taskService.createTaskQuery().taskId(registerDTO.getTaskId()).singleResult();
+        HashMap<String, Object> mapa = new HashMap<String, Object>();
+        for(FieldIdValueDTO pair : registerDTO.getFormFields())
+            mapa.put(pair.getFieldId(), pair.getFieldValue());
+        Rad r = new Rad();
+        r.setAdresaNacrta(mapa.get("rad").toString());
+        r.setAdresaKonacnogRada("");
+        r.setApstrakt(mapa.get("apstrakt").toString());
+        r.setAutor(korisniService.getKorisnikByUsername(task.getAssignee()));
+        r.setCasopis(casopisService.getCasopis(Long.parseLong(runtimeService.getVariable(task.getExecutionId(), "odabraniCasopis").toString())));
+        r.setDoi(UUID.randomUUID().toString());
+        r.setKljucniPojmovi(new ArrayList<String>());
+        r.setKoautori(null);
+        r.setNaslov(mapa.get("naslov").toString());
+        r.setNaucnaOblast(NaucnaOblast.valueOf(mapa.get("naucnaOblast").toString()));
+        radService.addRad(r);
+        formService.submitTaskForm(registerDTO.getTaskId(), mapa);
+        System.out.println("Kreiran rad: " + r.toString());
+
     }
 
 	@GetMapping
@@ -171,6 +201,31 @@ public class RadController {
 	public Rad getRad(@PathVariable Long id) {
 		return radService.getRad(id);
 	}
-	
+
+
+
+	@GetMapping("/downloadFile/{fileName:.+}")
+	public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
+		// Load file as Resource
+		Resource resource = fileStorageService.loadFileAsResource(fileName);
+
+		// Try to determine file's content type
+		String contentType = null;
+		try {
+			contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
+		} catch (IOException ex) {
+			System.out.println("Could not determine file type.");
+		}
+
+		// Fallback to the default content type if type could not be determined
+		if(contentType == null) {
+			contentType = "application/octet-stream";
+		}
+
+		return ResponseEntity.ok()
+				.contentType(MediaType.parseMediaType(contentType))
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+				.body(resource);
+	}
 
 }
