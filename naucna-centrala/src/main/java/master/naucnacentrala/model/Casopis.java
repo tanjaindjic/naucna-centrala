@@ -1,5 +1,6 @@
 package master.naucnacentrala.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import master.naucnacentrala.model.enums.NaucnaOblast;
 import master.naucnacentrala.model.korisnici.Korisnik;
 import master.naucnacentrala.model.korisnici.Urednik;
@@ -33,6 +34,7 @@ public class Casopis {
 
     @Column
     @OneToMany(cascade=CascadeType.ALL, mappedBy="casopis")
+    @JsonBackReference
     private Collection<Rad> radovi;
 
 	@NotNull
@@ -49,6 +51,12 @@ public class Casopis {
     @Column
     @OneToMany
     private Collection<Korisnik> recenzenti;
+
+    @Column
+    private String urlSlike;
+
+    @Column
+    private Float cena;
     
 
     public Casopis() {
@@ -58,7 +66,7 @@ public class Casopis {
 
     public Casopis(@NotNull String naziv, @NotNull String issn, @NotNull Collection<NaucnaOblast> naucneOblasti,
 			Collection<Rad> radovi, @NotNull boolean isOpenAccess, Urednik glavniUrednik,
-			Collection<Korisnik> uredniciNaucnihOblasti, Collection<Korisnik> recenzenti) {
+			Collection<Korisnik> uredniciNaucnihOblasti, Collection<Korisnik> recenzenti, String urlSlike, Float cena) {
 		super();
 		this.naziv = naziv;
 		this.issn = issn;
@@ -68,6 +76,8 @@ public class Casopis {
 		this.glavniUrednik = glavniUrednik;
 		this.uredniciNaucnihOblasti = uredniciNaucnihOblasti;
 		this.recenzenti = recenzenti;
+		this.urlSlike = urlSlike;
+		this.cena = cena;
 	}
 
 
@@ -142,5 +152,21 @@ public class Casopis {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUrlSlike() {
+        return urlSlike;
+    }
+
+    public void setUrlSlike(String urlSlike) {
+        this.urlSlike = urlSlike;
+    }
+
+    public Float getCena() {
+        return cena;
+    }
+
+    public void setCena(Float cena) {
+        this.cena = cena;
     }
 }

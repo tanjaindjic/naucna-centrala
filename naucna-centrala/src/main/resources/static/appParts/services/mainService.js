@@ -24,6 +24,52 @@
                 return data;
             }
 
+            this.getCasopisi = function(){
+                return $http({
+                    method:"GET",
+                    url:ROOT_PATH + "casopis",
+                    headers : this.createAuthorizationTokenHeader()
+                }).then(function(result){
+                    return result.data;
+                });
+            }
+
+            this.getRadovi = function(){
+                var retval = [];
+                $http({
+                    method: 'GET',
+                    url: ROOT_PATH + "rad",
+                    headers : this.createAuthorizationTokenHeader()
+                }).then(function successCallback(response) {
+                    console.log("Response:")
+                    console.log(JSON.stringify(response));
+                    retval = response.data;
+                }, function errorCallback(response) {
+                     console.log("grerska " + JSON.stringify(response))
+
+                });
+
+                 return retval;
+            }
+
+            this.getRadoviCasopisa = function(id){
+                var retval = [];
+                $http({
+                    method: 'GET',
+                    url: ROOT_PATH + "casopis/" + id + "/radovi",
+                    headers : this.createAuthorizationTokenHeader()
+                }).then(function successCallback(response) {
+                    console.log("Response:")
+                    console.log(JSON.stringify(response));
+                    retval = response.data;
+                }, function errorCallback(response) {
+                     console.log("grerska " + JSON.stringify(response))
+
+                });
+
+                 return retval;
+            }
+
             this.parseJwt = function (token) {
                 var base64Url = token.split('.')[1];
                 var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');

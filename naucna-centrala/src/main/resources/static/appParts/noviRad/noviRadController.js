@@ -10,36 +10,26 @@
             $scope.oblasti = [];
             $scope.myFile = {};
             $scope.formFields = [];
+
             var init = function () {
 
                 console.log("Usao u init novog rada");
-                 $http({
-                    method: 'GET',
-                    url: ROOT_PATH + "casopis",
-                    headers : mainService.createAuthorizationTokenHeader()
-                 }).then(function successCallback(response) {
-                    console.log("Response:")
-                    console.log(JSON.stringify(response));
-                    $scope.casopisi = response.data;
-                 }, function errorCallback(response) {
-                     console.log("grerska " + JSON.stringify(response))
+                $scope.casopisi = mainService.getCasopisi();
 
-                 });
-
-                 $http({
+                $http({
                     method: 'GET',
                     url: ROOT_PATH + "rad/odabirCasopisa/" + window.localStorage.getItem('taskId'),
                     headers : mainService.createAuthorizationTokenHeader()
-                 }).then(function successCallback(response) {
+                }).then(function successCallback(response) {
                     console.log("Response:")
                     console.log(JSON.stringify(response));
                     var obj = response.data;
                     $scope.formFields = obj["formField"];
                     console.log($scope.formFields.length)
-                 }, function errorCallback(response) {
-                     console.log("grerska " + JSON.stringify(response))
+                }, function errorCallback(response) {
+                    console.log("grerska " + JSON.stringify(response))
 
-                 });
+                });
             }
             init();
 

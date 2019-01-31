@@ -33,22 +33,11 @@ public class Rad {
     @OneToMany
     private Collection<Koautor> koautori;
 
-    @Override
-    public String toString() {
-        return "Rad{" +
-                "id=" + id +
-                ", doi='" + doi + '\'' +
-                ", naslov='" + naslov + '\'' +
-                ", autor=" + autor +
-                ", koautori=" + koautori +
-                ", kljucniPojmovi=" + kljucniPojmovi +
-                ", apstrakt='" + apstrakt + '\'' +
-                ", naucnaOblast=" + naucnaOblast +
-                ", adresaNacrta='" + adresaNacrta + '\'' +
-                ", adresaKonacnogRada='" + adresaKonacnogRada + '\'' +
-                ", casopis=" + casopis +
-                '}';
-    }
+    @Column
+    private Long cena;
+
+    @Column
+    private String urlSlike;
 
     @NotNull
     @Column(nullable = false)
@@ -71,7 +60,6 @@ public class Rad {
     
     @ManyToOne
     @JoinColumn(name="casopis_id", nullable=false)
-    @JsonBackReference
     private Casopis casopis;
 
 
@@ -189,4 +177,20 @@ public class Rad {
 			lista.add(k.getIme() + " " + k.getPrezime());
 		return lista;
 	}
+
+    public Long getCena() {
+        return cena;
+    }
+
+    public void setCena(Long cena) {
+        this.cena = cena;
+    }
+
+    public String getUrlSlike() {
+        return urlSlike;
+    }
+
+    public void setUrlSlike(String urlSlike) {
+        this.urlSlike = urlSlike;
+    }
 }
