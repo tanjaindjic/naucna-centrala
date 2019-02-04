@@ -16,40 +16,40 @@ import master.naucnacentrala.model.korisnici.Korisnik;
 @Document(indexName = RadIndexUnit.INDEX_NAME, type = RadIndexUnit.TYPE_NAME, shards = 1, replicas = 0)
 public class RadIndexUnit {
 	public static final String INDEX_NAME = "naucnirad";
-	public static final String TYPE_NAME = "rad";
+	public static final String TYPE_NAME = "pdf";
 	
 	@Id
 	private Long id;
-	
-	@Field(type = FieldType.Text, store = true)
+
+	@Field(type = FieldType.text, analyzer = "serbian-analyzer", searchAnalyzer = "serbian-analyzer")
 	private String naslov;
-	
-	@Field(type = FieldType.Text, store = true)
+
+	@Field(type = FieldType.text, analyzer = "serbian-analyzer", searchAnalyzer = "serbian-analyzer")
 	private String sadrzaj;
-	
-	@Field(type = FieldType.Text, store = true)
+
+	@Field(type = FieldType.text, analyzer = "serbian-analyzer", searchAnalyzer = "serbian-analyzer")
 	private String autor;
 	
-	@Field(type = FieldType.Nested, store = true)
-	private  ArrayList<String> koautori;
+	@Field(type = FieldType.text, analyzer = "serbian-analyzer", searchAnalyzer = "serbian-analyzer")
+	private  String koautori;
 	
-	@Field(type = FieldType.Text, store = true)
-	private ArrayList<String> kljucniPojmovi;
+	@Field(type = FieldType.text, analyzer = "serbian-analyzer", searchAnalyzer = "serbian-analyzer")
+	private String kljucniPojmovi;
 	
-	@Field(type = FieldType.Text, store = true)
+	@Field(type = FieldType.text, analyzer = "serbian-analyzer", searchAnalyzer = "serbian-analyzer")
 	private String apstrakt;
 	
-	@Field(type = FieldType.Text, store = true)
+	@Field(type = FieldType.text, analyzer = "serbian-analyzer", searchAnalyzer = "serbian-analyzer")
 	private NaucnaOblast naucnaOblast;
 	
 	@Field(type = FieldType.Boolean, store = true)
 	private boolean isOpenAccess;
 	
-	@Field(type = FieldType.Text, store = true)
+	@Field(type = FieldType.text, analyzer = "serbian-analyzer", searchAnalyzer = "serbian-analyzer")
 	private String casopis;
 
-	public RadIndexUnit(String naslov, String sadrzaj, String autor,  ArrayList<String> koautori,
-			 ArrayList<String> kljucniPojmovi, String apstrakt, NaucnaOblast naucnaOblast, boolean isOpenAccess, String casopis) {
+	public RadIndexUnit(String naslov, String sadrzaj, String autor,  String koautori,
+			 String kljucniPojmovi, String apstrakt, NaucnaOblast naucnaOblast, boolean isOpenAccess, String casopis) {
 		super();
 		this.naslov = naslov;
 		this.sadrzaj = sadrzaj;
@@ -90,19 +90,19 @@ public class RadIndexUnit {
 		this.autor = autor;
 	}
 
-	public  ArrayList<String> getKoautori() {
+	public  String getKoautori() {
 		return koautori;
 	}
 
-	public void setKoautori( ArrayList<String> koautori) {
+	public void setKoautori( String koautori) {
 		this.koautori = koautori;
 	}
 
-	public  ArrayList<String> getKljucniPojmovi() {
+	public  String getKljucniPojmovi() {
 		return kljucniPojmovi;
 	}
 
-	public void setKljucniPojmovi( ArrayList<String> kljucniPojmovi) {
+	public void setKljucniPojmovi( String kljucniPojmovi) {
 		this.kljucniPojmovi = kljucniPojmovi;
 	}
 

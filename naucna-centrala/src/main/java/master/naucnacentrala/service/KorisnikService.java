@@ -6,10 +6,10 @@ import java.util.Collection;
 import java.util.HashMap;
 
 import org.apache.http.client.ClientProtocolException;
-import org.json.JSONException;
 
 import master.naucnacentrala.model.korisnici.Korisnik;
 import master.naucnacentrala.security.JwtAuthenticationRequest;
+import org.camunda.bpm.engine.impl.util.json.JSONException;
 
 public interface KorisnikService {
 

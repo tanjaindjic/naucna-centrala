@@ -1,15 +1,46 @@
 package master.naucnacentrala;
 
+import java.io.*;
+import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.annotation.PostConstruct;
 
 import master.naucnacentrala.model.elastic.RadIndexUnit;
+import org.apache.commons.io.IOUtils;
+import org.apache.pdfbox.cos.COSDocument;
+import org.apache.pdfbox.pdfparser.PDFParser;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.tomcat.util.json.JSONParser;
 import org.camunda.bpm.engine.IdentityService;
-import org.camunda.bpm.engine.identity.Group;
 import org.camunda.bpm.engine.identity.User;
+import org.elasticsearch.action.admin.indices.create.CreateIndexRequest;
+import org.elasticsearch.action.admin.indices.create.CreateIndexResponse;
+import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
+import org.elasticsearch.action.bulk.BulkRequest;
+import org.elasticsearch.action.delete.DeleteRequest;
+import org.elasticsearch.action.index.IndexResponse;
+import org.elasticsearch.action.search.SearchRequest;
+import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.action.search.SearchType;
+import org.elasticsearch.action.support.master.AcknowledgedResponse;
+import org.elasticsearch.client.Client;
+import org.elasticsearch.client.transport.TransportClient;
+import org.elasticsearch.common.settings.Settings;
+import org.elasticsearch.common.transport.InetSocketTransportAddress;
+import org.elasticsearch.common.transport.TransportAddress;
+import org.elasticsearch.common.xcontent.XContentType;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.transport.client.PreBuiltTransportClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -45,6 +76,13 @@ public class StartData {
 
 	@Autowired
 	private RadIndexingUnitRepository riuRepository;
+
+	@Autowired
+	private Client nodeClient;
+
+	@Value("${elasticsearch.baseUrl}")
+	private String elasticsearchUrl;
+
 
 	private BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
 	
@@ -86,15 +124,15 @@ public class StartData {
 		urednik4.getNaucneOblasti().add(NaucnaOblast.UMETNOST);
 		urednikService.updateUrednik(urednik4);
 		
-		Rad rad = radService.addRad(new Rad("", "Rad1", autor, new ArrayList<>(), new ArrayList(), "apstrakt", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis, "/assets/images/Article-Icon.png"));
+		Rad rad = radService.addRad(new Rad("", "Rad1", autor, new ArrayList<>(), "", "apstrakt", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis, "/assets/images/Article-Icon.png"));
 		casopis.getRadovi().add(rad);
-		Rad rad2 = radService.addRad(new Rad("", "Rad2", autor2, new ArrayList<>(), new ArrayList(), "apstrakt2", NaucnaOblast.MEDICINA, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis, "/assets/images/Article-Icon.png"));
+		Rad rad2 = radService.addRad(new Rad("", "Rad2", autor2, new ArrayList<>(), "", "apstrakt2", NaucnaOblast.MEDICINA, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis, "/assets/images/Article-Icon.png"));
 		casopis.getRadovi().add(rad2);
-		Rad rad3 = radService.addRad(new Rad("", "Rad3", autor, new ArrayList<>(), new ArrayList(), "apstrakt3", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis, "/assets/images/Article-Icon.png"));
+		Rad rad3 = radService.addRad(new Rad("", "Rad3", autor, new ArrayList<>(), "", "apstrakt3", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis, "/assets/images/Article-Icon.png"));
 		casopis.getRadovi().add(rad3);
-		Rad rad4 = radService.addRad(new Rad("", "Rad4", autor2, new ArrayList<>(), new ArrayList(), "apstrakt4", NaucnaOblast.MEDICINA, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis, "/assets/images/Article-Icon.png"));
+		Rad rad4 = radService.addRad(new Rad("", "Rad4", autor2, new ArrayList<>(), "", "apstrakt4", NaucnaOblast.MEDICINA, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis, "/assets/images/Article-Icon.png"));
 		casopis.getRadovi().add(rad4);
-		Rad rad5 = radService.addRad(new Rad("", "Rad5", autor2, new ArrayList<>(), new ArrayList(), "apstrakt5", NaucnaOblast.MEDICINA, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis, "/assets/images/Article-Icon.png"));
+		Rad rad5 = radService.addRad(new Rad("", "Rad5", autor2, new ArrayList<>(), "", "apstrakt5", NaucnaOblast.MEDICINA, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis, "/assets/images/Article-Icon.png"));
 		casopis.getRadovi().add(rad5);
 		casopisService.updateCasopis(casopis);
 		
@@ -109,21 +147,46 @@ public class StartData {
 		saveCamundaUser(urednik4);
 		saveCamundaUser(demo);
 
-		/*RadIndexUnit riu = new RadIndexUnit(rad.getNaslov(), "sadrzaj ovde", rad.getAutor().getIme() + " " + rad.getAutor().getPrezime(), rad.getListaKoautora(), rad.getKljucniPojmovi(), rad.getApstrakt(), rad.getNaucnaOblast(), rad.getCasopis().isOpenAccess(), rad.getCasopis().getNaziv());
-		riuRepository.save(riu);*/
-	}
+
+        /*CreateIndexRequest request = new CreateIndexRequest("naucnirad");
+        //request.source(template, XContentType.JSON);
+            IndexResponse response = nodeClient.prepareIndex("naucnirad", "pdf")
+                //.setSource(template, XContentType.JSON)
+                .get();
+        PDFTextStripper pdfStripper = null;
+        PDDocument pdDoc = null;
+        COSDocument cosDoc = null;
+        File file = new File("C:/my.pdf");
+        try {
+            // PDFBox 2.0.8 require org.apache.pdfbox.io.RandomAccessRead
+            // RandomAccessFile randomAccessFile = new RandomAccessFile(file, "r");
+            // PDFParser parser = new PDFParser(randomAccessFile);
+
+            PDFParser parser = new PDFParser(new FileInputStream(file));
+            parser.parse();
+            cosDoc = parser.getDocument();
+            pdfStripper = new PDFTextStripper();
+            pdDoc = new PDDocument(cosDoc);
+            pdfStripper.setStartPage(1);
+            pdfStripper.setEndPage(5);
+            String parsedText = pdfStripper.getText(pdDoc);
+            System.out.println(parsedText);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        RadIndexUnit riu = new RadIndexUnit(rad.getNaslov(), template, rad.getAutor().getIme() + " " + rad.getAutor().getPrezime(), rad.getListaKoautora(), rad.getKljucniPojmovi(), rad.getApstrakt(), rad.getNaucnaOblast(), rad.getCasopis().isOpenAccess(), rad.getCasopis().getNaziv());
+		riuRepository.save(riu);
+
+        SearchResponse res = nodeClient.prepareSearch("naucnirad")
+                .setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
+                .setQuery(QueryBuilders.termQuery("sadrzaj", "заједно"))
+                 .setExplain(true)
+                .get();
+        System.out.println(res.toString());*/
+    }
 
 	public void saveCamundaUser (Korisnik autor){
-		/*String payload = "{\"profile\": \n" +
-				"  {\"id\": " + autor.getUsername() + ",\n" +
-				"  \"firstName\": " + autor.getIme() + ",\n" +
-				"  \"lastName\": " + autor.getPrezime() + ",\n" +
-				"  \"email\": " + autor.getEmail() + "},\n" +
-				"\"credentials\": \n" +
-				"  {\"password\": " + autor.getPass() + "}\n" +
-				"}";
-		RestTemplate rt = new RestTemplate();
-		rt.postForEntity("http://localhost:8096/rest/user/create", payload, String.class);*/
 		User newUser = identityService.newUser(autor.getUsername());
 		newUser.setEmail(autor.getEmail());
 		newUser.setFirstName(autor.getIme());

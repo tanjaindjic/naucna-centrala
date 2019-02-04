@@ -1,3 +1,4 @@
+/*
 package master.naucnacentrala.model.elastic;
 
 import java.net.InetAddress;
@@ -29,3 +30,4 @@ public class Config {
     }
 
 }
+*/

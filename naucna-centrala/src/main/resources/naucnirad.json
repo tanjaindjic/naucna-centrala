@@ -1,0 +1,60 @@
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "default": {
+          "type": "serbian-analyzer"
+        }
+      }
+    }
+  },
+  "mappings": {
+    "pdf": {
+      "properties": {
+        "naslov": {
+          "type": "text",
+          "analyzer": "serbian-analyzer",
+          "search_analyzer": "serbian-analyzer"
+        },
+        "sadrzaj": {
+          "type": "text",
+          "analyzer": "serbian-analyzer",
+          "search_analyzer": "serbian-analyzer"
+        },
+        "autor": {
+          "type": "text",
+          "analyzer": "serbian-analyzer",
+          "search_analyzer": "serbian-analyzer"
+        },
+        "koautori": {
+          "type": "text",
+          "analyzer": "serbian-analyzer",
+          "search_analyzer": "serbian-analyzer"
+        },
+        "kljucniPojmovi": {
+          "type": "text",
+          "analyzer": "serbian-analyzer",
+          "search_analyzer": "serbian-analyzer"
+        },
+        "apstrakt": {
+          "type": "text",
+          "analyzer": "serbian-analyzer",
+          "search_analyzer": "serbian-analyzer"
+        },
+        "naucnaOblast": {
+          "type": "text",
+          "analyzer": "serbian-analyzer",
+          "search_analyzer": "serbian-analyzer"
+        },
+        "isOpenAccess": {
+          "type": "boolean"
+        },
+        "casopis": {
+          "type": "text",
+          "analyzer": "serbian-analyzer",
+          "search_analyzer": "serbian-analyzer"
+        }
+      }
+    }
+  }
+}

@@ -41,7 +41,7 @@ public class Rad {
 
     @NotNull
     @Column(nullable = false)
-    private ArrayList<String> kljucniPojmovi;
+    private String kljucniPojmovi;
 
 	@NotNull
     @Column(nullable = false)
@@ -67,7 +67,7 @@ public class Rad {
     }
 
     public Rad(String doi, @NotNull String naslov, @NotNull Korisnik autor, Collection<Koautor> koautori,
-			@NotNull ArrayList<String> kljucniPojmovi, @NotNull String apstrakt, @NotNull NaucnaOblast naucnaOblast,
+			@NotNull String kljucniPojmovi, @NotNull String apstrakt, @NotNull NaucnaOblast naucnaOblast,
 			String adresaNacrta, String adresaKonacnogRada, Casopis casopis, String urlSlike) {
 		super();
 		this.doi = doi;
@@ -130,11 +130,11 @@ public class Rad {
         this.naslov = naslov;
     }
 
-    public ArrayList<String> getKljucniPojmovi() {
+    public String getKljucniPojmovi() {
         return kljucniPojmovi;
     }
 
-    public void setKljucniPojmovi( ArrayList<String> kljucniPojmovi) {
+    public void setKljucniPojmovi( String kljucniPojmovi) {
         this.kljucniPojmovi = kljucniPojmovi;
     }
 
@@ -170,14 +170,15 @@ public class Rad {
         this.adresaKonacnogRada = adresaKonacnogRada;
     }
 
-	public ArrayList<String> getListaKoautora() {
+	public String getListaKoautora() {
 		if(koautori == null)
-			return new ArrayList<String>();
-		ArrayList<String> lista = new ArrayList<>();
+			return "";
+		String lista = "";
 		for(Koautor k : koautori)
-			lista.add(k.getIme() + " " + k.getPrezime());
+			lista.concat(k.getIme() + " " + k.getPrezime() + " ");
 		return lista;
 	}
+
 
     public Long getCena() {
         return cena;
@@ -194,4 +195,5 @@ public class Rad {
     public void setUrlSlike(String urlSlike) {
         this.urlSlike = urlSlike;
     }
+
 }

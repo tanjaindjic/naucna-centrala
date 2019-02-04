@@ -23,16 +23,16 @@ public class RecenzentIndexUnit {
 	@Id
 	private Long id;
 
-	@Field(type = FieldType.Text, store = true)
+	@Field(type = FieldType.text, analyzer = "serbian-analyzer", searchAnalyzer = "serbian-analyzer")
 	private String ime;
 
-	@Field(type = FieldType.Text, store = true)
+	@Field(type = FieldType.text, analyzer = "serbian-analyzer", searchAnalyzer = "serbian-analyzer")
 	private String prezime;
 
 	@GeoPointField
 	private GeoPoint lokacija;
 
-	@Field(type = FieldType.Text, store = true)
+	@Field(type = FieldType.text, analyzer = "serbian-analyzer", searchAnalyzer = "serbian-analyzer")
 	@ElementCollection(targetClass = NaucnaOblast.class)
 	@Enumerated(EnumType.STRING)
 	private Collection<NaucnaOblast> naucneOblasti;

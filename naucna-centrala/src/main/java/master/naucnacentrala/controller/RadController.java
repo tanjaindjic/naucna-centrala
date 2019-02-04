@@ -182,7 +182,7 @@ public class RadController {
         r.setAutor(korisniService.getKorisnikByUsername(task.getAssignee()));
         r.setCasopis(casopisService.getCasopis(Long.parseLong(runtimeService.getVariable(task.getExecutionId(), "odabraniCasopis").toString())));
         r.setDoi(UUID.randomUUID().toString());
-        r.setKljucniPojmovi(new ArrayList<String>());
+        r.setKljucniPojmovi("");
         r.setKoautori(null);
         r.setNaslov(mapa.get("naslov").toString());
         r.setNaucnaOblast(NaucnaOblast.valueOf(mapa.get("naucnaOblast").toString()));
