@@ -34,7 +34,7 @@ mainModule.config(function($stateProvider, $urlRouterProvider) {
         controller : 'noviRadController'
     })
     .state('core.casopis', {
-            url: 'casopis',
+            url: 'casopis/{id}',
             params: {
                         'id' : undefined
                     },

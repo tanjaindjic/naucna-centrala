@@ -9,8 +9,9 @@
 
                 console.log("init casopis")
                 var id = $stateParams.id;
-
-                var myDataPromise = mainService.getCasopis(id);
+                var result = /[^/]*$/.exec(window.location.href)[0];
+                console.log(result)
+                var myDataPromise = mainService.getCasopis(result);
                     myDataPromise.then(function(result) {
                          $scope.casopis = result;
                          console.log($scope.casopis);
