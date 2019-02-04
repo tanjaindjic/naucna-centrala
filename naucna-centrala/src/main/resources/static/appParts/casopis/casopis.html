@@ -1,0 +1,65 @@
+<!--
+<div class="grid-container">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" ng-src="{{casopis.urlSlike}}" alt="Slika casopisa">
+        <div class="card-body">
+            <h5 class="card-title">Naziv: {{casopis.naziv}}</h5>
+            <p class="card-text">Cena: {{c.cena}}$</p>
+        </div>
+
+        <div class="card-body">
+            <a href="#" ng-click="kupi(c.id)" ng-if="!c.openAccess" class="card-link">KUPI</a>
+        </div>
+    </div>
+</div>
+-->
+
+<div class="container">
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-5">
+            <br><br>
+            <img class="img-fluid" ng-src="{{casopis.urlSlike}}" alt="" style="width:100%; max-width:400px;">
+        </div>
+
+        <div class="col-md-4">
+            <br><br>
+            <h3 class="my-3"><b>{{casopis.naziv}}</b></h3>
+            <p><b>Urednik:</b> {{casopis.glavniUrednik.ime}} {{casopis.glavniUrednik.prezime}}</p>
+            <p><b>Cena:</b> {{cena}}$</p>
+            <h3 class="my-3">Načini kupovine:</h3>
+            <div class="card-body">
+                <div><input type="radio" id="primerak" name="opcijeKupovine" value="primerak" checked>
+                    <label for="primerak">1 primerak</label></div>
+                <div><input type="radio" id="pretplata1g" name="opcijeKupovine" value="pretplata1g" >
+                    <label for="pretplata1g">Pretplata na 1 godinu</label></div>
+                <div><input type="radio" id="pretplata2g" name="opcijeKupovine" value="pretplata2g" >
+                    <label for="pretplata2g">Pretplata na 2 godine</label></div>
+            </div>
+            <button type="button" class="btn btn-outline-info" ng-click="kupi()">KUPI</button>
+        </div>
+        <div class="col-md-2"></div>
+
+    </div>
+    <!-- /.row -->
+    <br><br>
+    <h3 class="my-4">Radovi</h3>
+
+
+    <div class="scrollmenu ">
+
+        <div class="col-md-3 col-sm-6 mb-4 card" ng-repeat="rad in radovi" style="text-align: center">
+            <a href="#">
+                <img class="img-fluid" ng-src="{{rad.urlSlike}}" alt="" style="width:100%; max-width:150px;">
+            </a>
+            <p><i><b>{{rad.naslov}}</b></i></p>
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+
+</div>
+<!-- /.container -->

@@ -34,22 +34,25 @@
                 });
             }
 
+            this.getCasopis = function(id){
+                return $http({
+                    method:"GET",
+                    url:ROOT_PATH + "casopis/" + id,
+                    headers : this.createAuthorizationTokenHeader()
+                }).then(function(result){
+                    return result.data;
+                });
+            }
+
             this.getRadovi = function(){
                 var retval = [];
                 $http({
                     method: 'GET',
                     url: ROOT_PATH + "rad",
                     headers : this.createAuthorizationTokenHeader()
-                }).then(function successCallback(response) {
-                    console.log("Response:")
-                    console.log(JSON.stringify(response));
-                    retval = response.data;
-                }, function errorCallback(response) {
-                     console.log("grerska " + JSON.stringify(response))
-
+                }).then(function(result){
+                    return result.data;
                 });
-
-                 return retval;
             }
 
             this.getRadoviCasopisa = function(id){
@@ -58,16 +61,9 @@
                     method: 'GET',
                     url: ROOT_PATH + "casopis/" + id + "/radovi",
                     headers : this.createAuthorizationTokenHeader()
-                }).then(function successCallback(response) {
-                    console.log("Response:")
-                    console.log(JSON.stringify(response));
-                    retval = response.data;
-                }, function errorCallback(response) {
-                     console.log("grerska " + JSON.stringify(response))
-
+                }).then(function(result){
+                    return result.data;
                 });
-
-                 return retval;
             }
 
             this.parseJwt = function (token) {

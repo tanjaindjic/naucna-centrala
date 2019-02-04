@@ -1,7 +1,7 @@
 (function() { "use strict";
 
     mainModule.controller('homeController', [ '$scope', '$http', '$window','$localStorage','$location', '$stateParams','$state','mainService',
-        function($scope,  $http, $location, $window, $localStorage, $stateParams, $state, mainService) {
+        function($scope,  $http, $window, $localStorage, $location,  $stateParams, $state, mainService) {
 
             var init = function () {
                 console.log("init home")
@@ -15,6 +15,12 @@
                 });
             }
             init();
+
+            $scope.kupi = function(id){
+               console.log(id)
+               $stateParams.id = id;
+               $state.go( "core.casopis", { id: $stateParams.id} );
+            }
 
         }
     ]);

@@ -68,7 +68,7 @@ public class Rad {
 
     public Rad(String doi, @NotNull String naslov, @NotNull Korisnik autor, Collection<Koautor> koautori,
 			@NotNull ArrayList<String> kljucniPojmovi, @NotNull String apstrakt, @NotNull NaucnaOblast naucnaOblast,
-			String adresaNacrta, String adresaKonacnogRada, Casopis casopis) {
+			String adresaNacrta, String adresaKonacnogRada, Casopis casopis, String urlSlike) {
 		super();
 		this.doi = doi;
 		this.naslov = naslov;
@@ -80,6 +80,7 @@ public class Rad {
 		this.adresaNacrta = adresaNacrta;
 		this.adresaKonacnogRada = adresaKonacnogRada;
 		this.casopis = casopis;
+		this.urlSlike = urlSlike;
 	}
 
 

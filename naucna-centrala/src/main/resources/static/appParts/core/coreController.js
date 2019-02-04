@@ -13,7 +13,7 @@
                     document.getElementById("prijava").style.display = "block";
                     document.getElementById("odjava").style.display = "none";
                 }
-                mainService.goToState("core.home", false);
+                //mainService.goToState("core.home", false);
             }
             init();
 

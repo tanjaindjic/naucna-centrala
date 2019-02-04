@@ -10,11 +10,16 @@
             $scope.oblasti = [];
             $scope.myFile = {};
             $scope.formFields = [];
+            $scope.casopisi = [];
 
             var init = function () {
 
                 console.log("Usao u init novog rada");
-                $scope.casopisi = mainService.getCasopisi();
+                var myDataPromise = mainService.getCasopisi();
+                    myDataPromise.then(function(result) {
+                        $scope.casopisi = result;
+                        console.log($scope.casopisi);
+                });
 
                 $http({
                     method: 'GET',

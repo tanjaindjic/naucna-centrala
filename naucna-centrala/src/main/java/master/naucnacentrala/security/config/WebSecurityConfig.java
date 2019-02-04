@@ -84,7 +84,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/korisnik/**").permitAll()
             .antMatchers("/login").permitAll()
             .antMatchers("/register").permitAll()
-            .antMatchers("/home").permitAll();
+            .antMatchers("/casopis/**").permitAll();
           
            
 
@@ -127,7 +127,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/register", 
                 "/home",
                 "/login",
-                "/korisnik/**"
+                "/korisnik/**",
+                "/casopis/**"
         
                 
             )

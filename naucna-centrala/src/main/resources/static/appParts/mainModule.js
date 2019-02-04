@@ -5,7 +5,7 @@ var mainModule = angular.module('mainModule', [ 'ui.router', 'ngStorage', 'angul
 
 mainModule.config(function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/home');
 
     $stateProvider
     .state('core', {
@@ -33,5 +33,13 @@ mainModule.config(function($stateProvider, $urlRouterProvider) {
         templateUrl : 'appParts/noviRad/noviRad.html',
         controller : 'noviRadController'
     })
+    .state('core.casopis', {
+            url: 'casopis',
+            params: {
+                        'id' : undefined
+                    },
+            templateUrl : 'appParts/casopis/casopis.html',
+            controller : 'casopisController'
+        })
 
 });

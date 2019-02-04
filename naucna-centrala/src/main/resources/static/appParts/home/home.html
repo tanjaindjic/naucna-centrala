@@ -4,11 +4,16 @@
             <img class="card-img-top" ng-src="{{c.urlSlike}}" alt="Slika casopisa">
             <div class="card-body">
                 <h5 class="card-title">{{c.naziv}}</h5>
-                <p class="card-text">Cena: {{c.cena}}$</p>
+                <p ng-if="c.openAccess" class="card-text">Besplatan sadržaj</p>
+                <p ng-if="!c.openAccess" class="card-text">Cena: {{c.cena}}$</p>
             </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Radovi</li>
+             </ul>
+
             <div class="card-body">
-                <a href="#" class="card-link">Detalji</a>
-                <a href="#" class="card-link">Radovi</a>
+                <button type="button" class="btn btn-outline-info card-link"  ng-click="kupi(c.id)" ng-if="!c.openAccess">KUPI</button>
+                <button type="button" class="btn btn-outline-info card-link"  ng-if="c.openAccess" >PREUZMI</button>
             </div>
         </div>
     </div>

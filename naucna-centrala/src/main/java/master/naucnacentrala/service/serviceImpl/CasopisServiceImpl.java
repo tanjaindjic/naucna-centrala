@@ -22,7 +22,7 @@ public class CasopisServiceImpl implements CasopisService {
 
 	@Override
 	public Casopis getCasopis(Long id) {
-		return casopisRepository.getOne(id);
+		return casopisRepository.findById(id).get();
 	}
 
 	@Override

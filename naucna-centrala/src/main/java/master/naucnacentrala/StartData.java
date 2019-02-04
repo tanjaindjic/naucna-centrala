@@ -86,11 +86,16 @@ public class StartData {
 		urednik4.getNaucneOblasti().add(NaucnaOblast.UMETNOST);
 		urednikService.updateUrednik(urednik4);
 		
-		Rad rad = radService.addRad(new Rad("", "Rad1", autor, new ArrayList<>(), new ArrayList(), "apstrakt", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis));
+		Rad rad = radService.addRad(new Rad("", "Rad1", autor, new ArrayList<>(), new ArrayList(), "apstrakt", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis, "/assets/images/Article-Icon.png"));
 		casopis.getRadovi().add(rad);
-		casopisService.updateCasopis(casopis);
-		Rad rad2 = radService.addRad(new Rad("", "Rad2", autor2, new ArrayList<>(), new ArrayList(), "apstrakt2", NaucnaOblast.MEDICINA, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis));
+		Rad rad2 = radService.addRad(new Rad("", "Rad2", autor2, new ArrayList<>(), new ArrayList(), "apstrakt2", NaucnaOblast.MEDICINA, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis, "/assets/images/Article-Icon.png"));
 		casopis.getRadovi().add(rad2);
+		Rad rad3 = radService.addRad(new Rad("", "Rad3", autor, new ArrayList<>(), new ArrayList(), "apstrakt3", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis, "/assets/images/Article-Icon.png"));
+		casopis.getRadovi().add(rad3);
+		Rad rad4 = radService.addRad(new Rad("", "Rad4", autor2, new ArrayList<>(), new ArrayList(), "apstrakt4", NaucnaOblast.MEDICINA, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis, "/assets/images/Article-Icon.png"));
+		casopis.getRadovi().add(rad4);
+		Rad rad5 = radService.addRad(new Rad("", "Rad5", autor2, new ArrayList<>(), new ArrayList(), "apstrakt5", NaucnaOblast.MEDICINA, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis, "/assets/images/Article-Icon.png"));
+		casopis.getRadovi().add(rad5);
 		casopisService.updateCasopis(casopis);
 		
 		autor.getPlaceniRadovi().add(rad2);
@@ -103,7 +108,7 @@ public class StartData {
 		saveCamundaUser(urednik3);
 		saveCamundaUser(urednik4);
 		saveCamundaUser(demo);
-		
+
 		/*RadIndexUnit riu = new RadIndexUnit(rad.getNaslov(), "sadrzaj ovde", rad.getAutor().getIme() + " " + rad.getAutor().getPrezime(), rad.getListaKoautora(), rad.getKljucniPojmovi(), rad.getApstrakt(), rad.getNaucnaOblast(), rad.getCasopis().isOpenAccess(), rad.getCasopis().getNaziv());
 		riuRepository.save(riu);*/
 	}
