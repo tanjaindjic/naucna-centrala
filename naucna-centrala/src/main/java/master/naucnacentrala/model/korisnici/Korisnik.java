@@ -1,4 +1,5 @@
 package master.naucnacentrala.model.korisnici;
+import master.naucnacentrala.model.Casopis;
 import master.naucnacentrala.model.Clanarina;
 import master.naucnacentrala.model.Rad;
 import javax.persistence.*;
@@ -43,11 +44,15 @@ public class Korisnik {
 
 	@Column
 	@OneToMany
-	private Collection<Clanarina> placeniCasopisi;
+	private Collection<Clanarina> pretplaceniCasopisi;
 
 	@Column
 	@OneToMany
 	private Collection<Rad> placeniRadovi;
+
+	@Column
+	@OneToMany
+	private Collection<Casopis> placeniCasopisi;
 
 	/*
 	 * @ManyToMany
@@ -64,8 +69,8 @@ public class Korisnik {
 	
 	
 	public Korisnik(@NotNull String username, @NotNull String pass, @NotNull String ime, @NotNull String prezime,
-			@NotNull String grad, @NotNull String drzava, @NotNull String email, Collection<Clanarina> placeniCasopisi,
-			Collection<Rad> placeniRadovi) {
+					@NotNull String grad, @NotNull String drzava, @NotNull String email, Collection<Clanarina> pretplaceniCasopisi, Collection<Casopis> placeniCasopisi,
+					Collection<Rad> placeniRadovi) {
 		super();
 		this.username = username;
 		this.pass = pass;
@@ -74,6 +79,7 @@ public class Korisnik {
 		this.grad = grad;
 		this.drzava = drzava;
 		this.email = email;
+		this.pretplaceniCasopisi = pretplaceniCasopisi;
 		this.placeniCasopisi = placeniCasopisi;
 		this.placeniRadovi = placeniRadovi;
 	}
@@ -142,11 +148,11 @@ public class Korisnik {
 		this.email = email;
 	}
 
-	public Collection<Clanarina> getPlaceniCasopisi() {
+	public Collection<Casopis> getPlaceniCasopisi() {
 		return placeniCasopisi;
 	}
 
-	public void setPlaceniCasopisi(Collection<Clanarina> placeniCasopisi) {
+	public void setPlaceniCasopisi(Collection<Casopis> placeniCasopisi) {
 		this.placeniCasopisi = placeniCasopisi;
 	}
 
@@ -156,6 +162,14 @@ public class Korisnik {
 
 	public void setPlaceniRadovi(Collection<Rad> placeniRadovi) {
 		this.placeniRadovi = placeniRadovi;
+	}
+
+	public Collection<Clanarina> getPretplaceniCasopisi() {
+		return pretplaceniCasopisi;
+	}
+
+	public void setPretplaceniCasopisi(Collection<Clanarina> pretplaceniCasopisi) {
+		this.pretplaceniCasopisi = pretplaceniCasopisi;
 	}
 
 	/*

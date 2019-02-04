@@ -36,11 +36,13 @@ public class RegisterDTO {
 	public void setFormFields(List<FieldIdValueDTO> formFields) {
 		this.formFields = formFields;
 	}
-	
-	
-	
-	
-	
-	
 
+	@Override
+	public String toString() {
+		return "RegisterDTO{" +
+				"taskId='" + taskId + '\'' +
+				", processInstanceId='" + processInstanceId + '\'' +
+				", formFields=" + formFields +
+				'}';
+	}
 }

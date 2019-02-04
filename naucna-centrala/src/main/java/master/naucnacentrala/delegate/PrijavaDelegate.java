@@ -16,7 +16,7 @@ public class PrijavaDelegate implements JavaDelegate {
         jwtAuthenticationRequest.setUsername(execution.getVariable("username").toString());
         jwtAuthenticationRequest.setPassword(execution.getVariable("password").toString());
         RestTemplate rt = new RestTemplate();
-        ResponseEntity response = rt.postForEntity("http://localhost:8096/korisnik/finishLogin", jwtAuthenticationRequest, String.class);
+        ResponseEntity response = rt.postForEntity("https://localhost:8096/korisnik/finishLogin", jwtAuthenticationRequest, String.class);
 
         if(response.getStatusCode()== HttpStatus.OK)
             execution.setVariable("token", response.getBody());

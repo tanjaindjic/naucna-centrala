@@ -14,7 +14,7 @@ public class Clanarina {
     private Casopis casopis;
 
     @Column(nullable = false)
-    private Date datumKupovine;
+    private Date vaziDo;
 
     public Clanarina() {
     }
@@ -27,11 +27,11 @@ public class Clanarina {
         this.casopis = casopis;
     }
 
-    public Date getDatumKupovine() {
-        return datumKupovine;
+    public Date getVaziDo() {
+        return vaziDo;
     }
 
-    public void setDatumKupovine(Date datumKupovine) {
-        this.datumKupovine = datumKupovine;
+    public void setVaziDo(Date vaziDo) {
+        this.vaziDo = vaziDo;
     }
 }

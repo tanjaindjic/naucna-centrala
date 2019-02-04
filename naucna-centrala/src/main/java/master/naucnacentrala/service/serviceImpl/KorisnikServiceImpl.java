@@ -1,10 +1,8 @@
 package master.naucnacentrala.service.serviceImpl;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -23,7 +21,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 
 import master.naucnacentrala.model.korisnici.Korisnik;
@@ -102,7 +99,7 @@ public class KorisnikServiceImpl implements KorisnikService{
 
 	@Override
 	public void createUser(String username, String pass, String email, String ime, String prezime, String drzava, String grad) {
-		korisnikRepository.save(new Korisnik(username, bcrypt.encode(pass), ime, prezime, grad, drzava, email, new ArrayList<>(), new ArrayList<>() ));
+		korisnikRepository.save(new Korisnik(username, bcrypt.encode(pass), ime, prezime, grad, drzava, email, new ArrayList<>(), new ArrayList<>(), new ArrayList<>() ));
 	}
 
 }

@@ -1,4 +1,4 @@
-const ROOT_PATH = "http://localhost:8096/";
+const ROOT_PATH = "https://localhost:8096/";
 const JWT_TOKEN = "token";
 
 var mainModule = angular.module('mainModule', [ 'ui.router', 'ngStorage', 'angular-jwt' ]);

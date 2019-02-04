@@ -6,8 +6,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
+import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletRequest;
 
+import master.naucnacentrala.model.Casopis;
+import master.naucnacentrala.model.Kupovina;
+import master.naucnacentrala.model.Rad;
+import master.naucnacentrala.model.dto.*;
+import master.naucnacentrala.model.enums.Status;
+import master.naucnacentrala.repository.KupovinaRepository;
+import master.naucnacentrala.service.CasopisService;
+import master.naucnacentrala.service.RadService;
 import org.apache.http.ParseException;
 import org.camunda.bpm.engine.*;
 import org.camunda.bpm.engine.authorization.Authorization;
@@ -41,15 +50,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import master.naucnacentrala.exception.AuthenticationException;
-import master.naucnacentrala.model.dto.FieldIdValueDTO;
-import master.naucnacentrala.model.dto.FormFieldsDTO;
-import master.naucnacentrala.model.dto.RegisterDTO;
 import master.naucnacentrala.model.korisnici.Korisnik;
 import master.naucnacentrala.security.JwtAuthenticationRequest;
 import master.naucnacentrala.security.JwtAuthenticationResponse;
 import master.naucnacentrala.security.JwtTokenUtil;
 import master.naucnacentrala.security.JwtUser;
 import master.naucnacentrala.service.KorisnikService;
+import org.springframework.web.client.RestTemplate;
 
 import static org.camunda.bpm.engine.authorization.Authorization.AUTH_TYPE_GRANT;
 
@@ -83,6 +90,15 @@ public class KorisnikController {
 
 	@Autowired
     private AuthorizationService authorizationService;
+
+	@Autowired
+	private CasopisService casopisService;
+
+	@Autowired
+	private KupovinaRepository kupovinaRepository;
+
+	@Autowired
+	private RadService radService;
 	
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
@@ -92,6 +108,12 @@ public class KorisnikController {
 
 	@Value("${camunda.loginProcessKey}")
 	private String loginProcessKey;
+
+    @Value("${naucnaCentrala.url}")
+    private String ncUrl;
+
+    @Value("${koncentrator.url}")
+    private String kpUrl;
 
 	private String tokenHeader;
 
@@ -108,6 +130,48 @@ public class KorisnikController {
 	@GetMapping("/{id}")
 	public Korisnik getKorisnik(@PathVariable Long id) {
 		return korisnikService.getKorisnik(id);
+	}
+
+	@PostMapping(value = "/kupi")
+	public ResponseEntity kupi(@RequestBody KupovinaDTO kupovinaDTO){
+		System.out.println(kupovinaDTO.toString());
+
+		Korisnik k = korisnikService.getKorisnikByUsername(kupovinaDTO.getUsername());
+		Casopis c = null;
+		Rad r = null;
+		if(kupovinaDTO.getCasopisId()!=null)
+			c = casopisService.getCasopis(kupovinaDTO.getCasopisId());
+		if(kupovinaDTO.getRadId()!=null)
+			r = radService.getRad(kupovinaDTO.getRadId());
+		Kupovina kupovina = new Kupovina(k, c, r, Status.C, kupovinaDTO.getPretplata(), kupovinaDTO.getCena());
+		kupovina = kupovinaRepository.save(kupovina);
+
+        EntitetPlacanjaDTO nc = new EntitetPlacanjaDTO();
+        nc.setIdentifikacioniKod("tanjatanja");
+        nc.setNadredjeni(null);
+        EntitetPlacanjaDTO casopis = new EntitetPlacanjaDTO();
+        casopis.setIdentifikacioniKod("casopis001");
+        casopis.setNadredjeni(nc);
+
+        PaymentRequestDTO paymentRequestDTO = new PaymentRequestDTO();
+        paymentRequestDTO.setEntitetPlacanja(casopis);
+        paymentRequestDTO.setErrorURL(ncUrl + "error");
+        paymentRequestDTO.setFailedURL(ncUrl + "failed");
+        paymentRequestDTO.setSuccessURL(ncUrl + "success");
+        paymentRequestDTO.setIznos(kupovina.getCena());
+        paymentRequestDTO.setMaticnaTransakcija(kupovina.getId());
+        paymentRequestDTO.setPretplata(kupovinaDTO.getPretplata());
+		RestTemplate rt = new RestTemplate();
+        HttpsURLConnection.setDefaultHostnameVerifier((hostname, session)->true);
+		ResponseEntity<PaymentResponseDTO> res = rt.postForEntity(kpUrl, paymentRequestDTO, PaymentResponseDTO.class);
+		System.out.println(res.getStatusCode());
+        System.out.println(res.getBody());
+        System.out.println(res.getHeaders().getLocation());
+		return res;
+
+
+
+
 	}
 	
 	@GetMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -140,9 +204,9 @@ public class KorisnikController {
 	@GetMapping(value = "/login")
 	public ResponseEntity<?> getLoginPage(){
 		ProcessInstance pi = runtimeService.startProcessInstanceByKey(loginProcessKey);
-		System.out.println("Zapocet proces " +loginProcessKey);
+		System.out.println("Zapocet proces " +loginProcessKey + ", id: " + pi.getId());
 		Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
-        System.out.println("Zapocet task " +task.getName());
+        System.out.println("Zapocet task " +task.getName() + ", id: " + task.getId());
 		TaskFormData tfd = formService.getTaskFormData(task.getId());
 		List<FormField> properties = tfd.getFormFields();
 
@@ -163,6 +227,7 @@ public class KorisnikController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> submitLoginData(@RequestBody RegisterDTO registerDTO) throws AuthenticationException, ParseException, IOException, JSONException {
 
+	    System.out.println("primljen " + registerDTO.toString());
         HashMap<String, Object> mapa = new HashMap<String, Object>();
         for(FieldIdValueDTO pair : registerDTO.getFormFields())
             mapa.put(pair.getFieldId(), pair.getFieldValue());

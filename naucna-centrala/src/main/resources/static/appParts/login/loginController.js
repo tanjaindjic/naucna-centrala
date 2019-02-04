@@ -42,6 +42,7 @@
                     "processInstanceId" : window.localStorage.getItem('processInstanceId'),
                     "formFields" : formData
                 }
+                console.log(payload)
                 $http({
                     method: 'POST',
                     url: ROOT_PATH + "korisnik/login",
@@ -50,7 +51,7 @@
                     console.log(response.data.token)
                     mainService.setJwtToken(response.data.token);
                     console.log("Postavljen: " + window.localStorage.getItem('token'))
-                    mainService.goToState("core", true)
+                    mainService.goToState("core.home", true)
                 }, function errorCallback(response) {
                     console.log("grerska " + JSON.stringify(response.data))
 
