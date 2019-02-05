@@ -56,12 +56,21 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div ng-repeat="res in results" ng-click="naRad(res.id)">
-                        <p>{{res}}</p>
-                        <p><b>Rad:</b>{{res.naslov}}</p>
-                        <p><b>Casopis:</b>{{res.casopis}}</p>
-                        <hr>
-                    </div>
+                    <table>
+                    <tr ng-repeat="res in results" ng-click="naRad(res.id)">
+
+                           <td>
+                               <p><b>Rad:</b>{{res.naslov}}</p>
+                               <p><b>Casopis:</b>{{res.casopis}}</p>
+                               <hr>
+                           </td>
+                            <td>
+                                <button class="btn btn-primary" ng-if="res.openAccess">PREUZMI</button>
+                                <button class="btn btn-primary" ng-if="!res.openAccess">KUPI</button>
+                            </td>
+
+                       </tr>
+                </table>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>

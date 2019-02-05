@@ -36,7 +36,7 @@
                     myDataPromise.then(function(result) {
                          console.log(result)
                          $scope.results = result;
-                         console.log($scope.results[0].id)
+                         console.log($scope.results[0])
                           $('#exampleModalLong').modal('show');
 
                 });
