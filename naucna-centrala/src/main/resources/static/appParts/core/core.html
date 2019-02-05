@@ -24,8 +24,10 @@
                     <form class="navbar-form">
                         <div class="form-group inner-addon right-addon has-feedback" style="display:inline;">
                             <div class="input-group">
-                                <input type="text" placeholder="Pretraga" class="form-control">
-                                <a style="cursor:pointer;" class="nav-link">Traži</a>
+                                <input type="text" placeholder="Pretraga" id="zaPretragu" class="form-control">
+                                <button type="button" ng-click="trazi()" class="btn btn-primary">
+                                    Traži
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -42,6 +44,31 @@
             </ul>
         </div>
     </nav>
+
+
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Rezultati</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div ng-repeat="res in results" ng-click="naRad(res.id)">
+                        <p>{{res}}</p>
+                        <p><b>Rad:</b>{{res.naslov}}</p>
+                        <p><b>Casopis:</b>{{res.casopis}}</p>
+                        <hr>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!--<nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">

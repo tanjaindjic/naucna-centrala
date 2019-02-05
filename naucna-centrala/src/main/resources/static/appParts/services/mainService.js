@@ -54,6 +54,17 @@
                 });
             }
 
+            this.basicQuery = function(query){
+                return $http({
+                    method:"POST",
+                    url:ROOT_PATH + "search/basicQuery",
+                    data: query,
+                    headers : this.createAuthorizationTokenHeader()
+                }).then(function(result){
+                    return result.data;
+                });
+            }
+
             this.getRadovi = function(){
                 var retval = [];
                 $http({

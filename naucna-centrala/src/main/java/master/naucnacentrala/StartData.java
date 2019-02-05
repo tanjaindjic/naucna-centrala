@@ -1,13 +1,28 @@
 package master.naucnacentrala;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.ExecutionException;
 
 import javax.annotation.PostConstruct;
 
+import master.naucnacentrala.model.elastic.RadIndexUnit;
+import org.apache.commons.io.IOUtils;
+import org.apache.pdfbox.cos.COSDocument;
+import org.apache.pdfbox.io.RandomAccessFile;
+import org.apache.pdfbox.pdfparser.PDFParser;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
 import org.camunda.bpm.engine.IdentityService;
 import org.camunda.bpm.engine.identity.User;
+import org.elasticsearch.action.admin.indices.template.put.PutIndexTemplateAction;
+import org.elasticsearch.action.admin.indices.template.put.PutIndexTemplateRequest;
+import org.elasticsearch.action.admin.indices.template.put.PutIndexTemplateResponse;
+import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.Client;
+import org.elasticsearch.common.xcontent.XContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -115,7 +130,76 @@ public class StartData {
 		saveCamundaUser(urednik4);
 		saveCamundaUser(demo);
 
+		setupTestData(rad);
+
     }
+
+	private void setupTestData(Rad rad) throws ExecutionException, InterruptedException {
+		/*String template = "";
+		ClassLoader classLoader = getClass().getClassLoader();
+		try {
+			template = IOUtils.toString(classLoader.getResourceAsStream("naucnirad.json"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		PutIndexTemplateRequest request = new PutIndexTemplateRequest("nc_template");
+		request.source("{\n" +
+				"\t\"template\": [\"naucni*\"],\n" +
+				"\t\"settings\": {\n" +
+				"\t\t\"analysis\": {\n" +
+				"\t\t\t\"analyzer\": {\n" +
+				"\t\t\t\t\"default\": {\n" +
+				"\t\t\t\t\t\"type\": \"serbian-analyzer\"\n" +
+				"\t\t\t\t}\n" +
+				"\t\t\t}\n" +
+				"\t\t}\n" +
+				"\t},\n" +
+				"\t\"mappings\": {}\n" +
+				"}", XContentType.JSON);
+
+		PutIndexTemplateResponse response1 = nodeClient.admin().indices().execute(PutIndexTemplateAction.INSTANCE, request).get();
+		System.out.println(response1);
+
+		IndexResponse response = nodeClient.prepareIndex("naucnirad", "pdf")
+				.setSource(template, XContentType.JSON)
+				.get();
+		System.out.println(response.status());
+
+		PDFTextStripper pdfStripper = null;
+		PDDocument pdDoc = null;
+		COSDocument cosDoc = null;
+		File file = new File("C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf");
+		String parsedText = "";
+		try {
+			// PDFBox 2.0.8 require org.apache.pdfbox.io.RandomAccessRead
+			RandomAccessFile randomAccessFile = new RandomAccessFile(file, "r");
+			PDFParser parser = new PDFParser(randomAccessFile);
+			parser.parse();
+			cosDoc = parser.getDocument();
+			pdfStripper = new PDFTextStripper();
+			pdDoc = new PDDocument(cosDoc);
+			pdfStripper.setStartPage(1);
+			pdfStripper.setEndPage(5);
+			parsedText = pdfStripper.getText(pdDoc);
+			System.out.println(parsedText);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+*/
+/*		RestTemplate rt = new RestTemplate();
+		rt.put("http://localhost:9300/naucnirad", null);*/
+		RadIndexUnit riu = new RadIndexUnit(rad.getId(), rad.getNaslov(), "Латиница се проширила из Италије заједно са латинским језиком у области око Средоземног мора ширењем Римског царства", rad.getAutor().getIme() + " " + rad.getAutor().getPrezime(), rad.getListaKoautora(), rad.getKljucniPojmovi(), rad.getApstrakt(), rad.getNaucnaOblast(), rad.getCasopis().isOpenAccess(), rad.getCasopis().getNaziv(), rad.getCasopis().getId());
+		riu = riuRepository.save(riu);
+		System.out.println(riu.toString());
+
+		/*SearchResponse res = nodeClient.prepareSearch("naucnirad")
+				.setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
+				.setQuery(QueryBuilders.matchQuery("sadrzaj", "oblasti").analyzer("serbian-analyzer"))
+				.setExplain(true)
+				.get();
+		System.out.println(res.toString());*/
+	}
 
 	public void saveCamundaUser (Korisnik autor){
 		User newUser = identityService.newUser(autor.getUsername());

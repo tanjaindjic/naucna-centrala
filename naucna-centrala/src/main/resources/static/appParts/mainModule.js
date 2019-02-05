@@ -1,4 +1,5 @@
 const ROOT_PATH = "https://localhost:8096/";
+const ELASTIC_PATH = "http://localhost:9200/";
 const JWT_TOKEN = "token";
 
 var mainModule = angular.module('mainModule', [ 'ui.router', 'ngStorage', 'angular-jwt' ]);

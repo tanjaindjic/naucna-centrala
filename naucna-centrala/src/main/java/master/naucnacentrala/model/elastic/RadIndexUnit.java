@@ -1,8 +1,5 @@
 package master.naucnacentrala.model.elastic;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import javax.persistence.Id;
 
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -10,47 +7,66 @@ import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import master.naucnacentrala.model.enums.NaucnaOblast;
-import master.naucnacentrala.model.korisnici.Koautor;
-import master.naucnacentrala.model.korisnici.Korisnik;
+
 
 @Document(indexName = RadIndexUnit.INDEX_NAME, type = RadIndexUnit.TYPE_NAME, shards = 1, replicas = 0)
 public class RadIndexUnit {
 	public static final String INDEX_NAME = "naucnirad";
 	public static final String TYPE_NAME = "pdf";
-	
+
 	@Id
 	private Long id;
 
-	@Field(type = FieldType.text, analyzer = "serbian-analyzer", searchAnalyzer = "serbian-analyzer")
+	@Field(type = FieldType.Text, store = true)
 	private String naslov;
 
-	@Field(type = FieldType.text, analyzer = "serbian-analyzer", searchAnalyzer = "serbian-analyzer")
+	@Field(type = FieldType.Text, store = true)
 	private String sadrzaj;
 
-	@Field(type = FieldType.text, analyzer = "serbian-analyzer", searchAnalyzer = "serbian-analyzer")
+	@Field(type = FieldType.Text, store = true)
 	private String autor;
 	
-	@Field(type = FieldType.text, analyzer = "serbian-analyzer", searchAnalyzer = "serbian-analyzer")
+	@Field(type = FieldType.Text, store = true)
 	private  String koautori;
 	
-	@Field(type = FieldType.text, analyzer = "serbian-analyzer", searchAnalyzer = "serbian-analyzer")
+	@Field(type = FieldType.Text, store = true)
 	private String kljucniPojmovi;
 	
-	@Field(type = FieldType.text, analyzer = "serbian-analyzer", searchAnalyzer = "serbian-analyzer")
+	@Field(type = FieldType.Text, store = true)
 	private String apstrakt;
 	
-	@Field(type = FieldType.text, analyzer = "serbian-analyzer", searchAnalyzer = "serbian-analyzer")
+	@Field(type = FieldType.Text, store = true)
 	private NaucnaOblast naucnaOblast;
 	
 	@Field(type = FieldType.Boolean, store = true)
 	private boolean isOpenAccess;
 	
-	@Field(type = FieldType.text, analyzer = "serbian-analyzer", searchAnalyzer = "serbian-analyzer")
+	@Field(type = FieldType.Text, store = true)
 	private String casopis;
 
-	public RadIndexUnit(String naslov, String sadrzaj, String autor,  String koautori,
-			 String kljucniPojmovi, String apstrakt, NaucnaOblast naucnaOblast, boolean isOpenAccess, String casopis) {
+	@Field(type = FieldType.Long, store = true)
+	private Long casopisId;
+
+	@Override
+	public String toString() {
+		return "RadIndexUnit{" +
+				"id=" + id +
+				", naslov='" + naslov + '\'' +
+				", sadrzaj='" + sadrzaj + '\'' +
+				", autor='" + autor + '\'' +
+				", koautori='" + koautori + '\'' +
+				", kljucniPojmovi='" + kljucniPojmovi + '\'' +
+				", apstrakt='" + apstrakt + '\'' +
+				", naucnaOblast=" + naucnaOblast +
+				", isOpenAccess=" + isOpenAccess +
+				", casopis='" + casopis + '\'' +
+				'}';
+	}
+
+	public RadIndexUnit(Long id, String naslov, String sadrzaj, String autor, String koautori,
+						String kljucniPojmovi, String apstrakt, NaucnaOblast naucnaOblast, boolean isOpenAccess, String casopis, Long casopisId) {
 		super();
+		this.id = id;
 		this.naslov = naslov;
 		this.sadrzaj = sadrzaj;
 		this.autor = autor;
@@ -60,6 +76,7 @@ public class RadIndexUnit {
 		this.naucnaOblast = naucnaOblast;
 		this.isOpenAccess = isOpenAccess;
 		this.casopis = casopis;
+		this.casopisId = casopisId;
 	}
 
 	public RadIndexUnit() {
@@ -141,8 +158,19 @@ public class RadIndexUnit {
 	public Long getId() {
 		return id;
 	}
-	
-	
-	
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getCasopisId() {
+		return casopisId;
+	}
+
+	public void setCasopisId(Long casopisId) {
+		this.casopisId = casopisId;
+	}
+
 
 }

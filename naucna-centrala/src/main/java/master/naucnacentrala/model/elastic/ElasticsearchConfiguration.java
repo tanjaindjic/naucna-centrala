@@ -1,3 +1,4 @@
+/*
 package master.naucnacentrala.model.elastic;
 
 import java.io.File;
@@ -72,3 +73,4 @@ public class ElasticsearchConfiguration {
 	}
 
 }
+*/

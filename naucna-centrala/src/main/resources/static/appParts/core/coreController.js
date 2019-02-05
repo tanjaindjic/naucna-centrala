@@ -3,7 +3,7 @@
     mainModule.controller('coreController', ['$scope', '$http', '$window', '$localStorage', '$location', '$stateParams', 'mainService',
         function ($scope, $http, $location, $window, $localStorage, $stateParams, mainService) {
 
-
+            $scope.results = [];
             var init = function () {
                  console.log("init core")
                 if (mainService.getJwtToken()) {
@@ -13,7 +13,6 @@
                     document.getElementById("prijava").style.display = "block";
                     document.getElementById("odjava").style.display = "none";
                 }
-                //mainService.goToState("core.home", false);
             }
             init();
 
@@ -28,6 +27,21 @@
 
             $scope.prijava = function () {
                 mainService.goToState("login", true);
+            }
+
+            $scope.trazi = function(){
+                var zaPretragu = document.getElementById("zaPretragu").value;
+                console.log("uneo: " + zaPretragu)
+                var myDataPromise = mainService.basicQuery(zaPretragu);
+                    myDataPromise.then(function(result) {
+                         console.log(result)
+                         $scope.results = result;
+                         console.log($scope.results[0].id)
+                          $('#exampleModalLong').modal('show');
+
+                });
+
+
             }
 
             $scope.novirad = function(){

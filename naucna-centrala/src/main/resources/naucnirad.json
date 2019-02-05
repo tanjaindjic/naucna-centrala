@@ -53,6 +53,9 @@
           "type": "text",
           "analyzer": "serbian-analyzer",
           "search_analyzer": "serbian-analyzer"
+        },
+        "casopisId": {
+          "type": "long"
         }
       }
     }
