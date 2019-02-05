@@ -72,7 +72,9 @@ public class SearchController {
             Map<String, HighlightField> highlightFields = hit.getHighlightFields();
             for (Map.Entry<String, HighlightField> entry : highlightFields.entrySet()){
                 //ne moze da se smesti direktno HighlightField jer je vrednost tipa Text[] i pukne mi serializer
-                HighlightDTO highlightField = new HighlightDTO(entry.getKey(), Arrays.toString(entry.getValue().fragments()));
+                String value = Arrays.toString(entry.getValue().fragments());
+                //moram substring jer vraca uglaste zagrade fragmenata na pocetku i kraju
+                HighlightDTO highlightField = new HighlightDTO(entry.getKey(), value.substring(1, value.length()-1));
                 fields.add(highlightField);
             }
 
