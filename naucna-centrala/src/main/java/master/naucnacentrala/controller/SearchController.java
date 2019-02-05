@@ -49,7 +49,7 @@ public class SearchController {
         System.out.println("Query: " + query);
         ArrayList<BasicQueryResponseDTO> retVal = new ArrayList<>();
         HighlightBuilder highlightBuilder = new HighlightBuilder()
-                .field("sadrzaj")
+                .field("sadrzaj", 30)
                 .highlightQuery(QueryBuilders.queryStringQuery( query));
 
 
@@ -67,19 +67,24 @@ public class SearchController {
             RadIndexUnit object = gson.fromJson(hit.getSourceAsString(), RadIndexUnit.class);
             basicQueryResponseDTO.setRadIndexUnit(object);
 
-            List<HighlightDTO> fields = new ArrayList<>();
+            //sve generisane highlightse vracam kao jedan veliki string da ne opterecujem front budzenjem prikaza
+            String allHighlights = "...";
 
             Map<String, HighlightField> highlightFields = hit.getHighlightFields();
             for (Map.Entry<String, HighlightField> entry : highlightFields.entrySet()){
                 //ne moze da se smesti direktno HighlightField jer je vrednost tipa Text[] i pukne mi serializer
                 String value = Arrays.toString(entry.getValue().fragments());
+                System.out.println(value);
                 //moram substring jer vraca uglaste zagrade fragmenata na pocetku i kraju
-                HighlightDTO highlightField = new HighlightDTO(entry.getKey(), value.substring(1, value.length()-1));
-                fields.add(highlightField);
+
+                System.out.println(value.substring(1, value.length()-1));
+                allHighlights+=value.substring(1, value.length()-1);
+                allHighlights+="...";
+                System.out.println(allHighlights);
             }
 
 
-            basicQueryResponseDTO.setHighlight(fields);
+            basicQueryResponseDTO.setHighlight(allHighlights);
             retVal.add(basicQueryResponseDTO);
         }
 

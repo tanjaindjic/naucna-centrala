@@ -8,8 +8,8 @@ import java.util.List;
 public class BasicQueryResponseDTO {
 
     RadIndexUnit radIndexUnit;
-    List<HighlightDTO> highlights;
-    public BasicQueryResponseDTO(RadIndexUnit radIndexUnit, List<HighlightDTO> highlights) {
+    String highlights;
+    public BasicQueryResponseDTO(RadIndexUnit radIndexUnit, String highlights) {
         this.radIndexUnit = radIndexUnit;
         this.highlights = highlights;
     }
@@ -33,11 +33,11 @@ public class BasicQueryResponseDTO {
         this.radIndexUnit = radIndexUnit;
     }
 
-    public List<HighlightDTO> getHighlight() {
+    public String getHighlight() {
         return highlights;
     }
 
-    public void setHighlight(List<HighlightDTO> highlight) {
+    public void setHighlight(String highlight) {
         this.highlights = highlight;
     }
 }

@@ -46,8 +46,8 @@
     </nav>
 
 
-    <div class="modal fade" style="width:700px;" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-        <div class="modal-dialog"  style="width:700px;" role="document">
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog"  role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Rezultati</h5>
@@ -55,24 +55,19 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" >
                     <table>
                     <tr ng-repeat="res in results" ng-click="naRad(res.id)">
 
                        <td>
                            <p><b>Rad:</b>{{res.radIndexUnit.naslov}}</p>
                            <p><b>Casopis:</b>{{res.radIndexUnit.casopis}}</p>
-                           <hr>
-                       </td>
-                        <td>
-                            <p>{{res.highlight[0].highlight|replace: 'em':'b'}</p>
-                        </td>
-                        <td>
+                            <p>{{res.highlight}}</p>
                             <button class="btn btn-primary" ng-if="res.openAccess">PREUZMI</button>
                             <button class="btn btn-primary" ng-if="!res.openAccess">KUPI</button>
                         </td>
+                        <hr>
 
-                       </tr>
                 </table>
                 </div>
                 <div class="modal-footer">
