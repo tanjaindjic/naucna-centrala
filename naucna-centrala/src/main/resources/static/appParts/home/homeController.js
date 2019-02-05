@@ -17,7 +17,6 @@
             init();
 
             $scope.kupi = function(id){
-               console.log(id)
                $stateParams.id = id;
                $location.path("/casopis/"+id)
                //$state.go( "core.casopis", { id: $stateParams.id} );

@@ -34,7 +34,7 @@ public class Rad {
     private Collection<Koautor> koautori;
 
     @Column
-    private Long cena;
+    private Float cena;
 
     @Column
     private String urlSlike;
@@ -62,28 +62,28 @@ public class Rad {
     @JoinColumn(name="casopis_id", nullable=false)
     private Casopis casopis;
 
+    @Column
+    private String identifikacioniKod;
+
 
 	public Rad() {
     }
 
-    public Rad(String doi, @NotNull String naslov, @NotNull Korisnik autor, Collection<Koautor> koautori,
-			@NotNull String kljucniPojmovi, @NotNull String apstrakt, @NotNull NaucnaOblast naucnaOblast,
-			String adresaNacrta, String adresaKonacnogRada, Casopis casopis, String urlSlike) {
-		super();
-		this.doi = doi;
-		this.naslov = naslov;
-		this.autor = autor;
-		this.koautori = koautori;
-		this.kljucniPojmovi = kljucniPojmovi;
-		this.apstrakt = apstrakt;
-		this.naucnaOblast = naucnaOblast;
-		this.adresaNacrta = adresaNacrta;
-		this.adresaKonacnogRada = adresaKonacnogRada;
-		this.casopis = casopis;
-		this.urlSlike = urlSlike;
-	}
-
-
+    public Rad(String doi, @NotNull String naslov, @NotNull Korisnik autor, Collection<Koautor> koautori, Float cena, String urlSlike, @NotNull String kljucniPojmovi, @NotNull String apstrakt, @NotNull NaucnaOblast naucnaOblast, String adresaNacrta, String adresaKonacnogRada, Casopis casopis, String identifikacioniKod) {
+        this.doi = doi;
+        this.naslov = naslov;
+        this.autor = autor;
+        this.koautori = koautori;
+        this.cena = cena;
+        this.urlSlike = urlSlike;
+        this.kljucniPojmovi = kljucniPojmovi;
+        this.apstrakt = apstrakt;
+        this.naucnaOblast = naucnaOblast;
+        this.adresaNacrta = adresaNacrta;
+        this.adresaKonacnogRada = adresaKonacnogRada;
+        this.casopis = casopis;
+        this.identifikacioniKod = identifikacioniKod;
+    }
 
     public Casopis getCasopis() {
 		return casopis;
@@ -180,11 +180,11 @@ public class Rad {
 	}
 
 
-    public Long getCena() {
+    public Float getCena() {
         return cena;
     }
 
-    public void setCena(Long cena) {
+    public void setCena(Float cena) {
         this.cena = cena;
     }
 
@@ -196,4 +196,11 @@ public class Rad {
         this.urlSlike = urlSlike;
     }
 
+    public String getIdentifikacioniKod() {
+        return identifikacioniKod;
+    }
+
+    public void setIdentifikacioniKod(String identifikacioniKod) {
+        this.identifikacioniKod = identifikacioniKod;
+    }
 }

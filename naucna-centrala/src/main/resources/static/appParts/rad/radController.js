@@ -1,65 +1,45 @@
 (function() { "use strict";
 
-    mainModule.controller('casopisController', [ '$scope', '$http', '$location', '$window','$localStorage', '$stateParams','$state','mainService',
+    mainModule.controller('radController', [ '$scope', '$http', '$location', '$window','$localStorage', '$stateParams','$state','mainService',
         function($scope,  $http, $location, $window, $localStorage, $stateParams, $state, mainService) {
             $scope.cena = 0;
             $scope.casopis = [];
-            $scope.radovi = [];
-            $scope.pretplata = false;
+            $scope.rad = {};
             var init = function () {
 
-                console.log("init casopis")
+                console.log("init rad")
                 var id = $stateParams.id;
                 $scope.id = /[^/]*$/.exec(window.location.href)[0];
                 console.log($scope.id)
-                var myDataPromise = mainService.getCasopis($scope.id);
+                var myDataPromise = mainService.getRad($scope.id);
                     myDataPromise.then(function(result) {
-                         $scope.casopis = result;
-                         console.log($scope.casopis);
+                         $scope.rad = result;
+                         $scope.casopis = $scope.rad.casopis;
+                         console.log($scope.rad);
                          namestiCenu();
                 });
 
-                $http({
-                    method: 'GET',
-                    url: ROOT_PATH + "casopis/" + id + "/radovi",
-                    headers : mainService.createAuthorizationTokenHeader()
-                }).then(function(result){
-                    $scope.radovi = result.data;
-                    console.log($scope.radovi.length)
-                });
+
 
             }
             init();
 
             var namestiCenu = function(){
-                $scope.cena = $scope.casopis.cena;
+                if(!$scope.casopis.openAccess)
+                    $scope.cena = $scope.rad.cena;
+                else $scope.cena = 0;
                  $scope.$apply()
             }
-
-            $('input[type=radio][name=opcijeKupovine]').change(function() {
-
-                if (this.value == 'primerak') {
-                    $scope.cena = $scope.casopis.cena;
-                    $scope.pretplata = false;
-                }
-                else if (this.value == 'pretplata1g') {
-                    $scope.cena = $scope.casopis.cena*12;
-                    $scope.pretplata = true;
-                }
-
-                 console.log($scope.cena)
-                 $scope.$apply()
-            });
 
             $scope.kupi = function(){
                 if( mainService.getSub()==""){
                      mainService.goToState("login", true);
                 }
                 var payload = {
-                    "casopisId": $scope.id,
-                    "radId": null,
+                    "casopisId": $scope.casopis.id,
+                    "radId": $scope.id,
                     "username" : mainService.getSub(),
-                    "pretplata": $scope.pretplata,
+                    "pretplata": false,
                     "cena": $scope.cena
                 }
                 $http({
@@ -79,10 +59,12 @@
                     });
             }
 
-           $scope.naRad = function(id){
-            console.log(id)
-              $location.path("/rad/"+id)
-          }
+             $scope.naRad = function(id){
+               $stateParams.id = id;
+               $location.path("/casopis/"+id)
+               //$state.go( "core.casopis", { id: $stateParams.id} );
+            }
+
 
 
         }

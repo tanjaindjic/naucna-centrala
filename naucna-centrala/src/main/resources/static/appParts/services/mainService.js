@@ -44,6 +44,16 @@
                 });
             }
 
+            this.getRad = function(id){
+                return $http({
+                    method:"GET",
+                    url:ROOT_PATH + "rad/" + id,
+                    headers : this.createAuthorizationTokenHeader()
+                }).then(function(result){
+                    return result.data;
+                });
+            }
+
             this.getRadovi = function(){
                 var retval = [];
                 $http({

@@ -23,7 +23,7 @@ public class RadServiceImpl implements RadService {
 	@Override
 	public Rad getRad(Long id) {
 		// TODO Auto-generated method stub
-		return radRepository.getOne(id);
+		return radRepository.findById(id).get();
 	}
 
 	@Override

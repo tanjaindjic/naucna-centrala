@@ -1,6 +1,6 @@
 package master.naucnacentrala.model.korisnici;
 import master.naucnacentrala.model.Casopis;
-import master.naucnacentrala.model.Clanarina;
+import master.naucnacentrala.model.Pretplata;
 import master.naucnacentrala.model.Rad;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -44,7 +44,7 @@ public class Korisnik {
 
 	@Column
 	@OneToMany
-	private Collection<Clanarina> pretplaceniCasopisi;
+	private Collection<Pretplata> pretplaceniCasopisi;
 
 	@Column
 	@OneToMany
@@ -69,7 +69,7 @@ public class Korisnik {
 	
 	
 	public Korisnik(@NotNull String username, @NotNull String pass, @NotNull String ime, @NotNull String prezime,
-					@NotNull String grad, @NotNull String drzava, @NotNull String email, Collection<Clanarina> pretplaceniCasopisi, Collection<Casopis> placeniCasopisi,
+					@NotNull String grad, @NotNull String drzava, @NotNull String email, Collection<Pretplata> pretplaceniCasopisi, Collection<Casopis> placeniCasopisi,
 					Collection<Rad> placeniRadovi) {
 		super();
 		this.username = username;
@@ -164,11 +164,11 @@ public class Korisnik {
 		this.placeniRadovi = placeniRadovi;
 	}
 
-	public Collection<Clanarina> getPretplaceniCasopisi() {
+	public Collection<Pretplata> getPretplaceniCasopisi() {
 		return pretplaceniCasopisi;
 	}
 
-	public void setPretplaceniCasopisi(Collection<Clanarina> pretplaceniCasopisi) {
+	public void setPretplaceniCasopisi(Collection<Pretplata> pretplaceniCasopisi) {
 		this.pretplaceniCasopisi = pretplaceniCasopisi;
 	}
 

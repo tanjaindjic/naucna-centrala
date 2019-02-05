@@ -57,7 +57,11 @@ public class Casopis {
 
     @Column
     private Float cena;
-    
+
+    @Column
+    private String identifikacioniKod;
+
+
 
     public Casopis() {
     }
@@ -65,8 +69,8 @@ public class Casopis {
     
 
     public Casopis(@NotNull String naziv, @NotNull String issn, @NotNull Collection<NaucnaOblast> naucneOblasti,
-			Collection<Rad> radovi, @NotNull boolean isOpenAccess, Urednik glavniUrednik,
-			Collection<Korisnik> uredniciNaucnihOblasti, Collection<Korisnik> recenzenti, String urlSlike, Float cena) {
+                   Collection<Rad> radovi, @NotNull boolean isOpenAccess, Urednik glavniUrednik,
+                   Collection<Korisnik> uredniciNaucnihOblasti, Collection<Korisnik> recenzenti, String urlSlike, Float cena, String identifikacioniKod) {
 		super();
 		this.naziv = naziv;
 		this.issn = issn;
@@ -78,7 +82,8 @@ public class Casopis {
 		this.recenzenti = recenzenti;
 		this.urlSlike = urlSlike;
 		this.cena = cena;
-	}
+        this.identifikacioniKod = identifikacioniKod;
+    }
 
 
 
@@ -168,5 +173,13 @@ public class Casopis {
 
     public void setCena(Float cena) {
         this.cena = cena;
+    }
+
+    public String getIdentifikacioniKod() {
+        return identifikacioniKod;
+    }
+
+    public void setIdentifikacioniKod(String identifikacioniKod) {
+        this.identifikacioniKod = identifikacioniKod;
     }
 }

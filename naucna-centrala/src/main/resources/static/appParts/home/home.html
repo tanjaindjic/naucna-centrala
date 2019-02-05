@@ -1,14 +1,16 @@
 <div class="grid-container">
     <div ng-repeat="c in casopisi">
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" ng-src="{{c.urlSlike}}" alt="Slika casopisa">
+            <img  style="cursor:pointer;"  ng-click="kupi(c.id)" class="card-img-top" ng-src="{{c.urlSlike}}" alt="Slika casopisa">
             <div class="card-body">
                 <h5 class="card-title">{{c.naziv}}</h5>
                 <p ng-if="c.openAccess" class="card-text">Besplatan sadržaj</p>
                 <p ng-if="!c.openAccess" class="card-text">Cena: {{c.cena}}$</p>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Radovi</li>
+                <li class="list-group-item">
+                    <a style="cursor:pointer;" class="nav-link" ng-click="sviRadovi(c.id)">Radovi</a>
+                </li>
              </ul>
 
             <div class="card-body">

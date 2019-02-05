@@ -34,12 +34,18 @@ mainModule.config(function($stateProvider, $urlRouterProvider) {
         controller : 'noviRadController'
     })
     .state('core.casopis', {
-            url: 'casopis/{id}',
-            params: {
-                        'id' : undefined
-                    },
-            templateUrl : 'appParts/casopis/casopis.html',
-            controller : 'casopisController'
-        })
+        url: 'casopis/{id}',
+        params: {
+                    'id' : undefined
+                },
+        templateUrl : 'appParts/casopis/casopis.html',
+        controller : 'casopisController'
+    })
+
+    .state('core.rad', {
+        url: 'rad/{id}',
+        templateUrl : 'appParts/rad/rad.html',
+        controller : 'radController'
+    })
 
 });

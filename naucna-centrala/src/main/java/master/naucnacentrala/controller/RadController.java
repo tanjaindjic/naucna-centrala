@@ -197,12 +197,10 @@ public class RadController {
 		return radService.getAll();
 	}
 
-	@GetMapping("/id")
+	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Rad getRad(@PathVariable Long id) {
 		return radService.getRad(id);
 	}
-
-
 
 	@GetMapping("/downloadFile/{fileName:.+}")
 	public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {

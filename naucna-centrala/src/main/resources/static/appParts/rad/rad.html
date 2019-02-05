@@ -1,0 +1,28 @@
+
+<div class="container">
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-5">
+            <br><br>
+            <img class="img-fluid" ng-src="{{rad.urlSlike}}" alt="" style="width:100%; max-width:400px;">
+        </div>
+
+        <div class="col-md-4">
+            <br><br>
+            <h3 class="my-3"><b>{{rad.naslov}}</b></h3>
+            <p><b>Autor:</b> {{rad.autor.ime}} {{rad.autor.prezime}}</p>
+            <p><b>Apstrakt:</b> {{rad.apstrakt}}</p>
+            <p><b>Casopis:</b> <a ng-click="naRad(casopis.id)" style="color:#457580; cursor:pointer"><u>{{casopis.naziv}}</u></a></p>
+            <p><b>Cena:</b> {{cena}}$</p>
+            <button ng-if="!casopis.openAccess" type="button" class="btn btn-outline-info" ng-click="kupi()">KUPI</button>
+            <button ng-if="casopis.openAccess" type="button" class="btn btn-outline-info" ng-click="preuzmi()">PREUZMI</button>
+        </div>
+        <div class="col-md-2"></div>
+
+    </div>
+
+
+</div>
+<!-- /.container -->

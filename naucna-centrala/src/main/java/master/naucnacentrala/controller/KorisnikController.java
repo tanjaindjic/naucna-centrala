@@ -1,21 +1,20 @@
 package master.naucnacentrala.controller;
 
 import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletRequest;
 
 import master.naucnacentrala.model.Casopis;
 import master.naucnacentrala.model.Kupovina;
+import master.naucnacentrala.model.Pretplata;
 import master.naucnacentrala.model.Rad;
 import master.naucnacentrala.model.dto.*;
 import master.naucnacentrala.model.enums.Status;
 import master.naucnacentrala.repository.KupovinaRepository;
 import master.naucnacentrala.service.CasopisService;
+import master.naucnacentrala.service.HelpService;
 import master.naucnacentrala.service.RadService;
 import org.apache.http.ParseException;
 import org.camunda.bpm.engine.*;
@@ -99,7 +98,10 @@ public class KorisnikController {
 
 	@Autowired
 	private RadService radService;
-	
+
+	@Autowired
+	private HelpService helpService;
+
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
 
@@ -108,12 +110,6 @@ public class KorisnikController {
 
 	@Value("${camunda.loginProcessKey}")
 	private String loginProcessKey;
-
-    @Value("${naucnaCentrala.url}")
-    private String ncUrl;
-
-    @Value("${koncentrator.url}")
-    private String kpUrl;
 
 	private String tokenHeader;
 
@@ -134,43 +130,8 @@ public class KorisnikController {
 
 	@PostMapping(value = "/kupi")
 	public ResponseEntity kupi(@RequestBody KupovinaDTO kupovinaDTO){
-		System.out.println(kupovinaDTO.toString());
 
-		Korisnik k = korisnikService.getKorisnikByUsername(kupovinaDTO.getUsername());
-		Casopis c = null;
-		Rad r = null;
-		if(kupovinaDTO.getCasopisId()!=null)
-			c = casopisService.getCasopis(kupovinaDTO.getCasopisId());
-		if(kupovinaDTO.getRadId()!=null)
-			r = radService.getRad(kupovinaDTO.getRadId());
-		Kupovina kupovina = new Kupovina(k, c, r, Status.C, kupovinaDTO.getPretplata(), kupovinaDTO.getCena());
-		kupovina = kupovinaRepository.save(kupovina);
-
-        EntitetPlacanjaDTO nc = new EntitetPlacanjaDTO();
-        nc.setIdentifikacioniKod("tanjatanja");
-        nc.setNadredjeni(null);
-        EntitetPlacanjaDTO casopis = new EntitetPlacanjaDTO();
-        casopis.setIdentifikacioniKod("casopis001");
-        casopis.setNadredjeni(nc);
-
-        PaymentRequestDTO paymentRequestDTO = new PaymentRequestDTO();
-        paymentRequestDTO.setEntitetPlacanja(casopis);
-        paymentRequestDTO.setErrorURL(ncUrl + "error");
-        paymentRequestDTO.setFailedURL(ncUrl + "failed");
-        paymentRequestDTO.setSuccessURL(ncUrl + "success");
-        paymentRequestDTO.setIznos(kupovina.getCena());
-        paymentRequestDTO.setMaticnaTransakcija(kupovina.getId());
-        paymentRequestDTO.setPretplata(kupovinaDTO.getPretplata());
-		RestTemplate rt = new RestTemplate();
-        HttpsURLConnection.setDefaultHostnameVerifier((hostname, session)->true);
-		ResponseEntity<PaymentResponseDTO> res = rt.postForEntity(kpUrl, paymentRequestDTO, PaymentResponseDTO.class);
-		System.out.println(res.getStatusCode());
-        System.out.println(res.getBody());
-        System.out.println(res.getHeaders().getLocation());
-		return res;
-
-
-
+		return helpService.saljiNaKP(kupovinaDTO);
 
 	}
 	
