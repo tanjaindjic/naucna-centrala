@@ -89,12 +89,14 @@ public class SearchController {
         for(AdvancedQueryDTO dto : query){
             if(dto.getOperator().equals("I")) {
                 if (dto.getFraza()) {
-                    bqb.must(QueryBuilders.matchPhraseQuery("sadrzaj", dto.getUpit()));
+                    bqb.must(QueryBuilders.multiMatchQuery(dto.getUpit(), "naslov", "sadrzaj", "autor",
+                            "koautori", "apstrakt", "kljucniPojmovi", "casopis", "naucnaOblast").type("phrase"));
                 } else bqb.must(QueryBuilders.queryStringQuery(dto.getUpit()));
 
             } else if(dto.getOperator().equals("ILI"))   {
                 if (dto.getFraza()) {
-                    bqb.should(QueryBuilders.matchPhraseQuery("sadrzaj", dto.getUpit()));
+                    bqb.should(QueryBuilders.multiMatchQuery(dto.getUpit(), "naslov", "sadrzaj", "autor",
+                            "koautori", "apstrakt", "kljucniPojmovi", "casopis", "naucnaOblast").type("phrase"));
                 } else bqb.should(QueryBuilders.queryStringQuery(dto.getUpit()));
             }
         }

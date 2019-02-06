@@ -123,7 +123,6 @@
                         headers : mainService.createAuthorizationTokenHeader()
                     }).then(function successCallback(response) {
                         console.log(response.data)
-                        $scope.brPolja=0;
                     }, function errorCallback(response) {
                         console.log("grerska " + JSON.stringify(response))
 
