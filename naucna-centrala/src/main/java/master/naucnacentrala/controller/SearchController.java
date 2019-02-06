@@ -49,7 +49,14 @@ public class SearchController {
         System.out.println("Query: " + query);
         ArrayList<BasicQueryResponseDTO> retVal = new ArrayList<>();
         HighlightBuilder highlightBuilder = new HighlightBuilder()
-                .field("sadrzaj", 30)
+                .field("sadrzaj", 50)
+                .field("naslov", 50)
+                .field("autor", 50)
+                .field("koautori", 50)
+                .field("apstrakt", 50)
+                .field("kljucniPojmovi", 50)
+                .field("casopis", 50)
+                .field("naucnaOblast", 50)
                 .highlightQuery(QueryBuilders.queryStringQuery( query));
 
 
@@ -74,16 +81,15 @@ public class SearchController {
             for (Map.Entry<String, HighlightField> entry : highlightFields.entrySet()){
                 //ne moze da se smesti direktno HighlightField jer je vrednost tipa Text[] i pukne mi serializer
                 String value = Arrays.toString(entry.getValue().fragments());
-                System.out.println(value);
                 //moram substring jer vraca uglaste zagrade fragmenata na pocetku i kraju
-
-                System.out.println(value.substring(1, value.length()-1));
                 allHighlights+=value.substring(1, value.length()-1);
                 allHighlights+="...";
-                System.out.println(allHighlights);
+
             }
 
-
+            allHighlights = allHighlights.replace("<em>", "<b>");
+            allHighlights = allHighlights.replace("</em>", "</b>");
+            System.out.println(allHighlights);
             basicQueryResponseDTO.setHighlight(allHighlights);
             retVal.add(basicQueryResponseDTO);
         }

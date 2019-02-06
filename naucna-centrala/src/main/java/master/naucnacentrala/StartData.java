@@ -107,18 +107,19 @@ public class StartData {
 		urednik4.getNaucneOblasti().add(NaucnaOblast.UMETNOST);
 		urednikService.updateUrednik(urednik4);
 		
-		Rad rad = radService.addRad(new Rad("", "Rad1", autor, new ArrayList<>(),100F, "/assets/images/Article-Icon.png", "", "apstrakt", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis, "radradrad1"));
+		Rad rad = radService.addRad(new Rad("", "Rad1", autor, new ArrayList<>(),100F, "/assets/images/Article-Icon.png", "", "apstrakt", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "test1.pdf", "", casopis, "radradrad1"));
 		casopis.getRadovi().add(rad);
-		Rad rad2 = radService.addRad(new Rad("", "Rad2", autor2, new ArrayList<>(), 50F, "/assets/images/Article-Icon.png", "", "apstrakt2", NaucnaOblast.MEDICINA, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis, "radradrad2"));
+		Rad rad2 = radService.addRad(new Rad("", "Rad2", autor2, new ArrayList<>(), 50F, "/assets/images/Article-Icon.png", "", "apstrakt2", NaucnaOblast.MEDICINA, "test1.pdf", "", casopis, "radradrad2"));
 		casopis.getRadovi().add(rad2);
-		Rad rad3 = radService.addRad(new Rad("", "Rad3", autor, new ArrayList<>(),25F, "/assets/images/Article-Icon.png", "", "apstrakt3", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis, "radradrad3"));
-		casopis.getRadovi().add(rad3);
-		Rad rad4 = radService.addRad(new Rad("", "Rad4", autor2, new ArrayList<>(), 700F, "/assets/images/Article-Icon.png", "", "apstrakt4", NaucnaOblast.MEDICINA, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis, "radradrad4"));
+		Rad rad3 = radService.addRad(new Rad("", "ћирилица", autor, new ArrayList<>(),25F, "/assets/images/Article-Icon.png", "", "apstrakt3", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "test.pdf", "", casopis3, "radradrad3"));
+		casopis3.getRadovi().add(rad3);
+		Rad rad4 = radService.addRad(new Rad("", "Rad4", autor2, new ArrayList<>(), 700F, "/assets/images/Article-Icon.png", "", "apstrakt4", NaucnaOblast.MEDICINA, "test1.pdf", "", casopis, "radradrad4"));
 		casopis.getRadovi().add(rad4);
-		Rad rad5 = radService.addRad(new Rad("", "Rad5", autor2, new ArrayList<>(),200F, "/assets/images/Article-Icon.png", "", "apstrakt5", NaucnaOblast.MEDICINA, "\"C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf", "", casopis, "radradrad5"));
+		Rad rad5 = radService.addRad(new Rad("", "Rad5", autor2, new ArrayList<>(),200F, "/assets/images/Article-Icon.png", "", "apstrakt5", NaucnaOblast.MEDICINA, "test1.pdf", "", casopis, "radradrad5"));
 		casopis.getRadovi().add(rad5);
 		casopisService.updateCasopis(casopis);
-		
+		casopisService.updateCasopis(casopis3);
+
 		autor.getPlaceniRadovi().add(rad2);
 		korisnikService.updateKorisnik(autor);
 
@@ -130,7 +131,9 @@ public class StartData {
 		saveCamundaUser(urednik4);
 		saveCamundaUser(demo);
 
-		//setupTestData(rad);
+		setupTestData(rad3);
+		setupTestData(rad2);
+		setupTestData(rad);
 
     }
 
@@ -164,11 +167,12 @@ public class StartData {
 				.setSource(template, XContentType.JSON)
 				.get();
 		System.out.println(response.status());
-
+*/
+		ClassLoader classLoader = getClass().getClassLoader();
 		PDFTextStripper pdfStripper = null;
 		PDDocument pdDoc = null;
 		COSDocument cosDoc = null;
-		File file = new File("C:\\Users\\hrcak\\Desktop\\ES\\test1.pdf");
+		File file = new File(classLoader.getResource(rad.getAdresaNacrta()).getFile());
 		String parsedText = "";
 		try {
 			// PDFBox 2.0.8 require org.apache.pdfbox.io.RandomAccessRead
@@ -181,15 +185,15 @@ public class StartData {
 			pdfStripper.setStartPage(1);
 			pdfStripper.setEndPage(5);
 			parsedText = pdfStripper.getText(pdDoc);
-			System.out.println(parsedText);
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-*/
+/*
 /*		RestTemplate rt = new RestTemplate();
 		rt.put("http://localhost:9300/naucnirad", null);*/
-		RadIndexUnit riu = new RadIndexUnit(rad.getId(), rad.getNaslov(), "Латиница се проширила из Италије заједно са латинским језиком у области око Средоземног мора ширењем Римског царства", rad.getAutor().getIme() + " " + rad.getAutor().getPrezime(), rad.getListaKoautora(), rad.getKljucniPojmovi(), rad.getApstrakt(), rad.getNaucnaOblast(), rad.getCasopis().isOpenAccess(), rad.getCasopis().getNaziv(), rad.getCasopis().getId());
+		RadIndexUnit riu = new RadIndexUnit(rad.getId(), rad.getNaslov(), parsedText, rad.getAutor().getIme() + " " + rad.getAutor().getPrezime(), rad.getListaKoautora(), rad.getKljucniPojmovi(), rad.getApstrakt(), NaucnaOblast.normalized(rad.getNaucnaOblast()), rad.getCasopis().isOpenAccess(), rad.getCasopis().getNaziv(), rad.getCasopis().getId());
 		riu = riuRepository.save(riu);
 		System.out.println(riu.toString());
 

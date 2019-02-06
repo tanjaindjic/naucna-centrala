@@ -17,6 +17,10 @@ public class RadIndexUnit {
 	@Id
 	private Long id;
 
+
+	@Field(type = FieldType.Boolean, store = true)
+	private boolean openAccess;
+
 	@Field(type = FieldType.Text, store = true)
 	private String naslov;
 
@@ -36,11 +40,8 @@ public class RadIndexUnit {
 	private String apstrakt;
 	
 	@Field(type = FieldType.Text, store = true)
-	private NaucnaOblast naucnaOblast;
-	
-	@Field(type = FieldType.Boolean, store = true)
-	private boolean isOpenAccess;
-	
+	private String naucnaOblast;
+
 	@Field(type = FieldType.Text, store = true)
 	private String casopis;
 
@@ -58,13 +59,13 @@ public class RadIndexUnit {
 				", kljucniPojmovi='" + kljucniPojmovi + '\'' +
 				", apstrakt='" + apstrakt + '\'' +
 				", naucnaOblast=" + naucnaOblast +
-				", isOpenAccess=" + isOpenAccess +
+				", openAccess=" + openAccess +
 				", casopis='" + casopis + '\'' +
 				'}';
 	}
 
 	public RadIndexUnit(Long id, String naslov, String sadrzaj, String autor, String koautori,
-						String kljucniPojmovi, String apstrakt, NaucnaOblast naucnaOblast, boolean isOpenAccess, String casopis, Long casopisId) {
+						String kljucniPojmovi, String apstrakt, String naucnaOblast, boolean openAccess, String casopis, Long casopisId) {
 		super();
 		this.id = id;
 		this.naslov = naslov;
@@ -74,7 +75,7 @@ public class RadIndexUnit {
 		this.kljucniPojmovi = kljucniPojmovi;
 		this.apstrakt = apstrakt;
 		this.naucnaOblast = naucnaOblast;
-		this.isOpenAccess = isOpenAccess;
+		this.openAccess = openAccess;
 		this.casopis = casopis;
 		this.casopisId = casopisId;
 	}
@@ -131,20 +132,20 @@ public class RadIndexUnit {
 		this.apstrakt = apstrakt;
 	}
 
-	public NaucnaOblast getNaucnaOblast() {
+	public String getNaucnaOblast() {
 		return naucnaOblast;
 	}
 
-	public void setNaucnaOblast(NaucnaOblast naucnaOblast) {
+	public void setNaucnaOblast(String naucnaOblast) {
 		this.naucnaOblast = naucnaOblast;
 	}
 
 	public boolean isOpenAccess() {
-		return isOpenAccess;
+		return openAccess;
 	}
 
 	public void setOpenAccess(boolean isOpenAccess) {
-		this.isOpenAccess = isOpenAccess;
+		this.openAccess = isOpenAccess;
 	}
 
 	public String getCasopis() {

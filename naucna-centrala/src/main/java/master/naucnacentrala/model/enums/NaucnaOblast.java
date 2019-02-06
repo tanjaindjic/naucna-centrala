@@ -1,7 +1,7 @@
 package master.naucnacentrala.model.enums;
 
 public enum NaucnaOblast {
-    PRIRODNO_MATEMATICKE_NAUKE, TEHNICKO_TEHNOLOSKE_NAUKE, DRUSTVENO_HUMANISTICKE_NAUKE, MEDICINA, UMETNOST
+    PRIRODNO_MATEMATICKE_NAUKE, TEHNICKO_TEHNOLOSKE_NAUKE, DRUSTVENO_HUMANISTICKE_NAUKE, MEDICINA, UMETNOST;
 
     //Научне, односно стручне области у оквиру образовно-научног поља Природноматематичких
     //наука су:
@@ -64,4 +64,11 @@ public enum NaucnaOblast {
     //3. Музика и извођачке уметности;
     //4. Примењене уметности и дизајн.
 
+
+    public static String normalized(NaucnaOblast naucnaOblast) {
+        String retval = naucnaOblast.toString();
+        retval = retval.replace('_', ' ');
+        retval = retval.toLowerCase();
+        return retval;
+    }
 }

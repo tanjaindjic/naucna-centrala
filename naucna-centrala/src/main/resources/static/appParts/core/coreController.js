@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     mainModule.controller('coreController', ['$scope', '$http', '$window', '$localStorage', '$location', '$stateParams', 'mainService',
-        function ($scope, $http, $location, $window, $localStorage, $stateParams, mainService) {
+        function ($scope, $http, $window, $localStorage, $location, $stateParams, mainService) {
 
             $scope.results = [];
             var init = function () {
@@ -42,6 +42,16 @@
                 });
 
 
+            }
+
+             $scope.naCasopis = function(id){
+               $('#exampleModalLong').modal('hide');
+               $location.path("casopis/"+id)
+            }
+
+            $scope.naRad = function(id){
+               $('#exampleModalLong').modal('hide');
+               $location.path("/rad/"+id)
             }
 
             $scope.novirad = function(){

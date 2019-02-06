@@ -24,7 +24,7 @@
                     <form class="navbar-form">
                         <div class="form-group inner-addon right-addon has-feedback" style="display:inline;">
                             <div class="input-group">
-                                <input type="text" placeholder="Pretraga" id="zaPretragu" class="form-control">
+                                <input type="text" placeholder="Pretraga" id="zaPretragu" class="form-control" ng-keypress="($event.charCode==13)? trazi() : return">
                                 <button type="button" ng-click="trazi()" class="btn btn-primary">
                                     Traži
                                 </button>
@@ -57,16 +57,27 @@
                 </div>
                 <div class="modal-body" >
                     <table>
-                    <tr ng-repeat="res in results" ng-click="naRad(res.id)">
+                    <tr ng-repeat="res in results" ng-click="naRad(res.radIndexUnit.id)">
 
                        <td>
-                           <p><b>Rad:</b>{{res.radIndexUnit.naslov}}</p>
-                           <p><b>Casopis:</b>{{res.radIndexUnit.casopis}}</p>
-                            <p>{{res.highlight}}</p>
-                            <button class="btn btn-primary" ng-if="res.openAccess">PREUZMI</button>
-                            <button class="btn btn-primary" ng-if="!res.openAccess">KUPI</button>
+                           <p>
+                               <b>Rad:</b>
+                               <a style="cursor:pointer; color:#088aa8" ng-click="naRad(res.radIndexUnit.id)">
+                                   <i>"{{res.radIndexUnit.naslov}}"</i>
+                               </a>
+                           </p>
+                           <p>
+                               <b>Casopis:</b>
+                               <a style="cursor:pointer; color:#088aa8" ng-click="naCasopis(res.radIndexUnit.casopisId)">
+                                   <i>{{res.radIndexUnit.casopis}}</i>
+                               </a>
+                           </p>
+                            <p style="background:#ededed">{{res.highlight}}</p>
+                            <button class="btn btn-primary" ng-if="res.radIndexUnit.openAccess" ng-click="skini(res.radIndexUnit.id)">PREUZMI</button>
+                            <button class="btn btn-primary" ng-if="!res.radIndexUnit.openAccess" naRad(res.radIndexUnit.id)>KUPI</button>
+                           <hr>
                         </td>
-                        <hr>
+
 
                 </table>
                 </div>
