@@ -33,7 +33,7 @@
                     </form>
                 </li>
                 <li class="nav-item">
-                    <a style="cursor:pointer;" class="nav-link" href="#">Napredna pretraga</a>
+                    <a style="cursor:pointer;" class="nav-link" data-toggle="modal" data-target="#naprednaPretragaModal">Napredna pretraga</a>
                 </li>
                 <li id="prijava" class="nav-item">
                     <a style="cursor:pointer;" class="nav-link" ng-click="prijava()">Prijava</a>
@@ -67,7 +67,7 @@
                                </a>
                            </p>
                            <p>
-                               <b>Casopis:</b>
+                               <b>Časopis:</b>
                                <a style="cursor:pointer; color:#088aa8" ng-click="naCasopis(res.radIndexUnit.casopisId)">
                                    <i>{{res.radIndexUnit.casopis}}</i>
                                </a>
@@ -82,6 +82,41 @@
                 </table>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="naprednaPretragaModal" tabindex="-1" role="dialog" aria-labelledby="naprednaPretragaTitle" aria-hidden="true">
+        <div class="modal-dialog"  role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="naprednaPretragaTitle">Napredna pretraga</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div  class="modal-body" >
+                    <div id="forma" class="row" style="display:inline;">
+                        <div class="col-md-8 text" style="display:inline;">
+                            <div class="form-inline" style="display:inline;">
+                                <div class="form-group"style="display:inline;">
+                                    <input id="upit0" class="form-control" type="text" placeholder="Upit">
+                                </div>
+                                <div class="form-group" style="display:inline;">
+                                    <input id="checkbox0" type="checkbox" value="">
+                                    <label style="display:inline;">Fraza</label>
+                                    <button type="button" class="btn btn-primary" ng-click="dodajPolja()" style="display:inline;">Dodaj</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="naprednaPretraga()">Pretraga</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
                 </div>
             </div>

@@ -4,6 +4,7 @@
         function ($scope, $http, $window, $localStorage, $location, $stateParams, mainService) {
 
             $scope.results = [];
+            $scope.brPolja = 0;
             var init = function () {
                  console.log("init core")
                 if (mainService.getJwtToken()) {
@@ -42,6 +43,43 @@
                 });
 
 
+            }
+
+            $scope.dodajPolja = function(){
+                $scope.brPolja+=1;
+                var container = document.createElement('div');
+                container.id = "polje" + $scope.brPolja;
+
+                $("#forma").append(container);
+                var html = "<div class=\"col-md-8 text\" style=\"display:inline;\">"+
+                    "<div class=\"form-group\">"+
+                        "<select style=\"width:20px\" id=\"operator" + $scope.brPolja + "\" class=\"form-control choice-select\">"+
+                            "<option value=\"i\">I</option>"+
+                            "<option value=\"ili\">ILI</option>"+
+                        "</select>"+
+                    "</div>"+
+                    "<div class=\"form-inline\" style=\"display:inline;\">"+
+                        "<div class=\"form-group\"style=\"display:inline;\">"+
+                            "<input id=\"upit" + $scope.brPolja + "\" class=\"form-control\" type=\"text\" placeholder=\"Upit\">"+
+                        "</div>"+
+                        "<span>   </span>"+
+                        "<div class=\"form-group\" style=\"display:inline;\">"+
+                            "<input id=\"checkbox" + $scope.brPolja + "\" type=\"checkbox\" value=\"\">"+
+                            "<label style=\"display:inline;\">Fraza</label>"+
+                            "<span>   </span>"+
+                            "<button type=\"button\" class=\"btn btn-primary\" data-ng-click=\"obrisi($event)\" style=\"display:inline;\"> Obriši</button>"+
+                        "</div>"+
+                    "</div>"+
+                    "<div><p> </p>"+
+                    "</div>"+
+                "</div>";
+
+
+                $("#" + container.id).append(html);
+            }
+
+            $scope.obrisi = function(event){
+                alert(event.target.id);
             }
 
              $scope.naCasopis = function(id){
