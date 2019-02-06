@@ -1,6 +1,7 @@
 package master.naucnacentrala.controller;
 
 import com.google.gson.Gson;
+import master.naucnacentrala.model.dto.AdvancedQueryDTO;
 import master.naucnacentrala.model.dto.BasicQueryResponseDTO;
 import master.naucnacentrala.model.dto.HighlightDTO;
 import master.naucnacentrala.model.elastic.RadIndexUnit;
@@ -10,6 +11,8 @@ import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.client.Client;
+import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
@@ -43,22 +46,24 @@ public class SearchController {
     @Autowired
     private RadIndexingUnitRepository riuRepository;
 
+    private HighlightBuilder highlightBuilder = new HighlightBuilder()
+            .field("sadrzaj", 50)
+            .field("naslov", 50)
+            .field("autor", 50)
+            .field("koautori", 50)
+            .field("apstrakt", 50)
+            .field("kljucniPojmovi", 50)
+            .field("casopis", 50)
+            .field("naucnaOblast", 50);
+
     @PostMapping(value="/basicQuery", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity basicQuery(@RequestBody String query) throws ParseException {
 
         System.out.println("Query: " + query);
-        ArrayList<BasicQueryResponseDTO> retVal = new ArrayList<>();
-        HighlightBuilder highlightBuilder = new HighlightBuilder()
-                .field("sadrzaj", 50)
-                .field("naslov", 50)
-                .field("autor", 50)
-                .field("koautori", 50)
-                .field("apstrakt", 50)
-                .field("kljucniPojmovi", 50)
-                .field("casopis", 50)
-                .field("naucnaOblast", 50)
-                .highlightQuery(QueryBuilders.queryStringQuery( query));
 
+        ArrayList<BasicQueryResponseDTO> retVal = new ArrayList<>();
+
+        highlightBuilder.highlightQuery(QueryBuilders.queryStringQuery( query));
 
         SearchRequestBuilder request = nodeClient.prepareSearch("naucnirad")
                 .setTypes("pdf")
@@ -67,6 +72,49 @@ public class SearchController {
                 .highlighter(highlightBuilder);
         SearchResponse response = request.get();
         System.out.println(response.toString());
+        retVal = getResponse(response);
+
+        return new ResponseEntity(retVal, HttpStatus.OK);
+
+    }
+
+    @PostMapping(value="/advancedQuery", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity advancedQuery(@RequestBody ArrayList<AdvancedQueryDTO> query){
+        System.out.println(query.size());
+        System.out.println("primio u advanced search: " + query.toString());
+
+        ArrayList<BasicQueryResponseDTO> retVal = new ArrayList<>();
+
+        BoolQueryBuilder bqb = QueryBuilders.boolQuery();
+        for(AdvancedQueryDTO dto : query){
+            if(dto.getOperator().equals("I")) {
+                if (dto.getFraza()) {
+                    bqb.must(QueryBuilders.matchPhraseQuery("sadrzaj", dto.getUpit()));
+                } else bqb.must(QueryBuilders.queryStringQuery(dto.getUpit()));
+
+            } else if(dto.getOperator().equals("ILI"))   {
+                if (dto.getFraza()) {
+                    bqb.should(QueryBuilders.matchPhraseQuery("sadrzaj", dto.getUpit()));
+                } else bqb.should(QueryBuilders.queryStringQuery(dto.getUpit()));
+            }
+        }
+        highlightBuilder.highlightQuery(bqb);
+        SearchRequestBuilder request = nodeClient.prepareSearch("naucnirad")
+                .setTypes("pdf")
+                .setQuery(bqb)
+                .setSearchType(SearchType.DEFAULT)
+                .highlighter(highlightBuilder);
+        System.out.println(request);
+        SearchResponse response = request.get();
+        System.out.println(response.toString());
+        retVal = getResponse(response);
+
+
+        return new ResponseEntity(retVal, HttpStatus.OK);
+    }
+
+    private ArrayList<BasicQueryResponseDTO> getResponse(SearchResponse response){
+        ArrayList<BasicQueryResponseDTO> retVal = new ArrayList<>();
         for(SearchHit hit : response.getHits().getHits()) {
             Gson gson = new Gson();
             BasicQueryResponseDTO basicQueryResponseDTO = new BasicQueryResponseDTO();
@@ -93,8 +141,6 @@ public class SearchController {
             basicQueryResponseDTO.setHighlight(allHighlights);
             retVal.add(basicQueryResponseDTO);
         }
-
-        return new ResponseEntity(retVal, HttpStatus.OK);
-
+        return retVal;
     }
 }

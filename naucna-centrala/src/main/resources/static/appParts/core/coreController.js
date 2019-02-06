@@ -45,15 +45,23 @@
 
             }
 
+            $('#naprednaPretragaModal').on('hidden.bs.modal', function () {
+                $("#upit0").val("");
+                $('#dodatnaPolja').html('');
+                $scope.brPolja = 0;
+            })
+
+
             $scope.dodajPolja = function(){
                 $scope.brPolja+=1;
                 var container = document.createElement('div');
                 container.id = "polje" + $scope.brPolja;
 
-                $("#forma").append(container);
-                var html = "<div class=\"col-md-8 text\" style=\"display:inline;\">"+
+                $("#dodatnaPolja").append(container);
+                var html =
+                "<div id=\"polje" + $scope.brPolja +"\" class=\"col-md-8 text\" style=\"display:inline;\">"+
                     "<div class=\"form-group\">"+
-                        "<select style=\"width:20px\" id=\"operator" + $scope.brPolja + "\" class=\"form-control choice-select\">"+
+                        "<select style=\"width:80px\" id=\"operator" + $scope.brPolja + "\" class=\"form-control choice-select\">"+
                             "<option value=\"i\">I</option>"+
                             "<option value=\"ili\">ILI</option>"+
                         "</select>"+
@@ -67,10 +75,8 @@
                             "<input id=\"checkbox" + $scope.brPolja + "\" type=\"checkbox\" value=\"\">"+
                             "<label style=\"display:inline;\">Fraza</label>"+
                             "<span>   </span>"+
-                            "<button type=\"button\" class=\"btn btn-primary\" data-ng-click=\"obrisi($event)\" style=\"display:inline;\"> Obriši</button>"+
+                            "<button id=\"dugme" + $scope.brPolja + "\" type=\"button\" class=\"btn btn-primary\" ng-click=\"obrisi(this.id)\" style=\"display:inline;\"> Obriši</button>"+
                         "</div>"+
-                    "</div>"+
-                    "<div><p> </p>"+
                     "</div>"+
                 "</div>";
 
@@ -78,8 +84,50 @@
                 $("#" + container.id).append(html);
             }
 
-            $scope.obrisi = function(event){
-                alert(event.target.id);
+            $scope.obrisi = function(button_id){
+
+                    console.log(button_id);
+            }
+
+            $scope.naprednaPretraga = function(){
+                var upitArray = [];
+                var upit0 = $('#upit0').val();
+                var isFraza0 = $('#checkbox0').is(':checked');
+                var upit0 = {
+                    "operator": "I",
+                    "upit": upit0,
+                    "isFraza" : isFraza0
+
+                }
+                upitArray.push(upit0);
+
+
+                var dodatnaPolja = $("#dodatnaPolja > div").length;
+                console.log(dodatnaPolja);
+                var i;
+                if(dodatnaPolja>0){
+                    for(i=1; i<=dodatnaPolja; i++){
+                        var upit = {
+                            "operator": $( "#operator" + i + " option:selected" ).text(),
+                            "upit": $('#upit' + i).val(),
+                            "isFraza": $('#checkbox' + i).is(':checked')
+                        }
+                        upitArray.push(upit);
+                    }
+                }
+                console.log(upitArray)
+                $http({
+                        method: 'POST',
+                        url: ROOT_PATH + "search/advancedQuery",
+                        data: JSON.stringify(upitArray),
+                        headers : mainService.createAuthorizationTokenHeader()
+                    }).then(function successCallback(response) {
+                        console.log(response.data)
+                        $scope.brPolja=0;
+                    }, function errorCallback(response) {
+                        console.log("grerska " + JSON.stringify(response))
+
+                    });
             }
 
              $scope.naCasopis = function(id){

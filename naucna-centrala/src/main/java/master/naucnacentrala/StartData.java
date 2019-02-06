@@ -131,9 +131,9 @@ public class StartData {
 		saveCamundaUser(urednik4);
 		saveCamundaUser(demo);
 
-		setupTestData(rad3);
+	/*	setupTestData(rad3);
 		setupTestData(rad2);
-		setupTestData(rad);
+		setupTestData(rad);*/
 
     }
 
