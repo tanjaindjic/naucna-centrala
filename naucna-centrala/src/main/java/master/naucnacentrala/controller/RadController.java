@@ -158,7 +158,7 @@ public class RadController {
     @PostMapping(value = "/nacrt", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity uploadNacrt(@RequestParam("file") MultipartFile file) {
         String fileLocation = fileStorageService.storeFile(file, true);
-
+        System.out.println(fileLocation);
         return new ResponseEntity<String>(fileLocation, HttpStatus.OK);
     }
 
@@ -175,6 +175,7 @@ public class RadController {
         HashMap<String, Object> mapa = new HashMap<String, Object>();
         for(FieldIdValueDTO pair : registerDTO.getFormFields())
             mapa.put(pair.getFieldId(), pair.getFieldValue());
+
         Rad r = new Rad();
         r.setAdresaNacrta(mapa.get("rad").toString());
         r.setAdresaKonacnogRada("");
@@ -187,6 +188,15 @@ public class RadController {
         r.setNaslov(mapa.get("naslov").toString());
         r.setNaucnaOblast(NaucnaOblast.valueOf(mapa.get("naucnaOblast").toString()));
         radService.addRad(r);
+
+        runtimeService.setVariable(task.getProcessInstanceId(), "poruka",
+                "Rad \""+ mapa.get("naslov").toString()+"\" je uspešno prijavljen na recenziranje.");
+        List<String> mejlovi = new ArrayList<>();
+        mejlovi.add(r.getCasopis().getGlavniUrednik().getEmail());
+        mejlovi.add(r.getAutor().getEmail());
+        runtimeService.setVariable(task.getProcessInstanceId(), "mejlovi", mejlovi);
+
+
         formService.submitTaskForm(registerDTO.getTaskId(), mapa);
         System.out.println("Kreiran rad: " + r.toString());
 

@@ -33,7 +33,7 @@ public class EmailDelegate implements JavaDelegate{
             message.setFrom(new InternetAddress("pig.inc.ns@gmail.com"));
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(execution.getVariable("email").toString()));
-            message.setSubject("Registration details");
+            message.setSubject("Naučna centrala - obaveštenje");
             message.setText("Hello!" +
                     "\n\n Your account is ready!!");
 
