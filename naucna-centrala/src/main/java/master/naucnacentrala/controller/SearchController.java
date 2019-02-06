@@ -110,7 +110,7 @@ public class SearchController {
         SearchResponse response = request.get();
         System.out.println(response.toString());
         retVal = getResponse(response);
-
+        System.out.println(retVal.size());
 
         return new ResponseEntity(retVal, HttpStatus.OK);
     }

@@ -90,6 +90,8 @@
             }
 
             $scope.naprednaPretraga = function(){
+
+                $('#exampleModalLong').modal() ;
                 var upitArray = [];
                 var upit0 = $('#upit0').val();
                 var isFraza0 = $('#checkbox0').is(':checked');
@@ -122,7 +124,9 @@
                         data: JSON.stringify(upitArray),
                         headers : mainService.createAuthorizationTokenHeader()
                     }).then(function successCallback(response) {
-                        console.log(response.data)
+                        $scope.results = response.data;
+                        $('#naprednaPretragaModal').modal('hide');
+                        $('#exampleModalLong').modal('show');
                     }, function errorCallback(response) {
                         console.log("grerska " + JSON.stringify(response))
 
