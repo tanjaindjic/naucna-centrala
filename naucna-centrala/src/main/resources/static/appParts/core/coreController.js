@@ -1,10 +1,12 @@
 (function () {
     'use strict';
-    mainModule.controller('coreController', ['$scope', '$http', '$window', '$localStorage', '$location', '$stateParams', 'mainService',
-        function ($scope, $http, $window, $localStorage, $location, $stateParams, mainService) {
+    mainModule.controller('coreController', ['$sce', '$scope', '$http', '$window', '$localStorage', '$location', '$stateParams', 'mainService',
+        function ($sce, $scope, $http, $window, $localStorage, $location, $stateParams, mainService) {
 
             $scope.results = [];
             $scope.brPolja = 0;
+
+
             var init = function () {
                  console.log("init core")
                 if (mainService.getJwtToken()) {
@@ -60,17 +62,27 @@
                 $("#dodatnaPolja").append(container);
                 var html =
                 "<div id=\"polje" + $scope.brPolja +"\" class=\"col-md-8 text\" style=\"display:inline;\">"+
-                    "<div class=\"form-group\">"+
-                        "<select style=\"width:80px\" id=\"operator" + $scope.brPolja + "\" class=\"form-control choice-select\">"+
+                    "<div class=\"form-group\" >"+
+                        "<select style=\"width:80px\" id=\"operator" + $scope.brPolja + "\" class=\"form-control choice-select\" >"+
                             "<option value=\"i\">I</option>"+
                             "<option value=\"ili\">ILI</option>"+
                         "</select>"+
                     "</div>"+
+                    "<div class=\"form-group\" style=\"display:inline;\">"+
+                        "<select id=\"zona"+ $scope.brPolja+"\" class=\"form-control choice-select\" style=\"display:inline;width:150px\">"+
+                            "<option value=\"naslov\">Sva polja</option>"+
+                            "<option value=\"naslov\">Naslov</option>"+
+                            "<option value=\"sadrzaj\">Sadržaj</option>"+
+                            "<option value=\"autor\">Autori</option>"+
+                            "<option value=\"kljucniPojmovi\">Ključni pojmovi</option>"+
+                        "</select>"+
+                    "</div>"+
+                    "<span>      </span>"+
                     "<div class=\"form-inline\" style=\"display:inline;\">"+
                         "<div class=\"form-group\"style=\"display:inline;\">"+
                             "<input id=\"upit" + $scope.brPolja + "\" class=\"form-control\" type=\"text\" placeholder=\"Upit\">"+
                         "</div>"+
-                        "<span>   </span>"+
+                        "<span>      </span>"+
                         "<div class=\"form-group\" style=\"display:inline;\">"+
                             "<input id=\"checkbox" + $scope.brPolja + "\" type=\"checkbox\" value=\"\">"+
                             "<label style=\"display:inline;\">Fraza</label>"+
@@ -93,10 +105,12 @@
 
                 $('#exampleModalLong').modal() ;
                 var upitArray = [];
+                var zona0 =$( "#zona0 option:selected" ).val();
                 var upit0 = $('#upit0').val();
                 var isFraza0 = $('#checkbox0').is(':checked');
                 var upit0 = {
                     "operator": "I",
+                    "zona": zona0,
                     "upit": upit0,
                     "isFraza" : isFraza0
 
@@ -111,17 +125,28 @@
                     for(i=1; i<=dodatnaPolja; i++){
                         var upit = {
                             "operator": $( "#operator" + i + " option:selected" ).text(),
+                            "zona":  $( "#zona" + i + " option:selected" ).val(),
                             "upit": $('#upit' + i).val(),
                             "isFraza": $('#checkbox' + i).is(':checked')
                         }
                         upitArray.push(upit);
                     }
                 }
-                console.log(upitArray)
+                console.log(upitArray);
+
+                var oblasti = [];
+                $(".naucneOblasti:checkbox:checked").each(function(){
+                    oblasti.push($(this).val());
+                });
+                var payload = {
+                    "upiti": upitArray,
+                    "naucneOblasti": oblasti
+                }
+                console.log(payload)
                 $http({
                         method: 'POST',
                         url: ROOT_PATH + "search/advancedQuery",
-                        data: JSON.stringify(upitArray),
+                        data: JSON.stringify(payload),
                         headers : mainService.createAuthorizationTokenHeader()
                     }).then(function successCallback(response) {
                         $scope.results = response.data;
@@ -161,6 +186,12 @@
 
                  });
             }
+
+            $scope.trustDangerousSnippet = function(tekst){
+            return $sce.trustAsHtml(tekst);
+
+            }
         }
+
     ]);
 })();

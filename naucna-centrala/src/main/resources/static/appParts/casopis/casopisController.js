@@ -16,7 +16,8 @@
                     myDataPromise.then(function(result) {
                          $scope.casopis = result;
                          console.log($scope.casopis);
-                         namestiCenu();
+                         $scope.cena = $scope.casopis.cena;
+                         //namestiCenu();
                 });
 
                 $http({

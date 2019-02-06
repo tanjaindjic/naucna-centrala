@@ -4,12 +4,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdvancedQueryDTO {
     private String operator;
+    private String zona;
     private String upit;
     @JsonProperty
     private Boolean isFraza;
 
-    public AdvancedQueryDTO(String operator, String upit, Boolean isFraza) {
+    public AdvancedQueryDTO(String operator, String zona, String upit, Boolean isFraza) {
         this.operator = operator;
+        this.zona = zona;
         this.upit = upit;
         this.isFraza = isFraza;
     }
@@ -45,8 +47,17 @@ public class AdvancedQueryDTO {
     public String toString() {
         return "AdvancedQueryDTO{" +
                 "operator='" + operator + '\'' +
+                ", zona='" + zona + '\'' +
                 ", upit='" + upit + '\'' +
                 ", isFraza=" + isFraza +
                 '}';
+    }
+
+    public String getZona() {
+        return zona;
+    }
+
+    public void setZona(String zona) {
+        this.zona = zona;
     }
 }

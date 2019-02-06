@@ -16,7 +16,8 @@
                          $scope.rad = result;
                          $scope.casopis = $scope.rad.casopis;
                          console.log($scope.rad);
-                         namestiCenu();
+                          $scope.cena = $scope.rad.cena;
+                         //namestiCenu();
                 });
 
 

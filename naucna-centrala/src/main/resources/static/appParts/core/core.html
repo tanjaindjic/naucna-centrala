@@ -47,7 +47,7 @@
 
 
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-        <div class="modal-dialog"  role="document">
+        <div class="modal-dialog modal-lg"  role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Rezultati</h5>
@@ -72,7 +72,13 @@
                                    <i>{{res.radIndexUnit.casopis}}</i>
                                </a>
                            </p>
-                            <p style="background:#ededed">{{res.highlight}}</p>
+                           <p>
+                               <b>Autor:</b> {{res.radIndexUnit.autor}}
+                           </p>
+                           <p>
+                               <b>Naučna oblast:</b> {{res.radIndexUnit.naucnaOblast}}
+                           </p>
+                            <p style="background:#ededed" ng-bind-html="trustDangerousSnippet(res.highlight)">{{res.highlight}}</p>
                             <button class="btn btn-primary" ng-if="res.radIndexUnit.openAccess" ng-click="skini(res.radIndexUnit.id)">PREUZMI</button>
                             <button class="btn btn-primary" ng-if="!res.radIndexUnit.openAccess" naRad(res.radIndexUnit.id)>KUPI</button>
                            <hr>
@@ -90,7 +96,7 @@
 
 
     <div class="modal fade" id="naprednaPretragaModal" tabindex="-1" role="dialog" aria-labelledby="naprednaPretragaTitle" aria-hidden="true">
-        <div class="modal-dialog"  role="document">
+        <div class="modal-dialog  modal-lg"  role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="naprednaPretragaTitle">Napredna pretraga</h5>
@@ -102,16 +108,37 @@
                     <div id="forma" class="row" style="display:inline;">
                         <div class="col-md-8 text" style="display:inline;">
                             <div class="form-inline" style="display:inline;">
+                                <div class="form-group" style="display:inline;">
+                                    <select id="zona0" class="form-control choice-select" style="display:inline;">
+                                        <option value="sve">Sva polja</option>
+                                        <option value="naslov">Naslov</option>
+                                        <option value="sadrzaj">Sadržaj</option>
+                                        <option value="autori">Autori</option>
+                                        <option value="kljucniPojmovi">Ključni pojmovi</option>
+                                    </select>
+                                </div>
                                 <div class="form-group"style="display:inline;">
                                     <input id="upit0" class="form-control" type="text" placeholder="Upit">
                                 </div>
                                 <div class="form-group" style="display:inline;">
                                     <input id="checkbox0" type="checkbox" value="">
                                     <label style="display:inline;">Fraza</label>
-                                    <button type="button" class="btn btn-primary" ng-click="dodajPolja()" style="display:inline;">Dodaj</button>
+                                    <button type="button" class="btn btn-primary justify-content-end" ng-click="dodajPolja()" style="display:inline;">Dodaj</button>
                                 </div>
                             </div>
                         </div>
+                        <div>
+                            <fieldset>
+                                <br>
+                                <p>Naučne oblasti:</p>
+                                <label><input  class="naucneOblasti" type="checkbox" value="prirodno matematicke nauke">Prirodno matematičke nauke</label>
+                                <label><input  class="naucneOblasti"  type="checkbox" value="tehnicko tehnoloske nauke">Tehničko tehnološke nauke</label>
+                                <label><input  class="naucneOblasti"  type="checkbox" value="drustveno humanisticke nauke">Društveno hummanističke nauke</label>
+                                <label><input  class="naucneOblasti"  type="checkbox" value="medicina">Medicina</label>
+                                <label><input  class="naucneOblasti"  type="checkbox" value="umetnost">Umetnost</label>
+                            </fieldset>
+                        </div>
+
                         <span id="dodatnaPolja"></span>
                     </div>
 

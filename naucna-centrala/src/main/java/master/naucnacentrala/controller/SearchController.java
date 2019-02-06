@@ -3,6 +3,7 @@ package master.naucnacentrala.controller;
 import com.google.gson.Gson;
 import master.naucnacentrala.model.dto.AdvancedQueryDTO;
 import master.naucnacentrala.model.dto.BasicQueryResponseDTO;
+import master.naucnacentrala.model.dto.ComplexQueryDTO;
 import master.naucnacentrala.model.dto.HighlightDTO;
 import master.naucnacentrala.model.elastic.RadIndexUnit;
 import master.naucnacentrala.repository.RadIndexingUnitRepository;
@@ -79,27 +80,35 @@ public class SearchController {
     }
 
     @PostMapping(value="/advancedQuery", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity advancedQuery(@RequestBody ArrayList<AdvancedQueryDTO> query){
-        System.out.println(query.size());
-        System.out.println("primio u advanced search: " + query.toString());
+    public ResponseEntity advancedQuery(@RequestBody ComplexQueryDTO queryDTO){
 
+        System.out.println("primio u advanced search: " + queryDTO.toString());
+
+        List<AdvancedQueryDTO> query = queryDTO.getUpiti();
         ArrayList<BasicQueryResponseDTO> retVal = new ArrayList<>();
 
         BoolQueryBuilder bqb = QueryBuilders.boolQuery();
+        if(!queryDTO.getNaucneOblasti().isEmpty())
+            bqb.must(QueryBuilders.termsQuery("naucnaOblast", queryDTO.getNaucneOblasti()));
         for(AdvancedQueryDTO dto : query){
             if(dto.getOperator().equals("I")) {
                 if (dto.getFraza()) {
-                    bqb.must(QueryBuilders.multiMatchQuery(dto.getUpit(), "naslov", "sadrzaj", "autor",
+                    if(dto.getZona().equals("sve"))
+                        bqb.must(QueryBuilders.multiMatchQuery(dto.getUpit(), "naslov", "sadrzaj", "autor",
                             "koautori", "apstrakt", "kljucniPojmovi", "casopis", "naucnaOblast").type("phrase"));
+                    else bqb.must(QueryBuilders.matchPhraseQuery(dto.getZona().toLowerCase(), dto.getUpit()));
                 } else bqb.must(QueryBuilders.queryStringQuery(dto.getUpit()));
 
             } else if(dto.getOperator().equals("ILI"))   {
                 if (dto.getFraza()) {
-                    bqb.should(QueryBuilders.multiMatchQuery(dto.getUpit(), "naslov", "sadrzaj", "autor",
+                    if(dto.getZona().equals("sve"))
+                        bqb.should(QueryBuilders.multiMatchQuery(dto.getUpit(), "naslov", "sadrzaj", "autor",
                             "koautori", "apstrakt", "kljucniPojmovi", "casopis", "naucnaOblast").type("phrase"));
+                    else bqb.should(QueryBuilders.matchPhraseQuery(dto.getZona().toLowerCase(), dto.getUpit()));
                 } else bqb.should(QueryBuilders.queryStringQuery(dto.getUpit()));
             }
         }
+
         highlightBuilder.highlightQuery(bqb);
         SearchRequestBuilder request = nodeClient.prepareSearch("naucnirad")
                 .setTypes("pdf")
