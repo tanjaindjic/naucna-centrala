@@ -127,13 +127,6 @@ public class KorisnikController {
 	public Korisnik getKorisnik(@PathVariable Long id) {
 		return korisnikService.getKorisnik(id);
 	}
-
-	@PostMapping(value = "/kupi")
-	public ResponseEntity kupi(@RequestBody KupovinaDTO kupovinaDTO){
-
-		return helpService.saljiNaKP(kupovinaDTO);
-
-	}
 	
 	@GetMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getRegistrationFOrm() throws JSONException, UnsupportedOperationException, IOException, org.apache.tomcat.util.json.ParseException {

@@ -45,7 +45,7 @@
                 }
                 $http({
                         method: 'POST',
-                        url: ROOT_PATH + "korisnik/kupi",
+                        url: ROOT_PATH + "kupovina/kupi",
                         data: JSON.stringify(payload)
                     }).then(function successCallback(response) {
                         console.log(response.headers('Location'))
