@@ -145,9 +145,9 @@ public class HelpServiceImpl implements HelpService {
             paymentRequestDTO.setEntitetPlacanja(rad);
         }else paymentRequestDTO.setEntitetPlacanja(casopis);
 
-        paymentRequestDTO.setErrorURL(ncUrl + "error");
-        paymentRequestDTO.setFailedURL(ncUrl + "failed");
-        paymentRequestDTO.setSuccessURL(ncUrl + "success");
+    paymentRequestDTO.setErrorURL(ncUrl + "#!/paymentError");
+        paymentRequestDTO.setFailedURL(ncUrl + "#!/paymentFailed");
+        paymentRequestDTO.setSuccessURL(ncUrl + "#!/paymentSuccess");
         paymentRequestDTO.setIznos(kupovina.getCena());
         paymentRequestDTO.setMaticnaTransakcija(kupovina.getId());
         paymentRequestDTO.setPretplata(kupovinaDTO.getPretplata());
