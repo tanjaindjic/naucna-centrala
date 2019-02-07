@@ -25,13 +25,17 @@ public class Kupovina {
     @ManyToOne
     private Rad rad;
 
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Status status;
 
+    @NotNull
     private Boolean pretplata;
 
+    @NotNull
     private Float cena;
 
-    public Kupovina(@NotNull Korisnik k,Casopis casopis, Rad rad, Status status, Boolean pretplata, Float cena) {
+    public Kupovina(@NotNull Korisnik k,Casopis casopis, Rad rad, @NotNull Status status, @NotNull Boolean pretplata, @NotNull Float cena) {
         this.k = k;
         this.casopis = casopis;
         this.rad = rad;

@@ -55,6 +55,7 @@
             $scope.kupi = function(){
                 if( mainService.getSub()==""){
                      mainService.goToState("login", true);
+                     return;
                 }
                 var payload = {
                     "casopisId": $scope.id,
@@ -72,10 +73,10 @@
                          if(response.headers('Location')){
                             $window.location.href = response.headers('Location');
                         }else{
-                            alert(response.data.poruka);
+                            console.log(response.data.poruka);
                         }
                     }, function errorCallback(response) {
-                       alert("fail")
+                       console.log("fail")
 
                     });
             }

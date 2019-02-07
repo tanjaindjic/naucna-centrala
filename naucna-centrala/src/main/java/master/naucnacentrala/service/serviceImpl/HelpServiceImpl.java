@@ -55,6 +55,8 @@ public class HelpServiceImpl implements HelpService {
     public ResponseEntity saljiNaKP(KupovinaDTO kupovinaDTO) {
         System.out.println(kupovinaDTO.toString());
         Korisnik k = korisnikService.getKorisnikByUsername(kupovinaDTO.getUsername());
+        if(k==null)
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         Casopis c;
         Rad r = null;
         Boolean isRad = false;
