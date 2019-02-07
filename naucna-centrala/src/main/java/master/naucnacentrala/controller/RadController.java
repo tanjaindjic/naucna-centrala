@@ -212,10 +212,13 @@ public class RadController {
 		return radService.getRad(id);
 	}
 
-	@GetMapping("/downloadFile/{fileName:.+}")
-	public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
+	@GetMapping(value = "/download/{id}")
+	public ResponseEntity<Resource> downloadFile(@PathVariable Long id, HttpServletRequest request) {
 		// Load file as Resource
-		Resource resource = fileStorageService.loadFileAsResource(fileName);
+        Rad r = radService.getRad(id);
+        if(r==null)
+                return ResponseEntity.badRequest().body(null);
+		Resource resource = fileStorageService.loadFileAsResource(r.getAdresaKonacnogRada());
 
 		// Try to determine file's content type
 		String contentType = null;

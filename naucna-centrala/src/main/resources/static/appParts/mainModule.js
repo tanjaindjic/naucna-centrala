@@ -59,9 +59,14 @@ mainModule.config(function($stateProvider, $urlRouterProvider) {
         controller : 'paymentSuccessController'
     })
     .state('paymentError', {
-            url: '/paymentError',
-            templateUrl : 'appParts/paymentError/paymentError.html',
-            controller : 'paymentErrorController'
-        })
+        url: '/paymentError',
+        templateUrl : 'appParts/paymentError/paymentError.html',
+        controller : 'paymentErrorController'
+    })
+    .state('core.profil', {
+        url: 'profil',
+        templateUrl : 'appParts/profil/profil.html',
+        controller : 'profilController'
+    })
 
 });

@@ -47,6 +47,10 @@
 
             }
 
+            $scope.profil = function(){
+                mainService.goToState("core.profil", false);
+            }
+
             $('#naprednaPretragaModal').on('hidden.bs.modal', function () {
                 $("#upit0").val("");
                 $('#dodatnaPolja').html('');

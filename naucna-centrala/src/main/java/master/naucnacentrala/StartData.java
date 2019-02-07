@@ -107,15 +107,15 @@ public class StartData {
 		urednik4.getNaucneOblasti().add(NaucnaOblast.UMETNOST);
 		urednikService.updateUrednik(urednik4);
 		
-		Rad rad = radService.addRad(new Rad("", "Rad1", autor, new ArrayList<>(),100F, "/assets/images/Article-Icon.png", "", "apstrakt", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "test1.pdf", "", casopis, "radradrad1"));
+		Rad rad = radService.addRad(new Rad("", "Rad1", autor, new ArrayList<>(),100F, "/assets/images/Article-Icon.png", "", "apstrakt", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "test1.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test1.pdf", casopis, "radradrad1"));
 		casopis.getRadovi().add(rad);
-		Rad rad2 = radService.addRad(new Rad("", "Rad2", autor2, new ArrayList<>(), 50F, "/assets/images/Article-Icon.png", "", "apstrakt2", NaucnaOblast.MEDICINA, "test1.pdf", "", casopis, "radradrad2"));
+		Rad rad2 = radService.addRad(new Rad("", "Rad2", autor2, new ArrayList<>(), 50F, "/assets/images/Article-Icon.png", "", "apstrakt2", NaucnaOblast.MEDICINA, "test1.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test1.pdf", casopis, "radradrad2"));
 		casopis.getRadovi().add(rad2);
-		Rad rad3 = radService.addRad(new Rad("", "ћирилица", autor, new ArrayList<>(),25F, "/assets/images/Article-Icon.png", "", "apstrakt3", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "test.pdf", "", casopis3, "radradrad3"));
+		Rad rad3 = radService.addRad(new Rad("", "ћирилица", autor, new ArrayList<>(),25F, "/assets/images/Article-Icon.png", "", "apstrakt3", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test.pdf", "test1.pdf", casopis3, "radradrad3"));
 		casopis3.getRadovi().add(rad3);
-		Rad rad4 = radService.addRad(new Rad("", "Rad4", autor2, new ArrayList<>(), 700F, "/assets/images/Article-Icon.png", "", "apstrakt4", NaucnaOblast.MEDICINA, "test1.pdf", "", casopis, "radradrad4"));
+		Rad rad4 = radService.addRad(new Rad("", "Rad4", autor2, new ArrayList<>(), 700F, "/assets/images/Article-Icon.png", "", "apstrakt4", NaucnaOblast.MEDICINA, "test1.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test1.pdf", casopis, "radradrad4"));
 		casopis.getRadovi().add(rad4);
-		Rad rad5 = radService.addRad(new Rad("", "Rad5", autor2, new ArrayList<>(),200F, "/assets/images/Article-Icon.png", "", "apstrakt5", NaucnaOblast.MEDICINA, "test1.pdf", "", casopis, "radradrad5"));
+		Rad rad5 = radService.addRad(new Rad("", "Rad5", autor2, new ArrayList<>(),200F, "/assets/images/Article-Icon.png", "", "apstrakt5", NaucnaOblast.MEDICINA, "test1.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test1.pdf", casopis, "radradrad5"));
 		casopis.getRadovi().add(rad5);
 		casopisService.updateCasopis(casopis);
 		casopisService.updateCasopis(casopis3);

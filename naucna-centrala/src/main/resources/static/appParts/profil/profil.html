@@ -1,0 +1,138 @@
+<div>
+
+    <div class="row profile">
+        <div class="col-md-3">
+            <div class="profile-sidebar">
+                <!-- SIDEBAR USERPIC -->
+                <div class="profile-userpic">
+                    <img src="/assets/images/scientist.png" class="img-responsive" alt="" style="display: block; margin-left: auto;margin-right: auto;width: 40%;">
+                </div>
+                <!-- END SIDEBAR USERPIC -->
+                <!-- SIDEBAR USER TITLE -->
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name">
+                        <p><b>{{korisnik.ime | uppercase}} {{korisnik.prezime | uppercase}}</b></p>
+                    </div>
+                    <div class="profile-usertitle-name">
+                        <p><b>Email:</b> {{korisnik.email}}</p>
+                    </div>
+                    <div class="profile-usertitle-name">
+                        <p><b>Adresa: </b>{{korisnik.grad}}, {{korisnik.drzava}}</p>
+                    </div>
+                </div>
+                <!-- END SIDEBAR USER TITLE -->
+                <!-- SIDEBAR BUTTONS -->
+                <div class="profile-userbuttons">
+                    <button id="dugmeRadovi" type="button" class="btn-primary btn-sm" ng-click="radovi()">Radovi</button>
+                    <button id="dugmeCasopisi" type="button" class="btn-primary btn-sm" ng-click="casopisi()">Časopisi</button>
+                    <button id="dugmePretplate" type="button" class="btn-primary btn-sm" ng-click="pretplate()">Pretplate</button>
+                </div>
+                <!-- END SIDEBAR BUTTONS -->
+            </div>
+        </div>
+            <div class="col-md-9">
+                <div class="profile-content">
+                    <div id="prikaziRadove" style="display:none">
+                        <h3 class="nav-link">Plaćeni radovi:</h3>
+                        <table>
+                            <tr ng-repeat="res in korisnik.placeniRadovi">
+                                <td>
+                                    <img ng-src="{{res.urlSlike}}" class="img-responsive" alt="" style="display: block; margin-left: auto;margin-right: auto;width: 40%;">
+                                </td>
+
+                                <td>
+                                    <p>
+                                        <b>Rad:</b>
+                                        <a style="cursor:pointer; color:#088aa8" ng-click="naRad(res.id)">
+                                            <i>{{res.naslov}}</i>
+                                        </a>
+                                    </p>
+                                    <p>
+                                        <b>Časopis:</b>
+                                        <a style="cursor:pointer; color:#088aa8" ng-click="naCasopis(res.casopis.id)">
+                                            <i>{{res.casopis.naziv}}</i>
+                                        </a>
+                                    </p>
+                                    <p>
+                                        <b>Autor:</b> {{res.autor.ime}} {{res.autor.prezime}}
+                                    </p>
+                                    <p>
+                                        <b>Naučna oblast:</b> {{res.naucnaOblast.replace('_', ' ') | lowercase}}
+                                    </p>
+                                    <p>
+                                        <b>DOI:</b> {{res.issn}}
+                                    </p>
+                                    <button class="btn btn-primary btn-sm" ng-click="skiniRad(res.id)">PREUZMI</button>
+                                    <hr>
+                                </td>
+                        </table>
+                    </div>
+                    <div id="prikaziCasopise" style="display:none">
+                        <h3 class="nav-link">Plaćeni časopisi:</h3>
+                        <table>
+                            <tr ng-repeat="res in korisnik.placeniCasopisi">
+
+                                <td>
+                                    <p>
+                                        <b>Naziv:</b>
+                                        <a style="cursor:pointer; color:#088aa8" ng-click="naCasopis(res.id)">
+                                            <i>"{{res.naziv}}"</i>
+                                        </a>
+                                    </p>
+                                    <p>
+                                        <b>Urednik:</b>
+                                        {{res.urednik.ime}} {{res.urednik.prezime}}
+
+                                    </p>
+                                    <p>
+                                        <b>Naučne oblasti:</b> {{res.naucneOblasti.replace('_', ' ') | lowercase }}
+                                    </p>
+                                    <p>
+                                        <b>ISSN:</b> {{res.radIndexUnit.issn}}
+                                    </p>
+                                    <button class="btn btn-primary btn-sm" ng-click="skiniCasopis(res.id)">PREUZMI</button>
+                                    <hr>
+                                </td>
+
+
+                        </table>
+
+                    </div>
+                    <div id="prikaziPretplate" style="display:none">
+                    <h3 class="nav-link">Pretplate na časopise:</h3>
+                    <table>
+                        <tr ng-repeat="res in korisnik.pretplaceniCasopisi">
+
+                            <td>
+                                <p>
+                                    <b>Naziv:</b>
+                                    <a style="cursor:pointer; color:#088aa8" ng-click="naCasopis(res.id)">
+                                        <i>"{{res.casopis.naziv}}"</i>
+                                    </a>
+                                </p>
+                                <p><b>Važi do:</b> {{res.vaziDo}}</p>
+                                <p>
+                                    <b>Urednik:</b>
+                                    {{res.urednik.ime}} {{res.urednik.prezime}}
+
+                                </p>
+                                <p>
+                                    <b>Naučne oblasti:</b> {{res.naucneOblasti.replace('_', ' ') | lowercase}}
+                                </p>
+                                <p>
+                                    <b>ISSN:</b> {{res.issn}}
+                                </p>
+
+                                <button class="btn btn-primary btn-sm" ng-click="skiniCasopis(res.id)">PREUZMI</button>
+                                <hr>
+                            </td>
+
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <iframe id="my_iframe" style="display:none;"></iframe>
+</div>

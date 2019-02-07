@@ -52,7 +52,7 @@ public class KorisnikServiceImpl implements KorisnikService{
 	@Override
 	public Korisnik getKorisnik(Long id) {
 		// TODO Auto-generated method stub
-		return korisnikRepository.getOne(id);
+		return korisnikRepository.findById(id).get();
 	}
 	
 

@@ -76,6 +76,18 @@
                 });
             }
 
+            this.getKorisnik = function(){
+                console.log(this.getSub())
+                $http({
+                    method: 'GET',
+                    url: ROOT_PATH + "korisnik/" + this.getSub(),
+                    headers : this.createAuthorizationTokenHeader()
+                }).then(function(result){
+                    console.log(result)
+                    return result;
+                });
+            }
+
             this.getRadoviCasopisa = function(id){
                 var retval = [];
                 $http({

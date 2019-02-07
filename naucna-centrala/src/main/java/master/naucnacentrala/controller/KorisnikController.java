@@ -123,9 +123,11 @@ public class KorisnikController {
 		return korisnikService.getAll();
 	}
 
-	@GetMapping("/{id}")
-	public Korisnik getKorisnik(@PathVariable Long id) {
-		return korisnikService.getKorisnik(id);
+	@GetMapping(value = "/{username}")
+	public Korisnik getKorisnik(@PathVariable String username) {
+	    System.out.println("usao u get korisnika: " + username);
+	    System.out.println("Vracam: " + korisnikService.getKorisnikByUsername(username));
+		return korisnikService.getKorisnikByUsername(username);
 	}
 	
 	@GetMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
