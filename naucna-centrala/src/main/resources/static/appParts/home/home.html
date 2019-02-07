@@ -14,7 +14,7 @@
              </ul>
 
             <div class="card-body">
-                <button type="button" class="btn btn-outline-info card-link"  ng-click="kupi(c.id)" ng-if="!c.openAccess">KUPI</button>
+                <button type="button" class="btn btn-outline-info card-link"  ng-click="kupi(c.id)" ng-if="nijeKupljen(c.openAccess, c.id)">KUPI</button>
                 <button type="button" class="btn btn-outline-info card-link"  ng-if="c.openAccess" >PREUZMI</button>
             </div>
         </div>

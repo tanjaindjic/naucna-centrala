@@ -52,28 +52,32 @@ public class HelpServiceImpl implements HelpService {
 
 
     @Override
-    public ResponseEntity saljiNaKP(KupovinaDTO kupovinaDTO) {
+    public ResponseEntity<String> saljiNaKP(KupovinaDTO kupovinaDTO) {
         System.out.println(kupovinaDTO.toString());
         Korisnik k = korisnikService.getKorisnikByUsername(kupovinaDTO.getUsername());
         if(k==null)
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity("Kupac mora biti ulogovan.",HttpStatus.BAD_REQUEST);
         Casopis c;
         Rad r = null;
         Boolean isRad = false;
 
         if(kupovinaDTO.getCasopisId()!=null)
             c = casopisService.getCasopis(kupovinaDTO.getCasopisId());
-        else return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        else return new ResponseEntity("Greska u pronalazenju casopisa.", HttpStatus.BAD_REQUEST);
 
         if(c==null)
-             return new ResponseEntity(HttpStatus.BAD_REQUEST);
+             return new ResponseEntity("Greska u pronalazenju casopisa.", HttpStatus.BAD_REQUEST);
 
         if(kupovinaDTO.getRadId()!=null) {
             r = radService.getRad(kupovinaDTO.getRadId());
             isRad = true;
         }
         if(isRad && r==null)
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity("Greska u pronalazenju rada.", HttpStatus.BAD_REQUEST);
+
+
+
+
 
         Kupovina kupovina = new Kupovina(k, c, r, Status.C, kupovinaDTO.getPretplata(), kupovinaDTO.getCena());
         kupovina = kupovinaRepository.save(kupovina);

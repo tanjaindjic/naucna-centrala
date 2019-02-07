@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.http.client.ClientProtocolException;
 
@@ -20,5 +21,7 @@ public interface KorisnikService {
 	public Collection<Korisnik> getAll();
 	public Boolean verifyOnCamunda(JwtAuthenticationRequest authenticationRequest) throws UnsupportedEncodingException, ClientProtocolException, IOException, JSONException;
 	void createUser(String username, String pass, String email, String ime, String prezime, String drzava, String grad);
-
+    List<Long> getPlaceniCasopisi(String username);
+	List<Long> getPretplate(String username);
+	List<Long> getPlaceniRadovi(String username);
 }

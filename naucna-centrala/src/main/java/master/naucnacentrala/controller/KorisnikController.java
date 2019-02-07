@@ -5,6 +5,7 @@ import java.util.*;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.Path;
 
 import master.naucnacentrala.model.Casopis;
 import master.naucnacentrala.model.Kupovina;
@@ -123,11 +124,26 @@ public class KorisnikController {
 		return korisnikService.getAll();
 	}
 
+	@GetMapping(value = "/{username}/placeniCasopisi", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Long> getPlaceniCasopisi(@PathVariable String username){
+		return korisnikService.getPlaceniCasopisi(username);
+	}
+
+	@GetMapping(value = "/{username}/pretplate", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Long> getPretplate(@PathVariable String username){
+		return korisnikService.getPretplate(username);
+	}
+	@GetMapping(value = "/{username}/placeniRadovi", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Long> getPlaceniRadovi(@PathVariable String username){
+		return korisnikService.getPlaceniRadovi(username);
+	}
+
+
 	@GetMapping(value = "/{username}")
-	public Korisnik getKorisnik(@PathVariable String username) {
+	public KorisnikDTO getKorisnik(@PathVariable String username) {
 	    System.out.println("usao u get korisnika: " + username);
 	    System.out.println("Vracam: " + korisnikService.getKorisnikByUsername(username));
-		return korisnikService.getKorisnikByUsername(username);
+		return new KorisnikDTO(korisnikService.getKorisnikByUsername(username));
 	}
 	
 	@GetMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)

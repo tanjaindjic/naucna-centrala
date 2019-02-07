@@ -3,7 +3,12 @@ package master.naucnacentrala.service.serviceImpl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
+import master.naucnacentrala.model.Casopis;
+import master.naucnacentrala.model.Pretplata;
+import master.naucnacentrala.model.Rad;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -100,6 +105,31 @@ public class KorisnikServiceImpl implements KorisnikService{
 	@Override
 	public void createUser(String username, String pass, String email, String ime, String prezime, String drzava, String grad) {
 		korisnikRepository.save(new Korisnik(username, bcrypt.encode(pass), ime, prezime, grad, drzava, email, new ArrayList<>(), new ArrayList<>(), new ArrayList<>() ));
+	}
+
+	@Override
+	public List<Long> getPlaceniCasopisi(String username) {
+		Korisnik k = korisnikRepository.findByUsernameIgnoreCase(username);
+		List<Long> ids = new ArrayList<>();
+		ids.addAll(k.getPlaceniCasopisi().stream().map(Casopis::getId).collect(Collectors.toList()));
+		return ids;
+	}
+
+	@Override
+	public List<Long> getPretplate(String username) {
+		Korisnik k = korisnikRepository.findByUsernameIgnoreCase(username);
+		List<Long> ids = new ArrayList<>();
+		for(Pretplata p : k.getPretplaceniCasopisi())
+			ids.add(p.getCasopis().getId());
+		return ids;
+	}
+
+	@Override
+	public List<Long> getPlaceniRadovi(String username) {
+		Korisnik k = korisnikRepository.findByUsernameIgnoreCase(username);
+		List<Long> ids = new ArrayList<>();
+		ids.addAll(k.getPlaceniRadovi().stream().map(Rad::getId).collect(Collectors.toList()));
+		return ids;
 	}
 
 }

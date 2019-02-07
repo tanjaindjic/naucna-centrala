@@ -33,6 +33,7 @@ public class CasopisController {
 		return casopisService.getAll();
 	}
 
+
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Casopis getCasopis(@PathVariable Long id) {
 		return casopisService.getCasopis(id);
