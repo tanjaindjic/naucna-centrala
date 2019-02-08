@@ -58,7 +58,7 @@
 
             $scope.kupi = function(){
                 if( mainService.getSub()==""){
-                     mainService.goToState("login", true);
+                     mainService.goToState("core.login", true);
                      return;
                 }
                 var payload = {

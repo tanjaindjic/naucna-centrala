@@ -19,13 +19,13 @@ mainModule.config(function($stateProvider, $urlRouterProvider) {
         templateUrl : 'appParts/home/home.html',
         controller : 'homeController'
     })
-    .state('login', {
-        url: '/login',
+    .state('core.login', {
+        url: 'login',
         templateUrl : 'appParts/login/login.html',
         controller : 'loginController'
     })
-     .state('register', {
-        url: '/register',
+     .state('core.register', {
+        url: 'register',
         templateUrl : 'appParts/register/register.html',
         controller : 'registerController'
     })

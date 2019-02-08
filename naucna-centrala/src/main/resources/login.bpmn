@@ -8,8 +8,8 @@
     <bpmn:userTask id="unosPodataka_UserTask" name="unos podataka" camunda:assignee="demo">
       <bpmn:extensionElements>
         <camunda:formData>
-          <camunda:formField id="username" label="Username" type="string" />
-          <camunda:formField id="password" label="Password" type="string" />
+          <camunda:formField id="username" label="Korisničko ime" type="string" />
+          <camunda:formField id="password" label="Lozinka" type="string" />
           <camunda:formField id="noAccount" label="Nemate nalog?" type="boolean" defaultValue="false" />
         </camunda:formData>
       </bpmn:extensionElements>

@@ -76,7 +76,7 @@
                     url: ROOT_PATH + "korisnik/noAccount",
                     data: JSON.stringify(payload)
                 }).then(function successCallback(response) {
-                    mainService.goToState("register", true);
+                    mainService.goToState("core.register", true);
                 }, function errorCallback(response) {
                     console.log("grerska " + JSON.stringify(response.data))
 

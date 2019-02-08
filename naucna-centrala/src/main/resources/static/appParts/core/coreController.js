@@ -29,7 +29,7 @@
             }
 
             $scope.prijava = function () {
-                mainService.goToState("login", true);
+                mainService.goToState("core.login", true);
             }
 
             $scope.trazi = function(){
@@ -48,6 +48,10 @@
             }
 
             $scope.profil = function(){
+                if( mainService.getSub()==""){
+                     mainService.goToState("core.login", true);
+                     return;
+                }
                 mainService.goToState("core.profil", false);
             }
 
@@ -173,7 +177,10 @@
             }
 
             $scope.novirad = function(){
- 
+                 if( mainService.getSub()==""){
+                     mainService.goToState("core.login", true);
+                     return;
+                }
                 $http({
                     method: 'GET',
                     url: ROOT_PATH + "rad/prijavaRada",

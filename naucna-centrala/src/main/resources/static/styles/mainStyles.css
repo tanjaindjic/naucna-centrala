@@ -7,7 +7,17 @@
   padding: 20px 0 10px 0;
   background: #fff;
 }
+.login-form
+{
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
 
+.login-form .row
+{
+    margin-left: 0;
+    margin-right: 0;
+}
 .profile-userpic img {
   float: none;
   margin: 0 auto;

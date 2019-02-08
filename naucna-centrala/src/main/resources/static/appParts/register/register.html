@@ -1,4 +1,5 @@
 <div class="container" ng-init="init()">
+<!--
 
     <form id="registrationForm">
         <div ng-repeat="field in formFields">
@@ -7,5 +8,39 @@
         </div>
     </form>
     <button type="submit" ng-click="register()">Register</button>
+-->
+
+
+    <main class="login-form">
+        <div class="cotainer">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">Registracija</div>
+                        <div class="card-body">
+                            <form id="registrationForm" >
+                                <div class="form-group row"  ng-repeat="field in formFields">
+                                    <label class="col-md-4 col-form-label text-md-right">{{field.label}}</label>
+                                    <div class="col-md-6">
+                                        <input id="{{field.id}}" type="text" class="form-control"  required>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6 offset-md-4">
+                                    <button class="btn btn-primary"  ng-click="register()">
+                                        Registracija
+                                    </button>
+
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
     
 </div>

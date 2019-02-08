@@ -1,4 +1,5 @@
 <div class="container" ng-init="init()">
+<!--
 
     <form id="registrationForm">
         <div ng-repeat="field in loginFields">
@@ -11,5 +12,42 @@
     <br>
 
     <span>Nemate nalog?       <button ng-click="registracija()">Registracija</button> </span>
+-->
+
+
+<main class="login-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Prijava</div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group row"  ng-repeat="field in loginFields">
+                                    <label class="col-md-4 col-form-label text-md-right">{{field.label}}</label>
+                                    <div class="col-md-6">
+                                        <input ng-if="field.id!='password'" id="{{field.id}}" type="text" class="form-control" required>
+                                        <input ng-if="field.id=='password'" id="{{field.id}}" type="password" class="form-control"  required>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6 offset-md-4">
+                                    <button class="btn btn-primary" ng-click="login()">
+                                        Prijava
+                                    </button>
+                                    <a style="cursor:pointer" ng-click="registracija()" class="btn btn-link">
+                                        Nemate nalog?
+                                    </a>
+                                </div>
+
+                            </form>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
     
 </div>

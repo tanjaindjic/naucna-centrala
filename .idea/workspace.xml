@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="50a72021-f944-4a91-b5f8-4e339d88f598" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/CasopisDTO.java" />
+    <list default="true" id="50a72021-f944-4a91-b5f8-4e339d88f598" name="Default" comment="onemogucena kupovina istog casopisa vise puta">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/StartData.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/StartData.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/CasopisController.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/CasopisController.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Kupovina.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Kupovina.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/KupovinaRepository.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/KupovinaRepository.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/KupovinaService.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/KupovinaService.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/KupovinaServiceImpl.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/KupovinaServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/casopis/casopis.html" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/casopis/casopis.html" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/login.bpmn" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/login.bpmn" />
       <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/casopis/casopisController.js" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/casopis/casopisController.js" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/coreController.js" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/coreController.js" />
       <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/home/home.html" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/home/home.html" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/home/homeController.js" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/home/homeController.js" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/services/mainService.js" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/services/mainService.js" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/login/login.html" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/login/login.html" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/login/loginController.js" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/login/loginController.js" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/mainModule.js" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/mainModule.js" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/register/register.html" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/register/register.html" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/styles/mainStyles.css" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/styles/mainStyles.css" />
     </list>
     <ignored path="$PROJECT_DIR$/naucna-centrala/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,115 +31,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="casopis.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/casopis/casopis.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="26" column="86" lean-forward="false" selection-start-line="26" selection-start-column="86" selection-end-line="26" selection-end-column="86" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CasopisController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/CasopisController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="66" column="51" lean-forward="true" selection-start-line="66" selection-start-column="51" selection-end-line="66" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="casopisController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/casopis/casopisController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="18" column="78" lean-forward="false" selection-start-line="18" selection-start-column="78" selection-end-line="18" selection-end-column="78" />
+            <state relative-caret-position="287">
+              <caret line="62" column="17" lean-forward="true" selection-start-line="59" selection-start-column="15" selection-end-line="62" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CasopisDTO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/CasopisDTO.java">
+      <file leaf-file-name="core.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/core.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="819">
-              <caret line="39" column="27" lean-forward="false" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
+            <state relative-caret-position="252">
+              <caret line="12" column="82" lean-forward="false" selection-start-line="12" selection-start-column="75" selection-end-line="12" selection-end-column="82" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="coreController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/coreController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1050">
+              <caret line="50" column="16" lean-forward="false" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/home/home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="13" column="21" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="13" selection-end-column="21" />
               <folding>
-                <element signature="e#207#208#0" expanded="true" />
-                <element signature="e#237#238#0" expanded="true" />
-                <element signature="e#284#285#0" expanded="true" />
-                <element signature="e#322#323#0" expanded="true" />
-                <element signature="e#356#357#0" expanded="true" />
-                <element signature="e#386#387#0" expanded="true" />
-                <element signature="e#433#434#0" expanded="true" />
-                <element signature="e#471#472#0" expanded="true" />
-                <element signature="e#536#537#0" expanded="true" />
-                <element signature="e#564#565#0" expanded="true" />
-                <element signature="e#607#608#0" expanded="true" />
-                <element signature="e#641#642#0" expanded="true" />
+                <marker date="1549646888080" expanded="false" signature="650:665" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HelpServiceImpl.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/HelpServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-142">
-              <caret line="54" column="34" lean-forward="false" selection-start-line="54" selection-start-column="34" selection-end-line="54" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Kupovina.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Kupovina.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1029">
-              <caret line="57" column="23" lean-forward="true" selection-start-line="57" selection-start-column="23" selection-end-line="57" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KupovinaController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/KupovinaController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="39" column="32" lean-forward="false" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KupovinaService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/KupovinaService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="15" column="50" lean-forward="false" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KupovinaServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/KupovinaServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="24" column="50" lean-forward="true" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mainService.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/services/mainService.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="39" column="73" lean-forward="false" selection-start-line="39" selection-start-column="73" selection-end-line="39" selection-end-column="73" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -180,6 +106,9 @@
       <find>Casopis</find>
       <find>casopis</find>
       <find>$scope.casopis</find>
+      <find>register</find>
+      <find>login</find>
+      <find>novirad</find>
     </findStrings>
     <replaceStrings>
       <replace>selectedCar</replace>
@@ -192,6 +121,7 @@
       <replace>korisnik</replace>
       <replace>=&quot;none&quot;</replace>
       <replace>data.casopis</replace>
+      <replace>core.login</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -205,11 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/elastic/ElasticsearchConfiguration.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/NaucnaCentralaApplication.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/elastic/Config.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/pom.xml" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/HighlightDTO.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/BasicQueryResponseDTO.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/enums/NaucnaOblast.java" />
         <option value="$USER_HOME$/Desktop/ES/Serbian_plugin-master-novi/src/main/java/org/elasticsearch/plugin/serbianplugin/analyzer/SerbianStemmer.java" />
@@ -223,7 +148,6 @@
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/paymentError/paymentFailed.html" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/paymentError/paymentErrorController.js" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/paymentSuccess/paymentSuccessController.js" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/paymentSuccess/paymentSuccess.html" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/paymentFailed/paymentFailed.html" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/paymentError/paymentError.html" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/enums/SyncStatus.java" />
@@ -231,11 +155,7 @@
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/rad/radController.js" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/index.html" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/core.html" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/coreController.js" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/mainModule.js" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/styles/mainStyles.css" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RadController.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/profil/profil.html" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/profil/profilController.js" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/KupovinaController.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/HelpServiceImpl.java" />
@@ -243,19 +163,29 @@
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/KorisnikController.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/KorisnikService.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/KorisnikServiceImpl.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/rad/rad.html" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/StartData.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/home/home.html" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/home/homeController.js" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/services/mainService.js" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/casopis/casopisController.js" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/CasopisDTO.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/KupovinaRepository.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/KupovinaServiceImpl.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/KupovinaService.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/CasopisController.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Kupovina.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/casopis/casopis.html" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/paymentSuccess/paymentSuccess.html" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/korisnici/Korisnik.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Casopis.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/KupovinaServiceImpl.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/StartData.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/profil/profil.html" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/rad/rad.html" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/styles/mainStyles.css" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/login/login.html" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/register/register.html" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/casopis/casopisController.js" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/mainModule.js" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/login/loginController.js" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/coreController.js" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/home/home.html" />
       </list>
     </option>
   </component>
@@ -333,8 +263,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -375,7 +307,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="naucnacentrala" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="naucna-centrala" type="b2602c69:ProjectViewProjectNode" />
@@ -384,17 +316,8 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="naucnacentrala" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="naucna-centrala" type="b2602c69:ProjectViewProjectNode" />
-              <item name="naucna-centrala" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="naucnacentrala" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="serviceImpl" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="korisnici" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="naucna-centrala" type="b2602c69:ProjectViewProjectNode" />
@@ -458,7 +381,37 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="appParts" type="462c0819:PsiDirectoryNode" />
-              <item name="rad" type="462c0819:PsiDirectoryNode" />
+              <item name="login" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="naucna-centrala" type="b2602c69:ProjectViewProjectNode" />
+              <item name="naucna-centrala" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="appParts" type="462c0819:PsiDirectoryNode" />
+              <item name="noviRad" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="naucna-centrala" type="b2602c69:ProjectViewProjectNode" />
+              <item name="naucna-centrala" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="appParts" type="462c0819:PsiDirectoryNode" />
+              <item name="profil" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="naucna-centrala" type="b2602c69:ProjectViewProjectNode" />
+              <item name="naucna-centrala" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="appParts" type="462c0819:PsiDirectoryNode" />
+              <item name="register" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="naucna-centrala" type="b2602c69:ProjectViewProjectNode" />
@@ -477,23 +430,12 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="naucna-centrala" type="b2602c69:ProjectViewProjectNode" />
-              <item name="naucna-centrala" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="styles" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -916,7 +858,21 @@
       <option name="project" value="LOCAL" />
       <updated>1549579286001</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="onemogucena kupovina istog casopisa vise puta">
+      <created>1549622890197</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1549622890197</updated>
+    </task>
+    <task id="LOCAL-00039" summary="sredjen front">
+      <created>1549640747579</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1549640747579</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -930,13 +886,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298647" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.67206043" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="13" y="574" width="1862" height="345" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.2793959" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="13" y="574" width="1862" height="345" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3193096" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24436091" sideWeight="0.49384615" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901832" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24489796" sideWeight="0.49384615" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -951,6 +906,7 @@
       <window_info id="BPMN Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20354457" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901832" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="BPMNPalette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1734694" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -961,8 +917,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="izmenjen proces logina, prebacen u taskove" />
-    <MESSAGE value="zapocet proces dodavanja novog rada" />
     <MESSAGE value="i proradi dropdown za odabir casopisa AMIN" />
     <MESSAGE value="treba srediti file upload" />
     <MESSAGE value="radi upload ali je sve teska budzevina treba srediti" />
@@ -986,7 +940,9 @@
     <MESSAGE value="ispravka falilo @Service" />
     <MESSAGE value="izmenjeni urlovi" />
     <MESSAGE value="pokusaj filtriranja kupljenih casopisa" />
-    <option name="LAST_COMMIT_MESSAGE" value="pokusaj filtriranja kupljenih casopisa" />
+    <MESSAGE value="onemogucena kupovina istog casopisa vise puta" />
+    <MESSAGE value="sredjen front" />
+    <option name="LAST_COMMIT_MESSAGE" value="sredjen front" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1007,41 +963,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/AdvancedQueryDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/ComplexQueryDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="18" column="18" lean-forward="false" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/enums/NaucnaOblast.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1470">
-          <caret line="70" column="17" lean-forward="false" selection-start-line="70" selection-start-column="17" selection-end-line="70" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/elasticsearch/elasticsearch/6.2.4/elasticsearch-6.2.4.jar!/org/elasticsearch/index/query/QueryBuilders.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="226" column="46" lean-forward="false" selection-start-line="226" selection-start-column="18" selection-end-line="226" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/SearchController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="687">
-          <caret line="103" column="48" lean-forward="false" selection-start-line="103" selection-start-column="48" selection-end-line="103" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/prijavaRada.bpmn">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1084,13 +1005,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/paymentSuccess/paymentSuccess.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="25" lean-forward="false" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/paymentSuccess/paymentSuccessController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1102,13 +1016,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="2" column="25" lean-forward="false" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/enums/SyncStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -1140,52 +1047,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Casopis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="16" column="55" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Pretplata.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/mainModule.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="66" column="14" lean-forward="true" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/core.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="63" lean-forward="true" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/styles/mainStyles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/profil/profil.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="753">
-          <caret line="64" column="100" lean-forward="false" selection-start-line="64" selection-start-column="98" selection-end-line="64" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/profil/profilController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="48" column="15" lean-forward="true" selection-start-line="42" selection-start-column="12" selection-end-line="48" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -1201,10 +1066,164 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/coreController.js">
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/KorisnikServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="50" column="44" lean-forward="false" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
+        <state relative-caret-position="572">
+          <caret line="130" column="54" lean-forward="false" selection-start-line="130" selection-start-column="54" selection-end-line="130" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/KorisnikService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="23" column="20" lean-forward="true" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/KorisnikDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="519">
+          <caret line="32" column="22" lean-forward="false" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/rad/radController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="37" column="17" lean-forward="true" selection-start-line="35" selection-start-column="16" selection-end-line="37" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/KorisnikController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="128" column="31" lean-forward="false" selection-start-line="128" selection-start-column="31" selection-end-line="128" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/CasopisDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="819">
+          <caret line="39" column="27" lean-forward="false" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/KupovinaRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="54" lean-forward="false" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Kupovina.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1029">
+          <caret line="57" column="23" lean-forward="false" selection-start-line="57" selection-start-column="23" selection-end-line="57" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/KupovinaService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="15" column="50" lean-forward="false" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/HelpServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="929">
+          <caret line="87" column="65" lean-forward="false" selection-start-line="87" selection-start-column="65" selection-end-line="87" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/casopis/casopis.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="26" column="86" lean-forward="false" selection-start-line="26" selection-start-column="86" selection-end-line="26" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/paymentSuccess/paymentSuccess.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="34" lean-forward="false" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/enums/SyncStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Casopis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="30" column="32" lean-forward="false" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/KupovinaController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="32" column="34" lean-forward="false" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/CasopisController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="861">
+          <caret line="70" column="76" lean-forward="false" selection-start-line="70" selection-start-column="76" selection-end-line="70" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/KupovinaServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="693">
+          <caret line="54" column="12" lean-forward="false" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
+          <folding>
+            <element signature="e#1141#1142#0" expanded="true" />
+            <element signature="e#1201#1202#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/StartData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1008">
+          <caret line="85" column="85" lean-forward="false" selection-start-line="85" selection-start-column="85" selection-end-line="85" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/korisnici/Korisnik.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1008">
+          <caret line="54" column="27" lean-forward="false" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/login/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="29" column="131" lean-forward="false" selection-start-line="29" selection-start-column="131" selection-end-line="29" selection-end-column="131" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/register/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="32" column="52" lean-forward="false" selection-start-line="32" selection-start-column="52" selection-end-line="32" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1216,189 +1235,117 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/KorisnikServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/styles/mainStyles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="130" column="54" lean-forward="false" selection-start-line="130" selection-start-column="54" selection-end-line="130" selection-end-column="54" />
+        <state relative-caret-position="210">
+          <caret line="19" column="1" lean-forward="false" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/KorisnikService.java">
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/profil/profil.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="23" column="20" lean-forward="true" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+        <state relative-caret-position="21">
+          <caret line="81" column="36" lean-forward="false" selection-start-line="81" selection-start-column="36" selection-end-line="83" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/KorisnikDTO.java">
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/profil/profilController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="32" column="22" lean-forward="false" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/korisnici/Korisnik.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="55" column="0" lean-forward="true" selection-start-line="26" selection-start-column="4" selection-end-line="55" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/rad/radController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="37" column="17" lean-forward="true" selection-start-line="35" selection-start-column="16" selection-end-line="37" selection-end-column="17" />
+        <state relative-caret-position="855">
+          <caret line="48" column="15" lean-forward="false" selection-start-line="42" selection-start-column="12" selection-end-line="48" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/rad/rad.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="18" column="46" lean-forward="false" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/home/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="16" column="111" lean-forward="false" selection-start-line="16" selection-start-column="111" selection-end-line="16" selection-end-column="111" />
+        <state relative-caret-position="357">
+          <caret line="17" column="56" lean-forward="false" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/StartData.java">
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/mainModule.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="771">
-          <caret line="110" column="42" lean-forward="false" selection-start-line="110" selection-start-column="42" selection-end-line="110" selection-end-column="42" />
+        <state relative-caret-position="267">
+          <caret line="26" column="26" lean-forward="false" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/home/homeController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="50" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="50" />
+        <state relative-caret-position="294">
+          <caret line="14" column="36" lean-forward="false" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/KorisnikController.java">
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/login/loginController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="128" column="31" lean-forward="false" selection-start-line="128" selection-start-column="31" selection-end-line="128" selection-end-column="31" />
-          <folding>
-            <element signature="method#getRegistrationFOrm#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#finishRegistration#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#getLoginPage#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#initRegistration#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#submitLoginData#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#createAuthenticationToken#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#refreshAndGetAuthenticationToken#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#authenticate#0;class#KorisnikController#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="521">
+          <caret line="78" column="56" lean-forward="false" selection-start-line="78" selection-start-column="48" selection-end-line="78" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/noviRad/noviRadController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="16" column="27" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/services/mainService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="39" column="73" lean-forward="false" selection-start-line="39" selection-start-column="73" selection-end-line="39" selection-end-column="73" />
+        <state relative-caret-position="245">
+          <caret line="79" column="27" lean-forward="false" selection-start-line="79" selection-start-column="27" selection-end-line="79" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/register/registerController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="83" lean-forward="false" selection-start-line="3" selection-start-column="83" selection-end-line="3" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/core.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="82" lean-forward="false" selection-start-line="12" selection-start-column="75" selection-end-line="12" selection-end-column="82" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/casopis/casopisController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="18" column="78" lean-forward="false" selection-start-line="18" selection-start-column="78" selection-end-line="18" selection-end-column="78" />
+        <state relative-caret-position="287">
+          <caret line="62" column="17" lean-forward="true" selection-start-line="59" selection-start-column="15" selection-end-line="62" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/CasopisDTO.java">
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/coreController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="39" column="27" lean-forward="false" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
+        <state relative-caret-position="1050">
+          <caret line="50" column="16" lean-forward="false" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/home/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="21" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="13" selection-end-column="21" />
           <folding>
-            <element signature="e#207#208#0" expanded="true" />
-            <element signature="e#237#238#0" expanded="true" />
-            <element signature="e#284#285#0" expanded="true" />
-            <element signature="e#322#323#0" expanded="true" />
-            <element signature="e#356#357#0" expanded="true" />
-            <element signature="e#386#387#0" expanded="true" />
-            <element signature="e#433#434#0" expanded="true" />
-            <element signature="e#471#472#0" expanded="true" />
-            <element signature="e#536#537#0" expanded="true" />
-            <element signature="e#564#565#0" expanded="true" />
-            <element signature="e#607#608#0" expanded="true" />
-            <element signature="e#641#642#0" expanded="true" />
+            <marker date="1549646888080" expanded="false" signature="650:665" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/KupovinaRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="54" lean-forward="false" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/CasopisController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="66" column="51" lean-forward="true" selection-start-line="66" selection-start-column="51" selection-end-line="66" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Kupovina.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1029">
-          <caret line="57" column="23" lean-forward="true" selection-start-line="57" selection-start-column="23" selection-end-line="57" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/KupovinaService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="15" column="50" lean-forward="false" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/casopis/casopis.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="26" column="86" lean-forward="false" selection-start-line="26" selection-start-column="86" selection-end-line="26" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/KupovinaServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="24" column="50" lean-forward="true" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/KupovinaController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="39" column="32" lean-forward="false" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/HelpServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-142">
-          <caret line="54" column="34" lean-forward="false" selection-start-line="54" selection-start-column="34" selection-end-line="54" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
