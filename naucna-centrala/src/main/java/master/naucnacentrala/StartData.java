@@ -74,16 +74,16 @@ public class StartData {
 
 		Korisnik autor = korisnikService.addKorisnik(new Korisnik("autor1", bcrypt.encode("autor1"), "Autor1", "Autor1", "Beograd", "Srbija", "mali.patuljko@gmail.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
 		Korisnik autor2 = korisnikService.addKorisnik(new Korisnik("autor2", bcrypt.encode("autor2"), "Autor2", "Autor2", "Beograd", "Srbija", "mali.patuljko@gmail.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
-		Korisnik demo = korisnikService.addKorisnik(new Korisnik("demo", bcrypt.encode("demo"), "Demo", "Demo", "Beograd", "Srbija", "mali.patuljko@gmail.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
+		Korisnik demo = korisnikService.addKorisnik(new Korisnik("demo", bcrypt.encode("demo"), "Mika", "Mikic", "Beograd", "Srbija", "mali.patuljko@gmail.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
 		
-		Urednik urednik = urednikService.addUrednik(new Urednik("urednik", bcrypt.encode("urednik1"), "Urednik", "Urednik", "Beograd", "Srbija", "mali.patuljko@gmail.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr", new ArrayList(), null, new ArrayList()));
+		Urednik urednik = urednikService.addUrednik(new Urednik("urednik", bcrypt.encode("urednik1"), "Pera", "Peric", "Beograd", "Srbija", "mali.patuljko@gmail.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr", new ArrayList(), null, new ArrayList()));
 		Urednik urednik2 = urednikService.addUrednik(new Urednik("urednik2", bcrypt.encode("urednik2"), "Urednik2", "Urednik2", "Beograd", "Srbija", "mali.patuljko@gmail.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
 		Urednik urednik3 = urednikService.addUrednik(new Urednik("urednik3", bcrypt.encode("urednik3"), "Urednik3", "Urednik3", "Beograd", "Srbija", "mali.patuljko@gmail.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
 		Urednik urednik4 = urednikService.addUrednik(new Urednik("urednik4", bcrypt.encode("urednik4"), "Urednik4", "Urednik4", "Beograd", "Srbija", "mali.patuljko@gmail.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
-		Casopis casopis = casopisService.addCasopis(new Casopis("Casopis1", "ISSN 231-561X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis1.jpg", 50F, "casopis001"));
-		Casopis casopis2 = casopisService.addCasopis(new Casopis("Casopis2", "ISSN 234-501X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik2, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis2.jpg", 40F, "casopis002"));
-		Casopis casopis3 = casopisService.addCasopis(new Casopis("Casopis3", "ISSN 204-561X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), true, urednik3, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis3.jpg", 50F, "casopis003"));
-		Casopis casopis4 = casopisService.addCasopis(new Casopis("Casopis4", "ISSN 244-561X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik4, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis4.jpg", 30F, "casopis004"));
+		Casopis casopis = casopisService.addCasopis(new Casopis("Naučni časopis", "ISSN 231-561X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis1.jpg", 50F, "casopis001"));
+		Casopis casopis2 = casopisService.addCasopis(new Casopis("Hemijska industrija", "ISSN 234-501X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik2, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis2.jpg", 40F, "casopis002"));
+		Casopis casopis3 = casopisService.addCasopis(new Casopis("Socioeconomica", "ISSN 204-561X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), true, urednik3, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis3.jpg", 50F, "casopis003"));
+		Casopis casopis4 = casopisService.addCasopis(new Casopis("PONS - medicinski časopis", "ISSN 244-561X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik4, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis4.jpg", 30F, "casopis004"));
 
 		casopis.setGlavniUrednik(urednik);
 		casopisService.updateCasopis(casopis);

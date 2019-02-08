@@ -24,7 +24,7 @@
                 <!-- SIDEBAR BUTTONS -->
                 <div class="profile-userbuttons">
                     <button id="dugmeRadovi" type="button" class="btn-primary btn-sm" ng-click="radovi()">Radovi</button>
-                    <button id="dugmeCasopisi" type="button" class="btn-primary btn-sm" ng-click="casopisi()">Časopisi</button>
+                    <button id="dugmeCasopisi" type="button" class="btn-primary btn-sm" ng-click="casopisi()">Izdanja</button>
                     <button id="dugmePretplate" type="button" class="btn-primary btn-sm" ng-click="pretplate()">Pretplate</button>
                 </div>
                 <!-- END SIDEBAR BUTTONS -->
@@ -68,7 +68,7 @@
                         </table>
                     </div>
                     <div id="prikaziCasopise" style="display:none">
-                        <h3 class="nav-link">Plaćeni časopisi:</h3>
+                        <h3 class="nav-link">Plaćena izdanja časopisa:</h3>
                         <table>
                             <tr ng-repeat="res in korisnik.placeniCasopisi">
 
@@ -111,8 +111,8 @@
                                     {{res.urednik.ime}} {{res.urednik.prezime}}
 
                                 </p>
-                                <p>
-                                    <b>Naučne oblasti:</b> {{res.naucneOblasti.replace('_', ' ') | lowercase}}
+                                <p class="text-capitalize">
+                                    <b>Naučne oblasti:</b> {{res.naucneOblasti.join(', ').split('_').join(' ') | lowercase }}
                                 </p>
                                 <p>
                                     <b>ISSN:</b> {{res.issn}}

@@ -9,12 +9,13 @@
             <img class="img-fluid" ng-src="{{data.casopis.urlSlike}}" alt="" style="width:100%; max-width:400px;">
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <br><br>
             <h3 class="my-3"><b>{{data.casopis.naziv}}</b></h3>
             <p><b>Urednik:</b> {{data.casopis.glavniUrednik.ime}} {{data.casopis.glavniUrednik.prezime}}</p>
+            <p class="text-capitalize"><b>Naučne oblasti:</b> {{data.casopis.naucneOblasti.join(', ').split('_').join(' ') | lowercase }}</p>
             <p ng-if="!data.casopis.openAccess"><b>Cena:</b> {{cena}}$</p>
-            <span ng-if="!data.casopis.openAccess">
+           <!-- <span ng-if="!data.casopis.openAccess">
                 <h3 class="my-3">Načini kupovine:</h3>
                 <div class="card-body">
                     <div><input type="radio" id="primerak" name="opcijeKupovine" value="primerak" checked>
@@ -23,10 +24,13 @@
                         <label for="pretplata1g">Pretplata na 1 godinu</label></div>
 
                 </div>
-            </span>
+            </span>-->
             <button  ng-show="(!data.kupljen) && (!data.casopis.openAccess) && (!data.uToku)"type="button" class="btn btn-outline-info" ng-click="kupi()">KUPI</button>
             <button  ng-show="data.casopis.openAccess || data.kupljen"type="button" class="btn btn-outline-info" ng-click="preuzmi()">PREUZMI</button>
-            <p ng-show="data.uToku">Proces kupovine je u toku</p>
+            <div class="border border-success rounded" ng-show="data.uToku" style="text-align: center">
+                <img class="img-fluid" ng-src="/assets/images/success.png" alt="" style="width:100%; max-width:40px; display: inline-block">
+                Proces kupovine je u toku
+            </div>
         </div>
         <div class="col-md-2"></div>
 
