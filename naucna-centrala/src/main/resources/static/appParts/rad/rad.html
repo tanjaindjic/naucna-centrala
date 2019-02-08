@@ -14,6 +14,9 @@
             <h3 class="my-3"><b>{{rad.naslov}}</b></h3>
             <p><b>Autor:</b> {{rad.autor.ime}} {{rad.autor.prezime}}</p>
             <p><b>Apstrakt:</b> {{rad.apstrakt}}</p>
+            <p class="text-capitalize">
+                <b>Naučna oblast:</b> {{rad.naucnaOblast.split('_').join(' ') | lowercase }}
+            </p>
             <p><b>Casopis:</b> <a ng-click="naRad(casopis.id)" style="color:#457580; cursor:pointer"><u>{{casopis.naziv}}</u></a></p>
             <p><b>Cena:</b> {{cena}}$</p>
             <button ng-if="!casopis.openAccess" type="button" class="btn btn-outline-info" ng-click="kupi()">KUPI</button>

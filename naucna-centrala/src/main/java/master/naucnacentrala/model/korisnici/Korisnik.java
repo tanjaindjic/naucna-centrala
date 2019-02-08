@@ -43,15 +43,15 @@ public class Korisnik {
 	private String email;
 
 	@Column
-	@OneToMany
+	@ManyToMany
 	private Collection<Pretplata> pretplaceniCasopisi;
 
 	@Column
-	@OneToMany
+	@ManyToMany
 	private Collection<Rad> placeniRadovi;
 
 	@Column
-	@OneToMany
+	@ManyToMany
 	private Collection<Casopis> placeniCasopisi;
 
 	/*

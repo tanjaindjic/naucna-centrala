@@ -48,18 +48,18 @@ mainModule.config(function($stateProvider, $urlRouterProvider) {
         templateUrl : 'appParts/rad/rad.html',
         controller : 'radController'
     })
-    .state('paymentFailed', {
-        url: '/paymentFailed',
+    .state('core.paymentFailed', {
+        url: 'paymentFailed',
         templateUrl : 'appParts/paymentFailed/paymentFailed.html',
         controller : 'paymentFailedController'
     })
-    .state('paymentSuccess', {
-        url: '/paymentSuccess',
+    .state('core.paymentSuccess', {
+        url: 'paymentSuccess',
         templateUrl : 'appParts/paymentSuccess/paymentSuccess.html',
         controller : 'paymentSuccessController'
     })
-    .state('paymentError', {
-        url: '/paymentError',
+    .state('core.paymentError', {
+        url: 'paymentError',
         templateUrl : 'appParts/paymentError/paymentError.html',
         controller : 'paymentErrorController'
     })

@@ -79,16 +79,11 @@
                                             <i>"{{res.naziv}}"</i>
                                         </a>
                                     </p>
-                                    <p>
-                                        <b>Urednik:</b>
-                                        {{res.urednik.ime}} {{res.urednik.prezime}}
-
+                                    <p class="text-capitalize">
+                                        <b>Naučne oblasti:</b> {{res.naucneOblasti.join(', ').split('_').join(' ') | lowercase }}
                                     </p>
                                     <p>
-                                        <b>Naučne oblasti:</b> {{res.naucneOblasti.replace('_', ' ') | lowercase }}
-                                    </p>
-                                    <p>
-                                        <b>ISSN:</b> {{res.radIndexUnit.issn}}
+                                        <b>ISSN:</b> {{res.issn}}
                                     </p>
                                     <button class="btn btn-primary btn-sm" ng-click="skiniCasopis(res.id)">PREUZMI</button>
                                     <hr>
