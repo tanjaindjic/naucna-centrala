@@ -80,10 +80,10 @@ public class StartData {
 		Urednik urednik2 = urednikService.addUrednik(new Urednik("urednik2", bcrypt.encode("urednik2"), "Urednik2", "Urednik2", "Beograd", "Srbija", "mali.patuljko@gmail.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
 		Urednik urednik3 = urednikService.addUrednik(new Urednik("urednik3", bcrypt.encode("urednik3"), "Urednik3", "Urednik3", "Beograd", "Srbija", "mali.patuljko@gmail.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
 		Urednik urednik4 = urednikService.addUrednik(new Urednik("urednik4", bcrypt.encode("urednik4"), "Urednik4", "Urednik4", "Beograd", "Srbija", "mali.patuljko@gmail.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
-		Casopis casopis = casopisService.addCasopis(new Casopis("Casopis1", "issn1", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis1.jpg", 100F, "casopis001"));
-		Casopis casopis2 = casopisService.addCasopis(new Casopis("Casopis2", "issn2", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik2, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis2.jpg", 250F, "casopis002"));
+		Casopis casopis = casopisService.addCasopis(new Casopis("Casopis1", "issn1", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis1.jpg", 50F, "casopis001"));
+		Casopis casopis2 = casopisService.addCasopis(new Casopis("Casopis2", "issn2", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik2, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis2.jpg", 800F, "casopis002"));
 		Casopis casopis3 = casopisService.addCasopis(new Casopis("Casopis3", "issn3", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), true, urednik3, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis3.jpg", 50F, "casopis003"));
-		Casopis casopis4 = casopisService.addCasopis(new Casopis("Casopis4", "issn4", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), true, urednik4, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis4.jpg", 350F, "casopis004"));
+		Casopis casopis4 = casopisService.addCasopis(new Casopis("Casopis4", "issn4", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik4, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis4.jpg", 1000F, "casopis004"));
 
 		casopis.setGlavniUrednik(urednik);
 		casopisService.updateCasopis(casopis);
@@ -106,6 +106,9 @@ public class StartData {
 		urednik4.setUredjuje(casopis4);
 		urednik4.getNaucneOblasti().add(NaucnaOblast.UMETNOST);
 		urednikService.updateUrednik(urednik4);
+
+		demo.getPlaceniCasopisi().add(casopis4);
+		korisnikService.addKorisnik(demo);
 		
 		Rad rad = radService.addRad(new Rad("", "Rad1", autor, new ArrayList<>(),100F, "/assets/images/Article-Icon.png", "", "apstrakt", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "test1.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test1.pdf", casopis, "radradrad1"));
 		casopis.getRadovi().add(rad);

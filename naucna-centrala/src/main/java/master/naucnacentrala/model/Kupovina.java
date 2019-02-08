@@ -15,7 +15,7 @@ public class Kupovina {
 
     @NotNull
     @ManyToOne
-    private Korisnik k;
+    private Korisnik korisnik;
 
 
     @ManyToOne
@@ -36,7 +36,7 @@ public class Kupovina {
     private Float cena;
 
     public Kupovina(@NotNull Korisnik k,Casopis casopis, Rad rad, @NotNull Status status, @NotNull Boolean pretplata, @NotNull Float cena) {
-        this.k = k;
+        this.korisnik = k;
         this.casopis = casopis;
         this.rad = rad;
         this.status = status;
@@ -51,12 +51,12 @@ public class Kupovina {
         return id;
     }
 
-    public Korisnik getK() {
-        return k;
+    public Korisnik getKorisnik() {
+        return korisnik;
     }
 
-    public void setK(Korisnik k) {
-        this.k = k;
+    public void setKorisnik(Korisnik korisnik) {
+        this.korisnik = korisnik;
     }
 
     public Status getStatus() {

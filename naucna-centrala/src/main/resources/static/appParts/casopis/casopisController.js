@@ -3,7 +3,7 @@
     mainModule.controller('casopisController', [ '$scope', '$http', '$location', '$window','$localStorage', '$stateParams','$state','mainService',
         function($scope,  $http, $location, $window, $localStorage, $stateParams, $state, mainService) {
             $scope.cena = 0;
-            $scope.casopis = [];
+            $scope.data = [];
             $scope.radovi = [];
             $scope.pretplata = false;
             var init = function () {
@@ -12,11 +12,15 @@
                 var id = $stateParams.id;
                 $scope.id = /[^/]*$/.exec(window.location.href)[0];
                 console.log($scope.id)
-                var myDataPromise = mainService.getCasopis($scope.id);
+                $scope.sub = mainService.getSub();
+                var username = "all";
+                if($scope.sub!="")
+                    username = $scope.sub
+                var myDataPromise = mainService.getCasopis($scope.id, username);
                     myDataPromise.then(function(result) {
-                         $scope.casopis = result;
-                         console.log($scope.casopis);
-                         $scope.cena = $scope.casopis.cena;
+                         $scope.data = result;
+                         console.log($scope.data);
+                         $scope.cena = $scope.data.casopis.cena;
                          //namestiCenu();
                 });
 
@@ -33,18 +37,18 @@
             init();
 
             var namestiCenu = function(){
-                $scope.cena = $scope.casopis.cena;
+                $scope.cena = $scope.data.casopis.cena;
                  $scope.$apply()
             }
 
             $('input[type=radio][name=opcijeKupovine]').change(function() {
 
                 if (this.value == 'primerak') {
-                    $scope.cena = $scope.casopis.cena;
+                    $scope.cena = $scope.data.casopis.cena;
                     $scope.pretplata = false;
                 }
                 else if (this.value == 'pretplata1g') {
-                    $scope.cena = $scope.casopis.cena*12;
+                    $scope.cena = $scope.data.casopis.cena*12;
                     $scope.pretplata = true;
                 }
 

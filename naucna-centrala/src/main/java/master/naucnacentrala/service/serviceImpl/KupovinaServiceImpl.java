@@ -3,6 +3,7 @@ package master.naucnacentrala.service.serviceImpl;
 import master.naucnacentrala.model.Kupovina;
 import master.naucnacentrala.model.enums.Status;
 import master.naucnacentrala.model.enums.SyncStatus;
+import master.naucnacentrala.model.korisnici.Korisnik;
 import master.naucnacentrala.repository.KupovinaRepository;
 import master.naucnacentrala.service.KupovinaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,12 @@ public class KupovinaServiceImpl implements KupovinaService {
     @Override
     public List<Kupovina> getKupovine() {
         return kupovinaRepository.findAll();
+    }
+
+    @Override
+    public List<Kupovina> getKupovineKorisnika(Korisnik k) {
+
+        return kupovinaRepository.findByKorisnik(k);
     }
 
     @Override

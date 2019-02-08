@@ -34,10 +34,10 @@
                 });
             }
 
-            this.getCasopis = function(id){
+            this.getCasopis = function(id, user){
                 return $http({
                     method:"GET",
-                    url:ROOT_PATH + "casopis/" + id,
+                    url:ROOT_PATH + "casopis/" + id + "/korisnik/" + user,
                     headers : this.createAuthorizationTokenHeader()
                 }).then(function(result){
                     return result.data;
