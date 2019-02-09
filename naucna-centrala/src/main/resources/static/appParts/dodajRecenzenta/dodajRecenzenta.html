@@ -1,32 +1,48 @@
 <div class="modal-body">
 
-    <h4>Dodavanje recenzenta za rad: {{rad.naslov}}</h4>
-    <div id="forma" class="row" style="display:inline;">
-        <div class="col-md-8 text" style="display:inline;">
-            <div class="form-inline" style="display:inline;">
-                <div class="form-group" style="display:inline;">
-                    <label><input  class="moreLikeThis" type="checkbox" value="moreLikeThis">Samo recenzetni sličnih radova</label>
+
+    <div class="row profile">
+        <div class="col-md-4">
+            <div class="profile-sidebar">
+                <h3>Odabir recenzenata</h3>
+                <br>
+                <div >
+                    <label >Udaljenost: <input id="udaljenost" type="text" width="100px" placeholder="Udaljenost"> km</label>
+                 </div>
+                <div>
+                     <label  ><input  class="moreLikeThis" type="checkbox" value="moreLikeThis">Samo recenzetni sličnih radova</label>
                 </div>
-                <div class="form-group"style="display:inline;">
-                    <label>Udaljenost: <input id="udaljenost" class="form-control" type="text" placeholder="Udaljenost"></label>
+
+                <br>
+                <p><b>Naučne oblasti:</b></p>
+                <div style="text-align: center">
+                    <fieldset style="display:inline-block; border:2px solid #ccc; width:350px; height: 300px; overflow-y: scroll; ">
+
+                        <div style="text-align: left"><label ><input  class="naucneOblasti" type="checkbox" value="prirodno matematicke nauke">Prirodno matematičke nauke</label></div>
+                        <div style="text-align: left" ><label><input  class="naucneOblasti"  type="checkbox" value="tehnicko tehnoloske nauke">Tehničko tehnološke nauke</label></div>
+                        <div style="text-align: left"><label><input   class="naucneOblasti"  type="checkbox" value="drustveno humanisticke nauke">Društveno hummanističke nauke</label></div>
+                        <div style="text-align: left"><label><input   class="naucneOblasti"  type="checkbox" value="medicina">Medicina</label></div>
+                        <div style="text-align: left"><label><input  class="naucneOblasti"  type="checkbox" value="umetnost">Umetnost</label></div>
+                    </fieldset>
                 </div>
-                <div class="form-group" style="display:inline;">
-                    <button type="button" class="btn btn-primary justify-content-end" ng-click="primeni()" style="display:inline;">Primeni</button>
-                </div>
+                <br>
+                <button type="button" class="btn btn-primary justify-content-end" ng-click="primeni()">Primeni</button>
             </div>
         </div>
-        <div>
-            <fieldset>
-                <br>
-                <p>Naučne oblasti:</p>
-                <label><input  class="naucneOblasti" type="checkbox" value="prirodno matematicke nauke">Prirodno matematičke nauke</label>
-                <label><input  class="naucneOblasti"  type="checkbox" value="tehnicko tehnoloske nauke">Tehničko tehnološke nauke</label>
-                <label><input  class="naucneOblasti"  type="checkbox" value="drustveno humanisticke nauke">Društveno hummanističke nauke</label>
-                <label><input  class="naucneOblasti"  type="checkbox" value="medicina">Medicina</label>
-                <label><input  class="naucneOblasti"  type="checkbox" value="umetnost">Umetnost</label>
-            </fieldset>
+
+        <div class="col-md-5">
+            <div class="profile-content">
+
+                <p><b>Recenzenti:</b></p>
+                <fieldset style="  border:2px solid #ccc; width:300px; height: 300px; overflow-y: scroll; ">
+
+                    <div ng-repeat="r in recenzenti">
+                        <label><input  class="recenzent" type="checkbox" value="{{r.id}}">{{r.ime}} {{r.prezime}}</label>
+                    </div>
+
+                </fieldset>
+
+            </div>
         </div>
-
     </div>
-
 </div>

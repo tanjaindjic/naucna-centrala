@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import master.naucnacentrala.model.enums.NaucnaOblast;
 import master.naucnacentrala.model.korisnici.Korisnik;
 import master.naucnacentrala.model.korisnici.Urednik;
+import org.apache.ibatis.annotations.Many;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -46,10 +47,12 @@ public class Casopis {
 
     @Column
     @OneToMany
+    @JsonBackReference
     private Collection<Korisnik> uredniciNaucnihOblasti;
 
     @Column
-    @OneToMany
+    @ManyToMany
+    @JsonBackReference
     private Collection<Korisnik> recenzenti;
 
     @Column

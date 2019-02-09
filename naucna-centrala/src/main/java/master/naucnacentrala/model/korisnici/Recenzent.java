@@ -44,12 +44,12 @@ public class Recenzent extends Korisnik {
 	private Collection<Rad> recenzira;
 	
 
-/*
+
 	public Recenzent() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-*/
+
 
 	public Recenzent(@NotNull String username, @NotNull String pass, @NotNull String ime, @NotNull String prezime, @NotNull String grad, @NotNull String drzava, @NotNull String email, @NotNull Double lat, Double lon, Collection<Pretplata> pretplaceniCasopisi, Collection<Casopis> placeniCasopisi, Collection<Rad> placeniRadovi, @NotNull String titula, @NotNull Collection<NaucnaOblast> naucneOblasti, Collection<Casopis> pripada, Collection<Rad> recenzira) {
 		super(username, pass, ime, prezime, grad, drzava, email, lat, lon, pretplaceniCasopisi, placeniCasopisi, placeniRadovi);

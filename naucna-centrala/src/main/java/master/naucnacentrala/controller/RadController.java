@@ -5,12 +5,20 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
 
+import master.naucnacentrala.model.Casopis;
+import master.naucnacentrala.model.Recenzija;
 import master.naucnacentrala.model.dto.FieldIdValueDTO;
 import master.naucnacentrala.model.dto.FormFieldsDTO;
 import master.naucnacentrala.model.dto.RegisterDTO;
 import master.naucnacentrala.model.dto.UploadFileResponse;
+import master.naucnacentrala.model.elastic.RecenzentIndexUnit;
+import master.naucnacentrala.model.elastic.RecenzijaIndexUnit;
 import master.naucnacentrala.model.enums.NaucnaOblast;
-import master.naucnacentrala.model.korisnici.Koautor;
+import master.naucnacentrala.model.korisnici.Korisnik;
+import master.naucnacentrala.model.korisnici.Recenzent;
+import master.naucnacentrala.repository.RecenzentIndexUnitRepository;
+import master.naucnacentrala.repository.RecenzijaIndexUnitRepository;
+import master.naucnacentrala.repository.RecenzijaRepository;
 import master.naucnacentrala.service.CasopisService;
 import master.naucnacentrala.service.FileStorageService;
 import master.naucnacentrala.service.KorisnikService;
@@ -73,6 +81,12 @@ public class RadController {
 
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
+
+	@Autowired
+    private RecenzijaRepository recenzijaRepository;
+
+    @Autowired
+    private RecenzentIndexUnitRepository recenzentIndexUnitRepository;
 
 	@Value("${camunda.prijavaRadaProcessKey}")
 	private String prijavaRadaProcessKey;
@@ -238,5 +252,18 @@ public class RadController {
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
 				.body(resource);
 	}
+
+    @GetMapping(value = "/{id}/recenzenti", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<RecenzentIndexUnit> moguciRecenzenti(@PathVariable Long id){
+	    Rad rad = radService.getRad(id);
+	    Casopis c = rad.getCasopis();
+
+	    List<RecenzentIndexUnit> ret = new ArrayList();
+	    for(Korisnik r : c.getRecenzenti()){
+	        RecenzentIndexUnit riu = recenzentIndexUnitRepository.findById(r.getId()).get();
+	        ret.add(riu);
+        }
+        return ret;
+    }
 
 }

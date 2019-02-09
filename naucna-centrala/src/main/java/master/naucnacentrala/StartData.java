@@ -2,16 +2,20 @@ package master.naucnacentrala;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 import javax.annotation.PostConstruct;
 
+import master.naucnacentrala.model.Recenzija;
 import master.naucnacentrala.model.elastic.RadIndexUnit;
+import master.naucnacentrala.model.elastic.RecenzentIndexUnit;
+import master.naucnacentrala.model.elastic.RecenzijaIndexUnit;
+import master.naucnacentrala.model.enums.Rezultat;
 import master.naucnacentrala.model.enums.StatusRada;
 import master.naucnacentrala.model.korisnici.Recenzent;
+import master.naucnacentrala.repository.RecenzentIndexUnitRepository;
+import master.naucnacentrala.repository.RecenzijaIndexUnitRepository;
 import master.naucnacentrala.service.*;
 import org.apache.pdfbox.cos.COSDocument;
 import org.apache.pdfbox.io.RandomAccessFile;
@@ -61,6 +65,15 @@ public class StartData {
 	@Autowired
 	private RecenzentService recenzentService;
 
+	@Autowired
+	private RecenzijaService recenzijaService;
+
+	@Autowired
+	private RecenzijaIndexUnitRepository recenzijaIndexUnitRepository;
+
+	@Autowired
+	private RecenzentIndexUnitRepository recenzentIndexUnitRepository;
+
 	@Value("${elasticsearch.baseUrl}")
 	private String elasticsearchUrl;
 
@@ -74,7 +87,7 @@ public class StartData {
 		Korisnik autor2 = korisnikService.addKorisnik(new Korisnik("autor2", bcrypt.encode("autor2"), "Autor2", "Autor2", "Novi Sad", "Srbija", "mali.patuljko@gmail.com",45.2671, 19.8335, new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
 		Korisnik demo = korisnikService.addKorisnik(new Korisnik("demo", bcrypt.encode("demo"), "Mika", "Mikic", "Beograd", "Srbija", "mali.patuljko@gmail.com", 44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
 		
-		Urednik urednik = urednikService.addUrednik(new Urednik("urednik", bcrypt.encode("urednik1"), "Pera", "Peric", "Beograd", "Srbija", "mali.patuljko@gmail.com", 44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr", new ArrayList(), null, new ArrayList()));
+		Urednik urednik = urednikService.addUrednik(new Urednik("urednik", bcrypt.encode("urednik"), "Pera", "Peric", "Beograd", "Srbija", "mali.patuljko@gmail.com", 44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr", new ArrayList(), null, new ArrayList()));
 		Urednik urednik2 = urednikService.addUrednik(new Urednik("urednik2", bcrypt.encode("urednik2"), "Urednik2", "Urednik2", "Beograd", "Srbija", "mali.patuljko@gmail.com", 44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
 		Urednik urednik3 = urednikService.addUrednik(new Urednik("urednik3", bcrypt.encode("urednik3"), "Urednik3", "Urednik3", "Beograd", "Srbija", "mali.patuljko@gmail.com",  44.7866, 20.4489,new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
 		Urednik urednik4 = urednikService.addUrednik(new Urednik("urednik4", bcrypt.encode("urednik4"), "Urednik4", "Urednik4", "Beograd", "Srbija", "mali.patuljko@gmail.com",44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
@@ -83,11 +96,7 @@ public class StartData {
 		Casopis casopis3 = casopisService.addCasopis(new Casopis("Socioeconomica", "ISSN 204-561X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), true, urednik3, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis3.jpg", 50F, "casopis003"));
 		Casopis casopis4 = casopisService.addCasopis(new Casopis("PONS - medicinski časopis", "ISSN 244-561X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik4, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis4.jpg", 30F, "casopis004"));
 
-		List<Casopis> pripada = new ArrayList();
-		pripada.add(casopis4);
-		Recenzent r = new Recenzent("rec1", "rec1", "Mika", "Mikic", "Beograd", "Srbija", "mali.patuljko@gmail.com",
-				44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr",casopis4.getNaucneOblasti(), pripada , new ArrayList() );
-		recenzentService.save(r);
+
 		casopis.setGlavniUrednik(urednik);
 		casopisService.updateCasopis(casopis);
 		casopis2.setGlavniUrednik(urednik2);
@@ -129,6 +138,74 @@ public class StartData {
 		autor.getPlaceniRadovi().add(rad2);
 		korisnikService.updateKorisnik(autor);
 
+		List<Casopis> pripada = new ArrayList();
+		pripada.add(casopis);
+		Recenzent r = new Recenzent("rec1", "rec1", "Mika", "Mikic", "Beograd", "Srbija", "mali.patuljko@gmail.com",
+				44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr",casopis.getNaucneOblasti(), pripada , new ArrayList() );
+		recenzentService.save(r);
+		System.out.println(r.toString());
+
+		List<NaucnaOblast> no = new ArrayList<>();
+		no.add(NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE);
+		Recenzent r2 = new Recenzent("rec2", "rec1", "Ivan", "Peric", "Niš", "Srbija", "mali.patuljko@gmail.com",
+				43.3209, 21.8958, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr",no, pripada , new ArrayList() );
+		recenzentService.save(r2);
+
+		no.add(NaucnaOblast.MEDICINA);
+		Recenzent r3 = new Recenzent("rec3", "rec3", "Ana", "Jokic", "Vršac", "Srbija", "mali.patuljko@gmail.com",
+				45.1182, 21.2945, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr",no, pripada , new ArrayList() );
+		recenzentService.save(r3);
+
+		no = new ArrayList<>();
+		no.add(NaucnaOblast.PRIRODNO_MATEMATICKE_NAUKE);
+		Recenzent r4 = new Recenzent("rec4", "rec4", "Milica", "Ivkovic", "Subotica", "Srbija", "mali.patuljko@gmail.com",
+				46.1005, 19.6651, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr", no, pripada , new ArrayList() );
+		recenzentService.save(r4);
+
+		no.add(NaucnaOblast.UMETNOST);
+		no.add(NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE);
+		Recenzent r5 = new Recenzent("rec5", "rec5", "Jovan", "Vidic", "Kragujevac", "Srbija", "mali.patuljko@gmail.com",
+				44.0128, 20.9114, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr",no, pripada , new ArrayList() );
+		recenzentService.save(r5);
+
+		no = new ArrayList<>();
+		no.add(NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE);
+		no.add(NaucnaOblast.PRIRODNO_MATEMATICKE_NAUKE);
+		Recenzent r6 = new Recenzent("rec6", "rec6", "Pavle", "Pavlovic", "Užice", "Srbija", "mali.patuljko@gmail.com",
+				43.8556, 19.8425, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr",no, pripada , new ArrayList() );
+		recenzentService.save(r6);
+
+		casopis.getRecenzenti().addAll(Arrays.asList(r, r2, r3, r4, r5, r6));
+		casopisService.updateCasopis(casopis);
+
+		Recenzija recenzija = recenzijaService.save(new Recenzija(casopis, rad, r, new Date(), "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija2 = recenzijaService.save(new Recenzija(casopis, rad, r2, new Date(), "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija3 = recenzijaService.save(new Recenzija(casopis, rad, r5, new Date(), "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija4 = recenzijaService.save(new Recenzija(casopis, rad2, r6, new Date(), "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija5 = recenzijaService.save(new Recenzija(casopis, rad2, r, new Date(), "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija6 = recenzijaService.save(new Recenzija(casopis, rad2, r3, new Date(), "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija7 = recenzijaService.save(new Recenzija(casopis, rad3, r, new Date(), "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija8 = recenzijaService.save(new Recenzija(casopis, rad3, r5, new Date(), "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija9 = recenzijaService.save(new Recenzija(casopis, rad3, r6, new Date(), "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija10 = recenzijaService.save(new Recenzija(casopis, rad4, r6, new Date(), "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija11 = recenzijaService.save(new Recenzija(casopis, rad4, r, new Date(), "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija12 = recenzijaService.save(new Recenzija(casopis, rad4, r3, new Date(), "Sve super.", Rezultat.PRIHVATITI));
+
+		/*r.getRecenzira().addAll(Arrays.asList(rad, rad2, rad3, rad4));
+		r2.getRecenzira().addAll(Arrays.asList(rad));
+		r3.getRecenzira().addAll(Arrays.asList(rad2, rad4));
+		r5.getRecenzira().addAll(Arrays.asList(rad, rad3));
+		r6.getRecenzira().addAll(Arrays.asList(rad2, rad3, rad4));*/
+	/*	r.getRecenzira().add(rad);
+		r.getRecenzira().add(rad);
+		r.getRecenzira().add(rad);
+		r.getRecenzira().add(rad);
+		recenzentService.save(r);*/
+	/*	recenzentService.save(r2);
+		recenzentService.save(r3);
+		recenzentService.save(r5);
+		recenzentService.save(r6);
+		*/
 		saveCamundaUser(autor);
 		saveCamundaUser(autor2);
 		saveCamundaUser(urednik);
@@ -137,8 +214,8 @@ public class StartData {
 		saveCamundaUser(urednik4);
 		saveCamundaUser(demo);
 
-		Rad novi1 = radService.addRad(new Rad("", "Скривени екосистем Земље", autor, "Ivan Markovic, Jasna Jelic",null, "/assets/images/Article-Icon.png", "ekosistem, Zemlja, nauka", "Научници су открили огроман подземни екосистем са милијардама микроорганизама, двоструко већи од светских океанa", NaucnaOblast.PRIRODNO_MATEMATICKE_NAUKE, "ekosistem.pdf", null, casopis4, "novirad001", StatusRada.NOVO));
-		Rad novi2 = radService.addRad(new Rad("", "Свет без корњача", autor, "",null, "/assets/images/Article-Icon.png", "kornjaca, Zemlja, nauka, klima", "Након што су 200 милиона година успешно одолевале свим природним, па и космичким недаћама, корњаче су се нашле пред озбиљном претњом", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "kornjace.pdf", null, casopis4, "novirad002", StatusRada.NOVO));
+		Rad novi1 = radService.addRad(new Rad("", "Скривени екосистем Земље", autor, "Ivan Markovic, Jasna Jelic",null, "/assets/images/Article-Icon.png", "ekosistem, Zemlja, nauka", "Научници су открили огроман подземни екосистем са милијардама микроорганизама, двоструко већи од светских океанa", NaucnaOblast.PRIRODNO_MATEMATICKE_NAUKE, "ekosistem.pdf", null, casopis, "novirad001", StatusRada.NOVO));
+		Rad novi2 = radService.addRad(new Rad("", "Свет без корњача", autor, "",null, "/assets/images/Article-Icon.png", "kornjaca, Zemlja, nauka, klima", "Након што су 200 милиона година успешно одолевале свим природним, па и космичким недаћама, корњаче су се нашле пред озбиљном претњом", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "kornjace.pdf", null, casopis, "novirad002", StatusRada.NOVO));
 		radService.addRad(novi1);
 		radService.addRad(novi2);
 
@@ -147,41 +224,32 @@ public class StartData {
 		setupTestData(rad2);
 		setupTestData(rad);
 		setupTestData(novi1);
-		setupTestData(novi2);*/
+		setupTestData(novi2);
+		*/
+		/*setupRecenzije(recenzija);
+		setupRecenzije(recenzija2);
+		setupRecenzije(recenzija3);
+		setupRecenzije(recenzija4);
+		setupRecenzije(recenzija5);
+		setupRecenzije(recenzija6);
+		setupRecenzije(recenzija7);
+		setupRecenzije(recenzija8);
+		setupRecenzije(recenzija9);
+		setupRecenzije(recenzija10);
+		setupRecenzije(recenzija11);
+		setupRecenzije(recenzija12);*/
+
+	/*	saveRecenzentIdx(r);
+		saveRecenzentIdx(r2);
+		saveRecenzentIdx(r3);
+		saveRecenzentIdx(r4);
+		saveRecenzentIdx(r5);
+		saveRecenzentIdx(r6);*/
 
     }
 
 	private void setupTestData(Rad rad) throws ExecutionException, InterruptedException {
-		/*String template = "";
-		ClassLoader classLoader = getClass().getClassLoader();
-		try {
-			template = IOUtils.toString(classLoader.getResourceAsStream("naucnirad.json"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		PutIndexTemplateRequest request = new PutIndexTemplateRequest("nc_template");
-		request.source("{\n" +
-				"\t\"template\": [\"naucni*\"],\n" +
-				"\t\"settings\": {\n" +
-				"\t\t\"analysis\": {\n" +
-				"\t\t\t\"analyzer\": {\n" +
-				"\t\t\t\t\"default\": {\n" +
-				"\t\t\t\t\t\"type\": \"serbian-analyzer\"\n" +
-				"\t\t\t\t}\n" +
-				"\t\t\t}\n" +
-				"\t\t}\n" +
-				"\t},\n" +
-				"\t\"mappings\": {}\n" +
-				"}", XContentType.JSON);
 
-		PutIndexTemplateResponse response1 = nodeClient.admin().indices().execute(PutIndexTemplateAction.INSTANCE, request).get();
-		System.out.println(response1);
-
-		IndexResponse response = nodeClient.prepareIndex("naucnirad", "pdf")
-				.setSource(template, XContentType.JSON)
-				.get();
-		System.out.println(response.status());
-*/
 		ClassLoader classLoader = getClass().getClassLoader();
 		PDFTextStripper pdfStripper = null;
 		PDDocument pdDoc = null;
@@ -205,19 +273,43 @@ public class StartData {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-/*
-/*		RestTemplate rt = new RestTemplate();
-		rt.put("http://localhost:9300/naucnirad", null);*/
+
 		RadIndexUnit riu = new RadIndexUnit(rad.getId(), rad.getNaslov(), parsedText, rad.getAutor().getIme() + " " + rad.getAutor().getPrezime(), rad.getListaKoautora(), rad.getKljucniPojmovi(), rad.getApstrakt(), NaucnaOblast.normalized(rad.getNaucnaOblast()), rad.getCasopis().isOpenAccess(), rad.getCasopis().getNaziv(), rad.getCasopis().getId(), new GeoPoint(rad.getAutor().getLat(), rad.getAutor().getLon()));
 		riu = riuRepository.save(riu);
 		System.out.println(riu.toString());
 
-		/*SearchResponse res = nodeClient.prepareSearch("naucnirad")
-				.setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
-				.setQuery(QueryBuilders.matchQuery("sadrzaj", "oblasti").analyzer("serbian-analyzer"))
-				.setExplain(true)
-				.get();
-		System.out.println(res.toString());*/
+	}
+	private void setupRecenzije(Recenzija r){
+
+		ClassLoader classLoader = getClass().getClassLoader();
+		PDFTextStripper pdfStripper = null;
+		PDDocument pdDoc = null;
+		COSDocument cosDoc = null;
+		System.out.println(r.getRad().getAdresaNacrta());
+		File file = new File(classLoader.getResource(r.getRad().getAdresaNacrta()).getFile());
+		String parsedText = "";
+		try {
+			// PDFBox 2.0.8 require org.apache.pdfbox.io.RandomAccessRead
+			RandomAccessFile randomAccessFile = new RandomAccessFile(file, "r");
+			PDFParser parser = new PDFParser(randomAccessFile);
+			parser.parse();
+			cosDoc = parser.getDocument();
+			pdfStripper = new PDFTextStripper();
+			pdDoc = new PDDocument(cosDoc);
+			parsedText = pdfStripper.getText(pdDoc);
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		RecenzijaIndexUnit riu = new RecenzijaIndexUnit(r.getId(), r.getRecenzent().getIme(), r.getRecenzent().getPrezime(),
+				new GeoPoint(r.getRecenzent().getLat(), r.getRecenzent().getLon()), parsedText);
+		recenzijaIndexUnitRepository.save(riu);
+	}
+	private void saveRecenzentIdx(Recenzent r){
+		RecenzentIndexUnit riu = new RecenzentIndexUnit(r.getId(), r.getIme(), r.getPrezime(), new GeoPoint(r.getLat(), r.getLon()), r.getNaucneOblasti());
+		recenzentIndexUnitRepository.save(riu);
 	}
 
 	public void saveCamundaUser (Korisnik autor){

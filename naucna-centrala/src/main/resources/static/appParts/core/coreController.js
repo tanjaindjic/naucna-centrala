@@ -56,7 +56,7 @@
                 mainService.goToState("core.profil", false);
             }
 
-            $scope.tasks = function(){
+            $scope.taskovi = function(){
                 if( mainService.getSub()==""){
                      mainService.goToState("core.login", true);
                      return;

@@ -33,7 +33,8 @@ public class Recenzija {
     private Date rok;
 
     private String komentar;
-
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Rezultat rezultat;
 
     public Recenzija() {
@@ -94,5 +95,13 @@ public class Recenzija {
 
     public void setRezultat(Rezultat rezultat) {
         this.rezultat = rezultat;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
