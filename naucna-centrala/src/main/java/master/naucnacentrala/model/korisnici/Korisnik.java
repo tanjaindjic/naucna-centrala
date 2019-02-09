@@ -2,6 +2,8 @@ package master.naucnacentrala.model.korisnici;
 import master.naucnacentrala.model.Casopis;
 import master.naucnacentrala.model.Pretplata;
 import master.naucnacentrala.model.Rad;
+import org.elasticsearch.common.geo.GeoPoint;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -42,6 +44,14 @@ public class Korisnik {
 	@Column(nullable = false)
 	private String email;
 
+	@NotNull
+	@Column(nullable = false)
+	private Double lat;
+
+	@NotNull
+	@Column(nullable = false)
+	private Double lon;
+
 	@Column
 	@ManyToMany
 	private Collection<Pretplata> pretplaceniCasopisi;
@@ -69,7 +79,7 @@ public class Korisnik {
 	
 	
 	public Korisnik(@NotNull String username, @NotNull String pass, @NotNull String ime, @NotNull String prezime,
-					@NotNull String grad, @NotNull String drzava, @NotNull String email, Collection<Pretplata> pretplaceniCasopisi, Collection<Casopis> placeniCasopisi,
+					@NotNull String grad, @NotNull String drzava, @NotNull String email, @NotNull Double lat, Double lon, Collection<Pretplata> pretplaceniCasopisi, Collection<Casopis> placeniCasopisi,
 					Collection<Rad> placeniRadovi) {
 		super();
 		this.username = username;
@@ -79,6 +89,8 @@ public class Korisnik {
 		this.grad = grad;
 		this.drzava = drzava;
 		this.email = email;
+		this.lat = lat;
+		this.lon = lon;
 		this.pretplaceniCasopisi = pretplaceniCasopisi;
 		this.placeniCasopisi = placeniCasopisi;
 		this.placeniRadovi = placeniRadovi;
@@ -170,6 +182,22 @@ public class Korisnik {
 
 	public void setPretplaceniCasopisi(Collection<Pretplata> pretplaceniCasopisi) {
 		this.pretplaceniCasopisi = pretplaceniCasopisi;
+	}
+
+	public Double getLat() {
+		return lat;
+	}
+
+	public void setLat(Double lat) {
+		this.lat = lat;
+	}
+
+	public Double getLon() {
+		return lon;
+	}
+
+	public void setLon(Double lon) {
+		this.lon = lon;
 	}
 
 	/*

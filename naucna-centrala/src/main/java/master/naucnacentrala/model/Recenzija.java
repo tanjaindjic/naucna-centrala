@@ -39,6 +39,15 @@ public class Recenzija {
     public Recenzija() {
     }
 
+    public Recenzija(@NotNull Casopis casopis, @NotNull Rad rad, @NotNull Korisnik recenzent, @NotNull Date rok, String komentar, Rezultat rezultat) {
+        this.casopis = casopis;
+        this.rad = rad;
+        this.recenzent = recenzent;
+        this.rok = rok;
+        this.komentar = komentar;
+        this.rezultat = rezultat;
+    }
+
     public Casopis getCasopis() {
         return casopis;
     }

@@ -11,6 +11,7 @@ import org.apache.http.client.ClientProtocolException;
 import master.naucnacentrala.model.korisnici.Korisnik;
 import master.naucnacentrala.security.JwtAuthenticationRequest;
 import org.camunda.bpm.engine.impl.util.json.JSONException;
+import org.elasticsearch.common.geo.GeoPoint;
 
 public interface KorisnikService {
 
@@ -20,7 +21,7 @@ public interface KorisnikService {
 	public Korisnik updateKorisnik(Korisnik k);
 	public Collection<Korisnik> getAll();
 	public Boolean verifyOnCamunda(JwtAuthenticationRequest authenticationRequest) throws UnsupportedEncodingException, ClientProtocolException, IOException, JSONException;
-	void createUser(String username, String pass, String email, String ime, String prezime, String drzava, String grad);
+	void createUser(String username, String pass, String email, Double lat, Double lon, String ime, String prezime, String drzava, String grad);
     List<Long> getPlaceniCasopisi(String username);
 	List<Long> getPretplate(String username);
 	List<Long> getPlaceniRadovi(String username);

@@ -2,7 +2,7 @@ const ROOT_PATH = "https://localhost:8096/";
 const ELASTIC_PATH = "http://localhost:9200/";
 const JWT_TOKEN = "token";
 
-var mainModule = angular.module('mainModule', [ 'ui.router', 'ngStorage', 'angular-jwt' ]);
+var mainModule = angular.module('mainModule', [ 'ui.router', 'ngStorage', 'angular-jwt','ngPDFViewer', 'ngSanitize' ]);
 
 mainModule.config(function($stateProvider, $urlRouterProvider) {
 
@@ -67,6 +67,16 @@ mainModule.config(function($stateProvider, $urlRouterProvider) {
         url: 'profil',
         templateUrl : 'appParts/profil/profil.html',
         controller : 'profilController'
+    })
+    .state('core.tasks', {
+        url: 'tasks',
+        templateUrl : 'appParts/tasks/tasks.html',
+        controller : 'tasksController'
+    })
+    .state('core.dodajRecenzenta', {
+        url: 'dodajRecenzenta/{id}',
+        templateUrl : 'appParts/dodajRecenzenta/dodajRecenzenta.html',
+        controller : 'dodajRecenzentaController'
     })
 
 });

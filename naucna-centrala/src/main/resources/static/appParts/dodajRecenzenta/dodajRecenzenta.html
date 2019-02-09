@@ -1,0 +1,32 @@
+<div class="modal-body">
+
+    <h4>Dodavanje recenzenta za rad: {{rad.naslov}}</h4>
+    <div id="forma" class="row" style="display:inline;">
+        <div class="col-md-8 text" style="display:inline;">
+            <div class="form-inline" style="display:inline;">
+                <div class="form-group" style="display:inline;">
+                    <label><input  class="moreLikeThis" type="checkbox" value="moreLikeThis">Samo recenzetni sličnih radova</label>
+                </div>
+                <div class="form-group"style="display:inline;">
+                    <label>Udaljenost: <input id="udaljenost" class="form-control" type="text" placeholder="Udaljenost"></label>
+                </div>
+                <div class="form-group" style="display:inline;">
+                    <button type="button" class="btn btn-primary justify-content-end" ng-click="primeni()" style="display:inline;">Primeni</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <fieldset>
+                <br>
+                <p>Naučne oblasti:</p>
+                <label><input  class="naucneOblasti" type="checkbox" value="prirodno matematicke nauke">Prirodno matematičke nauke</label>
+                <label><input  class="naucneOblasti"  type="checkbox" value="tehnicko tehnoloske nauke">Tehničko tehnološke nauke</label>
+                <label><input  class="naucneOblasti"  type="checkbox" value="drustveno humanisticke nauke">Društveno hummanističke nauke</label>
+                <label><input  class="naucneOblasti"  type="checkbox" value="medicina">Medicina</label>
+                <label><input  class="naucneOblasti"  type="checkbox" value="umetnost">Umetnost</label>
+            </fieldset>
+        </div>
+
+    </div>
+
+</div>

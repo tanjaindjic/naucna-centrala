@@ -29,6 +29,7 @@ import org.camunda.bpm.engine.impl.identity.Authentication;
 import org.camunda.bpm.engine.impl.util.json.JSONException;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.task.Task;
+import org.elasticsearch.common.geo.GeoPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -167,7 +168,7 @@ public class KorisnikController {
 		formService.submitTaskForm(registerDTO.getTaskId(), mapa);
 		Boolean valid = (Boolean) historyService.createHistoricVariableInstanceQuery().processInstanceId(task.getProcessInstanceId()).variableName("valid").singleResult().getValue();
 		if(valid) {
-		    korisnikService.createUser(mapa.get("username").toString(), mapa.get("password").toString(), mapa.get("email").toString(), mapa.get("ime").toString(), mapa.get("prezime").toString(), mapa.get("drzava").toString(), mapa.get("grad").toString());
+		    korisnikService.createUser(mapa.get("username").toString(), mapa.get("password").toString(), mapa.get("email").toString(),  44.7866, 20.4489, mapa.get("ime").toString(), mapa.get("prezime").toString(), mapa.get("drzava").toString(), mapa.get("grad").toString());
             return new ResponseEntity(HttpStatus.OK);
         }
 		else return new ResponseEntity(HttpStatus.BAD_REQUEST);

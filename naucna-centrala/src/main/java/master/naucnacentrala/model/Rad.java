@@ -1,15 +1,11 @@
 package master.naucnacentrala.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import master.naucnacentrala.model.enums.NaucnaOblast;
-import master.naucnacentrala.model.korisnici.Koautor;
+import master.naucnacentrala.model.enums.StatusRada;
 import master.naucnacentrala.model.korisnici.Korisnik;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-
-import java.util.ArrayList;
-import java.util.Collection;
 
 @Entity
 public class Rad {
@@ -30,8 +26,7 @@ public class Rad {
     private Korisnik autor;
 
     @Column
-    @OneToMany
-    private Collection<Koautor> koautori;
+    private String koautori;
 
     @Column
     private Float cena;
@@ -59,17 +54,22 @@ public class Rad {
     private String adresaKonacnogRada;
     
     @ManyToOne
-    @JoinColumn(name="casopis_id", nullable=false)
+    @JoinColumn(name="casopis_id")
     private Casopis casopis;
 
     @Column
     private String identifikacioniKod;
 
+    @NotNull
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private StatusRada statusRada;
+
 
 	public Rad() {
     }
 
-    public Rad(String doi, @NotNull String naslov, @NotNull Korisnik autor, Collection<Koautor> koautori, Float cena, String urlSlike, @NotNull String kljucniPojmovi, @NotNull String apstrakt, @NotNull NaucnaOblast naucnaOblast, String adresaNacrta, String adresaKonacnogRada, Casopis casopis, String identifikacioniKod) {
+    public Rad(String doi, @NotNull String naslov, @NotNull Korisnik autor, String koautori, Float cena, String urlSlike, @NotNull String kljucniPojmovi, @NotNull String apstrakt, @NotNull NaucnaOblast naucnaOblast, String adresaNacrta, String adresaKonacnogRada, Casopis casopis, String identifikacioniKod, StatusRada statusRada) {
         this.doi = doi;
         this.naslov = naslov;
         this.autor = autor;
@@ -83,6 +83,7 @@ public class Rad {
         this.adresaKonacnogRada = adresaKonacnogRada;
         this.casopis = casopis;
         this.identifikacioniKod = identifikacioniKod;
+        this.statusRada = statusRada;
     }
 
     public Casopis getCasopis() {
@@ -101,11 +102,11 @@ public class Rad {
 		this.autor = autor;
 	}
 
-	public Collection<Koautor> getKoautori() {
+	public String getKoautori() {
 		return koautori;
 	}
 
-	public void setKoautori(Collection<Koautor> koautori) {
+	public void setKoautori(String koautori) {
 		this.koautori = koautori;
 	}
 
@@ -171,12 +172,7 @@ public class Rad {
     }
 
 	public String getListaKoautora() {
-		if(koautori == null)
-			return "";
-		String lista = "";
-		for(Koautor k : koautori)
-			lista.concat(k.getIme() + " " + k.getPrezime() + " ");
-		return lista;
+		return koautori;
 	}
 
 
@@ -202,5 +198,13 @@ public class Rad {
 
     public void setIdentifikacioniKod(String identifikacioniKod) {
         this.identifikacioniKod = identifikacioniKod;
+    }
+
+    public StatusRada getStatusRada() {
+        return statusRada;
+    }
+
+    public void setStatusRada(StatusRada statusRada) {
+        this.statusRada = statusRada;
     }
 }

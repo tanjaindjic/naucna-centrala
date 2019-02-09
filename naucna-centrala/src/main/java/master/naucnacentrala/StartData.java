@@ -4,12 +4,15 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import javax.annotation.PostConstruct;
 
 import master.naucnacentrala.model.elastic.RadIndexUnit;
-import org.apache.commons.io.IOUtils;
+import master.naucnacentrala.model.enums.StatusRada;
+import master.naucnacentrala.model.korisnici.Recenzent;
+import master.naucnacentrala.service.*;
 import org.apache.pdfbox.cos.COSDocument;
 import org.apache.pdfbox.io.RandomAccessFile;
 import org.apache.pdfbox.pdfparser.PDFParser;
@@ -17,12 +20,8 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.camunda.bpm.engine.IdentityService;
 import org.camunda.bpm.engine.identity.User;
-import org.elasticsearch.action.admin.indices.template.put.PutIndexTemplateAction;
-import org.elasticsearch.action.admin.indices.template.put.PutIndexTemplateRequest;
-import org.elasticsearch.action.admin.indices.template.put.PutIndexTemplateResponse;
-import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.Client;
-import org.elasticsearch.common.xcontent.XContentType;
+import org.elasticsearch.common.geo.GeoPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -34,10 +33,6 @@ import master.naucnacentrala.model.enums.NaucnaOblast;
 import master.naucnacentrala.model.korisnici.Korisnik;
 import master.naucnacentrala.model.korisnici.Urednik;
 import master.naucnacentrala.repository.RadIndexingUnitRepository;
-import master.naucnacentrala.service.CasopisService;
-import master.naucnacentrala.service.KorisnikService;
-import master.naucnacentrala.service.RadService;
-import master.naucnacentrala.service.UrednikService;
 
 @Component
 public class StartData {
@@ -63,6 +58,9 @@ public class StartData {
 	@Autowired
 	private Client nodeClient;
 
+	@Autowired
+	private RecenzentService recenzentService;
+
 	@Value("${elasticsearch.baseUrl}")
 	private String elasticsearchUrl;
 
@@ -72,19 +70,24 @@ public class StartData {
 	@PostConstruct
 	private void init() throws Exception {
 
-		Korisnik autor = korisnikService.addKorisnik(new Korisnik("autor1", bcrypt.encode("autor1"), "Autor1", "Autor1", "Beograd", "Srbija", "mali.patuljko@gmail.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
-		Korisnik autor2 = korisnikService.addKorisnik(new Korisnik("autor2", bcrypt.encode("autor2"), "Autor2", "Autor2", "Beograd", "Srbija", "mali.patuljko@gmail.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
-		Korisnik demo = korisnikService.addKorisnik(new Korisnik("demo", bcrypt.encode("demo"), "Mika", "Mikic", "Beograd", "Srbija", "mali.patuljko@gmail.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
+		Korisnik autor = korisnikService.addKorisnik(new Korisnik("autor1", bcrypt.encode("autor1"), "Autor1", "Autor1", "Beograd", "Srbija", "mali.patuljko@gmail.com", 44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
+		Korisnik autor2 = korisnikService.addKorisnik(new Korisnik("autor2", bcrypt.encode("autor2"), "Autor2", "Autor2", "Novi Sad", "Srbija", "mali.patuljko@gmail.com",45.2671, 19.8335, new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
+		Korisnik demo = korisnikService.addKorisnik(new Korisnik("demo", bcrypt.encode("demo"), "Mika", "Mikic", "Beograd", "Srbija", "mali.patuljko@gmail.com", 44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
 		
-		Urednik urednik = urednikService.addUrednik(new Urednik("urednik", bcrypt.encode("urednik1"), "Pera", "Peric", "Beograd", "Srbija", "mali.patuljko@gmail.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr", new ArrayList(), null, new ArrayList()));
-		Urednik urednik2 = urednikService.addUrednik(new Urednik("urednik2", bcrypt.encode("urednik2"), "Urednik2", "Urednik2", "Beograd", "Srbija", "mali.patuljko@gmail.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
-		Urednik urednik3 = urednikService.addUrednik(new Urednik("urednik3", bcrypt.encode("urednik3"), "Urednik3", "Urednik3", "Beograd", "Srbija", "mali.patuljko@gmail.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
-		Urednik urednik4 = urednikService.addUrednik(new Urednik("urednik4", bcrypt.encode("urednik4"), "Urednik4", "Urednik4", "Beograd", "Srbija", "mali.patuljko@gmail.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
+		Urednik urednik = urednikService.addUrednik(new Urednik("urednik", bcrypt.encode("urednik1"), "Pera", "Peric", "Beograd", "Srbija", "mali.patuljko@gmail.com", 44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr", new ArrayList(), null, new ArrayList()));
+		Urednik urednik2 = urednikService.addUrednik(new Urednik("urednik2", bcrypt.encode("urednik2"), "Urednik2", "Urednik2", "Beograd", "Srbija", "mali.patuljko@gmail.com", 44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
+		Urednik urednik3 = urednikService.addUrednik(new Urednik("urednik3", bcrypt.encode("urednik3"), "Urednik3", "Urednik3", "Beograd", "Srbija", "mali.patuljko@gmail.com",  44.7866, 20.4489,new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
+		Urednik urednik4 = urednikService.addUrednik(new Urednik("urednik4", bcrypt.encode("urednik4"), "Urednik4", "Urednik4", "Beograd", "Srbija", "mali.patuljko@gmail.com",44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
 		Casopis casopis = casopisService.addCasopis(new Casopis("Naučni časopis", "ISSN 231-561X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis1.jpg", 50F, "casopis001"));
 		Casopis casopis2 = casopisService.addCasopis(new Casopis("Hemijska industrija", "ISSN 234-501X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik2, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis2.jpg", 40F, "casopis002"));
 		Casopis casopis3 = casopisService.addCasopis(new Casopis("Socioeconomica", "ISSN 204-561X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), true, urednik3, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis3.jpg", 50F, "casopis003"));
 		Casopis casopis4 = casopisService.addCasopis(new Casopis("PONS - medicinski časopis", "ISSN 244-561X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik4, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis4.jpg", 30F, "casopis004"));
 
+		List<Casopis> pripada = new ArrayList();
+		pripada.add(casopis4);
+		Recenzent r = new Recenzent("rec1", "rec1", "Mika", "Mikic", "Beograd", "Srbija", "mali.patuljko@gmail.com",
+				44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr",casopis4.getNaucneOblasti(), pripada , new ArrayList() );
+		recenzentService.save(r);
 		casopis.setGlavniUrednik(urednik);
 		casopisService.updateCasopis(casopis);
 		casopis2.setGlavniUrednik(urednik2);
@@ -110,15 +113,15 @@ public class StartData {
 		demo.getPlaceniCasopisi().add(casopis4);
 		korisnikService.addKorisnik(demo);
 		
-		Rad rad = radService.addRad(new Rad("", "Rad1", autor, new ArrayList<>(),10F, "/assets/images/Article-Icon.png", "", "apstrakt", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "test1.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test1.pdf", casopis, "radradrad1"));
+		Rad rad = radService.addRad(new Rad("", "Rad1", autor, "",10F, "/assets/images/Article-Icon.png", "", "apstrakt", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "test1.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test1.pdf", casopis, "radradrad1", StatusRada.PRIHVACEN));
 		casopis.getRadovi().add(rad);
-		Rad rad2 = radService.addRad(new Rad("", "Rad2", autor2, new ArrayList<>(), 10F, "/assets/images/Article-Icon.png", "", "apstrakt2", NaucnaOblast.MEDICINA, "test1.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test1.pdf", casopis, "radradrad2"));
+		Rad rad2 = radService.addRad(new Rad("", "Rad2", autor2, "Mika Peric", 10F, "/assets/images/Article-Icon.png", "", "apstrakt2", NaucnaOblast.MEDICINA, "test1.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test1.pdf", casopis, "radradrad2", StatusRada.PRIHVACEN));
 		casopis.getRadovi().add(rad2);
-		Rad rad3 = radService.addRad(new Rad("", "ћирилица", autor, new ArrayList<>(),10F, "/assets/images/Article-Icon.png", "", "apstrakt3", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test.pdf", "test1.pdf", casopis3, "radradrad3"));
+		Rad rad3 = radService.addRad(new Rad("", "ћирилица", autor, "",10F, "/assets/images/Article-Icon.png", "", "apstrakt3", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "test1.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test1.pdf", casopis3, "radradrad3", StatusRada.PRIHVACEN));
 		casopis3.getRadovi().add(rad3);
-		Rad rad4 = radService.addRad(new Rad("", "Rad4", autor2, new ArrayList<>(), 10F, "/assets/images/Article-Icon.png", "", "apstrakt4", NaucnaOblast.MEDICINA, "test1.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test1.pdf", casopis, "radradrad4"));
+		Rad rad4 = radService.addRad(new Rad("", "Rad4", autor2, "Dusko Ilic, Ana Milosavljevic", 10F, "/assets/images/Article-Icon.png", "", "apstrakt4", NaucnaOblast.MEDICINA, "test1.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test1.pdf", casopis, "radradrad4", StatusRada.PRIHVACEN));
 		casopis.getRadovi().add(rad4);
-		Rad rad5 = radService.addRad(new Rad("", "Rad5", autor2, new ArrayList<>(),10F, "/assets/images/Article-Icon.png", "", "apstrakt5", NaucnaOblast.MEDICINA, "test1.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test1.pdf", casopis, "radradrad5"));
+		Rad rad5 = radService.addRad(new Rad("", "Rad5", autor2, "",10F, "/assets/images/Article-Icon.png", "", "apstrakt5", NaucnaOblast.MEDICINA, "test1.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test1.pdf", casopis, "radradrad5", StatusRada.PRIHVACEN));
 		casopis.getRadovi().add(rad5);
 		casopisService.updateCasopis(casopis);
 		casopisService.updateCasopis(casopis3);
@@ -134,9 +137,17 @@ public class StartData {
 		saveCamundaUser(urednik4);
 		saveCamundaUser(demo);
 
-	/*	setupTestData(rad3);
+		Rad novi1 = radService.addRad(new Rad("", "Скривени екосистем Земље", autor, "Ivan Markovic, Jasna Jelic",null, "/assets/images/Article-Icon.png", "ekosistem, Zemlja, nauka", "Научници су открили огроман подземни екосистем са милијардама микроорганизама, двоструко већи од светских океанa", NaucnaOblast.PRIRODNO_MATEMATICKE_NAUKE, "ekosistem.pdf", null, casopis4, "novirad001", StatusRada.NOVO));
+		Rad novi2 = radService.addRad(new Rad("", "Свет без корњача", autor, "",null, "/assets/images/Article-Icon.png", "kornjaca, Zemlja, nauka, klima", "Након што су 200 милиона година успешно одолевале свим природним, па и космичким недаћама, корњаче су се нашле пред озбиљном претњом", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "kornjace.pdf", null, casopis4, "novirad002", StatusRada.NOVO));
+		radService.addRad(novi1);
+		radService.addRad(novi2);
+
+
+		/*setupTestData(rad3);
 		setupTestData(rad2);
-		setupTestData(rad);*/
+		setupTestData(rad);
+		setupTestData(novi1);
+		setupTestData(novi2);*/
 
     }
 
@@ -175,6 +186,7 @@ public class StartData {
 		PDFTextStripper pdfStripper = null;
 		PDDocument pdDoc = null;
 		COSDocument cosDoc = null;
+		System.out.println(rad.getAdresaNacrta());
 		File file = new File(classLoader.getResource(rad.getAdresaNacrta()).getFile());
 		String parsedText = "";
 		try {
@@ -196,7 +208,7 @@ public class StartData {
 /*
 /*		RestTemplate rt = new RestTemplate();
 		rt.put("http://localhost:9300/naucnirad", null);*/
-		RadIndexUnit riu = new RadIndexUnit(rad.getId(), rad.getNaslov(), parsedText, rad.getAutor().getIme() + " " + rad.getAutor().getPrezime(), rad.getListaKoautora(), rad.getKljucniPojmovi(), rad.getApstrakt(), NaucnaOblast.normalized(rad.getNaucnaOblast()), rad.getCasopis().isOpenAccess(), rad.getCasopis().getNaziv(), rad.getCasopis().getId());
+		RadIndexUnit riu = new RadIndexUnit(rad.getId(), rad.getNaslov(), parsedText, rad.getAutor().getIme() + " " + rad.getAutor().getPrezime(), rad.getListaKoautora(), rad.getKljucniPojmovi(), rad.getApstrakt(), NaucnaOblast.normalized(rad.getNaucnaOblast()), rad.getCasopis().isOpenAccess(), rad.getCasopis().getNaziv(), rad.getCasopis().getId(), new GeoPoint(rad.getAutor().getLat(), rad.getAutor().getLon()));
 		riu = riuRepository.save(riu);
 		System.out.println(riu.toString());
 

@@ -2,10 +2,21 @@
   margin: 20px 0;
 }
 
+.buttons {
+  width: 80%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+.buttons button {
+  width: 80%;
+}
+
 /* Profile sidebar */
 .profile-sidebar {
   padding: 20px 0 10px 0;
   background: #fff;
+  text-align: center;
+  align:center;
 }
 .login-form
 {

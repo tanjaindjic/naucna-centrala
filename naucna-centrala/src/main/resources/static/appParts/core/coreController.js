@@ -8,6 +8,7 @@
 
 
             var init = function () {
+                $scope.sub = mainService.getSub();
                  console.log("init core")
                 if (mainService.getJwtToken()) {
                     document.getElementById("prijava").style.display = "none";
@@ -53,6 +54,14 @@
                      return;
                 }
                 mainService.goToState("core.profil", false);
+            }
+
+            $scope.tasks = function(){
+                if( mainService.getSub()==""){
+                     mainService.goToState("core.login", true);
+                     return;
+                }
+                mainService.goToState("core.tasks", false);
             }
 
             $('#naprednaPretragaModal').on('hidden.bs.modal', function () {

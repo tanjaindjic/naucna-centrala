@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import master.naucnacentrala.model.Casopis;
 import master.naucnacentrala.model.Rad;
 import master.naucnacentrala.model.enums.NaucnaOblast;
-import org.apache.lucene.util.ArrayUtil;
+import org.elasticsearch.common.geo.GeoPoint;
 
 @Entity
 public class Urednik extends Korisnik {
@@ -48,9 +48,9 @@ public class Urednik extends Korisnik {
 	}
 
 	public Urednik(String string, String string2, String string3, String string4, String string5, String string6,
-				   String string7, ArrayList lista, ArrayList arrayList, ArrayList arrayList2, String titula,
+				   String string7, Double lat, Double lon, ArrayList lista, ArrayList arrayList, ArrayList arrayList2, String titula,
 				   Collection<NaucnaOblast> naucneOblasti, Casopis uredjuje, Collection<Rad> recenzira) {
-		super(string, string2, string3, string4, string5, string6, string7, lista, arrayList, arrayList2);
+		super(string, string2, string3, string4, string5, string6, string7, lat, lon, lista, arrayList, arrayList2);
 		this.titula = titula;
 		this.naucneOblasti = naucneOblasti;
 		this.uredjuje = uredjuje;

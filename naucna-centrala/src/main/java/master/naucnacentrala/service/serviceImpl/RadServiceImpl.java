@@ -1,7 +1,10 @@
 package master.naucnacentrala.service.serviceImpl;
 
 import java.util.Collection;
+import java.util.List;
 
+import master.naucnacentrala.model.Casopis;
+import master.naucnacentrala.model.enums.StatusRada;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +37,11 @@ public class RadServiceImpl implements RadService {
 	@Override
 	public Collection<Rad> getAll() {
 		return radRepository.findAll();
+	}
+
+	@Override
+	public List<Rad> getRadZaUrednika(Casopis uredjuje, StatusRada novo) {
+		return radRepository.findByCasopisAndStatusRada(uredjuje, novo);
 	}
 
 }

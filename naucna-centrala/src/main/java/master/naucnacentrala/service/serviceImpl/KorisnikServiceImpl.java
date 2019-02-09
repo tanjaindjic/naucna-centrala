@@ -21,6 +21,7 @@ import org.camunda.bpm.engine.IdentityService;
 import org.camunda.bpm.engine.identity.User;
 import org.camunda.bpm.engine.impl.util.json.JSONException;
 import org.camunda.bpm.engine.impl.util.json.JSONObject;
+import org.elasticsearch.common.geo.GeoPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -103,8 +104,8 @@ public class KorisnikServiceImpl implements KorisnikService{
 
 
 	@Override
-	public void createUser(String username, String pass, String email, String ime, String prezime, String drzava, String grad) {
-		korisnikRepository.save(new Korisnik(username, bcrypt.encode(pass), ime, prezime, grad, drzava, email, new ArrayList<>(), new ArrayList<>(), new ArrayList<>() ));
+	public void createUser(String username, String pass, String email, Double lat, Double lon, String ime, String prezime, String drzava, String grad) {
+		korisnikRepository.save(new Korisnik(username, bcrypt.encode(pass), ime, prezime, grad, drzava, email, lat, lon, new ArrayList<>(), new ArrayList<>(), new ArrayList<>() ));
 	}
 
 	@Override

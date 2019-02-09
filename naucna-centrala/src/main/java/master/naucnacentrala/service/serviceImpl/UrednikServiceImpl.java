@@ -22,7 +22,7 @@ public class UrednikServiceImpl implements UrednikService {
 
 	@Override
 	public Urednik getUrednik(Long id) {
-		return urednikRepository.getOne(id);
+		return urednikRepository.findById(id).get();
 	}
 
 	@Override
@@ -33,6 +33,11 @@ public class UrednikServiceImpl implements UrednikService {
 	@Override
 	public Collection<Urednik> getAll() {
 		return urednikRepository.findAll();
+	}
+
+	@Override
+	public Urednik getUrednikByUsername(String username) {
+		return urednikRepository.findByUsernameIgnoreCase(username);
 	}
 
 }

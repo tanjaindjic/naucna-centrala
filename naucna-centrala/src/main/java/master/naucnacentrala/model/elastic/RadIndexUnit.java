@@ -2,11 +2,12 @@ package master.naucnacentrala.model.elastic;
 
 import javax.persistence.Id;
 
+import org.elasticsearch.common.geo.GeoPoint;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
-import master.naucnacentrala.model.enums.NaucnaOblast;
+import org.springframework.data.elasticsearch.annotations.GeoPointField;
 
 
 @Document(indexName = RadIndexUnit.INDEX_NAME, type = RadIndexUnit.TYPE_NAME, shards = 1, replicas = 0)
@@ -48,6 +49,9 @@ public class RadIndexUnit {
 	@Field(type = FieldType.Long, store = true)
 	private Long casopisId;
 
+	@GeoPointField
+	private GeoPoint lokacija;
+
 	@Override
 	public String toString() {
 		return "RadIndexUnit{" +
@@ -65,7 +69,7 @@ public class RadIndexUnit {
 	}
 
 	public RadIndexUnit(Long id, String naslov, String sadrzaj, String autor, String koautori,
-						String kljucniPojmovi, String apstrakt, String naucnaOblast, boolean openAccess, String casopis, Long casopisId) {
+						String kljucniPojmovi, String apstrakt, String naucnaOblast, boolean openAccess, String casopis, Long casopisId, GeoPoint lokacija) {
 		super();
 		this.id = id;
 		this.naslov = naslov;
@@ -78,6 +82,7 @@ public class RadIndexUnit {
 		this.openAccess = openAccess;
 		this.casopis = casopis;
 		this.casopisId = casopisId;
+		this.lokacija = lokacija;
 	}
 
 	public RadIndexUnit() {
@@ -174,4 +179,11 @@ public class RadIndexUnit {
 	}
 
 
+	public GeoPoint getLokacija() {
+		return lokacija;
+	}
+
+	public void setLokacija(GeoPoint lokacija) {
+		this.lokacija = lokacija;
+	}
 }
