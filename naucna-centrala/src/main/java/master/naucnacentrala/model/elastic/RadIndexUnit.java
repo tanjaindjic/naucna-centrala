@@ -35,13 +35,13 @@ public class RadIndexUnit {
 	private  String koautori;
 	
 	@Field(type = FieldType.Text, store = true)
-	private String kljucniPojmovi;
+	private String kljucnipojmovi;
 	
 	@Field(type = FieldType.Text, store = true)
 	private String apstrakt;
 	
 	@Field(type = FieldType.Text, store = true)
-	private String naucnaOblast;
+	private String naucnaoblast;
 
 	@Field(type = FieldType.Text, store = true)
 	private String casopis;
@@ -60,9 +60,9 @@ public class RadIndexUnit {
 				", sadrzaj='" + sadrzaj + '\'' +
 				", autor='" + autor + '\'' +
 				", koautori='" + koautori + '\'' +
-				", kljucniPojmovi='" + kljucniPojmovi + '\'' +
+				", kljucniPojmovi='" + kljucnipojmovi + '\'' +
 				", apstrakt='" + apstrakt + '\'' +
-				", naucnaOblast=" + naucnaOblast +
+				", naucnaOblast=" + naucnaoblast +
 				", openAccess=" + openAccess +
 				", casopis='" + casopis + '\'' +
 				'}';
@@ -76,9 +76,9 @@ public class RadIndexUnit {
 		this.sadrzaj = sadrzaj;
 		this.autor = autor;
 		this.koautori = koautori;
-		this.kljucniPojmovi = kljucniPojmovi;
+		this.kljucnipojmovi = kljucniPojmovi;
 		this.apstrakt = apstrakt;
-		this.naucnaOblast = naucnaOblast;
+		this.naucnaoblast = naucnaOblast;
 		this.openAccess = openAccess;
 		this.casopis = casopis;
 		this.casopisId = casopisId;
@@ -122,11 +122,11 @@ public class RadIndexUnit {
 	}
 
 	public  String getKljucniPojmovi() {
-		return kljucniPojmovi;
+		return kljucnipojmovi;
 	}
 
 	public void setKljucniPojmovi( String kljucniPojmovi) {
-		this.kljucniPojmovi = kljucniPojmovi;
+		this.kljucnipojmovi = kljucniPojmovi;
 	}
 
 	public String getApstrakt() {
@@ -138,11 +138,11 @@ public class RadIndexUnit {
 	}
 
 	public String getNaucnaOblast() {
-		return naucnaOblast;
+		return naucnaoblast;
 	}
 
 	public void setNaucnaOblast(String naucnaOblast) {
-		this.naucnaOblast = naucnaOblast;
+		this.naucnaoblast = naucnaOblast;
 	}
 
 	public boolean isOpenAccess() {

@@ -1,10 +1,7 @@
 package master.naucnacentrala.controller;
 
 import com.google.gson.Gson;
-import master.naucnacentrala.model.dto.AdvancedQueryDTO;
-import master.naucnacentrala.model.dto.BasicQueryResponseDTO;
-import master.naucnacentrala.model.dto.ComplexQueryDTO;
-import master.naucnacentrala.model.dto.HighlightDTO;
+import master.naucnacentrala.model.dto.*;
 import master.naucnacentrala.model.elastic.RadIndexUnit;
 import master.naucnacentrala.repository.RadIndexingUnitRepository;
 import org.apache.tomcat.util.json.ParseException;
@@ -12,9 +9,8 @@ import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.client.Client;
-import org.elasticsearch.index.query.BoolQueryBuilder;
-import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.common.unit.DistanceUnit;
+import org.elasticsearch.index.query.*;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightField;
@@ -89,23 +85,39 @@ public class SearchController {
 
         BoolQueryBuilder bqb = QueryBuilders.boolQuery();
         if(!queryDTO.getNaucneOblasti().isEmpty())
-            bqb.must(QueryBuilders.termsQuery("naucnaOblast", queryDTO.getNaucneOblasti()));
+            bqb.must(QueryBuilders.termsQuery("naucnaoblast", queryDTO.getNaucneOblasti()));
         for(AdvancedQueryDTO dto : query){
             if(dto.getOperator().equals("I")) {
-                if (dto.getFraza()) {
-                    if(dto.getZona().equals("sve"))
+
+                if (dto.getFraza()) {  //ako je fraza
+                    if(dto.getZona().equals("sve")) //ako po svim poljima
                         bqb.must(QueryBuilders.multiMatchQuery(dto.getUpit(), "naslov", "sadrzaj", "autor",
-                            "koautori", "apstrakt", "kljucniPojmovi", "casopis", "naucnaOblast").type("phrase"));
-                    else bqb.must(QueryBuilders.matchPhraseQuery(dto.getZona().toLowerCase(), dto.getUpit()));
-                } else bqb.must(QueryBuilders.queryStringQuery(dto.getUpit()));
+                            "koautori", "apstrakt", "kljucnipojmovi", "casopis", "naucnaoblast").type("phrase"));
+                    else //ako po odredjenom polju
+                        bqb.must(QueryBuilders.matchPhraseQuery(dto.getZona().toLowerCase(), dto.getUpit()));
+                } else { //nije fraza
+                    if(dto.getZona().equals("sve")) //ako po svim poljima
+                        bqb.must(QueryBuilders.multiMatchQuery(dto.getUpit(), "naslov", "sadrzaj", "autor",
+                                "koautori", "apstrakt", "kljucnipojmovi", "casopis", "naucnaoblast"));
+                    else //ako po odredjenom polju
+                        bqb.must(QueryBuilders.matchQuery(dto.getZona().toLowerCase(), dto.getUpit()));
+
+                }
 
             } else if(dto.getOperator().equals("ILI"))   {
                 if (dto.getFraza()) {
                     if(dto.getZona().equals("sve"))
                         bqb.should(QueryBuilders.multiMatchQuery(dto.getUpit(), "naslov", "sadrzaj", "autor",
-                            "koautori", "apstrakt", "kljucniPojmovi", "casopis", "naucnaOblast").type("phrase"));
+                            "koautori", "apstrakt", "kljucnipojmovi", "casopis", "naucnaoblast").type("phrase"));
                     else bqb.should(QueryBuilders.matchPhraseQuery(dto.getZona().toLowerCase(), dto.getUpit()));
-                } else bqb.should(QueryBuilders.queryStringQuery(dto.getUpit()));
+                } else {
+                    if(dto.getZona().equals("sve")) //ako po svim poljima
+                        bqb.should(QueryBuilders.multiMatchQuery(dto.getUpit(), "naslov", "sadrzaj", "autor",
+                                "koautori", "apstrakt", "kljucnipojmovi", "casopis", "naucnaoblast"));
+                    else //ako po odredjenom polju
+                        bqb.should(QueryBuilders.matchQuery(dto.getZona().toLowerCase(), dto.getUpit()));
+
+                }
             }
         }
 
@@ -122,6 +134,41 @@ public class SearchController {
         System.out.println(retVal.size());
 
         return new ResponseEntity(retVal, HttpStatus.OK);
+    }
+
+    @PostMapping(value="/recenzentQuery", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity recenzentQuery(@RequestBody RecenzentQueryDTO recenzentQueryDTO){
+        System.out.println("primio " + recenzentQueryDTO.toString());
+
+        BoolQueryBuilder bqb = QueryBuilders.boolQuery();
+
+
+        if(!recenzentQueryDTO.getNaucneOblasti().isEmpty())
+            bqb.should(QueryBuilders.matchPhraseQuery("naucneOblasti", recenzentQueryDTO.getNaucneOblasti())).minimumShouldMatch(1);
+        if(recenzentQueryDTO.getUdaljenost()!=null){
+            GeoDistanceQueryBuilder gdqb = new GeoDistanceQueryBuilder("lokacija");
+            gdqb.distance(recenzentQueryDTO.getUdaljenost(), DistanceUnit.KILOMETERS);
+            bqb.must(gdqb);
+        }
+        if(recenzentQueryDTO.isMoreLikeThis()){
+            String[] likeThis = new String[1];
+            likeThis[0]=riuRepository.findById(recenzentQueryDTO.getIdRada()).get().getSadrzaj();
+            String[] fields = new String[1];
+            fields[0] = "sadrzaj";
+            MoreLikeThisQueryBuilder mltqb=new MoreLikeThisQueryBuilder(fields, likeThis,null );
+            bqb.must(mltqb);
+        }
+
+        SearchRequestBuilder request = nodeClient.prepareSearch("naucnicasopis")
+                .setTypes("recenzija")
+                .setQuery(bqb)
+                .setSearchType(SearchType.DEFAULT);
+        System.out.println(request);
+        SearchResponse response = request.get();
+        System.out.println(response.toString());
+
+
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     private ArrayList<BasicQueryResponseDTO> getResponse(SearchResponse response){
@@ -154,4 +201,5 @@ public class SearchController {
         }
         return retVal;
     }
+
 }

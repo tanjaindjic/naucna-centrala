@@ -34,11 +34,9 @@ public class RecenzentIndexUnit {
 	private GeoPoint lokacija;
 
 	@Field(type = FieldType.Text, store = true)
-	@ElementCollection(targetClass = NaucnaOblast.class)
-	@Enumerated(EnumType.STRING)
-	private Collection<NaucnaOblast> naucneOblasti;
+	private String naucneOblasti;
 
-    public RecenzentIndexUnit(Long id, String ime, String prezime, GeoPoint lokacija, Collection<NaucnaOblast> naucneOblasti) {
+    public RecenzentIndexUnit(Long id, String ime, String prezime, GeoPoint lokacija, String naucneOblasti) {
         this.id = id;
         this.ime = ime;
         this.prezime = prezime;
@@ -81,11 +79,11 @@ public class RecenzentIndexUnit {
         this.lokacija = lokacija;
     }
 
-    public Collection<NaucnaOblast> getNaucneOblasti() {
+    public String getNaucneOblasti() {
         return naucneOblasti;
     }
 
-    public void setNaucneOblasti(Collection<NaucnaOblast> naucneOblasti) {
+    public void setNaucneOblasti(String naucneOblasti) {
         this.naucneOblasti = naucneOblasti;
     }
 }

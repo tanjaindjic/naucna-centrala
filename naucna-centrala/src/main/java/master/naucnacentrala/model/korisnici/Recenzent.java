@@ -17,6 +17,8 @@ import master.naucnacentrala.model.Casopis;
 import master.naucnacentrala.model.Pretplata;
 import master.naucnacentrala.model.Rad;
 import master.naucnacentrala.model.enums.NaucnaOblast;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Recenzent extends Korisnik {
@@ -32,6 +34,7 @@ public class Recenzent extends Korisnik {
 	@ElementCollection(targetClass = NaucnaOblast.class)
 	@JoinTable(name = "naucnaOblast", joinColumns = @JoinColumn(name = "id"))
 	@Enumerated(EnumType.STRING)
+	@Fetch(FetchMode.JOIN)
 	private Collection<NaucnaOblast> naucneOblasti;
 
 	@Column

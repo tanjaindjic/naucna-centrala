@@ -16,4 +16,9 @@ public class RecenzentServiceImpl implements RecenzentService {
     public Recenzent save(Recenzent r) {
         return recenzentRepository.save(r);
     }
+
+    @Override
+    public Recenzent get(Long id) {
+        return recenzentRepository.findById(id).get();
+    }
 }

@@ -7,10 +7,10 @@
                 <h3>Odabir recenzenata</h3>
                 <br>
                 <div >
-                    <label >Udaljenost: <input id="udaljenost" type="text" width="100px" placeholder="Udaljenost"> km</label>
+                    <label >Udaljenost: <input id="udaljenost" type="text" max-width="70px" placeholder="Udaljenost"> km</label>
                  </div>
                 <div>
-                     <label  ><input  class="moreLikeThis" type="checkbox" value="moreLikeThis">Samo recenzetni sličnih radova</label>
+                     <label  ><input  id="moreLikeThis" type="checkbox" value="moreLikeThis">Samo recenzetni sličnih radova</label>
                 </div>
 
                 <br>
@@ -18,14 +18,15 @@
                 <div style="text-align: center">
                     <fieldset style="display:inline-block; border:2px solid #ccc; width:350px; height: 300px; overflow-y: scroll; ">
 
-                        <div style="text-align: left"><label ><input  class="naucneOblasti" type="checkbox" value="prirodno matematicke nauke">Prirodno matematičke nauke</label></div>
-                        <div style="text-align: left" ><label><input  class="naucneOblasti"  type="checkbox" value="tehnicko tehnoloske nauke">Tehničko tehnološke nauke</label></div>
-                        <div style="text-align: left"><label><input   class="naucneOblasti"  type="checkbox" value="drustveno humanisticke nauke">Društveno hummanističke nauke</label></div>
-                        <div style="text-align: left"><label><input   class="naucneOblasti"  type="checkbox" value="medicina">Medicina</label></div>
-                        <div style="text-align: left"><label><input  class="naucneOblasti"  type="checkbox" value="umetnost">Umetnost</label></div>
+                        <div style="text-align: left"><label ><input  class="naucneOblasti" type="checkbox" checked value="prirodno matematicke nauke">Prirodno matematičke nauke</label></div>
+                        <div style="text-align: left" ><label><input  class="naucneOblasti"  type="checkbox" checked value="tehnicko tehnoloske nauke">Tehničko tehnološke nauke</label></div>
+                        <div style="text-align: left"><label><input   class="naucneOblasti"  type="checkbox" checked value="drustveno humanisticke nauke">Društveno hummanističke nauke</label></div>
+                        <div style="text-align: left"><label><input   class="naucneOblasti"  type="checkbox"checked value="medicina">Medicina</label></div>
+                        <div style="text-align: left"><label><input  class="naucneOblasti"  type="checkbox" checked value="umetnost">Umetnost</label></div>
                     </fieldset>
                 </div>
                 <br>
+                <button type="button" class="btn btn-primary justify-content-end" ng-click="ponisti()">Ukloni filtere</button>
                 <button type="button" class="btn btn-primary justify-content-end" ng-click="primeni()">Primeni</button>
             </div>
         </div>
@@ -41,7 +42,8 @@
                     </div>
 
                 </fieldset>
-
+                <br>
+                <button type="button" class="btn btn-primary justify-content-end" ng-click="primeni()">Pošalji</button>
             </div>
         </div>
     </div>

@@ -1,14 +1,18 @@
 package master.naucnacentrala.model.elastic;
 
+import master.naucnacentrala.model.enums.NaucnaOblast;
 import org.elasticsearch.common.geo.GeoPoint;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 import org.springframework.data.elasticsearch.annotations.GeoPointField;
+import org.springframework.data.repository.cdi.Eager;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
+
 @Document(indexName = RecenzijaIndexUnit.INDEX_NAME, type = RecenzijaIndexUnit.TYPE_NAME, shards = 1, replicas = 0)
 public class RecenzijaIndexUnit {
 
@@ -19,6 +23,9 @@ public class RecenzijaIndexUnit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Field(type = FieldType.Long, store = true)
+    private Long idRecenzenta;
 
     @Field(type = FieldType.Text, store = true)
     private String ime;
@@ -32,12 +39,17 @@ public class RecenzijaIndexUnit {
     @Field(type = FieldType.Text, store = true)
     private String sadrzaj;
 
-    public RecenzijaIndexUnit(Long id, String ime, String prezime, GeoPoint lokacija, String sadrzaj) {
+    @Field(type = FieldType.Text, store = true)
+    private String naucneOblasti;
+
+    public RecenzijaIndexUnit(Long id, Long idRecenzenta, String ime, String prezime, GeoPoint lokacija, String sadrzaj, String naucneOblasti) {
         this.id = id;
+        this.idRecenzenta = idRecenzenta;
         this.ime = ime;
         this.prezime = prezime;
         this.lokacija = lokacija;
         this.sadrzaj = sadrzaj;
+        this.naucneOblasti = naucneOblasti;
     }
 
     public RecenzijaIndexUnit() {
@@ -81,5 +93,21 @@ public class RecenzijaIndexUnit {
 
     public void setSadrzaj(String sadrzaj) {
         this.sadrzaj = sadrzaj;
+    }
+
+    public Long getIdRecenzenta() {
+        return idRecenzenta;
+    }
+
+    public void setIdRecenzenta(Long idRecenzenta) {
+        this.idRecenzenta = idRecenzenta;
+    }
+
+    public String getNaucneOblasti() {
+        return naucneOblasti;
+    }
+
+    public void setNaucneOblasti(String naucneOblasti) {
+        this.naucneOblasti = naucneOblasti;
     }
 }

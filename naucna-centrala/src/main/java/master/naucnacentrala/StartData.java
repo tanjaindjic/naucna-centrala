@@ -122,15 +122,15 @@ public class StartData {
 		demo.getPlaceniCasopisi().add(casopis4);
 		korisnikService.addKorisnik(demo);
 		
-		Rad rad = radService.addRad(new Rad("", "Rad1", autor, "",10F, "/assets/images/Article-Icon.png", "", "apstrakt", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "test1.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test1.pdf", casopis, "radradrad1", StatusRada.PRIHVACEN));
+		Rad rad = radService.addRad(new Rad("10.1038/nphys1170 ", "Како смо изашли из воде", autor, "",10F, "/assets/images/Article-Icon.png", "evolucija, nauka", "Прелазак живих бића из воде на копно био jе кључан моменат у еволуциjи", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "voda.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\voda.pdf", casopis, "radradrad1", StatusRada.PRIHVACEN));
 		casopis.getRadovi().add(rad);
-		Rad rad2 = radService.addRad(new Rad("", "Rad2", autor2, "Mika Peric", 10F, "/assets/images/Article-Icon.png", "", "apstrakt2", NaucnaOblast.MEDICINA, "test1.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test1.pdf", casopis, "radradrad2", StatusRada.PRIHVACEN));
+		Rad rad2 = radService.addRad(new Rad("10.1002/0470841559.ch1", "Пројекат кодирања", autor2, "Mika Peric", 10F, "/assets/images/Article-Icon.png", "gen, kodiranje", "The Earth BioGenome Project планира да секвенцира 1,5 милиона генома, што ће вероватно коштати 4,7 милијарди долара", NaucnaOblast.MEDICINA, "kodiranje.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\kodiranje.pdf", casopis, "radradrad2", StatusRada.PRIHVACEN));
 		casopis.getRadovi().add(rad2);
-		Rad rad3 = radService.addRad(new Rad("", "ћирилица", autor, "",10F, "/assets/images/Article-Icon.png", "", "apstrakt3", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "test1.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test1.pdf", casopis3, "radradrad3", StatusRada.PRIHVACEN));
+		Rad rad3 = radService.addRad(new Rad("10.1594/PANGAEA.726855", "Најстарије америчко копље", autor, "",10F, "/assets/images/Article-Icon.png", "koplje, amerika, nauka", "Древно оружје који су археолози недавно пронашли у Тексасу, старо негде између 13.500 и 15.500 година, можда је припадало првим људима који су населили Америку", NaucnaOblast.TEHNICKO_TEHNOLOSKE_NAUKE, "koplje.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\koplje.pdf", casopis3, "radradrad3", StatusRada.PRIHVACEN));
 		casopis3.getRadovi().add(rad3);
-		Rad rad4 = radService.addRad(new Rad("", "Rad4", autor2, "Dusko Ilic, Ana Milosavljevic", 10F, "/assets/images/Article-Icon.png", "", "apstrakt4", NaucnaOblast.MEDICINA, "test1.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test1.pdf", casopis, "radradrad4", StatusRada.PRIHVACEN));
+		Rad rad4 = radService.addRad(new Rad("10.1594/GFZ.GEOFON.gfz2009kciu", "Како почистити свемирски отпад", autor2, "Dusko Ilic, Ana Milosavljevic", 10F, "/assets/images/Article-Icon.png", "Zemlja, otpad", "Свакога дана америчка војска изда преко 20 упозорења о потенцијалним сударима у свемиру", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "otpad.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\otpad.pdf", casopis, "radradrad4", StatusRada.PRIHVACEN));
 		casopis.getRadovi().add(rad4);
-		Rad rad5 = radService.addRad(new Rad("", "Rad5", autor2, "",10F, "/assets/images/Article-Icon.png", "", "apstrakt5", NaucnaOblast.MEDICINA, "test1.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\test1.pdf", casopis, "radradrad5", StatusRada.PRIHVACEN));
+		Rad rad5 = radService.addRad(new Rad("10.3207/2959859860", "Pomračenje Meseca", autor2, "",10F, "/assets/images/Article-Icon.png", "mesec, zemlja", "U noći između 27. i 28. jula stanovnici većeg dela Zemlje moći će da posmatraju pomračenje Meseca, a Mars će biti najbliži Zemlji u poslednjih 15 godina", NaucnaOblast.PRIRODNO_MATEMATICKE_NAUKE,"mesec.pdf", "C:\\Users\\hrcak\\Desktop\\NC_uploads\\mesec.pdf", casopis, "radradrad5", StatusRada.PRIHVACEN));
 		casopis.getRadovi().add(rad5);
 		casopisService.updateCasopis(casopis);
 		casopisService.updateCasopis(casopis3);
@@ -215,19 +215,18 @@ public class StartData {
 		saveCamundaUser(demo);
 
 		Rad novi1 = radService.addRad(new Rad("", "Скривени екосистем Земље", autor, "Ivan Markovic, Jasna Jelic",null, "/assets/images/Article-Icon.png", "ekosistem, Zemlja, nauka", "Научници су открили огроман подземни екосистем са милијардама микроорганизама, двоструко већи од светских океанa", NaucnaOblast.PRIRODNO_MATEMATICKE_NAUKE, "ekosistem.pdf", null, casopis, "novirad001", StatusRada.NOVO));
-		Rad novi2 = radService.addRad(new Rad("", "Свет без корњача", autor, "",null, "/assets/images/Article-Icon.png", "kornjaca, Zemlja, nauka, klima", "Након што су 200 милиона година успешно одолевале свим природним, па и космичким недаћама, корњаче су се нашле пред озбиљном претњом", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "kornjace.pdf", null, casopis, "novirad002", StatusRada.NOVO));
+		Rad novi2 = radService.addRad(new Rad("", "Одакле долазе амерички староседеоци", autor, "",null, "/assets/images/Article-Icon.png", "amerika, Zemlja, nauka", "Амерички староседеоци заиста су пореклом из Америке, као генетички културно препознатљива група", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "starosedeoci.pdf", null, casopis, "novirad002", StatusRada.NOVO));
 		radService.addRad(novi1);
 		radService.addRad(novi2);
 
 
-		/*setupTestData(rad3);
+	setupTestData(rad3);
 		setupTestData(rad2);
 		setupTestData(rad);
 		setupTestData(novi1);
 		setupTestData(novi2);
-		*/
-		/*setupRecenzije(recenzija);
-		setupRecenzije(recenzija2);
+		setupRecenzije(recenzija);
+		/*	setupRecenzije(recenzija2);
 		setupRecenzije(recenzija3);
 		setupRecenzije(recenzija4);
 		setupRecenzije(recenzija5);
@@ -237,15 +236,15 @@ public class StartData {
 		setupRecenzije(recenzija9);
 		setupRecenzije(recenzija10);
 		setupRecenzije(recenzija11);
-		setupRecenzije(recenzija12);*/
+		setupRecenzije(recenzija12);
 
-	/*	saveRecenzentIdx(r);
+		saveRecenzentIdx(r);
 		saveRecenzentIdx(r2);
 		saveRecenzentIdx(r3);
 		saveRecenzentIdx(r4);
 		saveRecenzentIdx(r5);
-		saveRecenzentIdx(r6);*/
-
+		saveRecenzentIdx(r6);
+*/
     }
 
 	private void setupTestData(Rad rad) throws ExecutionException, InterruptedException {
@@ -268,7 +267,7 @@ public class StartData {
 			pdfStripper.setStartPage(1);
 			pdfStripper.setEndPage(5);
 			parsedText = pdfStripper.getText(pdDoc);
-
+			pdDoc.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -276,7 +275,6 @@ public class StartData {
 
 		RadIndexUnit riu = new RadIndexUnit(rad.getId(), rad.getNaslov(), parsedText, rad.getAutor().getIme() + " " + rad.getAutor().getPrezime(), rad.getListaKoautora(), rad.getKljucniPojmovi(), rad.getApstrakt(), NaucnaOblast.normalized(rad.getNaucnaOblast()), rad.getCasopis().isOpenAccess(), rad.getCasopis().getNaziv(), rad.getCasopis().getId(), new GeoPoint(rad.getAutor().getLat(), rad.getAutor().getLon()));
 		riu = riuRepository.save(riu);
-		System.out.println(riu.toString());
 
 	}
 	private void setupRecenzije(Recenzija r){
@@ -285,7 +283,6 @@ public class StartData {
 		PDFTextStripper pdfStripper = null;
 		PDDocument pdDoc = null;
 		COSDocument cosDoc = null;
-		System.out.println(r.getRad().getAdresaNacrta());
 		File file = new File(classLoader.getResource(r.getRad().getAdresaNacrta()).getFile());
 		String parsedText = "";
 		try {
@@ -297,18 +294,25 @@ public class StartData {
 			pdfStripper = new PDFTextStripper();
 			pdDoc = new PDDocument(cosDoc);
 			parsedText = pdfStripper.getText(pdDoc);
-
+			pdDoc.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		RecenzijaIndexUnit riu = new RecenzijaIndexUnit(r.getId(), r.getRecenzent().getIme(), r.getRecenzent().getPrezime(),
-				new GeoPoint(r.getRecenzent().getLat(), r.getRecenzent().getLon()), parsedText);
+		Collection<NaucnaOblast> oblasti = recenzentService.get(r.getRecenzent().getId()).getNaucneOblasti();
+		List<String> stringOblasti = new ArrayList<>();
+		for(NaucnaOblast o : oblasti)
+			stringOblasti.add(o.name());
+		RecenzijaIndexUnit riu = new RecenzijaIndexUnit(r.getId(), r.getRecenzent().getId(), r.getRecenzent().getIme(), r.getRecenzent().getPrezime(),
+				new GeoPoint(r.getRecenzent().getLat(), r.getRecenzent().getLon()), parsedText, String.join(", ", stringOblasti).toLowerCase().replace('_', ' '));
 		recenzijaIndexUnitRepository.save(riu);
 	}
 	private void saveRecenzentIdx(Recenzent r){
-		RecenzentIndexUnit riu = new RecenzentIndexUnit(r.getId(), r.getIme(), r.getPrezime(), new GeoPoint(r.getLat(), r.getLon()), r.getNaucneOblasti());
+		Collection<NaucnaOblast> oblasti = r.getNaucneOblasti();
+		List<String> stringOblasti = new ArrayList<>();
+		for(NaucnaOblast o : oblasti)
+			stringOblasti.add(o.name());
+		RecenzentIndexUnit riu = new RecenzentIndexUnit(r.getId(), r.getIme(), r.getPrezime(), new GeoPoint(r.getLat(), r.getLon()),  String.join(", ", stringOblasti).toLowerCase().replace('_', ' '));
 		recenzentIndexUnitRepository.save(riu);
 	}
 
