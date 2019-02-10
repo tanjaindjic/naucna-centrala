@@ -4,29 +4,30 @@
     <div class="row profile">
         <div class="col-md-4">
             <div class="profile-sidebar">
-                <h3>Odabir recenzenata za:</h3>
+                <h4>Odabir recenzenata za:</h4>
                 <br>
                 <div>
                     <p><b>Rad:</b> "{{rad.naslov}}" </p>
                      <p><b>Autor:</b> {{rad.autor.ime}} {{rad.autor.prezime}}</p>
                     <p><b>Mesto:</b> {{rad.autor.grad}}, {{rad.autor.drzava}}</p>
+                    <p class="text-capitalize"><b>Naucna oblast:</b> {{rad.naucnaOblast.split('_').join(' ') | lowercase}}</p>
                 </div>
                 <br>
                 <div >
-                    <label >Udaljenost: <input id="udaljenost" type="text" max-width="70px" placeholder="Udaljenost"> km</label>
+                    <label >Udaljenost: <input id="udaljenost" type="text" maxlength="4" size="4"> km</label>
                  </div>
                 <div>
-                     <label  ><input  id="moreLikeThis" type="checkbox" value="moreLikeThis">Samo recenzetni sličnih radova</label>
+                     <label  ><input  id="moreLikeThis" type="checkbox" value="moreLikeThis">Samo recenzenti sličnih radova</label>
                 </div>
 
                 <br>
                 <p><b>Naučne oblasti:</b></p>
                 <div style="text-align: center">
-                    <fieldset style="display:inline-block; border:2px solid #ccc; width:350px; height: 300px; overflow-y: scroll; ">
+                    <fieldset style="display:inline-block; border:2px solid #ccc; width:350px; height: 200px; overflow-y: scroll; ">
 
-                        <div style="text-align: left"><label ><input  class="naucneOblasti" type="checkbox"  value="prirodno matematicke nauke">Prirodno matematičke nauke</label></div>
-                        <div style="text-align: left" ><label><input  class="naucneOblasti"  type="checkbox"  value="tehnicko tehnoloske nauke">Tehničko tehnološke nauke</label></div>
-                        <div style="text-align: left"><label><input   class="naucneOblasti"  type="checkbox"  value="drustveno humanisticke nauke">Društveno hummanističke nauke</label></div>
+                        <div style="text-align: left"><label ><input  class="naucneOblasti" type="checkbox"  value="prirodno matematicke nauke">Prirodno Matematicke Nauke</label></div>
+                        <div style="text-align: left" ><label><input  class="naucneOblasti"  type="checkbox"  value="tehnicko tehnoloske nauke">Tehnicko Tehnoloske Nauke</label></div>
+                        <div style="text-align: left"><label><input   class="naucneOblasti"  type="checkbox"  value="drustveno humanisticke nauke">Drustveno Humanisticke Nauke</label></div>
                         <div style="text-align: left"><label><input   class="naucneOblasti"  type="checkbox" value="medicina">Medicina</label></div>
                         <div style="text-align: left"><label><input  class="naucneOblasti"  type="checkbox"  value="umetnost">Umetnost</label></div>
                     </fieldset>
@@ -40,13 +41,13 @@
         <div class="col-md-5">
             <div class="profile-content">
 
-                <p><b>Recenzenti:</b></p>
-                <fieldset style="  border:2px solid #ccc; width:500px; height: 600px; overflow-y: scroll; ">
+                <fieldset  style="  border:2px solid #ccc; width:500px; height: 600px; overflow-y: scroll; ">
 
-                    <div ng-repeat="r in recenzenti">
-                        <label><b><input  class="recenzent" type="checkbox" value="{{r.id}}">{{r.ime}} {{r.prezime}}, {{r.grad}}, {{r.drzava}}</b></label>
-                        <p><small><b>Recenzije:</b> {{r.recenziraniRadovi}}</small></p>
-                        <p><small>({{r.naucneOblasti}})</small></p>
+                    <div class="recenzentBox" ng-repeat="r in recenzenti">
+                        <p><b><input  class="recenzent" type="checkbox" value="{{r.id}}">{{r.ime}} {{r.prezime}}, {{r.grad}}, {{r.drzava}}</b></p>
+
+                        <p class="text-capitalize">({{r.naucneOblasti}})</p>
+                        <p><b>Recenzije:</b> {{r.recenziraniRadovi}}</p>
                     </div>
 
                 </fieldset>

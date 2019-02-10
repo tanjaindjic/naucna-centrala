@@ -223,7 +223,8 @@ public class StartData {
 		radService.addRad(novi2);
 
 
-		setupTestData(rad3);
+
+	/*	setupTestData(rad3);
 		setupTestData(rad2);
 		setupTestData(rad);
 		setupTestData(rad3);
@@ -243,13 +244,14 @@ public class StartData {
 		setupRecenzije(recenzija11);
 		setupRecenzije(recenzija12);
 
-		saveRecenzentIdx(r);
+ 		saveRecenzentIdx(r);
 		saveRecenzentIdx(r2);
 		saveRecenzentIdx(r3);
 		saveRecenzentIdx(r4);
 		saveRecenzentIdx(r5);
 		saveRecenzentIdx(r6);
 
+*/
 
 		/*setupTestData(novi1);
 		setupTestData(novi2);*/

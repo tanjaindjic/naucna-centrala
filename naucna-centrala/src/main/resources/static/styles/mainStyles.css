@@ -1,3 +1,12 @@
+.recenzentBox:nth-of-type(odd) {
+background-color:#e3ebf9;
+}
+
+.recenzentBox:nth-of-type(even) {
+background-color:#fff;
+}
+
+
 .profile {
   margin: 20px 0;
 }
@@ -7,6 +16,8 @@
   table-layout: fixed;
   border-collapse: collapse;
 }
+
+
 .buttons button {
   width: 80%;
 }

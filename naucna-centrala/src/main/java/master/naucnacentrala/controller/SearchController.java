@@ -161,15 +161,12 @@ public class SearchController {
         List<RecenzentIndexUnit> retval = new ArrayList<>();
 
         if(!recenzentQueryDTO.getNaucneOblasti().isEmpty()) {
-            if(recenzentQueryDTO.getNaucneOblasti().size()==1){
-                MatchPhraseQueryBuilder mpqb = new MatchPhraseQueryBuilder("naucneOblasti", recenzentQueryDTO.getNaucneOblasti().get(0));
+
+            for (String obl : recenzentQueryDTO.getNaucneOblasti()) {
+                MatchPhraseQueryBuilder mpqb = new MatchPhraseQueryBuilder("naucneOblasti", obl);
                 bqb.must(mpqb);
-            }else {
-                for (String obl : recenzentQueryDTO.getNaucneOblasti()) {
-                    MatchPhraseQueryBuilder mpqb = new MatchPhraseQueryBuilder("naucneOblasti", obl);
-                    bqb.should(mpqb).minimumShouldMatch(1);
-                }
             }
+
         }
         if(recenzentQueryDTO.getUdaljenost()!=null){
             GeoDistanceQueryBuilder gdqb = new GeoDistanceQueryBuilder("lokacija");
@@ -180,9 +177,15 @@ public class SearchController {
         if(recenzentQueryDTO.isMoreLikeThis()){
             String[] likeThis = new String[1];
             likeThis[0]=getSadrzaj(r);
+            System.out.println(likeThis[0]);
             String[] fields = new String[1];
             fields[0] = "sadrzaj";
             MoreLikeThisQueryBuilder mltqb=new MoreLikeThisQueryBuilder(fields, likeThis,null );
+            mltqb.maxQueryTerms(10);
+            mltqb.minTermFreq(1);
+            mltqb.minimumShouldMatch("65%");
+            mltqb.minDocFreq(1);
+            mltqb.analyzer("serbian-analyzer");
             bqb.must(mltqb);
         }
 
