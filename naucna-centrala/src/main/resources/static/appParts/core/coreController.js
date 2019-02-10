@@ -79,21 +79,26 @@
                 $("#dodatnaPolja").append(container);
                 var html =
                 "<div id=\"polje" + $scope.brPolja +"\" class=\"col-md-8 text\" style=\"display:inline;\">"+
-                    "<div class=\"form-group\" >"+
-                        "<select style=\"width:80px\" id=\"operator" + $scope.brPolja + "\" class=\"form-control choice-select\" >"+
-                            "<option value=\"i\">I</option>"+
-                            "<option value=\"ili\">ILI</option>"+
-                        "</select>"+
+                    "<div class=\"form-inline\" style=\"display:inline;\">"+
+                        "<div class=\"form-group\" style=\"display:inline;\">"+
+                            "<select style=\"width:80px; display:inline;\" id=\"operator" + $scope.brPolja + "\" class=\"form-control choice-select\" >"+
+                                "<option value=\"i\">I</option>"+
+                                "<option value=\"ili\">ILI</option>"+
+                            "</select>"+
+                        "</div>"+
                     "</div>"+
-                    "<div class=\"form-group\" style=\"display:inline;\">"+
-                        "<select id=\"zona"+ $scope.brPolja+"\" class=\"form-control choice-select\" style=\"display:inline;width:150px\">"+
-                            "<option value=\"naslov\">Sva polja</option>"+
-                            "<option value=\"naslov\">Naslov</option>"+
-                            "<option value=\"sadrzaj\">Sadržaj</option>"+
-                            "<option value=\"autor\">Autori</option>"+
-                            "<option value=\"kljucniPojmovi\">Ključni pojmovi</option>"+
-                        "</select>"+
-                    "</div>"+
+                     "<span>      </span>"+
+                    "<div class=\"form-inline\" style=\"display:inline;\">"+
+                        "<div class=\"form-group\" style=\"display:inline;\">"+
+                            "<select id=\"zona"+ $scope.brPolja+"\" class=\"form-control choice-select\" style=\"display:inline;width:150px\">"+
+                                "<option value=\"naslov\">Sva polja</option>"+
+                                "<option value=\"naslov\">Naslov</option>"+
+                                "<option value=\"sadrzaj\">Sadržaj</option>"+
+                                "<option value=\"autor\">Autori</option>"+
+                                "<option value=\"kljucniPojmovi\">Ključni pojmovi</option>"+
+                            "</select>"+
+                        "</div>"+
+                      "</div>"+
                     "<span>      </span>"+
                     "<div class=\"form-inline\" style=\"display:inline;\">"+
                         "<div class=\"form-group\"style=\"display:inline;\">"+
@@ -104,10 +109,11 @@
                             "<input id=\"checkbox" + $scope.brPolja + "\" type=\"checkbox\" value=\"\">"+
                             "<label style=\"display:inline;\">Fraza</label>"+
                             "<span>   </span>"+
-                            "<button id=\"dugme" + $scope.brPolja + "\" type=\"button\" class=\"btn btn-primary\" ng-click=\"obrisi(this.id)\" style=\"display:inline;\"> Obriši</button>"+
+                            "<button id=\"dugme" + $scope.brPolja + "\" type=\"button\" class=\"btn btn-primary\" ng-click=\"obrisi(this.id)\" style=\"float: right;display:inline;\"> Obriši</button>"+
                         "</div>"+
                     "</div>"+
-                "</div>";
+                "</div>"+
+                "<br><div><p></p></div>";
 
 
                 $("#" + container.id).append(html);
@@ -125,8 +131,9 @@
                 var zona0 =$( "#zona0 option:selected" ).val();
                 var upit0 = $('#upit0').val();
                 var isFraza0 = $('#checkbox0').is(':checked');
+                console.log($("#operator0").text())
                 var upit0 = {
-                    "operator": "I",
+                    "operator": $("#operator0 option:selected").text(),
                     "zona": zona0,
                     "upit": upit0,
                     "isFraza" : isFraza0

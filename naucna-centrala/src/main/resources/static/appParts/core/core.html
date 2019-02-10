@@ -82,7 +82,10 @@
                                <b>Autor:</b> {{res.radIndexUnit.autor}}
                            </p>
                            <p>
-                               <b>Naučna oblast:</b> {{res.radIndexUnit.naucnaOblast}}
+                               <b>Naučna oblast:</b> {{res.radIndexUnit.naucnaoblast}}
+                           </p>
+                           <p>
+                               <b>Ključni pojmovi:</b> {{res.radIndexUnit.kljucnipojmovi}}
                            </p>
                             <p style="background:#ededed" ng-bind-html="trustDangerousSnippet(res.highlight)">{{res.highlight}}</p>
                             <button class="btn btn-primary" ng-if="res.radIndexUnit.openAccess" ng-click="skini(res.radIndexUnit.id)">PREUZMI</button>
@@ -113,7 +116,16 @@
                 <div id="naprednaFormaBody" class="modal-body" >
                     <div id="forma" class="row" style="display:inline;">
                         <div class="col-md-8 text" style="display:inline;">
+                            <span>         </span>
                             <div class="form-inline" style="display:inline;">
+
+                                <div class="form-group" style="display:inline;">
+                                    <select style="display:inline;" style="width:80px" id="operator0" class="form-control choice-select">
+                                        <option value="i">I</option>
+                                        <option value="ili">ILI</option>
+                                    </select>
+                                </div>
+                                <span>      </span>
                                 <div class="form-group" style="display:inline;">
                                     <select id="zona0" class="form-control choice-select" style="display:inline;">
                                         <option value="sve">Sva polja</option>
@@ -129,7 +141,8 @@
                                 <div class="form-group" style="display:inline;">
                                     <input id="checkbox0" type="checkbox" value="">
                                     <label style="display:inline;">Fraza</label>
-                                    <button type="button" class="btn btn-primary justify-content-end" ng-click="dodajPolja()" style="display:inline;">Dodaj</button>
+                                    <span>                                 </span>
+                                    <button type="button" class="btn btn-primary justify-content-end" ng-click="dodajPolja()" style="float: right;display:inline;">Dodaj polje</button>
                                 </div>
                             </div>
                         </div>
@@ -139,13 +152,13 @@
                                 <p>Naučne oblasti:</p>
                                 <label><input  class="naucneOblasti" type="checkbox" value="prirodno matematicke nauke">Prirodno matematičke nauke</label>
                                 <label><input  class="naucneOblasti"  type="checkbox" value="tehnicko tehnoloske nauke">Tehničko tehnološke nauke</label>
-                                <label><input  class="naucneOblasti"  type="checkbox" value="drustveno humanisticke nauke">Društveno hummanističke nauke</label>
+                                <label><input  class="naucneOblasti"  type="checkbox" value="drustveno humanisticke nauke">Društveno humanističke nauke</label>
                                 <label><input  class="naucneOblasti"  type="checkbox" value="medicina">Medicina</label>
                                 <label><input  class="naucneOblasti"  type="checkbox" value="umetnost">Umetnost</label>
                             </fieldset>
                         </div>
 
-                        <span id="dodatnaPolja"></span>
+                        <div id="dodatnaPolja"></div>
                     </div>
 
                 </div>

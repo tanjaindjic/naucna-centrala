@@ -69,16 +69,16 @@ public class RadIndexUnit {
 	}
 
 	public RadIndexUnit(Long id, String naslov, String sadrzaj, String autor, String koautori,
-						String kljucniPojmovi, String apstrakt, String naucnaOblast, boolean openAccess, String casopis, Long casopisId, GeoPoint lokacija) {
+						String kljucnipojmovi, String apstrakt, String naucnaoblast, boolean openAccess, String casopis, Long casopisId, GeoPoint lokacija) {
 		super();
 		this.id = id;
 		this.naslov = naslov;
 		this.sadrzaj = sadrzaj;
 		this.autor = autor;
 		this.koautori = koautori;
-		this.kljucnipojmovi = kljucniPojmovi;
+		this.kljucnipojmovi = kljucnipojmovi;
 		this.apstrakt = apstrakt;
-		this.naucnaoblast = naucnaOblast;
+		this.naucnaoblast = naucnaoblast;
 		this.openAccess = openAccess;
 		this.casopis = casopis;
 		this.casopisId = casopisId;
@@ -121,12 +121,12 @@ public class RadIndexUnit {
 		this.koautori = koautori;
 	}
 
-	public  String getKljucniPojmovi() {
+	public  String getKljucnipojmovi() {
 		return kljucnipojmovi;
 	}
 
-	public void setKljucniPojmovi( String kljucniPojmovi) {
-		this.kljucnipojmovi = kljucniPojmovi;
+	public void setKljucnipojmovi( String kljucnipojmovi) {
+		this.kljucnipojmovi = kljucnipojmovi;
 	}
 
 	public String getApstrakt() {
@@ -137,12 +137,12 @@ public class RadIndexUnit {
 		this.apstrakt = apstrakt;
 	}
 
-	public String getNaucnaOblast() {
+	public String getNaucnaoblast() {
 		return naucnaoblast;
 	}
 
-	public void setNaucnaOblast(String naucnaOblast) {
-		this.naucnaoblast = naucnaOblast;
+	public void setNaucnaoblast(String naucnaoblast) {
+		this.naucnaoblast = naucnaoblast;
 	}
 
 	public boolean isOpenAccess() {

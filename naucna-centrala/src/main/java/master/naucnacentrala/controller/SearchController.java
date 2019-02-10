@@ -101,40 +101,44 @@ public class SearchController {
 
         BoolQueryBuilder bqb = QueryBuilders.boolQuery();
         if(!queryDTO.getNaucneOblasti().isEmpty())
-            bqb.must(QueryBuilders.termsQuery("naucnaoblast", queryDTO.getNaucneOblasti()));
-        for(AdvancedQueryDTO dto : query){
-            if(dto.getOperator().equals("I")) {
-
-                if (dto.getFraza()) {  //ako je fraza
-                    if(dto.getZona().equals("sve")) //ako po svim poljima
-                        bqb.must(QueryBuilders.multiMatchQuery(dto.getUpit(), "naslov", "sadrzaj", "autor",
-                            "koautori", "apstrakt", "kljucnipojmovi", "casopis", "naucnaoblast").type("phrase"));
-                    else //ako po odredjenom polju
-                        bqb.must(QueryBuilders.matchPhraseQuery(dto.getZona().toLowerCase(), dto.getUpit()));
-                } else { //nije fraza
-                    if(dto.getZona().equals("sve")) //ako po svim poljima
-                        bqb.must(QueryBuilders.multiMatchQuery(dto.getUpit(), "naslov", "sadrzaj", "autor",
-                                "koautori", "apstrakt", "kljucnipojmovi", "casopis", "naucnaoblast"));
-                    else //ako po odredjenom polju
-                        bqb.must(QueryBuilders.matchQuery(dto.getZona().toLowerCase(), dto.getUpit()));
-
-                }
-
-            } else if(dto.getOperator().equals("ILI"))   {
-                if (dto.getFraza()) {
-                    if(dto.getZona().equals("sve"))
-                        bqb.should(QueryBuilders.multiMatchQuery(dto.getUpit(), "naslov", "sadrzaj", "autor",
-                            "koautori", "apstrakt", "kljucnipojmovi", "casopis", "naucnaoblast").type("phrase"));
-                    else bqb.should(QueryBuilders.matchPhraseQuery(dto.getZona().toLowerCase(), dto.getUpit()));
-                } else {
-                    if(dto.getZona().equals("sve")) //ako po svim poljima
-                        bqb.should(QueryBuilders.multiMatchQuery(dto.getUpit(), "naslov", "sadrzaj", "autor",
-                                "koautori", "apstrakt", "kljucnipojmovi", "casopis", "naucnaoblast"));
-                    else //ako po odredjenom polju
-                        bqb.should(QueryBuilders.matchQuery(dto.getZona().toLowerCase(), dto.getUpit()));
-
-                }
+            for (String obl : queryDTO.getNaucneOblasti()) {
+                MatchPhraseQueryBuilder mpqb = new MatchPhraseQueryBuilder("naucnaoblast", obl);
+                bqb.must(mpqb);
             }
+        for(AdvancedQueryDTO dto : query){
+            if(dto.getUpit()!=null && dto.getUpit()!="")
+                if(dto.getOperator().equals("I")) {
+
+                    if (dto.getFraza()) {  //ako je fraza
+                        if(dto.getZona().equals("sve")) //ako po svim poljima
+                            bqb.must(QueryBuilders.multiMatchQuery(dto.getUpit(), "naslov", "sadrzaj", "autor",
+                                "koautori", "apstrakt", "kljucnipojmovi", "casopis", "naucnaoblast").type("phrase"));
+                        else //ako po odredjenom polju
+                            bqb.must(QueryBuilders.matchPhraseQuery(dto.getZona().toLowerCase(), dto.getUpit()));
+                    } else { //nije fraza
+                        if(dto.getZona().equals("sve")) //ako po svim poljima
+                            bqb.must(QueryBuilders.multiMatchQuery(dto.getUpit(), "naslov", "sadrzaj", "autor",
+                                    "koautori", "apstrakt", "kljucnipojmovi", "casopis", "naucnaoblast"));
+                        else //ako po odredjenom polju
+                            bqb.must(QueryBuilders.matchQuery(dto.getZona().toLowerCase(), dto.getUpit()));
+
+                    }
+
+                } else if(dto.getOperator().equals("ILI"))   {
+                    if (dto.getFraza()) {
+                        if(dto.getZona().equals("sve"))
+                            bqb.should(QueryBuilders.multiMatchQuery(dto.getUpit(), "naslov", "sadrzaj", "autor",
+                                "koautori", "apstrakt", "kljucnipojmovi", "casopis", "naucnaoblast").type("phrase"));
+                        else bqb.should(QueryBuilders.matchPhraseQuery(dto.getZona().toLowerCase(), dto.getUpit()));
+                    } else {
+                        if(dto.getZona().equals("sve")) //ako po svim poljima
+                            bqb.should(QueryBuilders.multiMatchQuery(dto.getUpit(), "naslov", "sadrzaj", "autor",
+                                    "koautori", "apstrakt", "kljucnipojmovi", "casopis", "naucnaoblast"));
+                        else //ako po odredjenom polju
+                            bqb.should(QueryBuilders.matchQuery(dto.getZona().toLowerCase(), dto.getUpit()));
+
+                    }
+                }
         }
 
         highlightBuilder.highlightQuery(bqb);

@@ -223,8 +223,8 @@ public class StartData {
 		radService.addRad(novi2);
 
 
-
-	/*	setupTestData(rad3);
+/*
+		setupTestData(rad3);
 		setupTestData(rad2);
 		setupTestData(rad);
 		setupTestData(rad3);
@@ -282,7 +282,6 @@ public class StartData {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		RadIndexUnit riu = new RadIndexUnit(rad.getId(), rad.getNaslov(), parsedText, rad.getAutor().getIme() + " " + rad.getAutor().getPrezime(), rad.getListaKoautora(), rad.getKljucniPojmovi(), rad.getApstrakt(), NaucnaOblast.normalized(rad.getNaucnaOblast()), rad.getCasopis().isOpenAccess(), rad.getCasopis().getNaziv(), rad.getCasopis().getId(), new GeoPoint(rad.getAutor().getLat(), rad.getAutor().getLon()));
 		riu = riuRepository.save(riu);
 
