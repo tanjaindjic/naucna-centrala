@@ -227,12 +227,17 @@ public class RadController {
 	}
 
 	@GetMapping(value = "/download/{id}")
-	public ResponseEntity<Resource> downloadFile(@PathVariable Long id, HttpServletRequest request) {
+	public ResponseEntity<Resource> downloadFile(@PathVariable Long id, HttpServletRequest request) throws IOException {
 		// Load file as Resource
         Rad r = radService.getRad(id);
         if(r==null)
                 return ResponseEntity.badRequest().body(null);
-		Resource resource = fileStorageService.loadFileAsResource(r.getAdresaKonacnogRada());
+        Resource resource;
+        if(r.getAdresaKonacnogRada()!=null)
+            resource = fileStorageService.loadFileAsResource(r.getAdresaKonacnogRada());
+        else resource = fileStorageService.loadFileAsResource("C:\\Users\\hrcak\\Desktop\\NC_uploads\\"+r.getAdresaNacrta());
+
+        System.out.println(resource.getURI().toString());
 
 		// Try to determine file's content type
 		String contentType = null;
@@ -250,6 +255,7 @@ public class RadController {
 		return ResponseEntity.ok()
 				.contentType(MediaType.parseMediaType(contentType))
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+                .header( HttpHeaders.LOCATION, resource.getURI().toString())
 				.body(resource);
 	}
 
@@ -265,5 +271,7 @@ public class RadController {
         }
         return ret;
     }
+
+
 
 }

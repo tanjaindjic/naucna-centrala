@@ -36,11 +36,22 @@ mainModule.controller('tasksController', ['$http','$scope', '$window', 'mainServ
             document.getElementById("prikaziRecenzirane").style.display="block";
        }
 
-       $scope.pogledajRad = function(rad){
-        $scope.trenutniRad = rad;
-        $scope.trenutnaAdresa = "C:\\Users\\hrcak\\Desktop\\NC_uploads\\" + rad.adresaNacrta;
-        $('#pregledRada').modal('show');
+       $scope.pogledajRad = function(id){
 
+            $http({method: 'GET', url: ROOT_PATH + "rad/download/" + id, headers : mainService.createAuthorizationTokenHeader()})
+              .then(function(result){
+                console.log(result)
+                 var anchor = angular.element('<a/>');
+                 anchor.attr({
+                     href: 'data:attachment/pdf;charset=utf-8,' + encodeURI(result.data),
+                     target: '_blank',
+                     download: 'rad.pdf'
+                 })[0].click();
+
+              }, function errorCallback(response) {
+                   console.log("grerska " + JSON.stringify(response))
+
+               });
 
        }
 
