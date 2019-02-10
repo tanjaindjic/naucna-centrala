@@ -7,7 +7,7 @@
             $scope.rad = {};
             var init = function () {
                 $scope.id = /[^/]*$/.exec(window.location.href)[0];
-                return $http({
+                $http({
                     method:"GET",
                     url:ROOT_PATH + "rad/" + $scope.id + "/recenzenti",
                     headers : mainService.createAuthorizationTokenHeader()
@@ -16,6 +16,16 @@
                     $scope.recenzenti = result.data;
                     console.log($scope.recenzenti)
                 });
+
+                $http({
+                    method:"GET",
+                    url:ROOT_PATH + "rad/" + $scope.id,
+                    headers : mainService.createAuthorizationTokenHeader()
+                }).then(function(result){
+                    $scope.rad = result.data;
+
+                });
+
 
                 console.log("init rad")
 
@@ -27,6 +37,8 @@
                 $(".naucneOblasti:checkbox:checked").each(function(){
                     oblasti.push($(this).val());
                 });
+                if(oblasti.length<1 && $('#udaljenost').val()=="" && $('#moreLikeThis').is(':checked')==false)
+                    $scope.ponisti();
                 var payload = {
                     "idRada":$scope.id,
                     "udaljenost":$('#udaljenost').val(),
@@ -39,6 +51,7 @@
                     data: JSON.stringify(payload),
                     headers : mainService.createAuthorizationTokenHeader()
                 }).then(function successCallback(response) {
+                    console.log(response)
                     $scope.recenzenti = response.data;
                 }, function errorCallback(response) {
                     console.log("grerska " + JSON.stringify(response))
@@ -52,7 +65,7 @@
             $scope.ponisti = function(){
                 $('#udaljenost').val("");
                 $('#moreLikeThis').prop('checked', false);
-                $('.naucneOblasti:checkbox').prop('checked', true);
+                $('.naucneOblasti:checkbox').prop('checked', false);
                 $scope.recenzenti = $scope.sviRecenzenti;
                $scope.$apply();
             }

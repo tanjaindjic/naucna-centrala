@@ -1,9 +1,20 @@
 package master.naucnacentrala.controller;
 
 import com.google.gson.Gson;
+import master.naucnacentrala.model.Rad;
 import master.naucnacentrala.model.dto.*;
 import master.naucnacentrala.model.elastic.RadIndexUnit;
+import master.naucnacentrala.model.elastic.RecenzentIndexUnit;
+import master.naucnacentrala.model.elastic.RecenzijaIndexUnit;
 import master.naucnacentrala.repository.RadIndexingUnitRepository;
+import master.naucnacentrala.repository.RecenzentIndexUnitRepository;
+import master.naucnacentrala.service.RadService;
+import org.apache.commons.lang.StringUtils;
+import org.apache.pdfbox.cos.COSDocument;
+import org.apache.pdfbox.io.RandomAccessFile;
+import org.apache.pdfbox.pdfparser.PDFParser;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.tomcat.util.json.ParseException;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
@@ -24,10 +35,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 
 @RestController
@@ -39,6 +49,12 @@ public class SearchController {
 
     @Autowired
     private ElasticsearchTemplate elasticsearchTemplate;
+
+    @Autowired
+    private RadService radService;
+
+    @Autowired
+    private RecenzentIndexUnitRepository recenzentIndexUnitRepository;
 
     @Autowired
     private RadIndexingUnitRepository riuRepository;
@@ -141,34 +157,51 @@ public class SearchController {
         System.out.println("primio " + recenzentQueryDTO.toString());
 
         BoolQueryBuilder bqb = QueryBuilders.boolQuery();
+        Rad r=radService.getRad(recenzentQueryDTO.getIdRada());
+        List<RecenzentIndexUnit> retval = new ArrayList<>();
 
-
-        if(!recenzentQueryDTO.getNaucneOblasti().isEmpty())
-            bqb.should(QueryBuilders.matchPhraseQuery("naucneOblasti", recenzentQueryDTO.getNaucneOblasti())).minimumShouldMatch(1);
+        if(!recenzentQueryDTO.getNaucneOblasti().isEmpty()) {
+            if(recenzentQueryDTO.getNaucneOblasti().size()==1){
+                MatchPhraseQueryBuilder mpqb = new MatchPhraseQueryBuilder("naucneOblasti", recenzentQueryDTO.getNaucneOblasti().get(0));
+                bqb.must(mpqb);
+            }else {
+                for (String obl : recenzentQueryDTO.getNaucneOblasti()) {
+                    MatchPhraseQueryBuilder mpqb = new MatchPhraseQueryBuilder("naucneOblasti", obl);
+                    bqb.should(mpqb).minimumShouldMatch(1);
+                }
+            }
+        }
         if(recenzentQueryDTO.getUdaljenost()!=null){
             GeoDistanceQueryBuilder gdqb = new GeoDistanceQueryBuilder("lokacija");
             gdqb.distance(recenzentQueryDTO.getUdaljenost(), DistanceUnit.KILOMETERS);
-            bqb.must(gdqb);
+            gdqb.point(r.getAutor().getLat(), r.getAutor().getLon());
+            bqb.mustNot(gdqb);
         }
         if(recenzentQueryDTO.isMoreLikeThis()){
             String[] likeThis = new String[1];
-            likeThis[0]=riuRepository.findById(recenzentQueryDTO.getIdRada()).get().getSadrzaj();
+            likeThis[0]=getSadrzaj(r);
             String[] fields = new String[1];
             fields[0] = "sadrzaj";
             MoreLikeThisQueryBuilder mltqb=new MoreLikeThisQueryBuilder(fields, likeThis,null );
             bqb.must(mltqb);
         }
 
-        SearchRequestBuilder request = nodeClient.prepareSearch("naucnicasopis")
+        SearchRequestBuilder request = nodeClient.prepareSearch("naucnicasopis_recenzija")
                 .setTypes("recenzija")
                 .setQuery(bqb)
                 .setSearchType(SearchType.DEFAULT);
+        request.setFetchSource(null, "sadrzaj");
         System.out.println(request);
         SearchResponse response = request.get();
         System.out.println(response.toString());
-
-
-        return new ResponseEntity(HttpStatus.OK);
+        for(SearchHit hit : response.getHits().getHits()) {
+            Gson gson = new Gson();
+            RecenzentIndexUnit rec = recenzentIndexUnitRepository.findById(gson.fromJson(hit.getSourceAsString(), RecenzijaIndexUnit.class).getIdRecenzenta()).get();
+            if(!retval.stream().map(RecenzentIndexUnit::getId).filter(rec.getId()::equals).findFirst().isPresent())
+                retval.add(rec);
+        }
+        System.out.println(retval);
+        return new ResponseEntity(retval, HttpStatus.OK);
     }
 
     private ArrayList<BasicQueryResponseDTO> getResponse(SearchResponse response){
@@ -200,6 +233,32 @@ public class SearchController {
             retVal.add(basicQueryResponseDTO);
         }
         return retVal;
+    }
+    private String getSadrzaj(Rad rad){
+        ClassLoader classLoader = getClass().getClassLoader();
+        PDFTextStripper pdfStripper = null;
+        PDDocument pdDoc = null;
+        COSDocument cosDoc = null;
+        System.out.println(rad.getAdresaNacrta());
+        File file = new File(classLoader.getResource(rad.getAdresaNacrta()).getFile());
+        String parsedText = "";
+        try {
+            // PDFBox 2.0.8 require org.apache.pdfbox.io.RandomAccessRead
+            RandomAccessFile randomAccessFile = new RandomAccessFile(file, "r");
+            PDFParser parser = new PDFParser(randomAccessFile);
+            parser.parse();
+            cosDoc = parser.getDocument();
+            pdfStripper = new PDFTextStripper();
+            pdDoc = new PDDocument(cosDoc);
+            pdfStripper.setStartPage(1);
+            pdfStripper.setEndPage(5);
+            parsedText = pdfStripper.getText(pdDoc);
+            pdDoc.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return parsedText;
     }
 
 }

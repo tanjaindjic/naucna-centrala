@@ -1,17 +1,12 @@
 package master.naucnacentrala.model.elastic;
 
-import master.naucnacentrala.model.enums.NaucnaOblast;
 import org.elasticsearch.common.geo.GeoPoint;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 import org.springframework.data.elasticsearch.annotations.GeoPointField;
-import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Document(indexName = RecenzijaIndexUnit.INDEX_NAME, type = RecenzijaIndexUnit.TYPE_NAME, shards = 1, replicas = 0)
 public class RecenzijaIndexUnit {
@@ -33,6 +28,12 @@ public class RecenzijaIndexUnit {
     @Field(type = FieldType.Text, store = true)
     private String prezime;
 
+    @Field(type = FieldType.Text, store = true)
+    private String grad;
+
+    @Field(type = FieldType.Text, store = true)
+    private String drzava;
+
     @GeoPointField
     private GeoPoint lokacija;
 
@@ -42,11 +43,13 @@ public class RecenzijaIndexUnit {
     @Field(type = FieldType.Text, store = true)
     private String naucneOblasti;
 
-    public RecenzijaIndexUnit(Long id, Long idRecenzenta, String ime, String prezime, GeoPoint lokacija, String sadrzaj, String naucneOblasti) {
+    public RecenzijaIndexUnit(Long id, Long idRecenzenta, String ime, String prezime, String grad, String drzava, GeoPoint lokacija, String sadrzaj, String naucneOblasti) {
         this.id = id;
         this.idRecenzenta = idRecenzenta;
         this.ime = ime;
         this.prezime = prezime;
+        this.grad = grad;
+        this.drzava = drzava;
         this.lokacija = lokacija;
         this.sadrzaj = sadrzaj;
         this.naucneOblasti = naucneOblasti;
@@ -109,5 +112,21 @@ public class RecenzijaIndexUnit {
 
     public void setNaucneOblasti(String naucneOblasti) {
         this.naucneOblasti = naucneOblasti;
+    }
+
+    public String getGrad() {
+        return grad;
+    }
+
+    public void setGrad(String grad) {
+        this.grad = grad;
+    }
+
+    public String getDrzava() {
+        return drzava;
+    }
+
+    public void setDrzava(String drzava) {
+        this.drzava = drzava;
     }
 }

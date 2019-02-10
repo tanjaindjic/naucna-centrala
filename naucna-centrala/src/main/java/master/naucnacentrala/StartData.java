@@ -17,6 +17,7 @@ import master.naucnacentrala.model.korisnici.Recenzent;
 import master.naucnacentrala.repository.RecenzentIndexUnitRepository;
 import master.naucnacentrala.repository.RecenzijaIndexUnitRepository;
 import master.naucnacentrala.service.*;
+import org.apache.commons.lang.StringUtils;
 import org.apache.pdfbox.cos.COSDocument;
 import org.apache.pdfbox.io.RandomAccessFile;
 import org.apache.pdfbox.pdfparser.PDFParser;
@@ -151,6 +152,8 @@ public class StartData {
 				43.3209, 21.8958, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr",no, pripada , new ArrayList() );
 		recenzentService.save(r2);
 
+		no = new ArrayList<>();
+		no.add(NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE);
 		no.add(NaucnaOblast.MEDICINA);
 		Recenzent r3 = new Recenzent("rec3", "rec3", "Ana", "Jokic", "Vršac", "Srbija", "mali.patuljko@gmail.com",
 				45.1182, 21.2945, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr",no, pripada , new ArrayList() );
@@ -158,8 +161,8 @@ public class StartData {
 
 		no = new ArrayList<>();
 		no.add(NaucnaOblast.PRIRODNO_MATEMATICKE_NAUKE);
-		Recenzent r4 = new Recenzent("rec4", "rec4", "Milica", "Ivkovic", "Subotica", "Srbija", "mali.patuljko@gmail.com",
-				46.1005, 19.6651, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr", no, pripada , new ArrayList() );
+		Recenzent r4 = new Recenzent("rec4", "rec4", "Milica", "Ivkovic", "Beograd", "Srbija", "mali.patuljko@gmail.com",
+				44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr", no, pripada , new ArrayList() );
 		recenzentService.save(r4);
 
 		no.add(NaucnaOblast.UMETNOST);
@@ -220,13 +223,15 @@ public class StartData {
 		radService.addRad(novi2);
 
 
-	setupTestData(rad3);
+		setupTestData(rad3);
 		setupTestData(rad2);
 		setupTestData(rad);
-		setupTestData(novi1);
-		setupTestData(novi2);
+		setupTestData(rad3);
+		setupTestData(rad4);
+		setupTestData(rad5);
+
 		setupRecenzije(recenzija);
-		/*	setupRecenzije(recenzija2);
+	    setupRecenzije(recenzija2);
 		setupRecenzije(recenzija3);
 		setupRecenzije(recenzija4);
 		setupRecenzije(recenzija5);
@@ -244,7 +249,10 @@ public class StartData {
 		saveRecenzentIdx(r4);
 		saveRecenzentIdx(r5);
 		saveRecenzentIdx(r6);
-*/
+
+
+		/*setupTestData(novi1);
+		setupTestData(novi2);*/
     }
 
 	private void setupTestData(Rad rad) throws ExecutionException, InterruptedException {
@@ -304,7 +312,7 @@ public class StartData {
 		for(NaucnaOblast o : oblasti)
 			stringOblasti.add(o.name());
 		RecenzijaIndexUnit riu = new RecenzijaIndexUnit(r.getId(), r.getRecenzent().getId(), r.getRecenzent().getIme(), r.getRecenzent().getPrezime(),
-				new GeoPoint(r.getRecenzent().getLat(), r.getRecenzent().getLon()), parsedText, String.join(", ", stringOblasti).toLowerCase().replace('_', ' '));
+				r.getRecenzent().getGrad(), r.getRecenzent().getDrzava(), new GeoPoint(r.getRecenzent().getLat(), r.getRecenzent().getLon()), parsedText, String.join(", ", stringOblasti).toLowerCase().replace('_', ' '));
 		recenzijaIndexUnitRepository.save(riu);
 	}
 	private void saveRecenzentIdx(Recenzent r){
@@ -312,7 +320,13 @@ public class StartData {
 		List<String> stringOblasti = new ArrayList<>();
 		for(NaucnaOblast o : oblasti)
 			stringOblasti.add(o.name());
-		RecenzentIndexUnit riu = new RecenzentIndexUnit(r.getId(), r.getIme(), r.getPrezime(), new GeoPoint(r.getLat(), r.getLon()),  String.join(", ", stringOblasti).toLowerCase().replace('_', ' '));
+		List<String> radovi = new ArrayList<>();
+		for(Recenzija rec : recenzijaService.getAll())
+			if(rec.getRecenzent().getId()==r.getId())
+				radovi.add( "\"" + rec.getRad().getNaslov() +"\"");
+		String recenzije = StringUtils.join(radovi, ", ");
+		System.out.println(recenzije);
+		RecenzentIndexUnit riu = new RecenzentIndexUnit(r.getId(), r.getIme(), r.getPrezime(), new GeoPoint(r.getLat(), r.getLon()), r.getGrad(), r.getDrzava(), recenzije, String.join(", ", stringOblasti).toLowerCase().replace('_', ' '));
 		recenzentIndexUnitRepository.save(riu);
 	}
 

@@ -4,7 +4,13 @@
     <div class="row profile">
         <div class="col-md-4">
             <div class="profile-sidebar">
-                <h3>Odabir recenzenata</h3>
+                <h3>Odabir recenzenata za:</h3>
+                <br>
+                <div>
+                    <p><b>Rad:</b> "{{rad.naslov}}" </p>
+                     <p><b>Autor:</b> {{rad.autor.ime}} {{rad.autor.prezime}}</p>
+                    <p><b>Mesto:</b> {{rad.autor.grad}}, {{rad.autor.drzava}}</p>
+                </div>
                 <br>
                 <div >
                     <label >Udaljenost: <input id="udaljenost" type="text" max-width="70px" placeholder="Udaljenost"> km</label>
@@ -18,11 +24,11 @@
                 <div style="text-align: center">
                     <fieldset style="display:inline-block; border:2px solid #ccc; width:350px; height: 300px; overflow-y: scroll; ">
 
-                        <div style="text-align: left"><label ><input  class="naucneOblasti" type="checkbox" checked value="prirodno matematicke nauke">Prirodno matematičke nauke</label></div>
-                        <div style="text-align: left" ><label><input  class="naucneOblasti"  type="checkbox" checked value="tehnicko tehnoloske nauke">Tehničko tehnološke nauke</label></div>
-                        <div style="text-align: left"><label><input   class="naucneOblasti"  type="checkbox" checked value="drustveno humanisticke nauke">Društveno hummanističke nauke</label></div>
-                        <div style="text-align: left"><label><input   class="naucneOblasti"  type="checkbox"checked value="medicina">Medicina</label></div>
-                        <div style="text-align: left"><label><input  class="naucneOblasti"  type="checkbox" checked value="umetnost">Umetnost</label></div>
+                        <div style="text-align: left"><label ><input  class="naucneOblasti" type="checkbox"  value="prirodno matematicke nauke">Prirodno matematičke nauke</label></div>
+                        <div style="text-align: left" ><label><input  class="naucneOblasti"  type="checkbox"  value="tehnicko tehnoloske nauke">Tehničko tehnološke nauke</label></div>
+                        <div style="text-align: left"><label><input   class="naucneOblasti"  type="checkbox"  value="drustveno humanisticke nauke">Društveno hummanističke nauke</label></div>
+                        <div style="text-align: left"><label><input   class="naucneOblasti"  type="checkbox" value="medicina">Medicina</label></div>
+                        <div style="text-align: left"><label><input  class="naucneOblasti"  type="checkbox"  value="umetnost">Umetnost</label></div>
                     </fieldset>
                 </div>
                 <br>
@@ -35,10 +41,12 @@
             <div class="profile-content">
 
                 <p><b>Recenzenti:</b></p>
-                <fieldset style="  border:2px solid #ccc; width:300px; height: 300px; overflow-y: scroll; ">
+                <fieldset style="  border:2px solid #ccc; width:500px; height: 600px; overflow-y: scroll; ">
 
                     <div ng-repeat="r in recenzenti">
-                        <label><input  class="recenzent" type="checkbox" value="{{r.id}}">{{r.ime}} {{r.prezime}}</label>
+                        <label><b><input  class="recenzent" type="checkbox" value="{{r.id}}">{{r.ime}} {{r.prezime}}, {{r.grad}}, {{r.drzava}}</b></label>
+                        <p><small><b>Recenzije:</b> {{r.recenziraniRadovi}}</small></p>
+                        <p><small>({{r.naucneOblasti}})</small></p>
                     </div>
 
                 </fieldset>

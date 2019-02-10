@@ -19,15 +19,6 @@ public class RecenzentQueryDTO {
     public RecenzentQueryDTO() {
     }
 
-    @Override
-    public String toString() {
-        return "RecenzentQueryDTO{" +
-                "udaljenost=" + udaljenost +
-                ", moreLikeThis=" + moreLikeThis +
-                ", naucneOblasti=" + naucneOblasti +
-                '}';
-    }
-
     public Long getIdRada() {
         return idRada;
     }
@@ -58,5 +49,15 @@ public class RecenzentQueryDTO {
 
     public void setNaucneOblasti(List<String> naucneOblasti) {
         this.naucneOblasti = naucneOblasti;
+    }
+
+    @Override
+    public String toString() {
+        return "RecenzentQueryDTO{" +
+                "idRada=" + idRada +
+                ", udaljenost=" + udaljenost +
+                ", moreLikeThis=" + moreLikeThis +
+                ", naucneOblasti=" + naucneOblasti +
+                '}';
     }
 }
