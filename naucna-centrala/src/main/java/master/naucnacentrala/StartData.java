@@ -217,8 +217,8 @@ public class StartData {
 		saveCamundaUser(urednik4);
 		saveCamundaUser(demo);
 
-		Rad novi1 = radService.addRad(new Rad("", "Скривени екосистем Земље", autor, "Ivan Markovic, Jasna Jelic",null, "/assets/images/Article-Icon.png", "ekosistem, Zemlja, nauka", "Научници су открили огроман подземни екосистем са милијардама микроорганизама, двоструко већи од светских океанa", NaucnaOblast.PRIRODNO_MATEMATICKE_NAUKE, "ekosistem.pdf", null, casopis, "novirad001", StatusRada.NOVO));
-		Rad novi2 = radService.addRad(new Rad("", "Одакле долазе амерички староседеоци", autor, "",null, "/assets/images/Article-Icon.png", "amerika, Zemlja, nauka", "Амерички староседеоци заиста су пореклом из Америке, као генетички културно препознатљива група", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "starosedeoci.pdf", null, casopis, "novirad002", StatusRada.NOVO));
+		Rad novi1 = radService.addRad(new Rad("", "Скривени екосистем Земље", autor, "Ivan Markovic, Jasna Jelic",70F, "/assets/images/Article-Icon.png", "ekosistem, Zemlja, nauka", "Научници су открили огроман подземни екосистем са милијардама микроорганизама, двоструко већи од светских океанa", NaucnaOblast.PRIRODNO_MATEMATICKE_NAUKE, "ekosistem.pdf", null, casopis, "novirad001", StatusRada.NOVO));
+		Rad novi2 = radService.addRad(new Rad("", "Одакле долазе амерички староседеоци", autor, "",50F, "/assets/images/Article-Icon.png", "amerika, Zemlja, nauka", "Амерички староседеоци заиста су пореклом из Америке, као генетички културно препознатљива група", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "starosedeoci.pdf", null, casopis, "novirad002", StatusRada.NOVO));
 		radService.addRad(novi1);
 		radService.addRad(novi2);
 

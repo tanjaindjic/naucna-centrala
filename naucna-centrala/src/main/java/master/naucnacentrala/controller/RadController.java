@@ -1,5 +1,6 @@
 package master.naucnacentrala.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -11,17 +12,25 @@ import master.naucnacentrala.model.dto.FieldIdValueDTO;
 import master.naucnacentrala.model.dto.FormFieldsDTO;
 import master.naucnacentrala.model.dto.RegisterDTO;
 import master.naucnacentrala.model.dto.UploadFileResponse;
+import master.naucnacentrala.model.elastic.RadIndexUnit;
 import master.naucnacentrala.model.elastic.RecenzentIndexUnit;
 import master.naucnacentrala.model.elastic.RecenzijaIndexUnit;
 import master.naucnacentrala.model.enums.NaucnaOblast;
+import master.naucnacentrala.model.enums.StatusRada;
 import master.naucnacentrala.model.korisnici.Korisnik;
 import master.naucnacentrala.model.korisnici.Recenzent;
+import master.naucnacentrala.repository.RadIndexingUnitRepository;
 import master.naucnacentrala.repository.RecenzentIndexUnitRepository;
 import master.naucnacentrala.repository.RecenzijaIndexUnitRepository;
 import master.naucnacentrala.repository.RecenzijaRepository;
 import master.naucnacentrala.service.CasopisService;
 import master.naucnacentrala.service.FileStorageService;
 import master.naucnacentrala.service.KorisnikService;
+import org.apache.pdfbox.cos.COSDocument;
+import org.apache.pdfbox.io.RandomAccessFile;
+import org.apache.pdfbox.pdfparser.PDFParser;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
 import org.camunda.bpm.engine.FormService;
 import org.camunda.bpm.engine.IdentityService;
 import org.camunda.bpm.engine.RuntimeService;
@@ -32,6 +41,7 @@ import org.camunda.bpm.engine.identity.User;
 import org.camunda.bpm.engine.impl.form.FormFieldImpl;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.task.Task;
+import org.elasticsearch.common.geo.GeoPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -87,6 +97,9 @@ public class RadController {
 
     @Autowired
     private RecenzentIndexUnitRepository recenzentIndexUnitRepository;
+
+    @Autowired
+    private RadIndexingUnitRepository riuRepository;
 
 	@Value("${camunda.prijavaRadaProcessKey}")
 	private String prijavaRadaProcessKey;
@@ -270,6 +283,48 @@ public class RadController {
 	        ret.add(riu);
         }
         return ret;
+    }
+
+    @GetMapping(value = "/{id}/index", produces = MediaType.TEXT_PLAIN_VALUE)
+    public ResponseEntity<String> indexRad(@PathVariable Long id){
+	    Rad rad = radService.getRad(id);
+	    if(rad==null)
+	        return new ResponseEntity("Greska u indeksiranju rada.", HttpStatus.BAD_REQUEST);
+        ClassLoader classLoader = getClass().getClassLoader();
+        PDFTextStripper pdfStripper = null;
+        PDDocument pdDoc = null;
+        COSDocument cosDoc = null;
+        System.out.println(rad.getAdresaNacrta());
+        File file = new File(classLoader.getResource(rad.getAdresaNacrta()).getFile());
+        String parsedText = "";
+        try {
+            // PDFBox 2.0.8 require org.apache.pdfbox.io.RandomAccessRead
+            RandomAccessFile randomAccessFile = new RandomAccessFile(file, "r");
+            PDFParser parser = new PDFParser(randomAccessFile);
+            parser.parse();
+            cosDoc = parser.getDocument();
+            pdfStripper = new PDFTextStripper();
+            pdDoc = new PDDocument(cosDoc);
+            pdfStripper.setStartPage(1);
+            pdfStripper.setEndPage(5);
+            parsedText = pdfStripper.getText(pdDoc);
+            pdDoc.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return  new ResponseEntity("Greska u indeksiranju rada.", HttpStatus.BAD_REQUEST);
+        }
+        RadIndexUnit riu = new RadIndexUnit(rad.getId(), rad.getNaslov(), parsedText, rad.getAutor().getIme() + " " + rad.getAutor().getPrezime(), rad.getListaKoautora(), rad.getKljucniPojmovi(), rad.getApstrakt(), NaucnaOblast.normalized(rad.getNaucnaOblast()), rad.getCasopis().isOpenAccess(), rad.getCasopis().getNaziv(), rad.getCasopis().getId(), new GeoPoint(rad.getAutor().getLat(), rad.getAutor().getLon()));
+        riu = riuRepository.save(riu);
+        rad.setAdresaKonacnogRada("C:\\Users\\hrcak\\Desktop\\NC_uploads\\" + rad.getAdresaNacrta());
+        rad.setStatusRada(StatusRada.PRIHVACEN);
+        rad.setDoi("10.1002/0470841" + String.valueOf((int)(Math.random()*100)) + ".ch1 ");
+        radService.addRad(rad);
+        String ret = "Indeksiran rad: \"" + riu.getNaslov() + "\"\r\n"+
+                    "Autor: " + riu.getAutor() + "\r\n" +
+                    "Apstrakt: \"..." + riu.getApstrakt() + "...\"\r\n" +
+                    "DOI: " + rad.getDoi();
+        return new ResponseEntity(ret, HttpStatus.OK);
     }
 
 

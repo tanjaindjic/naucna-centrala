@@ -26,7 +26,7 @@
 
                 $http({
                     method: 'GET',
-                    url: ROOT_PATH + "casopis/" + id + "/radovi",
+                    url: ROOT_PATH + "casopis/" + id + "/objavljeniRadovi",
                     headers : mainService.createAuthorizationTokenHeader()
                 }).then(function(result){
                     $scope.radovi = result.data;

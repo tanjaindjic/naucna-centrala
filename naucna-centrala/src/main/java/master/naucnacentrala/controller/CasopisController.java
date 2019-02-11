@@ -1,6 +1,8 @@
 package master.naucnacentrala.controller;
 
 import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import master.naucnacentrala.model.Kupovina;
 import master.naucnacentrala.model.Pretplata;
@@ -8,6 +10,7 @@ import master.naucnacentrala.model.Rad;
 import master.naucnacentrala.model.dto.CasopisDTO;
 import master.naucnacentrala.model.enums.NaucnaOblast;
 import master.naucnacentrala.model.enums.Status;
+import master.naucnacentrala.model.enums.StatusRada;
 import master.naucnacentrala.model.korisnici.Korisnik;
 import master.naucnacentrala.service.KorisnikService;
 import master.naucnacentrala.service.KupovinaService;
@@ -86,6 +89,11 @@ public class CasopisController {
     public Collection<Rad> getRadoviCasopisa(@PathVariable Long id) {
         return casopisService.getCasopis(id).getRadovi();
     }
+
+	@GetMapping(value = "/{id}/objavljeniRadovi", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Collection<Rad> getObjRadoviCasopisa(@PathVariable Long id) {
+		return casopisService.getCasopis(id).getRadovi().stream().filter(o -> o.getStatusRada().equals(StatusRada.PRIHVACEN)).collect(Collectors.toList());
+	}
 
 	@GetMapping(value = "/naucneOblasti", produces = MediaType.APPLICATION_JSON_VALUE )
 	public ArrayList<NaucnaOblast> getNaucneOblasti(){
