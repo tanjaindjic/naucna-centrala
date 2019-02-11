@@ -287,6 +287,7 @@ public class RadController {
 
     @GetMapping(value = "/{id}/index", produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> indexRad(@PathVariable Long id){
+	    //preuzeti procesnu instancu, submitovati odluku urednika, sledi ObavestenjeDelegate za prihvatanje rada
 	    Rad rad = radService.getRad(id);
 	    if(rad==null)
 	        return new ResponseEntity("Greska u indeksiranju rada.", HttpStatus.BAD_REQUEST);
@@ -325,6 +326,14 @@ public class RadController {
                     "Apstrakt: \"..." + riu.getApstrakt() + "...\"\r\n" +
                     "DOI: " + rad.getDoi();
         return new ResponseEntity(ret, HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity obrisiRad(@PathVariable Long id){
+	    //naci procesnu instancu, submitovati odluku urednika nakon cega sledi ObavestenjeDelegate za odbijanje rada
+        radService.deleteRad(id);
+        return new ResponseEntity("Rad je odbijen.", HttpStatus.OK);
+
     }
 
 

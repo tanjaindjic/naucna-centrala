@@ -71,14 +71,14 @@
             }
 
             $scope.posalji = function(){
-                $http({
-                       method:"GET",
-                       url:ROOT_PATH + "rad/" + $scope.id + "/index",
-                       headers : mainService.createAuthorizationTokenHeader()
-                   }).then(function(result){
-                       alert(result.data)
+               $http({
+                   method:"GET",
+                   url:ROOT_PATH + "rad/" + $scope.id + "/index",
+                   headers : mainService.createAuthorizationTokenHeader()
+               }).then(function(result){
+                   alert(result.data)
 
-                   });
+               });
             }
 
 

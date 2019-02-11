@@ -14,4 +14,5 @@ public interface RadService {
 	public Rad updateRad(Rad r);
 	public Collection<Rad> getAll();
     List<Rad> getRadZaUrednika(Casopis uredjuje, StatusRada novo);
+    void deleteRad(Long id);
 }

@@ -44,4 +44,9 @@ public class RadServiceImpl implements RadService {
 		return radRepository.findByCasopisAndStatusRada(uredjuje, novo);
 	}
 
+	@Override
+	public void deleteRad(Long id) {
+		radRepository.deleteById(id);
+	}
+
 }

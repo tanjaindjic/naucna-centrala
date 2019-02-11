@@ -7,6 +7,8 @@
                     <br>
                     <button id="dugmeRadovi" style="display: block;" class="btn-primary btn-sm" ng-click="radovi()">Novi radovi</button>
                     <br>
+                    <button id="dugmeDorade"  style="display: block;" class="btn-primary btn-sm" ng-click="dorade()">Ispravljeni radovi</button>
+                    <br>
                     <button id="dugmeCasopisi"  style="display: block;" class="btn-primary btn-sm" ng-click="recenzije()">Moje recenzije</button>
                     <br>
                     <button id="dugmePretplate" style="display: block;" class="btn-primary btn-sm" ng-click="recenziraniRadovi()">Recenzije na čekanju</button>
@@ -37,8 +39,12 @@
                                 <p>
                                     <b>Naučna oblast:</b> {{res.naucnaOblast.split('_').join(' ')  | lowercase}}
                                 </p>
-                                <button class="btn btn-primary btn-sm" ng-click="dodajRecenzenta(res.id)">DODELI RECENZENTA</button><!--MODAL-->
-                                <button class="btn btn-primary btn-sm" ng-click="pogledajRad(res.id)">PREUZMI</button><!--MODAL-->
+                                    <button class="btn btn-primary btn-sm" ng-click="pogledajRad(res.id)">PREUZMI</button><!--MODAL-->
+                                    <button class="btn btn-danger btn-sm" ng-click="obrisi(res.id)">OBRIŠI</button><!--MODAL-->
+                                    <button class="btn btn-primary btn-sm" ng-click="dodajRecenzenta(res.id)">DODELA RECENZENTA</button><!--MODAL-->
+                                    <button class="btn btn-primary btn-sm" ng-click="dorada(res.id)">DORADA</button><!--MODAL-->
+                                    <button class="btn btn-primary btn-sm" ng-click="objavi(res.id)">OBJAVI</button><!--MODAL-->
+
                                 <hr>
                             </td>
                     </table>

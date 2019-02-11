@@ -59,6 +59,27 @@ mainModule.controller('tasksController', ['$http','$scope', '$window', 'mainServ
             $location.path("/dodajRecenzenta/"+id)
        }
 
+       $scope.obrisi = function(id){
+           $http({
+               method: 'DELETE',
+               url: ROOT_PATH + "rad/" + id,
+               headers : mainService.createAuthorizationTokenHeader()
+           }).then(function(result){
+               alert(result.data)
+           });
+       }
+
+       $scope.objavi = function(id){
+           $http({
+                  method:"GET",
+                  url:ROOT_PATH + "rad/" + id + "/index",
+                  headers : mainService.createAuthorizationTokenHeader()
+              }).then(function(result){
+                  alert(result.data)
+
+              });
+       }
+
 
 
 

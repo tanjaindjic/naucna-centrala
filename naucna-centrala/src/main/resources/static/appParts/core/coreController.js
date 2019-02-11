@@ -184,7 +184,7 @@
 
              $scope.naCasopis = function(id){
                $('#exampleModalLong').modal('hide');
-               $location.path("casopis/"+id)
+               $location.path("/casopis/"+id)
             }
 
             $scope.naRad = function(id){
