@@ -1,3 +1,4 @@
+/*
 package master.naucnacentrala.model.elastic;
 
 import org.elasticsearch.common.geo.GeoPoint;
@@ -130,3 +131,4 @@ public class RecenzijaIndexUnit {
         this.drzava = drzava;
     }
 }
+*/

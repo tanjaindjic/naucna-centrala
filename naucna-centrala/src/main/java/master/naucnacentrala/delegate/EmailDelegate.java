@@ -12,6 +12,7 @@ public class EmailDelegate implements JavaDelegate{
 
     @Override
     public void execute(DelegateExecution execution) throws Exception {
+        System.out.println("USAO U EMAIL DELEGATE");
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.socketFactory.port", "465");
@@ -35,7 +36,7 @@ public class EmailDelegate implements JavaDelegate{
                     InternetAddress.parse(execution.getVariable("email").toString()));
             message.setSubject("Naučna centrala - obaveštenje");
             message.setText("Hello!" +
-                    "\n\n Your account is ready!!");
+                    "\n\n " + execution.getVariable("poruka").toString());
 
             Transport.send(message);
 

@@ -11,4 +11,6 @@ import java.util.List;
 public interface RadRepository extends JpaRepository<Rad, Long> {
 
     List<Rad> findByCasopisAndStatusRada(Casopis uredjuje, StatusRada novo);
+
+    List<Rad> findByAutorIdAndStatusRada(Long id, StatusRada korekcija);
 }

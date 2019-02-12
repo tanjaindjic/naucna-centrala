@@ -11,17 +11,17 @@ import master.naucnacentrala.model.Recenzija;
 import master.naucnacentrala.model.dto.FieldIdValueDTO;
 import master.naucnacentrala.model.dto.FormFieldsDTO;
 import master.naucnacentrala.model.dto.RegisterDTO;
-import master.naucnacentrala.model.dto.UploadFileResponse;
+import master.naucnacentrala.model.dto.UploadFileResponse;/*
 import master.naucnacentrala.model.elastic.RadIndexUnit;
 import master.naucnacentrala.model.elastic.RecenzentIndexUnit;
-import master.naucnacentrala.model.elastic.RecenzijaIndexUnit;
+import master.naucnacentrala.model.elastic.RecenzijaIndexUnit;*/
 import master.naucnacentrala.model.enums.NaucnaOblast;
 import master.naucnacentrala.model.enums.StatusRada;
 import master.naucnacentrala.model.korisnici.Korisnik;
-import master.naucnacentrala.model.korisnici.Recenzent;
+import master.naucnacentrala.model.korisnici.Recenzent;/*
 import master.naucnacentrala.repository.RadIndexingUnitRepository;
 import master.naucnacentrala.repository.RecenzentIndexUnitRepository;
-import master.naucnacentrala.repository.RecenzijaIndexUnitRepository;
+import master.naucnacentrala.repository.RecenzijaIndexUnitRepository;*/
 import master.naucnacentrala.repository.RecenzijaRepository;
 import master.naucnacentrala.service.CasopisService;
 import master.naucnacentrala.service.FileStorageService;
@@ -40,8 +40,8 @@ import org.camunda.bpm.engine.form.TaskFormData;
 import org.camunda.bpm.engine.identity.User;
 import org.camunda.bpm.engine.impl.form.FormFieldImpl;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
-import org.camunda.bpm.engine.task.Task;
-import org.elasticsearch.common.geo.GeoPoint;
+import org.camunda.bpm.engine.task.Task;/*
+import org.elasticsearch.common.geo.GeoPoint;*/
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -95,23 +95,27 @@ public class RadController {
 	@Autowired
     private RecenzijaRepository recenzijaRepository;
 
+/*
     @Autowired
     private RecenzentIndexUnitRepository recenzentIndexUnitRepository;
 
     @Autowired
     private RadIndexingUnitRepository riuRepository;
+*/
 
 	@Value("${camunda.prijavaRadaProcessKey}")
 	private String prijavaRadaProcessKey;
 
+    @Value("${camunda.objavaRadaProcessKey}")
+    private String objavaRadaProcessKey;
+
 	@GetMapping(value = "prijavaRada")
 	public ResponseEntity<?> startPrijava(@RequestHeader(value="Authorization") String Authorization) throws URISyntaxException {
-		System.out.println("Zapocinje proces: prijava rada");
-		System.out.println(Authorization);
+		System.out.println("ZAPOCET PROCES PRIJAVE RADA: " + prijavaRadaProcessKey);
 		String username = "";
 		if(Authorization.length()>7)
 			username = jwtTokenUtil.getUsernameFromToken(Authorization.substring(7));
-		System.out.println(username);
+		System.out.println("KORISNIK: " + username);
 		Map mapa = new HashMap();
 		if(username.equals(""))
 			mapa.put("ulogovan", false);
@@ -119,6 +123,7 @@ public class RadController {
 		ProcessInstance pi = runtimeService.startProcessInstanceByKey(prijavaRadaProcessKey, UUID.randomUUID().toString(), mapa);
 
 		if(username.equals("")){
+		    System.out.println("KORISNIK NIJE ULOGOVAN, PROCES PRIJAVE RADA SE TERMINIRA I PREUSMERAVA NA LOGIN");
 		    //FIXME ne znam kako da dodjem do subprocesa i posaljem na login
 		   /* ProcessInstance sub = runtimeService.createProcessInstanceQuery().processInstanceBusinessKey(pi.getBusinessKey(), "loginProcess").singleResult();
             Task task = taskService.createTaskQuery().processInstanceId(sub.getId()).list().get(0);
@@ -127,6 +132,7 @@ public class RadController {
             ResponseEntity re = new ResponseEntity(new FormFieldsDTO(task.getId(), pi.getId(), properties), HttpStatus.OK);
             re.getHeaders().set("Location", "login");
             return re;*/
+		    runtimeService.deleteProcessInstance(pi.getProcessInstanceId(), "Korisnik nije ulogovan");
 			FormFieldsDTO dto = new FormFieldsDTO(null, null, null);
 			dto.setLocation("login");
 		   return new ResponseEntity<>(dto, HttpStatus.OK);
@@ -135,6 +141,7 @@ public class RadController {
 			Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
 			task.setAssignee(username);
 			taskService.saveTask(task);
+			System.out.println("ZAPOCET TASK: " + task.getName() + ", ASSIGNEE: " + username);
             FormFieldsDTO dto = new FormFieldsDTO(task.getId(), pi.getId(), null);
 			dto.setLocation("noviRad");
             ResponseEntity re =  new ResponseEntity(dto, HttpStatus.OK);
@@ -147,6 +154,8 @@ public class RadController {
     @GetMapping(value = "odabirCasopisa/{taskId}")
     public ResponseEntity<?> getCasopisi(@PathVariable String taskId){
         Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
+
+        System.out.println("USAO U PROCES PRIJAVE RADA, TASK: " + task.getName());
         TaskFormData tfd = formService.getTaskFormData(task.getId());
         List<FormField> properties = tfd.getFormFields();
         FormFieldsDTO dto = new FormFieldsDTO(task.getId(), task.getProcessInstanceId(), properties);
@@ -155,10 +164,10 @@ public class RadController {
 
     @PostMapping(value = "odabirCasopisa", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity setCasopis(@RequestBody RegisterDTO registerDTO){
-	    System.out.println(registerDTO.toString());
-	    System.out.println("Odabrao casopis");
+	    System.out.println("USAO U PROCES PRIJAVE RADA, PRIMIO: " + registerDTO.toString());
 
         Task task = taskService.createTaskQuery().taskId(registerDTO.getTaskId()).singleResult();
+        System.out.println("USAO U PROCES PRIJAVE RADA, TASK: " + task.getName());
         String assignee = task.getAssignee();
         HashMap<String, Object> mapa = new HashMap<String, Object>();
         for(FieldIdValueDTO pair : registerDTO.getFormFields())
@@ -171,19 +180,20 @@ public class RadController {
 
         if(!isOpenAccess){
             task = taskService.createTaskQuery().processInstanceId(registerDTO.getProcessInstanceId().toString()).list().get(0);
-            System.out.println("Zapocet task " + task.getName());
             task.setAssignee(assignee);
             taskService.saveTask(task);
+            System.out.println("ZAPOCET TASK: " + task.getName() + ", ASSIGNEE: " + assignee );
             TaskFormData tfd = formService.getTaskFormData(task.getId());
             List<FormField> properties = tfd.getFormFields();
             FormFieldsDTO dto = new FormFieldsDTO(task.getId(), task.getProcessInstanceId(), properties);
             return new ResponseEntity(dto, HttpStatus.OK);
-        }
+        }//TODO odraditi ako nije open access
         else return ResponseEntity.ok(null);
     }
 
     @PostMapping(value = "/nacrt", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity uploadNacrt(@RequestParam("file") MultipartFile file) {
+	    System.out.println("USAO U UPLOAD NACRTA RADA");
         String fileLocation = fileStorageService.storeFile(file, true);
         System.out.println(fileLocation);
         return new ResponseEntity<String>(fileLocation, HttpStatus.OK);
@@ -191,6 +201,7 @@ public class RadController {
 
     @PostMapping(value = "/final", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity uploadFinal(@RequestParam("file") MultipartFile file) {
+        System.out.println("USAO U UPLOAD FINALNE VERZIJE RADA");
         String fileLocation = fileStorageService.storeFile(file, false);
 
         return new ResponseEntity<String>(fileLocation, HttpStatus.OK);
@@ -198,7 +209,9 @@ public class RadController {
 
     @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void noviRad(@RequestBody RegisterDTO registerDTO){
+        System.out.println("ZAVRSAVA PROCES PRIJAVE RADA");
         Task task = taskService.createTaskQuery().taskId(registerDTO.getTaskId()).singleResult();
+        System.out.println("USAO U TASK: " + task.getName());
         HashMap<String, Object> mapa = new HashMap<String, Object>();
         for(FieldIdValueDTO pair : registerDTO.getFormFields())
             mapa.put(pair.getFieldId(), pair.getFieldValue());
@@ -214,18 +227,22 @@ public class RadController {
         r.setKoautori(null);
         r.setNaslov(mapa.get("naslov").toString());
         r.setNaucnaOblast(NaucnaOblast.valueOf(mapa.get("naucnaOblast").toString()));
-        radService.addRad(r);
+        r.setStatusRada(StatusRada.NOVO);
+        r = radService.addRad(r);
 
         runtimeService.setVariable(task.getProcessInstanceId(), "poruka",
                 "Rad \""+ mapa.get("naslov").toString()+"\" je uspešno prijavljen na recenziranje.");
         List<String> mejlovi = new ArrayList<>();
         mejlovi.add(r.getCasopis().getGlavniUrednik().getEmail());
         mejlovi.add(r.getAutor().getEmail());
+
+        runtimeService.setVariable(task.getProcessInstanceId(), "radId", String.valueOf(r.getId()));
         runtimeService.setVariable(task.getProcessInstanceId(), "mejlovi", mejlovi);
-
-
+        runtimeService.setVariable(task.getProcessInstanceId(), "email", r.getAutor().getEmail());
+        runtimeService.setVariable(task.getProcessInstanceId(), "autor", r.getAutor().getUsername());
+        runtimeService.setVariable(task.getProcessInstanceId(), "urednik", r.getCasopis().getGlavniUrednik().getUsername());
         formService.submitTaskForm(registerDTO.getTaskId(), mapa);
-        System.out.println("Kreiran rad: " + r.toString());
+        System.out.println("KREIRAN RAD: " + r.toString());
 
     }
 
@@ -271,6 +288,7 @@ public class RadController {
                 .header( HttpHeaders.LOCATION, resource.getURI().toString())
 				.body(resource);
 	}
+/*
 
     @GetMapping(value = "/{id}/recenzenti", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<RecenzentIndexUnit> moguciRecenzenti(@PathVariable Long id){
@@ -284,12 +302,35 @@ public class RadController {
         }
         return ret;
     }
+*/
 
-    @GetMapping(value = "/{id}/index", produces = MediaType.TEXT_PLAIN_VALUE)
+   @GetMapping(value = "/{id}/index", produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> indexRad(@PathVariable Long id){
+       System.out.println("ZAVRSAVA PROCES OBJAVE RADA -  RAD PRIHVACEN");
 	    //preuzeti procesnu instancu, submitovati odluku urednika, sledi ObavestenjeDelegate za prihvatanje rada
 	    Rad rad = radService.getRad(id);
-	    if(rad==null)
+        rad.setAdresaKonacnogRada(rad.getAdresaNacrta());
+        rad.setStatusRada(StatusRada.PRIHVACEN);
+        rad.setDoi("10.1002/0470841" + String.valueOf((int)(Math.random()*100)) + ".ch1 ");
+        radService.addRad(rad);
+
+       ProcessInstance pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(prijavaRadaProcessKey)
+               .active()
+               .variableValueEquals("radId", id)
+               .singleResult();
+       runtimeService.setVariable(pi.getProcessInstanceId(),"odluka", "objava");
+       runtimeService.setVariable(pi.getProcessInstanceId(),"poruka", "Vaš rad \"" + radService.getRad(id).getNaslov() + "\" je objavljen.");
+       Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
+       System.out.println("ZAVRSAVA TASK: " + task.getName());
+       formService.submitTaskForm(task.getId(), null);
+
+       String ret = "Objavljen rad: \"" + rad.getNaslov() + "\"\r\n"+
+               "Autor: " + rad.getAutor() + "\r\n" +
+               "Apstrakt: \"..." + rad.getApstrakt() + "...\"\r\n" +
+               "DOI: " + rad.getDoi();
+       return new ResponseEntity(ret, HttpStatus.OK);
+
+	    /*if(rad==null)
 	        return new ResponseEntity("Greska u indeksiranju rada.", HttpStatus.BAD_REQUEST);
         ClassLoader classLoader = getClass().getClassLoader();
         PDFTextStripper pdfStripper = null;
@@ -325,17 +366,61 @@ public class RadController {
                     "Autor: " + riu.getAutor() + "\r\n" +
                     "Apstrakt: \"..." + riu.getApstrakt() + "...\"\r\n" +
                     "DOI: " + rad.getDoi();
-        return new ResponseEntity(ret, HttpStatus.OK);
+        return new ResponseEntity(ret, HttpStatus.OK);*/
     }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity obrisiRad(@PathVariable Long id){
-	    //naci procesnu instancu, submitovati odluku urednika nakon cega sledi ObavestenjeDelegate za odbijanje rada
+       System.out.println("ZAVRSAVA PROCES OBJAVE RADA -  RAD ODBIJEN");
+        ProcessInstance pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(objavaRadaProcessKey)
+                .variableValueEquals("radId", id)
+                .singleResult();
+        runtimeService.setVariable(pi.getId(),"odluka", "odbijanje");
+        runtimeService.setVariable(pi.getId(),"poruka", "Vaš rad \"" + radService.getRad(id).getNaslov() + "\" je odbijen.");
+        Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
+        System.out.println("ZAVRSAVA TASK: " + task.getName());
+        formService.submitTaskForm(task.getId(), null);
         radService.deleteRad(id);
         return new ResponseEntity("Rad je odbijen.", HttpStatus.OK);
 
     }
 
+    @PostMapping(value = "/{id}/dorada", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
+    public ResponseEntity<String> naDoradu(@PathVariable Long id, @RequestBody String komentar){
+        System.out.println("USAO U PROCES OBJAVE RADA -  RAD ZA DORADU");
+        Rad rad = radService.getRad(id);
+        ProcessInstance pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(objavaRadaProcessKey)
+                .variableValueEquals("radId", id)
+                .singleResult();
+        runtimeService.setVariable(pi.getId(),"odluka", "dorada");
+        runtimeService.setVariable(pi.getId(),"komentar", komentar);
+        runtimeService.setVariable(pi.getId(),"poruka", "Vaš rad \"" + rad.getNaslov() + "\" je potrebno doraditi.");
+        Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
+        System.out.println("ZAVRSAVA TASK: " + task.getName());
+        formService.submitTaskForm(task.getId(), null);
+        rad.setStatusRada(StatusRada.KOREKCIJA);
+        radService.addRad(rad);
+        return new ResponseEntity("Rad je poslat na doradu.", HttpStatus.OK);
+    }
 
+    @RequestMapping(value="/{id}/novaVerzija", method=RequestMethod.POST )
+    public ResponseEntity<String> singleSave(@PathVariable Long id, @RequestParam("file") MultipartFile file, @RequestParam("odgovor") String odgovor ){
+        System.out.println("Primio: " + odgovor);
+        System.out.println("USAO U UPLOAD NOVE VERZIJE RADA");
+        String fileLocation = fileStorageService.storeFile(file, true);
+        System.out.println(fileLocation);
+        Rad r = radService.getRad(id);
+        r.setAdresaNacrta(fileLocation);
+        r.setStatusRada(StatusRada.RECENZIRANJE);
+        radService.addRad(r);
+        ProcessInstance pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(objavaRadaProcessKey)
+                .variableValueEquals("radId", String.valueOf(id))
+                .singleResult();
+        runtimeService.setVariable(pi.getId(), "odgovor", odgovor);
+        Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
+        System.out.println("ZAVRSAVA TASK: " + task.getName());
+        formService.submitTaskForm(task.getId(), null);
+        return new ResponseEntity<String>("Odgovor uspešno zabeležen.", HttpStatus.OK);
 
+    }
 }

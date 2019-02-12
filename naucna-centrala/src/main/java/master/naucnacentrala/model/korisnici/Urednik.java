@@ -17,8 +17,8 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import master.naucnacentrala.model.Casopis;
 import master.naucnacentrala.model.Rad;
-import master.naucnacentrala.model.enums.NaucnaOblast;
-import org.elasticsearch.common.geo.GeoPoint;
+import master.naucnacentrala.model.enums.NaucnaOblast;/*
+import org.elasticsearch.common.geo.GeoPoint;*/
 
 @Entity
 public class Urednik extends Korisnik {

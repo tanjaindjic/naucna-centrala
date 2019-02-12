@@ -6,9 +6,17 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import connectjar.org.apache.http.HttpEntity;
+import connectjar.org.apache.http.HttpResponse;
+import connectjar.org.apache.http.client.ClientProtocolException;
+import connectjar.org.apache.http.client.HttpClient;
+import connectjar.org.apache.http.client.methods.HttpPost;
+import connectjar.org.apache.http.entity.StringEntity;
+import connectjar.org.apache.http.impl.client.HttpClientBuilder;
+import connectjar.org.apache.http.util.EntityUtils;
 import master.naucnacentrala.model.Casopis;
 import master.naucnacentrala.model.Pretplata;
-import master.naucnacentrala.model.Rad;
+import master.naucnacentrala.model.Rad;/*
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -16,12 +24,12 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
+import org.apache.http.util.EntityUtils;*/
 import org.camunda.bpm.engine.IdentityService;
 import org.camunda.bpm.engine.identity.User;
 import org.camunda.bpm.engine.impl.util.json.JSONException;
-import org.camunda.bpm.engine.impl.util.json.JSONObject;
-import org.elasticsearch.common.geo.GeoPoint;
+import org.camunda.bpm.engine.impl.util.json.JSONObject;/*
+import org.elasticsearch.common.geo.GeoPoint;*/
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

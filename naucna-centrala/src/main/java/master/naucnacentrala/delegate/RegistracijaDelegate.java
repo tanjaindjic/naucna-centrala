@@ -43,6 +43,7 @@ public class RegistracijaDelegate implements JavaDelegate {
 			newUser.setPassword(execution.getVariable("password").toString());
 			identityService.saveUser(newUser);
 			execution.setVariable("valid", true);
+			execution.setVariable("poruka", "Uspešna registracija - vaš nalog je spreman!");
 					
 		}else {
 			execution.setVariable("valid", false);

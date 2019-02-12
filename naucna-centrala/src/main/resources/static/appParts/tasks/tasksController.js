@@ -74,11 +74,29 @@ mainModule.controller('tasksController', ['$http','$scope', '$window', 'mainServ
                   method:"GET",
                   url:ROOT_PATH + "rad/" + id + "/index",
                   headers : mainService.createAuthorizationTokenHeader()
-              }).then(function(result){
+           }).then(function(result){
                   alert(result.data)
 
-              });
+           });
        }
+
+        $scope.dorada = function(id){
+            $scope.odabraniRad = id;
+            $('#modalKomentar').modal('show');
+        }
+
+        $scope.posalji = function(){
+        $('#modalKomentar').modal('hide');
+        $http({
+              method:"POST",
+              url:ROOT_PATH + "rad/" + $scope.odabraniRad + "/dorada",
+              data: JSON.stringify($('#komentar').val()),
+              headers : mainService.createAuthorizationTokenHeader()
+       }).then(function(result){
+              alert(result.data)
+
+       });
+        }
 
 
 

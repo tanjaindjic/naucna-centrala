@@ -1,3 +1,4 @@
+/*
 package master.naucnacentrala.model.dto;
 
 import master.naucnacentrala.model.elastic.RadIndexUnit;
@@ -41,3 +42,4 @@ public class BasicQueryResponseDTO {
         this.highlights = highlight;
     }
 }
+*/

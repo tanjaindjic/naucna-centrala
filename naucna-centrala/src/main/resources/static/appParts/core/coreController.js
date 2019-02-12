@@ -64,6 +64,14 @@
                 mainService.goToState("core.tasks", false);
             }
 
+            $scope.prijavljeniRadovi = function(){
+                if( mainService.getSub()==""){
+                     mainService.goToState("core.login", true);
+                     return;
+                }
+                mainService.goToState("core.prijavljeniRadovi", false);
+            }
+
             $('#naprednaPretragaModal').on('hidden.bs.modal', function () {
                 $("#upit0").val("");
                 $('#dodatnaPolja').html('');

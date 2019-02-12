@@ -1,35 +1,26 @@
 package master.naucnacentrala.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.*;
 
-import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.Path;
 
-import master.naucnacentrala.model.Casopis;
-import master.naucnacentrala.model.Kupovina;
-import master.naucnacentrala.model.Pretplata;
 import master.naucnacentrala.model.Rad;
 import master.naucnacentrala.model.dto.*;
-import master.naucnacentrala.model.enums.Status;
 import master.naucnacentrala.repository.KupovinaRepository;
 import master.naucnacentrala.service.CasopisService;
 import master.naucnacentrala.service.HelpService;
-import master.naucnacentrala.service.RadService;
-import org.apache.http.ParseException;
+import master.naucnacentrala.service.RadService;/*
+import org.apache.http.ParseException;*/
 import org.camunda.bpm.engine.*;
-import org.camunda.bpm.engine.authorization.Authorization;
-import org.camunda.bpm.engine.authorization.Permissions;
-import org.camunda.bpm.engine.authorization.Resources;
 import org.camunda.bpm.engine.form.FormField;
 import org.camunda.bpm.engine.form.TaskFormData;
-import org.camunda.bpm.engine.history.HistoricVariableInstance;
 import org.camunda.bpm.engine.impl.identity.Authentication;
 import org.camunda.bpm.engine.impl.util.json.JSONException;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
-import org.camunda.bpm.engine.task.Task;
-import org.elasticsearch.common.geo.GeoPoint;
+import org.camunda.bpm.engine.task.Task;/*
+import org.elasticsearch.common.geo.GeoPoint;*/
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -57,9 +48,6 @@ import master.naucnacentrala.security.JwtAuthenticationResponse;
 import master.naucnacentrala.security.JwtTokenUtil;
 import master.naucnacentrala.security.JwtUser;
 import master.naucnacentrala.service.KorisnikService;
-import org.springframework.web.client.RestTemplate;
-
-import static org.camunda.bpm.engine.authorization.Authorization.AUTH_TYPE_GRANT;
 
 @RestController
 @RequestMapping("/korisnik")
@@ -113,6 +101,9 @@ public class KorisnikController {
 	@Value("${camunda.loginProcessKey}")
 	private String loginProcessKey;
 
+	@Value("${camunda.objavaRadaProcessKey}")
+	private String objavaRadaProcessKey;
+
 	private String tokenHeader;
 
 	@PostMapping
@@ -139,18 +130,35 @@ public class KorisnikController {
 		return korisnikService.getPlaceniRadovi(username);
 	}
 
+	@GetMapping(value = "/{username}/recenziraniRadovi", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<RadDTO> getRecenziraniRadovi(@PathVariable String username){
+		Korisnik k = korisnikService.getKorisnikByUsername(username);
+		List<Rad> radovi = radService.getRecenziraniRadovi(k.getId());
+		List<RadDTO> retval = new ArrayList();
+		for(Rad r : radovi){
+			ProcessInstance pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(objavaRadaProcessKey)
+					.variableValueEquals("radId", r.getId())
+					.singleResult();
+
+			retval.add(new RadDTO(r.getId(), r.getNaslov(), runtimeService.getVariable(pi.getProcessInstanceId(), "komentar").toString()));
+
+		}
+		return retval;
+	}
+
 
 	@GetMapping(value = "/{username}")
 	public KorisnikDTO getKorisnik(@PathVariable String username) {
-	    System.out.println("usao u get korisnika: " + username);
-	    System.out.println("Vracam: " + korisnikService.getKorisnikByUsername(username));
 		return new KorisnikDTO(korisnikService.getKorisnikByUsername(username));
 	}
 	
 	@GetMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getRegistrationFOrm() throws JSONException, UnsupportedOperationException, IOException, org.apache.tomcat.util.json.ParseException {
+		System.out.println("ZAPOCINJE PROCES REGISTRACIJE");
 		ProcessInstance pi = runtimeService.startProcessInstanceByKey(registrationProcessKey);
+		System.out.println("ZAPOCET PROCES: " + registrationProcessKey);
 		Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
+		System.out.println("ZAPOCET TASK: " + task.getName());
 		TaskFormData tfd = formService.getTaskFormData(task.getId());
 		List<FormField> properties = tfd.getFormFields();
 		
@@ -159,8 +167,9 @@ public class KorisnikController {
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity finishRegistration(@RequestBody RegisterDTO registerDTO) {
-
+		System.out.println("ZAVRSAVA PROCES REGISTRACIJE");
 		Task task = taskService.createTaskQuery().taskId(registerDTO.getTaskId()).singleResult();
+		System.out.println("ZAPOCINJE TASK: " + task.getName());
 		HashMap<String, Object> mapa = new HashMap<String, Object>();
 		for(FieldIdValueDTO pair : registerDTO.getFormFields())
 			mapa.put(pair.getFieldId(), pair.getFieldValue());
@@ -168,18 +177,21 @@ public class KorisnikController {
 		formService.submitTaskForm(registerDTO.getTaskId(), mapa);
 		Boolean valid = (Boolean) historyService.createHistoricVariableInstanceQuery().processInstanceId(task.getProcessInstanceId()).variableName("valid").singleResult().getValue();
 		if(valid) {
+			System.out.println("USPESNA REGISTRACIJA KORISNIKA");
 		    korisnikService.createUser(mapa.get("username").toString(), mapa.get("password").toString(), mapa.get("email").toString(),  44.7866, 20.4489, mapa.get("ime").toString(), mapa.get("prezime").toString(), mapa.get("drzava").toString(), mapa.get("grad").toString());
             return new ResponseEntity(HttpStatus.OK);
         }
-		else return new ResponseEntity(HttpStatus.BAD_REQUEST);
+		System.out.println("NEUSPESNA REGISTRACIJA KORISNIKA");
+		return new ResponseEntity(HttpStatus.BAD_REQUEST);
 	}
 
 	@GetMapping(value = "/login")
 	public ResponseEntity<?> getLoginPage(){
+		System.out.println("ZAPOCET PROCES PRIJAVE: " + loginProcessKey);
 		ProcessInstance pi = runtimeService.startProcessInstanceByKey(loginProcessKey);
 		System.out.println("Zapocet proces " +loginProcessKey + ", id: " + pi.getId());
 		Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
-        System.out.println("Zapocet task " +task.getName() + ", id: " + task.getId());
+		System.out.println("ZAPOCET TASK: " + task.getName());
 		TaskFormData tfd = formService.getTaskFormData(task.getId());
 		List<FormField> properties = tfd.getFormFields();
 
@@ -188,8 +200,9 @@ public class KorisnikController {
 
 	@RequestMapping(value = "/noAccount", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public void initRegistration(@RequestBody RegisterDTO registerDTO) {
-
+		System.out.println("USAO U PROCES REGISTRACIJE");
 		Task task = taskService.createTaskQuery().taskId(registerDTO.getTaskId()).singleResult();
+		System.out.println("SALJE PODATKE ZA REGISTRACIJU, TASK: " + task.getName());
 		HashMap<String, Object> mapa = new HashMap<String, Object>();
 		for(FieldIdValueDTO pair : registerDTO.getFormFields())
 			mapa.put(pair.getFieldId(), pair.getFieldValue());
@@ -199,7 +212,7 @@ public class KorisnikController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> submitLoginData(@RequestBody RegisterDTO registerDTO) throws AuthenticationException, ParseException, IOException, JSONException {
-
+		System.out.println("ZAVRSAVA PROCES PRIJAVE");
 	    System.out.println("primljen " + registerDTO.toString());
         HashMap<String, Object> mapa = new HashMap<String, Object>();
         for(FieldIdValueDTO pair : registerDTO.getFormFields())

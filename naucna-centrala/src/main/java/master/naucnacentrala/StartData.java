@@ -7,15 +7,15 @@ import java.util.concurrent.ExecutionException;
 
 import javax.annotation.PostConstruct;
 
-import master.naucnacentrala.model.Recenzija;
+import master.naucnacentrala.model.Recenzija;/*
 import master.naucnacentrala.model.elastic.RadIndexUnit;
 import master.naucnacentrala.model.elastic.RecenzentIndexUnit;
-import master.naucnacentrala.model.elastic.RecenzijaIndexUnit;
+import master.naucnacentrala.model.elastic.RecenzijaIndexUnit;*/
 import master.naucnacentrala.model.enums.Rezultat;
 import master.naucnacentrala.model.enums.StatusRada;
-import master.naucnacentrala.model.korisnici.Recenzent;
+import master.naucnacentrala.model.korisnici.Recenzent;/*
 import master.naucnacentrala.repository.RecenzentIndexUnitRepository;
-import master.naucnacentrala.repository.RecenzijaIndexUnitRepository;
+import master.naucnacentrala.repository.RecenzijaIndexUnitRepository;*/
 import master.naucnacentrala.service.*;
 import org.apache.commons.lang.StringUtils;
 import org.apache.pdfbox.cos.COSDocument;
@@ -24,9 +24,9 @@ import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.camunda.bpm.engine.IdentityService;
-import org.camunda.bpm.engine.identity.User;
+import org.camunda.bpm.engine.identity.User;/*
 import org.elasticsearch.client.Client;
-import org.elasticsearch.common.geo.GeoPoint;
+import org.elasticsearch.common.geo.GeoPoint;*/
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -36,8 +36,8 @@ import master.naucnacentrala.model.Casopis;
 import master.naucnacentrala.model.Rad;
 import master.naucnacentrala.model.enums.NaucnaOblast;
 import master.naucnacentrala.model.korisnici.Korisnik;
-import master.naucnacentrala.model.korisnici.Urednik;
-import master.naucnacentrala.repository.RadIndexingUnitRepository;
+import master.naucnacentrala.model.korisnici.Urednik;/*
+import master.naucnacentrala.repository.RadIndexingUnitRepository;*/
 
 @Component
 public class StartData {
@@ -56,24 +56,24 @@ public class StartData {
 
 	@Autowired
 	private IdentityService identityService;
-
+/*
 	@Autowired
 	private RadIndexingUnitRepository riuRepository;
 
 	@Autowired
-	private Client nodeClient;
+	private Client nodeClient;*/
 
 	@Autowired
 	private RecenzentService recenzentService;
 
 	@Autowired
 	private RecenzijaService recenzijaService;
-
+/*
 	@Autowired
 	private RecenzijaIndexUnitRepository recenzijaIndexUnitRepository;
 
 	@Autowired
-	private RecenzentIndexUnitRepository recenzentIndexUnitRepository;
+	private RecenzentIndexUnitRepository recenzentIndexUnitRepository;*/
 
 	@Value("${elasticsearch.baseUrl}")
 	private String elasticsearchUrl;
@@ -224,7 +224,7 @@ public class StartData {
 
 
 
-/*		setupTestData(rad3);
+		/*setupTestData(rad3);
 		setupTestData(rad2);
 		setupTestData(rad);
 		setupTestData(rad3);
@@ -249,14 +249,14 @@ public class StartData {
 		saveRecenzentIdx(r3);
 		saveRecenzentIdx(r4);
 		saveRecenzentIdx(r5);
-		saveRecenzentIdx(r6);*/
-
+		saveRecenzentIdx(r6);
+*/
 
 
 		/*setupTestData(novi1);
 		setupTestData(novi2);*/
     }
-
+/*
 	private void setupTestData(Rad rad) throws ExecutionException, InterruptedException {
 
 		ClassLoader classLoader = getClass().getClassLoader();
@@ -329,7 +329,7 @@ public class StartData {
 		System.out.println(recenzije);
 		RecenzentIndexUnit riu = new RecenzentIndexUnit(r.getId(), r.getIme(), r.getPrezime(), new GeoPoint(r.getLat(), r.getLon()), r.getGrad(), r.getDrzava(), recenzije, String.join(", ", stringOblasti).toLowerCase().replace('_', ' '));
 		recenzentIndexUnitRepository.save(riu);
-	}
+	}*/
 
 	public void saveCamundaUser (Korisnik autor){
 		User newUser = identityService.newUser(autor.getUsername());

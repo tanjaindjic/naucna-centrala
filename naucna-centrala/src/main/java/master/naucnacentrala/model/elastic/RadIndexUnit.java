@@ -1,3 +1,4 @@
+/*
 package master.naucnacentrala.model.elastic;
 
 import javax.persistence.Id;
@@ -187,3 +188,4 @@ public class RadIndexUnit {
 		this.lokacija = lokacija;
 	}
 }
+*/

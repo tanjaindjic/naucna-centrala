@@ -39,8 +39,8 @@ public class FileStorageService {
     public String storeFile(MultipartFile file, Boolean isNacrt) {
         // Normalize file name
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-        if(isNacrt)
-            fileName.concat("_nacrt");
+       /* if(isNacrt)
+            fileName.concat("_nacrt");*/
 
         try {
             // Check if the file's name contains invalid characters

@@ -1,3 +1,4 @@
+/*
 
 package master.naucnacentrala.model.elastic;
 
@@ -38,3 +39,4 @@ public class Config {
 
 }
 
+*/

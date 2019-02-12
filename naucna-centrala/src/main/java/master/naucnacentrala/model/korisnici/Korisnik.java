@@ -1,8 +1,8 @@
 package master.naucnacentrala.model.korisnici;
 import master.naucnacentrala.model.Casopis;
 import master.naucnacentrala.model.Pretplata;
-import master.naucnacentrala.model.Rad;
-import org.elasticsearch.common.geo.GeoPoint;
+import master.naucnacentrala.model.Rad;/*
+import org.elasticsearch.common.geo.GeoPoint;*/
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

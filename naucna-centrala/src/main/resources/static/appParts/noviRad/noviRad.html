@@ -13,8 +13,7 @@
     <div id="radForm" ng-show="secondForm">
         <div ng-repeat="field in formFields" id="unosPodataka" >
             <label><b>{{field.label}}</b></label>
-            <button ng-if="field.id=='koautori'" ng-click="dodajKoautora()">Dodaj</button>
-            <textarea ng-if="field.id=='kljucniPojmovi' || field.id=='apstrakt'" id="{{field.id}}"></textarea>
+            <textarea ng-if="field.id=='kljucniPojmovi' || field.id=='koautori' || field.id=='apstrakt'" id="{{field.id}}"></textarea>
             <input  ng-if="field.id=='naslov'" type="text" id="{{field.id}}">
             <select ng-if="field.id=='naucnaOblast'" id="naucnaOblast" ng-init="naucnaOblast = oblasti[0]" ng-model="naucnaOblast" ng-options="n for n in oblasti">
                 <option value="" selected hidden />

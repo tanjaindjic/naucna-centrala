@@ -104,10 +104,10 @@
                 data1["fieldValue"] = document.getElementById("naslov").value;
                 $scope.formData.push(data1);
                 data2["fieldId"] = "koautori";
-                data2["fieldValue"] = "";
+                data2["fieldValue"] = document.getElementById("koautori").value;
                 $scope.formData.push(data2);
                 data3["fieldId"] = "kljucniPojmovi";
-                data3["fieldValue"] = "";
+                data3["fieldValue"] = document.getElementById("kljucniPojmovi").value;
                 $scope.formData.push(data3);
                 data4["fieldId"] = "apstrakt";
                 data4["fieldValue"] = document.getElementById("apstrakt").value;

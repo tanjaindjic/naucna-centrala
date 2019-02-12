@@ -77,7 +77,7 @@
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_0njdihd" sourceRef="neuspesnoPlacanjeError" targetRef="EndEvent_1wg33b9" />
     <bpmn:sequenceFlow id="SequenceFlow_1mzipve" sourceRef="unosPodataka_UserTask" targetRef="obavestenje_ServiceTask" />
-    <bpmn:serviceTask id="obavestenje_ServiceTask" name="obavestenje o novom radu" camunda:class="master.naucnacentrala.delegate.ObavestenjeDelegate">
+    <bpmn:serviceTask id="obavestenje_ServiceTask" name="obavestenje o novom radu" camunda:class="master.naucnacentrala.delegate.ObavestenjePrijaveDelegate">
       <bpmn:incoming>SequenceFlow_1mzipve</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_01aa16e</bpmn:outgoing>
     </bpmn:serviceTask>

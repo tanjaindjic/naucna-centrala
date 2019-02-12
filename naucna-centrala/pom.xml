@@ -73,12 +73,12 @@
 			<version>0.9.0</version>
 		</dependency>
 		<!--elasticsearch-->
-		<dependency>
+		<!--<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-elasticsearch</artifactId>
 			<version>3.0.0.RELEASE</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.elasticsearch.client/transport -->
+		&lt;!&ndash; https://mvnrepository.com/artifact/org.elasticsearch.client/transport &ndash;&gt;
 		<dependency>
 			<groupId>org.elasticsearch.client</groupId>
 			<artifactId>transport</artifactId>
@@ -89,7 +89,7 @@
 			<artifactId>elasticsearch</artifactId>
 			<version>6.2.4</version>
 		</dependency>
-        <!-- https://mvnrepository.com/artifact/org.elasticsearch.plugin/transport-netty4-client -->
+        &lt;!&ndash; https://mvnrepository.com/artifact/org.elasticsearch.plugin/transport-netty4-client &ndash;&gt;
         <dependency>
             <groupId>org.elasticsearch.plugin</groupId>
             <artifactId>transport-netty4-client</artifactId>
@@ -99,7 +99,7 @@
 
 
 
-		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-elasticsearch -->
+		&lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.data/spring-data-elasticsearch &ndash;&gt;
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-elasticsearch</artifactId>
@@ -107,12 +107,12 @@
         </dependency>
 
 
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-elasticsearch -->
+        &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-elasticsearch &ndash;&gt;
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
 			<version>2.1.2.RELEASE</version>
-		</dependency>
+		</dependency>-->
 
 		<!-- https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox -->
 		<dependency>

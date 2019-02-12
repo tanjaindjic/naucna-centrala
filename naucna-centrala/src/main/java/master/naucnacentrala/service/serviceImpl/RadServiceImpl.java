@@ -49,4 +49,9 @@ public class RadServiceImpl implements RadService {
 		radRepository.deleteById(id);
 	}
 
+	@Override
+	public List<Rad> getRecenziraniRadovi(Long id) {
+		return radRepository.findByAutorIdAndStatusRada(id, StatusRada.KOREKCIJA);
+	}
+
 }

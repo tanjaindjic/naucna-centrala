@@ -24,8 +24,7 @@ public class ObavestenjeDelegate implements JavaDelegate {
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
 
-		//startovati proces objave rada i dodeliti uredniku task pregledanja rada
-		//uneti mejl adrese urednika i autora za dalja obavestenja
+		System.out.println("USAO U OBAVESTENJE O PRIHVATANJU/ODBIJANJU RADA DELEGATE");
 		// TODO Auto-generated method stub
 		System.out.println("Usao u obavestenje delegate");
 		Properties props = new Properties();
