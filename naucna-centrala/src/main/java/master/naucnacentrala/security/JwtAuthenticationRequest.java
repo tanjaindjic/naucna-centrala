@@ -44,4 +44,12 @@ public class  JwtAuthenticationRequest implements Serializable {
 				"	\"password\": \"" + password + "\"" + 
 				"}";
 	}
+
+    @Override
+    public String toString() {
+        return "JwtAuthenticationRequest{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

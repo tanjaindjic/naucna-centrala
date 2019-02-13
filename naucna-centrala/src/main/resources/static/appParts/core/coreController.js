@@ -199,6 +199,9 @@
                $('#exampleModalLong').modal('hide');
                $location.path("/rad/"+id)
             }
+             $scope.recenzije = function(){
+               mainService.goToState("core.recenzije", true);
+            }
 
             $scope.novirad = function(){
                  if( mainService.getSub()==""){
@@ -215,7 +218,7 @@
                     var obj = response.data;
                     window.localStorage.setItem('taskId', obj["taskId"]);
                     window.localStorage.setItem('processInstanceId', obj["processInstanceId"]);
-                    mainService.goToState(obj["location"], true);
+                    mainService.goToState("core.noviRad", true);
                 }, function errorCallback(response) {
                      console.log("grerska " + JSON.stringify(response))
 

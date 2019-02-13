@@ -139,7 +139,6 @@
                 xhr.onload = function() {
                     console.log(fileAddress)
                     if(xhr.status == 200) {
-                        alert("succc")
                         var data={};
                         data["fieldId"] = "rad";
                         data["fieldValue"] = xhr.responseText;
@@ -156,7 +155,8 @@
                            url: ROOT_PATH + "rad/create",
                            data: JSON.stringify(payload)
                         }).then(function successCallback(response) {
-                            alert("BRAVO JA")
+                            alert("Uspesna prijava rada.")
+                            mainService.goToState("core.home", true);
 
                         }, function errorCallback(response) {
                            alert("fail :(")

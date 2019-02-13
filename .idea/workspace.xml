@@ -2,98 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50a72021-f944-4a91-b5f8-4e339d88f598" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/ObavestenjePrijaveDelegate.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RadDTO.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/prijavljeniRadovi/prijavljeniRadovi.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/prijavljeniRadovi/prijavljeniRadoviController.js" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_carrotsearch_hppc_0_7_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_dataformat_jackson_dataformat_cbor_2_9_7.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_dataformat_jackson_dataformat_smile_2_9_7.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_dataformat_jackson_dataformat_yaml_2_9_7.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_spullara_mustache_java_compiler_0_9_3.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_tdunning_t_digest_3_0.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_vividsolutions_jts_1_13.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_buffer_4_1_31_Final.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_codec_4_1_31_Final.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_codec_http_4_1_31_Final.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_common_4_1_31_Final.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_handler_4_1_31_Final.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_resolver_4_1_31_Final.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_transport_4_1_31_Final.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_jopt_simple_jopt_simple_5_0_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpasyncclient_4_1_4.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_6.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_10.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_nio_4_4_10.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_core_2_11_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_analyzers_common_7_2_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_backward_codecs_7_2_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_core_7_2_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_grouping_7_2_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_highlighter_7_2_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_join_7_2_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_memory_7_2_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_misc_7_2_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_queries_7_2_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_queryparser_7_2_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_sandbox_7_2_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_spatial3d_7_2_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_spatial_7_2_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_spatial_extras_7_2_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_suggest_7_2_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_client_elasticsearch_rest_client_5_6_9.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_client_transport_6_2_4.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_elasticsearch_6_2_4.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_elasticsearch_cli_6_2_4.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_elasticsearch_core_6_2_4.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_jna_4_5_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_plugin_lang_mustache_client_6_2_4.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_plugin_parent_join_client_6_2_4.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_plugin_percolator_client_6_2_4.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_plugin_rank_eval_client_6_2_4.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_plugin_reindex_client_6_2_4.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_plugin_transport_netty4_client_6_4_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_elasticsearch_securesm_1_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hdrhistogram_HdrHistogram_2_1_9.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_locationtech_spatial4j_spatial4j_0_6.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_elasticsearch_2_1_2_RELEASE.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_elasticsearch_3_1_0_RELEASE.xml" afterPath="" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RecenzentController.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/DodelaUrednikaDelegate.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RecenzentDTO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RecenzijaDTO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RevizijaDTO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/recenzije/recenzije.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/recenzije/recenzijeController.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/pom.xml" afterPath="$PROJECT_DIR$/naucna-centrala/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/NaucnaCentralaApplication.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/NaucnaCentralaApplication.java" />
       <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/StartData.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/StartData.java" />
       <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/KorisnikController.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/KorisnikController.java" />
       <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RadController.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RadController.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/SearchController.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/SearchController.java" />
       <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/UrednikController.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/UrednikController.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/EmailDelegate.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/EmailDelegate.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/LoggerDelegate.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/LoggerDelegate.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/ObavestenjeDelegate.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/ObavestenjeDelegate.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/RegistracijaDelegate.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/RegistracijaDelegate.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/BasicQueryResponseDTO.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/BasicQueryResponseDTO.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/elastic/Config.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/elastic/Config.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/elastic/RadIndexUnit.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/elastic/RadIndexUnit.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/elastic/RecenzentIndexUnit.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/elastic/RecenzentIndexUnit.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/elastic/RecenzijaIndexUnit.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/elastic/RecenzijaIndexUnit.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/korisnici/Korisnik.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/korisnici/Korisnik.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/korisnici/Urednik.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/korisnici/Urednik.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RadIndexingUnitRepository.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RadIndexingUnitRepository.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RadRepository.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RadRepository.java" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/ObavestenjePrijaveDelegate.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/ObavestenjePrijaveDelegate.java" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Casopis.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Casopis.java" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Recenzija.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Recenzija.java" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/enums/StatusRada.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/enums/StatusRada.java" />
       <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RecenzentIndexUnitRepository.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RecenzentIndexUnitRepository.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RecenzijaIndexUnitRepository.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RecenzijaIndexUnitRepository.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/FileStorageService.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/FileStorageService.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/KorisnikService.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/KorisnikService.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/RadService.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/RadService.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/KorisnikServiceImpl.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/KorisnikServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RadServiceImpl.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RadServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/application.properties" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RecenzijaRepository.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RecenzijaRepository.java" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/security/JwtAuthenticationRequest.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/security/JwtAuthenticationRequest.java" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/RecenzijaService.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/RecenzijaService.java" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RecenzijaServiceImpl.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RecenzijaServiceImpl.java" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/objavaRada.bpmn" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/objavaRada.bpmn" />
       <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/prijavaRada.bpmn" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/prijavaRada.bpmn" />
       <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/core.html" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/core.html" />
       <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/coreController.js" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/coreController.js" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/dodajRecenzenta/dodajRecenzenta.html" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/dodajRecenzenta/dodajRecenzenta.html" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/dodajRecenzenta/dodajRecenzentaController.js" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/dodajRecenzenta/dodajRecenzentaController.js" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/mainModule.js" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/mainModule.js" />
       <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/noviRad/noviRad.html" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/noviRad/noviRad.html" />
       <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/noviRad/noviRadController.js" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/noviRad/noviRadController.js" />
       <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasks.html" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasks.html" />
       <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasksController.js" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasksController.js" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/index.html" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/naucna-centrala/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -113,56 +54,96 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="ObavestenjePrijaveDelegate.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/ObavestenjePrijaveDelegate.java">
+      <file leaf-file-name="core.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/core.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+            <state relative-caret-position="252">
+              <caret line="14" column="92" lean-forward="false" selection-start-line="14" selection-start-column="92" selection-end-line="14" selection-end-column="92" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="prijavljeniRadovi.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/prijavljeniRadovi/prijavljeniRadovi.html">
+      <file leaf-file-name="dodajRecenzenta.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/dodajRecenzenta/dodajRecenzenta.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="699">
+              <caret line="54" column="121" lean-forward="false" selection-start-line="54" selection-start-column="121" selection-end-line="54" selection-end-column="121" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="noviRad.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/noviRad/noviRad.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="504">
-              <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+              <caret line="28" column="20" lean-forward="false" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
               <folding>
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#textarea#0;n#label#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#textarea#0;n#label#0;n#form#0;n#div#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#textarea#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="prijavljeniRadoviController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/prijavljeniRadovi/prijavljeniRadoviController.js">
+      <file leaf-file-name="RadController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RadController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="78" lean-forward="false" selection-start-line="4" selection-start-column="78" selection-end-line="4" selection-end-column="78" />
+            <state relative-caret-position="321">
+              <caret line="401" column="36" lean-forward="true" selection-start-line="401" selection-start-column="36" selection-end-line="401" selection-end-column="36" />
+              <folding>
+                <element signature="e#2529#2544#0" expanded="false" />
+                <element signature="method#getCasopisi#0;class#RadController#0" expanded="false" />
+                <element signature="method#setCasopis#0;class#RadController#0" expanded="false" />
+                <element signature="method#uploadNacrt#0;class#RadController#0" expanded="false" />
+                <element signature="method#uploadFinal#0;class#RadController#0" expanded="false" />
+                <element signature="method#noviRad#0;class#RadController#0" expanded="false" />
+                <element signature="method#downloadFile#0;class#RadController#0" expanded="false" />
+                <element signature="method#getRecenzenti#0;class#RadController#0" expanded="false" />
+                <element signature="method#indexRad#0;class#RadController#0" expanded="false" />
+                <element signature="method#naRecenziranje#0;class#RadController#0" expanded="false" />
+                <element signature="method#dodeliRecenzente#0;class#RadController#0" expanded="false" />
+                <element signature="method#novaVerzija#0;class#RadController#0" expanded="false" />
+                <marker date="1550091227886" expanded="false" signature="12865:13184" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RecenzijaServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RecenzijaServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="46" column="42" lean-forward="true" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RadController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RadController.java">
+      <file leaf-file-name="recenzije.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/recenzije/recenzije.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="391" column="33" lean-forward="false" selection-start-line="391" selection-start-column="29" selection-end-line="392" selection-end-column="49" />
+            <state relative-caret-position="360">
+              <caret line="20" column="114" lean-forward="true" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="114" />
               <folding>
-                <element signature="e#3017#3032#0" expanded="false" />
-                <element signature="method#startPrijava#0;class#RadController#0" expanded="false" />
-                <element signature="method#getCasopisi#0;class#RadController#0" expanded="false" />
-                <element signature="method#setCasopis#0;class#RadController#0" expanded="false" />
-                <element signature="method#uploadFinal#0;class#RadController#0" expanded="false" />
-                <element signature="method#downloadFile#0;class#RadController#0" expanded="false" />
-                <element signature="method#indexRad#0;class#RadController#0" expanded="false" />
-                <marker date="1549986475243" expanded="false" signature="13293:13612" ph="{...}" />
+                <element signature="n#style#0;n#textarea#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tasks.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasks.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-537">
+              <caret line="81" column="57" lean-forward="false" selection-start-line="81" selection-start-column="57" selection-end-line="81" selection-end-column="57" />
+              <folding>
+                <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#hr#0;n#td#0;n#tr#0;n#table#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -182,12 +163,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>odabraniCasopis</find>
-      <find>casopisi</find>
-      <find>webapp</find>
-      <find>casopsi</find>
-      <find>file</find>
-      <find>bra</find>
       <find>icon</find>
       <find>brand</find>
       <find>@Field(type = FieldType.Text, store = true)</find>
@@ -211,6 +186,13 @@
       <find>style=&quot;  text-align:left; &quot;</find>
       <find>setVariable</find>
       <find>obj</find>
+      <find>pair</find>
+      <find>, new Date()</find>
+      <find>recenzi</find>
+      <find>recenzije</find>
+      <find>sveRecenzije</find>
+      <find>task</find>
+      <find>nov</find>
     </findStrings>
     <replaceStrings>
       <replace>selectedCar</replace>
@@ -238,57 +220,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/RecenzentService.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RecenzijaServiceImpl.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/styles/mainStyles.css" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/casopis/casopisController.js" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Casopis.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/CasopisServiceImpl.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/CasopisService.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/CasopisController.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/dodajRecenzenta/dodajRecenzenta.html" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/dodajRecenzenta/dodajRecenzentaController.js" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/enums/StatusRada.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/PrekidRecenziranjaDelegate.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/NaucnaCentralaApplication.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/elastic/Config.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/pom.xml" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/elastic/RadIndexUnit.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/elastic/RecenzentIndexUnit.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/elastic/RecenzijaIndexUnit.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RadIndexingUnitRepository.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RecenzentIndexUnitRepository.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RecenzijaIndexUnitRepository.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/SearchController.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/StartData.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/BasicQueryResponseDTO.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/korisnici/Korisnik.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/korisnici/Urednik.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/KorisnikServiceImpl.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/KorisnikService.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/EmailDelegate.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/RegistracijaDelegate.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/LoggerDelegate.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/ObavestenjeDelegate.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/UrednikController.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/FileStorageService.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/core.html" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/coreController.js" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasks.html" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasksController.js" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/RadService.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RadServiceImpl.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RadRepository.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/prijavljeniRadovi/prijavljeniRadovi.html" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RecenzijaDTO.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RadDTO.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/noviRad/noviRad.html" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/noviRad/noviRadController.js" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/KorisnikController.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/prijavljeniRadovi/prijavljeniRadoviController.js" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RadDTO.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/EmailDelegate.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/ObavestenjeDelegate.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/prijavljeniRadovi/prijavljeniRadoviController.js" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/prijavljeniRadovi/prijavljeniRadovi.html" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RecenzentDTO.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/ObavestenjePrijaveDelegate.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Recenzija.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/DodelaUrednikaDelegate.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Casopis.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RecenzentRepository.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RecenzentServiceImpl.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/RecenzentService.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RecenzijaRepository.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RevizijaDTO.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/UrednikController.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/index.html" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/KorisnikController.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/security/JwtAuthenticationRequest.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/StartData.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RecenzijaDTO.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RecenzentController.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/recenzije/recenzije.html" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasksController.js" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/dodajRecenzenta/dodajRecenzentaController.js" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/noviRad/noviRadController.js" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/recenzije/recenzijeController.js" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/mainModule.js" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/coreController.js" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/core.html" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/noviRad/noviRad.html" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RadController.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/RecenzijaService.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RecenzijaServiceImpl.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasks.html" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/dodajRecenzenta/dodajRecenzenta.html" />
       </list>
     </option>
   </component>
@@ -312,8 +294,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1830" />
-    <option name="y" value="18" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
     <option name="width" value="1938" />
     <option name="height" value="1098" />
   </component>
@@ -366,6 +348,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -407,15 +391,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="naucnacentrala" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="naucna-centrala" type="b2602c69:ProjectViewProjectNode" />
-              <item name="naucna-centrala" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="naucnacentrala" type="462c0819:PsiDirectoryNode" />
-              <item name="delegate" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="naucna-centrala" type="b2602c69:ProjectViewProjectNode" />
@@ -468,6 +443,26 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="appParts" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="naucna-centrala" type="b2602c69:ProjectViewProjectNode" />
+              <item name="naucna-centrala" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="appParts" type="462c0819:PsiDirectoryNode" />
+              <item name="dodajRecenzenta" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="naucna-centrala" type="b2602c69:ProjectViewProjectNode" />
+              <item name="naucna-centrala" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="appParts" type="462c0819:PsiDirectoryNode" />
               <item name="noviRad" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -478,7 +473,7 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="appParts" type="462c0819:PsiDirectoryNode" />
-              <item name="prijavljeniRadovi" type="462c0819:PsiDirectoryNode" />
+              <item name="profil" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="naucna-centrala" type="b2602c69:ProjectViewProjectNode" />
@@ -488,7 +483,7 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="appParts" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="recenzije" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="naucna-centrala" type="b2602c69:ProjectViewProjectNode" />
@@ -504,10 +499,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -520,22 +513,22 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\hrcak\IdeaProjects\naucna-centrala\naucna-centrala\src\main\resources" />
-      <recent name="C:\Users\hrcak\IdeaProjects\naucna-centrala\naucna-centrala\src\main\resources\static\js" />
-      <recent name="C:\Users\hrcak\IdeaProjects\naucna-centrala\naucna-centrala\src\main\resources\static\appParts\paymentError" />
-      <recent name="C:\Users\hrcak\IdeaProjects\naucna-centrala\naucna-centrala\src\main\resources\static\assets\images" />
-      <recent name="C:\Users\hrcak\IdeaProjects\naucna-centrala\naucna-centrala\src\main\resources\static\appParts\paymentSuccess" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="master.naucnacentrala.model.dto" />
-    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="master.naucnacentrala.model.dto" />
       <recent name="master.naucnacentrala.repository" />
       <recent name="master.naucnacentrala.service" />
       <recent name="master.naucnacentrala.model" />
       <recent name="master.naucnacentrala.exception" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="master.naucnacentrala.model.dto" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\hrcak\IdeaProjects\naucna-centrala\naucna-centrala\src\main\resources" />
+      <recent name="C:\Users\hrcak\IdeaProjects\naucna-centrala\naucna-centrala\src\main\resources\static\js" />
+      <recent name="C:\Users\hrcak\IdeaProjects\naucna-centrala\naucna-centrala\src\main\resources\static\appParts\paymentError" />
+      <recent name="C:\Users\hrcak\IdeaProjects\naucna-centrala\naucna-centrala\src\main\resources\static\assets\images" />
+      <recent name="C:\Users\hrcak\IdeaProjects\naucna-centrala\naucna-centrala\src\main\resources\static\appParts\paymentSuccess" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -670,20 +663,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1544885672016</updated>
-    </task>
-    <task id="LOCAL-00002" summary="nacrt modela">
-      <created>1544890786263</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1544890786263</updated>
-    </task>
-    <task id="LOCAL-00003" summary="nacrt modela">
-      <created>1544890807214</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1544890807214</updated>
     </task>
     <task id="LOCAL-00004" summary="nacrt modela">
       <created>1544890939980</created>
@@ -1014,11 +993,25 @@
       <option name="project" value="LOCAL" />
       <updated>1549898723694</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="slanje na doradu u beskonacno and beyond">
+      <created>1550055408323</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1550055408323</updated>
+    </task>
+    <task id="LOCAL-00052" summary="ostalo pokrivanje open access casopisa i dodavanje recenzenata">
+      <created>1550066207609</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1550066207609</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1911" y="-9" width="1938" height="1098" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1029,18 +1022,18 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298647" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.46709818" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="13" y="574" width="1862" height="345" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3193096" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.8802589" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="13" y="574" width="1862" height="345" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27497315" sideWeight="0.48975188" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27873254" sideWeight="0.48975188" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5458468" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25993556" sideWeight="0.5102481" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15641855" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1060,8 +1053,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ispravljena brlja NEVER DO COPY PASTA!!!!!!!!!!!!!!!!!!!!!!" />
-    <MESSAGE value="radi highlight treba doterati sve" />
     <MESSAGE value="prikaz highlighta treba srediti" />
     <MESSAGE value="highlights po svim poljima, prikaz sredjen osim html tagova u highlightsima, prikazuje kao text" />
     <MESSAGE value="izmene za front napredne pretrage, novi stemmer radi" />
@@ -1085,7 +1076,9 @@
     <MESSAGE value="ostao samo prikaz pdf-a" />
     <MESSAGE value="dodato indeksiranje novih radova" />
     <MESSAGE value="details details +  sve spremno za camundu" />
-    <option name="LAST_COMMIT_MESSAGE" value="details details +  sve spremno za camundu" />
+    <MESSAGE value="slanje na doradu u beskonacno and beyond" />
+    <MESSAGE value="ostalo pokrivanje open access casopisa i dodavanje recenzenata" />
+    <option name="LAST_COMMIT_MESSAGE" value="ostalo pokrivanje open access casopisa i dodavanje recenzenata" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1098,18 +1091,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/ObavestenjePrijaveDelegate.java</url>
-          <line>51</line>
+          <line>54</line>
           <properties />
           <option name="timeStamp" value="38" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RadController.java</url>
-          <line>391</line>
-          <properties />
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="40" />
+      <option name="time" value="43" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1133,335 +1120,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/dodajRecenzenta/dodajRecenzentaController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="73" column="15" lean-forward="false" selection-start-line="73" selection-start-column="15" selection-end-line="73" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/enums/StatusRada.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="21" lean-forward="false" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/elastic/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="13" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="114" column="24" lean-forward="false" selection-start-line="75" selection-start-column="8" selection-end-line="114" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/elastic/RadIndexUnit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="126" column="5" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/elastic/RecenzentIndexUnit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="41" column="11" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/elastic/RecenzijaIndexUnit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="40" column="47" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RadIndexingUnitRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="17" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RecenzentIndexUnitRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="17" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RecenzijaIndexUnitRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="17" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/CasopisController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="94" column="155" lean-forward="false" selection-start-line="94" selection-start-column="155" selection-end-line="94" selection-end-column="155" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/KupovinaController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/elastic/ElasticsearchConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#2395#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/SearchController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="113" column="74" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="273" selection-end-column="0" />
-          <folding>
-            <marker date="1549969516886" expanded="false" signature="1926:1968" ph="@{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/NaucnaCentralaApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/BasicQueryResponseDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="42" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/korisnici/Urednik.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="56" lean-forward="false" selection-start-line="19" selection-start-column="54" selection-end-line="20" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/KorisnikServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="104" column="37" lean-forward="false" selection-start-line="104" selection-start-column="37" selection-end-line="104" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/KorisnikService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/korisnici/Korisnik.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="41" lean-forward="false" selection-start-line="3" selection-start-column="39" selection-end-line="4" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/DelegateService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/RegistracijaDelegate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="45" column="89" lean-forward="false" selection-start-line="45" selection-start-column="89" selection-end-line="45" selection-end-column="89" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/ObavestenjeDelegate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="26" column="76" lean-forward="false" selection-start-line="26" selection-start-column="76" selection-end-line="26" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/PrekidRecenziranjaDelegate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="64" lean-forward="true" selection-start-line="3" selection-start-column="64" selection-end-line="3" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/FileStorageProperties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-          <folding>
-            <element signature="e#295#296#0" expanded="false" />
-            <element signature="e#327#328#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/FileStorageService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="42" column="40" lean-forward="false" selection-start-line="41" selection-start-column="7" selection-end-line="42" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/profil/profil.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/login/loginController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="88" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/core.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1617">
-          <caret line="106" column="10" lean-forward="true" selection-start-line="57" selection-start-column="4" selection-end-line="106" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/coreController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2718">
-          <caret line="160" column="56" lean-forward="false" selection-start-line="160" selection-start-column="36" selection-end-line="160" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasks.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="e#6968#6975#1" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasksController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="14" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="18" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/UrednikController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="57" column="57" lean-forward="false" selection-start-line="55" selection-start-column="13" selection-end-line="57" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/RadService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Rad.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RadRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="14" column="11" lean-forward="false" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RadDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-          <folding>
-            <element signature="e#354#355#0" expanded="false" />
-            <element signature="e#388#389#0" expanded="false" />
-            <element signature="e#416#417#0" expanded="false" />
-            <element signature="e#449#450#0" expanded="false" />
-            <element signature="e#478#479#0" expanded="false" />
-            <element signature="e#522#523#0" expanded="false" />
-            <element signature="e#558#559#0" expanded="false" />
-            <element signature="e#594#595#0" expanded="false" />
-            <element signature="e#626#627#0" expanded="false" />
-            <element signature="e#676#677#0" expanded="false" />
-            <element signature="e#718#719#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RadServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="53" column="39" lean-forward="true" selection-start-line="53" selection-start-column="39" selection-end-line="53" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/objavaRada.bpmn">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -1470,26 +1128,243 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/LoggerDelegate.java">
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/EmailDelegate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="17" column="41" lean-forward="false" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+        <state relative-caret-position="72">
+          <caret line="10" column="50" lean-forward="false" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/EmailDelegate.java">
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RecenzentQueryDTO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="38" column="59" lean-forward="false" selection-start-line="38" selection-start-column="59" selection-end-line="38" selection-end-column="59" />
+        <state relative-caret-position="72">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/KorisnikDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/ObavestenjePrijaveDelegate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="50" column="49" lean-forward="false" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/elastic/RecenzentIndexUnit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="39" column="33" lean-forward="true" selection-start-line="36" selection-start-column="4" selection-end-line="39" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RecenzentDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="25" column="25" lean-forward="false" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+          <folding>
+            <element signature="e#587#588#0" expanded="false" />
+            <element signature="e#621#622#0" expanded="false" />
+            <element signature="e#649#650#0" expanded="false" />
+            <element signature="e#684#685#0" expanded="false" />
+            <element signature="e#715#716#0" expanded="false" />
+            <element signature="e#763#764#0" expanded="false" />
+            <element signature="e#803#804#0" expanded="false" />
+            <element signature="e#833#834#0" expanded="false" />
+            <element signature="e#859#860#0" expanded="false" />
+            <element signature="e#897#898#0" expanded="false" />
+            <element signature="e#927#928#0" expanded="false" />
+            <element signature="e#961#962#0" expanded="false" />
+            <element signature="e#991#992#0" expanded="false" />
+            <element signature="e#1037#1038#0" expanded="false" />
+            <element signature="e#1075#1076#0" expanded="false" />
+            <element signature="e#1106#1107#0" expanded="false" />
+            <element signature="e#1133#1134#0" expanded="false" />
+            <element signature="e#1173#1174#0" expanded="false" />
+            <element signature="e#1205#1206#0" expanded="false" />
+            <element signature="e#1238#1239#0" expanded="false" />
+            <element signature="e#1267#1268#0" expanded="false" />
+            <element signature="e#1311#1312#0" expanded="false" />
+            <element signature="e#1347#1348#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/DodelaUrednikaDelegate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="48" lean-forward="false" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Casopis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="48" column="11" lean-forward="false" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/enums/Rezultat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="81" lean-forward="false" selection-start-line="3" selection-start-column="75" selection-end-line="3" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/UrednikServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RecenzentRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RecenzentServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/RecenzentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RegisterDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RadDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="11" lean-forward="false" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/RadService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="15" column="25" lean-forward="false" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RecenzijaRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Recenzija.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RevizijaDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#493#494#0" expanded="true" />
+            <element signature="e#528#529#0" expanded="true" />
+            <element signature="e#558#559#0" expanded="true" />
+            <element signature="e#603#604#0" expanded="true" />
+            <element signature="e#635#636#0" expanded="true" />
+            <element signature="e#694#695#0" expanded="true" />
+            <element signature="e#736#737#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="45" column="68" lean-forward="false" selection-start-line="45" selection-start-column="68" selection-end-line="45" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/KorisnikService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="22" column="19" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/korisnici/Recenzent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="56" column="11" lean-forward="false" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/security/JwtAuthenticationRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="48" column="18" lean-forward="false" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/KorisnikServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="90" column="19" lean-forward="false" selection-start-line="90" selection-start-column="19" selection-end-line="90" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.2.RELEASE/spring-security-core-5.1.2.RELEASE-sources.jar!/org/springframework/security/authentication/AuthenticationManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="590">
+          <caret line="57" column="19" lean-forward="false" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/KorisnikController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="132" column="48" lean-forward="false" selection-start-line="132" selection-start-column="48" selection-end-line="132" selection-end-column="48" />
+        <state relative-caret-position="575">
+          <caret line="285" column="40" lean-forward="false" selection-start-line="285" selection-start-column="40" selection-end-line="285" selection-end-column="40" />
           <folding>
             <element signature="e#2503#2518#0" expanded="false" />
             <element signature="method#getPlaceniCasopisi#0;class#KorisnikController#0" expanded="false" />
@@ -1497,106 +1372,249 @@
             <element signature="method#getKorisnik#0;class#KorisnikController#0" expanded="false" />
             <element signature="method#getRegistrationFOrm#0;class#KorisnikController#0" expanded="false" />
             <element signature="method#finishRegistration#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#getLoginPage#0;class#KorisnikController#0" expanded="false" />
             <element signature="method#initRegistration#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#submitLoginData#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#createAuthenticationToken#0;class#KorisnikController#0" expanded="false" />
             <element signature="method#logout#0;class#KorisnikController#0" expanded="false" />
-            <element signature="e#11265#11381#0" expanded="false" />
+            <element signature="e#11375#11491#0" expanded="false" />
             <element signature="method#refreshAndGetAuthenticationToken#0;class#KorisnikController#0" expanded="false" />
             <element signature="method#handleAuthenticationException#0;class#KorisnikController#0" expanded="false" />
             <element signature="docComment;method#authenticate#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#authenticate#0;class#KorisnikController#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/noviRad/noviRad.html">
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/PrijavaDelegate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" column="78" lean-forward="false" selection-start-line="15" selection-start-column="78" selection-end-line="15" selection-end-column="78" />
+        <state relative-caret-position="216">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/StartData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="176" column="64" lean-forward="false" selection-start-line="176" selection-start-column="64" selection-end-line="176" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RecenzijaDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <element signature="e#366#367#0" expanded="true" />
+            <element signature="e#394#395#0" expanded="true" />
+            <element signature="e#434#435#0" expanded="true" />
+            <element signature="e#468#469#0" expanded="true" />
+            <element signature="e#503#504#0" expanded="true" />
+            <element signature="e#534#535#0" expanded="true" />
+            <element signature="e#582#583#0" expanded="true" />
+            <element signature="e#622#623#0" expanded="true" />
+            <element signature="e#657#658#0" expanded="true" />
+            <element signature="e#688#689#0" expanded="true" />
+            <element signature="e#736#737#0" expanded="true" />
+            <element signature="e#776#777#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RadServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RecenzentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="501">
+          <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/UrednikController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="681">
+          <caret line="131" column="24" lean-forward="false" selection-start-line="131" selection-start-column="24" selection-end-line="131" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/noviRad/noviRadController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="88" column="62" lean-forward="true" selection-start-line="88" selection-start-column="62" selection-end-line="88" selection-end-column="62" />
+        <state relative-caret-position="576">
+          <caret line="158" column="60" lean-forward="false" selection-start-line="158" selection-start-column="60" selection-end-line="158" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/prijavljeniRadovi/prijavljeniRadovi.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state relative-caret-position="501">
+          <caret line="37" column="43" lean-forward="true" selection-start-line="36" selection-start-column="39" selection-end-line="38" selection-end-column="44" />
           <folding>
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#label#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#label#0;n#form#0;n#div#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/StartData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4569">
-          <caret line="331" column="7" lean-forward="false" selection-start-line="258" selection-start-column="0" selection-end-line="331" selection-end-column="7" />
-          <folding>
-            <element signature="method#saveCamundaUser#0;class#StartData#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/prijavljeniRadovi/prijavljeniRadoviController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="78" lean-forward="false" selection-start-line="4" selection-start-column="78" selection-end-line="4" selection-end-column="78" />
+        <state relative-caret-position="519">
+          <caret line="41" column="19" lean-forward="false" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/application.properties">
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/recenzije/recenzijeController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="30" column="48" lean-forward="false" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
+        <state relative-caret-position="648">
+          <caret line="36" column="37" lean-forward="false" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/camunda/bpm/camunda-engine/7.10.0/camunda-engine-7.10.0-sources.jar!/org/camunda/bpm/engine/RuntimeService.java">
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/profil/profilController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="151" column="18" lean-forward="false" selection-start-line="151" selection-start-column="18" selection-end-line="151" selection-end-column="18" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/ObavestenjePrijaveDelegate.java">
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasksController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+        <state relative-caret-position="345">
+          <caret line="99" column="34" lean-forward="true" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#5775#0" expanded="false" />
+            <element signature="e#0#5775#0" expanded="false" />
+            <element signature="e#0#5775#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/profil/profil.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1653">
+          <caret line="114" column="123" lean-forward="false" selection-start-line="114" selection-start-column="89" selection-end-line="114" selection-end-column="123" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/dodajRecenzenta/dodajRecenzentaController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="84" column="61" lean-forward="false" selection-start-line="84" selection-start-column="61" selection-end-line="84" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/coreController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="220" column="55" lean-forward="false" selection-start-line="220" selection-start-column="55" selection-end-line="220" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/recenzije/recenzije.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="114" lean-forward="true" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="114" />
+          <folding>
+            <element signature="n#style#0;n#textarea#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/core.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="92" lean-forward="false" selection-start-line="14" selection-start-column="92" selection-end-line="14" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/mainModule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="31" column="18" lean-forward="false" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/noviRad/noviRad.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="28" column="20" lean-forward="false" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#textarea#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/RecenzijaService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="26" lean-forward="false" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RadController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="391" column="33" lean-forward="false" selection-start-line="391" selection-start-column="29" selection-end-line="392" selection-end-column="49" />
+        <state relative-caret-position="321">
+          <caret line="401" column="36" lean-forward="true" selection-start-line="401" selection-start-column="36" selection-end-line="401" selection-end-column="36" />
           <folding>
-            <element signature="e#3017#3032#0" expanded="false" />
-            <element signature="method#startPrijava#0;class#RadController#0" expanded="false" />
+            <element signature="e#2529#2544#0" expanded="false" />
             <element signature="method#getCasopisi#0;class#RadController#0" expanded="false" />
             <element signature="method#setCasopis#0;class#RadController#0" expanded="false" />
+            <element signature="method#uploadNacrt#0;class#RadController#0" expanded="false" />
             <element signature="method#uploadFinal#0;class#RadController#0" expanded="false" />
+            <element signature="method#noviRad#0;class#RadController#0" expanded="false" />
             <element signature="method#downloadFile#0;class#RadController#0" expanded="false" />
+            <element signature="method#getRecenzenti#0;class#RadController#0" expanded="false" />
             <element signature="method#indexRad#0;class#RadController#0" expanded="false" />
-            <marker date="1549986475243" expanded="false" signature="13293:13612" ph="{...}" />
+            <element signature="method#naRecenziranje#0;class#RadController#0" expanded="false" />
+            <element signature="method#dodeliRecenzente#0;class#RadController#0" expanded="false" />
+            <element signature="method#novaVerzija#0;class#RadController#0" expanded="false" />
+            <marker date="1550091227886" expanded="false" signature="12865:13184" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RecenzijaServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="46" column="42" lean-forward="true" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasks.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-537">
+          <caret line="81" column="57" lean-forward="false" selection-start-line="81" selection-start-column="57" selection-end-line="81" selection-end-column="57" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#hr#0;n#td#0;n#tr#0;n#table#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/dodajRecenzenta/dodajRecenzenta.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="699">
+          <caret line="54" column="121" lean-forward="false" selection-start-line="54" selection-start-column="121" selection-end-line="54" selection-end-column="121" />
+          <folding />
         </state>
       </provider>
     </entry>

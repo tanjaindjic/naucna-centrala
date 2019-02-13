@@ -10,6 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import java.util.Collection;
+import java.util.HashMap;
 
 @Entity
 public class Casopis {
@@ -46,9 +47,8 @@ public class Casopis {
     private Urednik glavniUrednik;
 
     @Column
-    @OneToMany
     @JsonBackReference
-    private Collection<Korisnik> uredniciNaucnihOblasti;
+    private HashMap<String, Korisnik> uredniciNaucnihOblasti;
 
     @Column
     @ManyToMany
@@ -73,7 +73,7 @@ public class Casopis {
 
     public Casopis(@NotNull String naziv, @NotNull String issn, @NotNull Collection<NaucnaOblast> naucneOblasti,
                    Collection<Rad> radovi, @NotNull boolean isOpenAccess, Urednik glavniUrednik,
-                   Collection<Korisnik> uredniciNaucnihOblasti, Collection<Korisnik> recenzenti, String urlSlike, Float cena, String identifikacioniKod) {
+                   HashMap<String, Korisnik> uredniciNaucnihOblasti, Collection<Korisnik> recenzenti, String urlSlike, Float cena, String identifikacioniKod) {
 		super();
 		this.naziv = naziv;
 		this.issn = issn;
@@ -138,11 +138,11 @@ public class Casopis {
         this.glavniUrednik = glavniUrednik;
     }
 
-    public Collection<Korisnik> getUredniciNaucnihOblasti() {
+    public HashMap<String, Korisnik> getUredniciNaucnihOblasti() {
         return uredniciNaucnihOblasti;
     }
 
-    public void setUredniciNaucnihOblasti(Collection<Korisnik> uredniciNaucnihOblasti) {
+    public void setUredniciNaucnihOblasti(HashMap<String, Korisnik> uredniciNaucnihOblasti) {
         this.uredniciNaucnihOblasti = uredniciNaucnihOblasti;
     }
 

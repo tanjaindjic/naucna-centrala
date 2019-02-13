@@ -1,32 +1,36 @@
-<form id="casopisForm">
-    <div  ng-show="firstForm">
-        <div ng-repeat="field in formFields" id="odabirCasopisa">
-            <label><b>{{field.label}}</b></label>
-            <select id="selectedCar" ng-init="selectedCar = casopisi[0]" ng-model="selectedCar" ng-options="c.naziv for c in casopisi">
-                <option value="" selected hidden />
-            </select>
+<div>
+    <div class="col-md-9">
+        <div class="profile-content">
+            <div class="form-inline form-group"  ng-show="firstForm">
+                <div  ng-repeat="field in formFields" id="odabirCasopisa">
+                    <label><b>{{field.label}}</b></label>
+                    <select id="selectedCar" ng-init="selectedCar = casopisi[0]" ng-model="selectedCar" ng-options="c.naziv for c in casopisi">
+                        <option value="" selected hidden />
+                    </select>
+                    <button class="btn btn-primary btn-sm" ng-click="dalje()">Dalje</button>
+                </div>
+            </div>
+            <div class="form-group"   id="radForm" ng-show="secondForm">
+                <div class="form-group" style="vertical-align: top;" ng-repeat="field in formFields" id="unosPodataka" >
+                    <label style="vertical-align: top; width:150px"><b>{{field.label}} </b></label>
+                    <textarea style="height:100px;width:400px;overflow-y: scroll;" ng-if="field.id=='kljucniPojmovi' || field.id=='koautori' || field.id=='apstrakt'" id="{{field.id}}"></textarea>
+                    <input style="width:150px" ng-if="field.id=='naslov'" type="text" id="{{field.id}}">
+                    <select ng-if="field.id=='naucnaOblast'" id="naucnaOblast" ng-init="naucnaOblast = oblasti[0]" ng-model="naucnaOblast" ng-options="n for n in oblasti">
+                        <option value="" selected hidden />
+                    </select>
+                </div>
+                <button class="btn btn-primary btn-sm" ng-click="dalje2()">Dalje</button>
+            </div>
+            <div id="uploadRad" ng-show="uploadForm">
+                <label><b>Rad: </b></label>
+                <form id="singleUploadForm" name="singleUploadForm">
+                    <input id="singleFileUploadInput" type="file" name="file" required />
+                </form>
+                <br>
+                <button class="btn btn-primary btn-sm" ng-click="slanje()">Pošalji</button>
+            </div>
 
-            <h1>You selected: {{selectedCar.id}}</h1>
-            <button ng-click="dalje()">Dalje</button>
-        </div>
-    </div>
-    <div id="radForm" ng-show="secondForm">
-        <div ng-repeat="field in formFields" id="unosPodataka" >
-            <label><b>{{field.label}}</b></label>
-            <textarea ng-if="field.id=='kljucniPojmovi' || field.id=='koautori' || field.id=='apstrakt'" id="{{field.id}}"></textarea>
-            <input  ng-if="field.id=='naslov'" type="text" id="{{field.id}}">
-            <select ng-if="field.id=='naucnaOblast'" id="naucnaOblast" ng-init="naucnaOblast = oblasti[0]" ng-model="naucnaOblast" ng-options="n for n in oblasti">
-                <option value="" selected hidden />
-            </select>
-        </div>
-        <button ng-click="dalje2()">Dalje</button>
-    </div>
-    <div id="uploadRad" ng-show="uploadForm">
-        <label><b>Rad </b></label>
-        <form id="singleUploadForm" name="singleUploadForm">
-            <input id="singleFileUploadInput" type="file" name="file" required />
         </form>
-        <button ng-click="slanje()">Posalji</button>
+        </div>
     </div>
-
-</form>
+</div>

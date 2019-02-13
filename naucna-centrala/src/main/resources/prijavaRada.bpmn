@@ -48,9 +48,9 @@
         <camunda:formData>
           <camunda:formField id="naslov" label="Naslov" type="string" />
           <camunda:formField id="koautori" label="Koautori" type="string" />
-          <camunda:formField id="kljucniPojmovi" label="Kljucni pojmovi" type="string" />
+          <camunda:formField id="kljucniPojmovi" label="Ključni pojmovi" type="string" />
           <camunda:formField id="apstrakt" label="Apstrakt" type="string" />
-          <camunda:formField id="naucnaOblast" label="Naucna oblast" type="string" />
+          <camunda:formField id="naucnaOblast" label="Naučna oblast" type="string" />
           <camunda:formField id="rad" label="Rad" type="string" />
         </camunda:formData>
       </bpmn:extensionElements>
@@ -115,7 +115,7 @@
     <bpmn:userTask id="odabirCasopisa_UserTask" name="odabir casopisa">
       <bpmn:extensionElements>
         <camunda:formData>
-          <camunda:formField id="odabraniCasopis" label="Odabir casopisa" type="string" />
+          <camunda:formField id="odabraniCasopis" label="Odabir časopisa" type="string" />
         </camunda:formData>
       </bpmn:extensionElements>
       <bpmn:incoming>prijavljenKorisnik_SequenceFlow</bpmn:incoming>

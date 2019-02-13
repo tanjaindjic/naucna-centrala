@@ -92,10 +92,10 @@ public class StartData {
 		Urednik urednik2 = urednikService.addUrednik(new Urednik("urednik2", bcrypt.encode("urednik2"), "Urednik2", "Urednik2", "Beograd", "Srbija", "mali.patuljko@gmail.com", 44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
 		Urednik urednik3 = urednikService.addUrednik(new Urednik("urednik3", bcrypt.encode("urednik3"), "Urednik3", "Urednik3", "Beograd", "Srbija", "mali.patuljko@gmail.com",  44.7866, 20.4489,new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
 		Urednik urednik4 = urednikService.addUrednik(new Urednik("urednik4", bcrypt.encode("urednik4"), "Urednik4", "Urednik4", "Beograd", "Srbija", "mali.patuljko@gmail.com",44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
-		Casopis casopis = casopisService.addCasopis(new Casopis("Naučni časopis", "ISSN 231-561X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis1.jpg", 50F, "casopis001"));
-		Casopis casopis2 = casopisService.addCasopis(new Casopis("Hemijska industrija", "ISSN 234-501X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik2, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis2.jpg", 40F, "casopis002"));
-		Casopis casopis3 = casopisService.addCasopis(new Casopis("Socioeconomica", "ISSN 204-561X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), true, urednik3, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis3.jpg", 50F, "casopis003"));
-		Casopis casopis4 = casopisService.addCasopis(new Casopis("PONS - medicinski časopis", "ISSN 244-561X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik4, new ArrayList<>(), new ArrayList<>(), "/assets/images/casopis4.jpg", 30F, "casopis004"));
+		Casopis casopis = casopisService.addCasopis(new Casopis("Naučni časopis", "ISSN 231-561X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik, new HashMap<>(), new ArrayList<>(), "/assets/images/casopis1.jpg", 50F, "casopis001"));
+		Casopis casopis2 = casopisService.addCasopis(new Casopis("Hemijska industrija", "ISSN 234-501X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik2, new HashMap<>(), new ArrayList<>(), "/assets/images/casopis2.jpg", 40F, "casopis002"));
+		Casopis casopis3 = casopisService.addCasopis(new Casopis("Socioeconomica", "ISSN 204-561X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), true, urednik3, new HashMap<>(), new ArrayList<>(), "/assets/images/casopis3.jpg", 50F, "casopis003"));
+		Casopis casopis4 = casopisService.addCasopis(new Casopis("PONS - medicinski časopis", "ISSN 244-561X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik4, new HashMap<>(), new ArrayList<>(), "/assets/images/casopis4.jpg", 30F, "casopis004"));
 
 
 		casopis.setGlavniUrednik(urednik);
@@ -141,58 +141,58 @@ public class StartData {
 
 		List<Casopis> pripada = new ArrayList();
 		pripada.add(casopis);
-		Recenzent r = new Recenzent("rec1", "rec1", "Mika", "Mikic", "Beograd", "Srbija", "mali.patuljko@gmail.com",
+		Recenzent r = new Recenzent("rec1", bcrypt.encode("rec1"), "Mika", "Mikic", "Beograd", "Srbija", "mali.patuljko@gmail.com",
 				44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr",casopis.getNaucneOblasti(), pripada , new ArrayList() );
 		recenzentService.save(r);
 		System.out.println(r.toString());
 
 		List<NaucnaOblast> no = new ArrayList<>();
 		no.add(NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE);
-		Recenzent r2 = new Recenzent("rec2", "rec1", "Ivan", "Peric", "Niš", "Srbija", "mali.patuljko@gmail.com",
+		Recenzent r2 = new Recenzent("rec2", bcrypt.encode("rec2"), "Ivan", "Peric", "Niš", "Srbija", "mali.patuljko@gmail.com",
 				43.3209, 21.8958, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr",no, pripada , new ArrayList() );
 		recenzentService.save(r2);
 
 		no = new ArrayList<>();
 		no.add(NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE);
 		no.add(NaucnaOblast.MEDICINA);
-		Recenzent r3 = new Recenzent("rec3", "rec3", "Ana", "Jokic", "Vršac", "Srbija", "mali.patuljko@gmail.com",
+		Recenzent r3 = new Recenzent("rec3", bcrypt.encode("rec3"), "Ana", "Jokic", "Vršac", "Srbija", "mali.patuljko@gmail.com",
 				45.1182, 21.2945, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr",no, pripada , new ArrayList() );
 		recenzentService.save(r3);
 
 		no = new ArrayList<>();
 		no.add(NaucnaOblast.PRIRODNO_MATEMATICKE_NAUKE);
-		Recenzent r4 = new Recenzent("rec4", "rec4", "Milica", "Ivkovic", "Beograd", "Srbija", "mali.patuljko@gmail.com",
+		Recenzent r4 = new Recenzent("rec4", bcrypt.encode("rec4"), "Milica", "Ivkovic", "Beograd", "Srbija", "mali.patuljko@gmail.com",
 				44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr", no, pripada , new ArrayList() );
 		recenzentService.save(r4);
 
 		no.add(NaucnaOblast.UMETNOST);
 		no.add(NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE);
-		Recenzent r5 = new Recenzent("rec5", "rec5", "Jovan", "Vidic", "Kragujevac", "Srbija", "mali.patuljko@gmail.com",
+		Recenzent r5 = new Recenzent("rec5", bcrypt.encode("rec5"), "Jovan", "Vidic", "Kragujevac", "Srbija", "mali.patuljko@gmail.com",
 				44.0128, 20.9114, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr",no, pripada , new ArrayList() );
 		recenzentService.save(r5);
 
 		no = new ArrayList<>();
 		no.add(NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE);
 		no.add(NaucnaOblast.PRIRODNO_MATEMATICKE_NAUKE);
-		Recenzent r6 = new Recenzent("rec6", "rec6", "Pavle", "Pavlovic", "Užice", "Srbija", "mali.patuljko@gmail.com",
+		Recenzent r6 = new Recenzent("rec6", bcrypt.encode("rec6"), "Pavle", "Pavlovic", "Užice", "Srbija", "mali.patuljko@gmail.com",
 				43.8556, 19.8425, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "dr",no, pripada , new ArrayList() );
 		recenzentService.save(r6);
 
 		casopis.getRecenzenti().addAll(Arrays.asList(r, r2, r3, r4, r5, r6));
 		casopisService.updateCasopis(casopis);
 
-		Recenzija recenzija = recenzijaService.save(new Recenzija(casopis, rad, r, new Date(), "Sve super.", Rezultat.PRIHVATITI));
-		Recenzija recenzija2 = recenzijaService.save(new Recenzija(casopis, rad, r2, new Date(), "Sve super.", Rezultat.PRIHVATITI));
-		Recenzija recenzija3 = recenzijaService.save(new Recenzija(casopis, rad, r5, new Date(), "Sve super.", Rezultat.PRIHVATITI));
-		Recenzija recenzija4 = recenzijaService.save(new Recenzija(casopis, rad2, r6, new Date(), "Sve super.", Rezultat.PRIHVATITI));
-		Recenzija recenzija5 = recenzijaService.save(new Recenzija(casopis, rad2, r, new Date(), "Sve super.", Rezultat.PRIHVATITI));
-		Recenzija recenzija6 = recenzijaService.save(new Recenzija(casopis, rad2, r3, new Date(), "Sve super.", Rezultat.PRIHVATITI));
-		Recenzija recenzija7 = recenzijaService.save(new Recenzija(casopis, rad3, r, new Date(), "Sve super.", Rezultat.PRIHVATITI));
-		Recenzija recenzija8 = recenzijaService.save(new Recenzija(casopis, rad3, r5, new Date(), "Sve super.", Rezultat.PRIHVATITI));
-		Recenzija recenzija9 = recenzijaService.save(new Recenzija(casopis, rad3, r6, new Date(), "Sve super.", Rezultat.PRIHVATITI));
-		Recenzija recenzija10 = recenzijaService.save(new Recenzija(casopis, rad4, r6, new Date(), "Sve super.", Rezultat.PRIHVATITI));
-		Recenzija recenzija11 = recenzijaService.save(new Recenzija(casopis, rad4, r, new Date(), "Sve super.", Rezultat.PRIHVATITI));
-		Recenzija recenzija12 = recenzijaService.save(new Recenzija(casopis, rad4, r3, new Date(), "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija = recenzijaService.save(new Recenzija(casopis, rad, r, "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija2 = recenzijaService.save(new Recenzija(casopis, rad, r2, "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija3 = recenzijaService.save(new Recenzija(casopis, rad, r5, "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija4 = recenzijaService.save(new Recenzija(casopis, rad2, r6, "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija5 = recenzijaService.save(new Recenzija(casopis, rad2, r, "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija6 = recenzijaService.save(new Recenzija(casopis, rad2, r3, "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija7 = recenzijaService.save(new Recenzija(casopis, rad3, r, "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija8 = recenzijaService.save(new Recenzija(casopis, rad3, r5, "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija9 = recenzijaService.save(new Recenzija(casopis, rad3, r6, "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija10 = recenzijaService.save(new Recenzija(casopis, rad4, r6, "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija11 = recenzijaService.save(new Recenzija(casopis, rad4, r, "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija12 = recenzijaService.save(new Recenzija(casopis, rad4, r3, "Sve super.", Rezultat.PRIHVATITI));
 
 		/*r.getRecenzira().addAll(Arrays.asList(rad, rad2, rad3, rad4));
 		r2.getRecenzira().addAll(Arrays.asList(rad));
@@ -216,6 +216,12 @@ public class StartData {
 		saveCamundaUser(urednik3);
 		saveCamundaUser(urednik4);
 		saveCamundaUser(demo);
+		saveCamundaUser(r);
+		saveCamundaUser(r2);
+		saveCamundaUser(r3);
+		saveCamundaUser(r4);
+		saveCamundaUser(r5);
+		saveCamundaUser(r6);
 
 		Rad novi1 = radService.addRad(new Rad("", "Скривени екосистем Земље", autor, "Ivan Markovic, Jasna Jelic",70F, "/assets/images/Article-Icon.png", "ekosistem, Zemlja, nauka", "Научници су открили огроман подземни екосистем са милијардама микроорганизама, двоструко већи од светских океанa", NaucnaOblast.PRIRODNO_MATEMATICKE_NAUKE, "ekosistem.pdf", null, casopis, "novirad001", StatusRada.NOVO));
 		Rad novi2 = radService.addRad(new Rad("", "Одакле долазе амерички староседеоци", autor, "",50F, "/assets/images/Article-Icon.png", "amerika, Zemlja, nauka", "Амерички староседеоци заиста су пореклом из Америке, као генетички културно препознатљива група", NaucnaOblast.DRUSTVENO_HUMANISTICKE_NAUKE, "starosedeoci.pdf", null, casopis, "novirad002", StatusRada.NOVO));

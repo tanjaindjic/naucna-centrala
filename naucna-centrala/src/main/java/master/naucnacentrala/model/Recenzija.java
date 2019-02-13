@@ -28,23 +28,19 @@ public class Recenzija {
     //moze biti urednik ili recenzent
     private Korisnik recenzent;
 
-	@NotNull
-    @Column(nullable = false)
-    private Date rok;
-
     private String komentar;
-    @Column(nullable = false)
+
+    @Column
     @Enumerated(EnumType.STRING)
     private Rezultat rezultat;
 
     public Recenzija() {
     }
 
-    public Recenzija(@NotNull Casopis casopis, @NotNull Rad rad, @NotNull Korisnik recenzent, @NotNull Date rok, String komentar, Rezultat rezultat) {
+    public Recenzija(@NotNull Casopis casopis, @NotNull Rad rad, @NotNull Korisnik recenzent,String komentar, Rezultat rezultat) {
         this.casopis = casopis;
         this.rad = rad;
         this.recenzent = recenzent;
-        this.rok = rok;
         this.komentar = komentar;
         this.rezultat = rezultat;
     }
@@ -71,14 +67,6 @@ public class Recenzija {
 
     public void setRecenzent(Korisnik recenzent) {
         this.recenzent = recenzent;
-    }
-
-    public Date getRok() {
-        return rok;
-    }
-
-    public void setRok(Date rok) {
-        this.rok = rok;
     }
 
     public String getKomentar() {

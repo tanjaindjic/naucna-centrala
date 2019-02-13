@@ -71,12 +71,18 @@
             }
 
             $scope.posalji = function(){
+                var odabrani = [];
+                $(".recenzent:checkbox:checked").each(function(){
+                    odabrani.push($(this).val());
+                });
                $http({
-                   method:"GET",
-                   url:ROOT_PATH + "rad/" + $scope.id + "/index",
+                   method:"POST",
+                   url:ROOT_PATH + "rad/" + $scope.id + "/naRecenziranje",
+                   data: odabrani,
                    headers : mainService.createAuthorizationTokenHeader()
                }).then(function(result){
                    alert(result.data)
+                   mainService.goToState("core.tasks", true);
 
                });
             }

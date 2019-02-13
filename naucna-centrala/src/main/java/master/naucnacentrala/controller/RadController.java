@@ -8,14 +8,9 @@ import java.util.*;
 
 import master.naucnacentrala.model.Casopis;
 import master.naucnacentrala.model.Recenzija;
-import master.naucnacentrala.model.dto.FieldIdValueDTO;
-import master.naucnacentrala.model.dto.FormFieldsDTO;
-import master.naucnacentrala.model.dto.RegisterDTO;
-import master.naucnacentrala.model.dto.UploadFileResponse;/*
-import master.naucnacentrala.model.elastic.RadIndexUnit;
-import master.naucnacentrala.model.elastic.RecenzentIndexUnit;
-import master.naucnacentrala.model.elastic.RecenzijaIndexUnit;*/
+import master.naucnacentrala.model.dto.*;
 import master.naucnacentrala.model.enums.NaucnaOblast;
+import master.naucnacentrala.model.enums.Rezultat;
 import master.naucnacentrala.model.enums.StatusRada;
 import master.naucnacentrala.model.korisnici.Korisnik;
 import master.naucnacentrala.model.korisnici.Recenzent;/*
@@ -23,9 +18,7 @@ import master.naucnacentrala.repository.RadIndexingUnitRepository;
 import master.naucnacentrala.repository.RecenzentIndexUnitRepository;
 import master.naucnacentrala.repository.RecenzijaIndexUnitRepository;*/
 import master.naucnacentrala.repository.RecenzijaRepository;
-import master.naucnacentrala.service.CasopisService;
-import master.naucnacentrala.service.FileStorageService;
-import master.naucnacentrala.service.KorisnikService;
+import master.naucnacentrala.service.*;
 import org.apache.pdfbox.cos.COSDocument;
 import org.apache.pdfbox.io.RandomAccessFile;
 import org.apache.pdfbox.pdfparser.PDFParser;
@@ -55,7 +48,6 @@ import org.springframework.web.bind.annotation.*;
 
 import master.naucnacentrala.model.Rad;
 import master.naucnacentrala.security.JwtTokenUtil;
-import master.naucnacentrala.service.RadService;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -94,6 +86,9 @@ public class RadController {
 
 	@Autowired
     private RecenzijaRepository recenzijaRepository;
+
+	@Autowired
+    private RecenzijaService recenzijaService;
 
 /*
     @Autowired
@@ -303,6 +298,30 @@ public class RadController {
         return ret;
     }
 */
+    @GetMapping(value = "/{id}/recenzenti", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<RecenzentDTO> getRecenzenti(@PathVariable Long id){
+        System.out.println("USAO U PROCES OBJAVE RADA -  RAD ZA RECENZIRANJE");
+        Rad rad = radService.getRad(id);
+        Casopis c = rad.getCasopis();
+        List<RecenzentDTO> retval = new ArrayList();
+        if(c.getRecenzenti().isEmpty())
+            retval.add(new RecenzentDTO(c.getGlavniUrednik()));
+        else{
+            Boolean add = true;
+            for(Korisnik rec : c.getRecenzenti()) {
+                 add = true;
+                for(Recenzija r : recenzijaRepository.findByRecenzent(rec)) {
+                    if (r.getRad().getId() == id)
+                        add = false;
+                }
+                if(add)
+                    retval.add(new RecenzentDTO(rec));
+            }
+        }
+
+        return retval;
+
+    }
 
    @GetMapping(value = "/{id}/index", produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> indexRad(@PathVariable Long id){
@@ -380,8 +399,53 @@ public class RadController {
         Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
         System.out.println("ZAVRSAVA TASK: " + task.getName());
         formService.submitTaskForm(task.getId(), null);
+        recenzijaService.deleteRecenzijeByRadId(id);
         radService.deleteRad(id);
         return new ResponseEntity("Rad je odbijen.", HttpStatus.OK);
+
+    }
+
+    @GetMapping(value = "{id}/naRecenziranje", produces = MediaType.TEXT_PLAIN_VALUE)
+    public ResponseEntity<String> naRecenziranje(@PathVariable Long id){
+        System.out.println("USAO U PROCES OBJAVE RADA -  RAD ZA RECENZIRANJE");
+        Rad rad = radService.getRad(id);
+        ProcessInstance pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(objavaRadaProcessKey)
+                .variableValueEquals("radId", String.valueOf(id))
+                .singleResult();
+        runtimeService.setVariable(pi.getId(),"odluka", "recenzija");
+        Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
+        System.out.println("ZAVRSAVA TASK: " + task.getName());
+        formService.submitTaskForm(task.getId(), null);
+        rad.setStatusRada(StatusRada.DODELA_RECENZENATA);
+        radService.addRad(rad);
+        return new ResponseEntity("Rad je poslat na recenziranje.", HttpStatus.OK);
+    }
+
+    @PostMapping(value = "{id}/naRecenziranje", produces = MediaType.TEXT_PLAIN_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> dodeliRecenzente(@PathVariable Long id, @RequestBody List<String> usernames){
+        System.out.println("USAO U PROCES OBJAVE RADA -  DODELA RECENZENATA");
+        Rad rad = radService.getRad(id);
+        ProcessInstance pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(objavaRadaProcessKey)
+                .variableValueEquals("radId", String.valueOf(id))
+                .singleResult();
+        for(String username : usernames){
+            Recenzija recenzija = new Recenzija(rad.getCasopis(), rad, korisniService.getKorisnikByUsername(username),"", Rezultat.NOVO);
+            recenzijaRepository.save(recenzija);
+        }
+        List<String> vecDodati = (List<String>) runtimeService.getVariable(pi.getId(),"recenzentList");
+        vecDodati.addAll(usernames);
+        runtimeService.setVariable(pi.getId(),"recenzentList", vecDodati);
+
+        if(vecDodati.size()>=2) {
+            Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
+            System.out.println("ZAVRSAVA TASK: " + task.getName());
+            formService.submitTaskForm(task.getId(), null);
+            rad.setStatusRada(StatusRada.RECENZIRANJE);
+            radService.addRad(rad);
+            return new ResponseEntity<>("Uspešna dodela recenzenata.",HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>("Izmene sačuvane ali je potrebno dodeliti minimum 2 recenzenta.",HttpStatus.OK);
 
     }
 
@@ -414,7 +478,6 @@ public class RadController {
         Rad r = radService.getRad(id);
         System.out.println("Stara lokacija: " + r.getAdresaNacrta());
         r.setAdresaNacrta(fileLocation);
-        r.setStatusRada(StatusRada.RECENZIRANJE);
         radService.addRad(r);
 
         System.out.println("Nova lokacija: " + fileLocation);

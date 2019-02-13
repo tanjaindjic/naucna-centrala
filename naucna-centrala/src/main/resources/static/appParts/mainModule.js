@@ -29,8 +29,8 @@ mainModule.config(function($stateProvider, $urlRouterProvider) {
         templateUrl : 'appParts/register/register.html',
         controller : 'registerController'
     })
-     .state('noviRad', {
-        url: '/noviRad',
+     .state('core.noviRad', {
+        url: 'noviRad',
         templateUrl : 'appParts/noviRad/noviRad.html',
         controller : 'noviRadController'
     })
@@ -82,6 +82,11 @@ mainModule.config(function($stateProvider, $urlRouterProvider) {
         url: 'prijavljeniRadovi',
         templateUrl : 'appParts/prijavljeniRadovi/prijavljeniRadovi.html',
         controller : 'prijavljeniRadoviController'
+    })
+    .state('core.recenzije', {
+        url: 'recenzije',
+        templateUrl : 'appParts/recenzije/recenzije.html',
+        controller : 'recenzijeController'
     })
 
 });

@@ -229,6 +229,7 @@ public class KorisnikController {
     @RequestMapping(value = "/finishLogin", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException, ParseException, IOException, JSONException {
 
+		System.out.println("Auth req: " + authenticationRequest.toString());
         Boolean camundaUserExists = korisnikService.verifyOnCamunda(authenticationRequest);
 
         if (camundaUserExists){

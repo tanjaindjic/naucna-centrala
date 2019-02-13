@@ -44,15 +44,16 @@
                 <fieldset  style="  border:2px solid #ccc; width:500px; height: 600px; overflow-y: scroll; ">
 
                     <div class="recenzentBox" ng-repeat="r in recenzenti">
-                        <p><b><input  class="recenzent" type="checkbox" value="{{r.id}}">{{r.ime}} {{r.prezime}}, {{r.grad}}, {{r.drzava}}</b></p>
+                        <p><b><input  class="recenzent" type="checkbox" value="{{r.username}}">{{r.ime}} {{r.prezime}}, {{r.grad}}, {{r.drzava}}</b></p>
 
-                        <p class="text-capitalize">({{r.naucneOblasti}})</p>
-                        <p><b>Recenzije:</b> {{r.recenziraniRadovi}}</p>
+                       <!-- <p class="text-capitalize">({{r.naucneOblasti}})</p>
+                        <p><b>Recenzije:</b> {{r.recenziraniRadovi}}</p>-->
                     </div>
 
                 </fieldset>
                 <br>
-                <button type="button" class="btn btn-primary justify-content-end" ng-click="posalji()">Pošalji</button>
+                <button type="button" class="btn btn-primary justify-content-end" ng-click="preskoci()">Preskoči</button>
+                <button type="button" class="btn btn-primary justify-content-end" ng-click="posalji()">Dodaj</button>
             </div>
         </div>
     </div>

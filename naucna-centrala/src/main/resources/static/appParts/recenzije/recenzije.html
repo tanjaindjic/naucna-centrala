@@ -1,0 +1,43 @@
+<div>
+    <div class="col-md-9">
+        <div class="profile-content">
+            <div id="prikaziNoveRadove" >
+                <h3 class="nav-link">Recenzije:</h3>
+                <table>
+                    <tr ng-repeat="res in recenzije">
+                        <td>
+                            <p>
+                                <b>Rad:</b>
+                                "{{res.rad.naslov}}"
+
+                            </p>
+                            <p>
+                                <b>Autor:</b> {{res.rad.autor.ime}} {{res.rad.autor.prezime}}
+                            </p>
+                            <p>
+                                <b>Naučna oblast:</b> {{res.rad.naucnaOblast.split('_').join(' ')  | lowercase}}
+                            </p>
+                            <p><b>Komentar: </b></p>
+                            <textarea id="komentar{{res.id}}" style="height:200px;width:500px;overflow-y: scroll;" ></textarea>
+                            <br>
+                            <label>Odluka:</label>
+                            <div class="form-group" style="display:inline;">
+                                <select id="rezultat{{res.id}}" class="form-control choice-select" style="display:inline;">
+                                    <option value="PRIHVATITI">Prihvatiti</option>
+                                    <option value="PRIHVATITI_MANJE_ISPRAVKE">Prihvatiti sa manjim ispravkama</option>
+                                    <option value="PRIHVATITI_VECE_ISPRAVKE">Prihvatiti sa većim ispravkama</option>
+                                    <option value="ODBITI">Odbiti</option>
+                                </select>
+                            </div>
+                            <br><br>
+                            <div>
+                                <button class="btn btn-primary btn-sm" ng-click="pogledajRad(res.rad.id)">PREUZMI</button><!--MODAL-->
+                                <button class="btn btn-primary btn-sm" ng-click="posalji(res)">POŠALJI</button><!--MODAL-->
+                            </div>
+                            <hr>
+                        </td>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
