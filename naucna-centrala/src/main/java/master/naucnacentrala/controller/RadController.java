@@ -416,8 +416,21 @@ public class RadController {
         Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
         System.out.println("ZAVRSAVA TASK: " + task.getName());
         formService.submitTaskForm(task.getId(), null);
-        rad.setStatusRada(StatusRada.DODELA_RECENZENATA);
-        radService.addRad(rad);
+        if(recenzijaService.findByRadId(id).isEmpty()) {
+            rad.setStatusRada(StatusRada.DODELA_RECENZENATA);
+            radService.addRad(rad);
+        }else{
+            for(Recenzija r:recenzijaService.findByRadId(id)){
+                r.setRezultat(Rezultat.NOVO);
+                recenzijaRepository.save(r);
+            }
+            rad.setStatusRada(StatusRada.RECENZIRANJE);
+            radService.addRad(rad);
+            task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
+            System.out.println("ZAVRSAVA TASK: " + task.getName());
+            formService.submitTaskForm(task.getId(), null);
+
+        }
         return new ResponseEntity("Rad je poslat na recenziranje.", HttpStatus.OK);
     }
 
