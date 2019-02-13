@@ -68,6 +68,7 @@ mainModule.controller('tasksController', ['$http','$scope', '$window', 'mainServ
                headers : mainService.createAuthorizationTokenHeader()
            }).then(function(result){
                alert(result.data)
+               location.reload();
            });
        }
 
@@ -78,6 +79,7 @@ mainModule.controller('tasksController', ['$http','$scope', '$window', 'mainServ
                   headers : mainService.createAuthorizationTokenHeader()
            }).then(function(result){
                   alert(result.data)
+                  location.reload();
 
            });
        }

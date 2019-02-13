@@ -310,16 +310,16 @@ public class RadController {
 	    //preuzeti procesnu instancu, submitovati odluku urednika, sledi ObavestenjeDelegate za prihvatanje rada
 	    Rad rad = radService.getRad(id);
         rad.setAdresaKonacnogRada(rad.getAdresaNacrta());
+        rad.setUrlSlike("/assets/images/Article-Icon.png");
         rad.setStatusRada(StatusRada.PRIHVACEN);
         rad.setDoi("10.1002/0470841" + String.valueOf((int)(Math.random()*100)) + ".ch1 ");
         radService.addRad(rad);
 
-       ProcessInstance pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(prijavaRadaProcessKey)
-               .active()
-               .variableValueEquals("radId", id)
+       ProcessInstance pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(objavaRadaProcessKey)
+               .variableValueEquals("radId", String.valueOf(id))
                .singleResult();
-       runtimeService.setVariable(pi.getProcessInstanceId(),"odluka", "objava");
-       runtimeService.setVariable(pi.getProcessInstanceId(),"poruka", "Vaš rad \"" + radService.getRad(id).getNaslov() + "\" je objavljen.");
+       runtimeService.setVariable(pi.getId(),"odluka", "objava");
+       runtimeService.setVariable(pi.getId(),"poruka", "Vaš rad \"" + radService.getRad(id).getNaslov() + "\" je objavljen.");
        Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
        System.out.println("ZAVRSAVA TASK: " + task.getName());
        formService.submitTaskForm(task.getId(), null);
@@ -369,7 +369,7 @@ public class RadController {
         return new ResponseEntity(ret, HttpStatus.OK);*/
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping(value = "/{id}", produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity obrisiRad(@PathVariable Long id){
        System.out.println("ZAVRSAVA PROCES OBJAVE RADA -  RAD ODBIJEN");
         ProcessInstance pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(objavaRadaProcessKey)

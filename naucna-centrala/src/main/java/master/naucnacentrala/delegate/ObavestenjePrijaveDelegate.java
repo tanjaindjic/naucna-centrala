@@ -45,7 +45,7 @@ public class ObavestenjePrijaveDelegate implements JavaDelegate {
         Map<String, Object> mapa = new HashMap<>();
         mapa.put("urednik", execution.getVariable("urednik").toString());
         mapa.put("autor", execution.getVariable("autor").toString());
-        mapa.put("mejlovi", execution.getVariable("mejlovi").toString());
+        mapa.put("mejlovi", execution.getVariable("mejlovi"));
         mapa.put("radId", execution.getVariable("radId").toString());
         mapa.put("email", execution.getVariable("email").toString());
         mapa.put("odgovor", "");
