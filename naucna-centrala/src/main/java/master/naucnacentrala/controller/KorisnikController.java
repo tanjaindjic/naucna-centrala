@@ -137,10 +137,10 @@ public class KorisnikController {
 		List<RadDTO> retval = new ArrayList();
 		for(Rad r : radovi){
 			ProcessInstance pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(objavaRadaProcessKey)
-					.variableValueEquals("radId", r.getId())
+					.variableValueEquals("radId", String.valueOf(r.getId()))
 					.singleResult();
 
-			retval.add(new RadDTO(r.getId(), r.getNaslov(), runtimeService.getVariable(pi.getProcessInstanceId(), "komentar").toString()));
+			retval.add(new RadDTO(r.getId(), r.getNaslov(), (List<String>) runtimeService.getVariable(pi.getProcessInstanceId(), "komentari"), null, null, null));
 
 		}
 		return retval;

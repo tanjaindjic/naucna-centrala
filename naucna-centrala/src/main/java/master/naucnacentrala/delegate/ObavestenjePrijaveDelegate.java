@@ -48,6 +48,8 @@ public class ObavestenjePrijaveDelegate implements JavaDelegate {
         mapa.put("mejlovi", execution.getVariable("mejlovi").toString());
         mapa.put("radId", execution.getVariable("radId").toString());
         mapa.put("email", execution.getVariable("email").toString());
+        mapa.put("odgovor", "");
+        mapa.put("komentari", new ArrayList<>());
 
         ProcessInstance pi = runtimeService.startProcessInstanceByKey(objavaRadaProcessKey, mapa);
 
@@ -83,7 +85,7 @@ public class ObavestenjePrijaveDelegate implements JavaDelegate {
             message.setSubject("Naučna centrala - obaveštenje");
             message.setText(execution.getVariable("poruka").toString());
 
-            Transport.send(message);
+           // Transport.send(message);
 
             System.out.println("Done");
 

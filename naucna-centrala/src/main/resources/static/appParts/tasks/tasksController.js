@@ -22,19 +22,21 @@ mainModule.controller('tasksController', ['$http','$scope', '$window', 'mainServ
 
        $scope.radovi = function(){
             document.getElementById("prikaziNoveRadove").style.display="block";
-            document.getElementById("prikaziMojeRecenzije").style.display="none";
-            document.getElementById("prikaziRecenzirane").style.display="none";
+            document.getElementById("prikaziRecenzije").style.display="none";
        }
        $scope.recenzije = function(){
+            $http({
+               method: 'GET',
+               url: ROOT_PATH + "urednik/" + mainService.getSub() + "/recenzije",
+               headers : mainService.createAuthorizationTokenHeader()
+           }).then(function(result){
+               console.log(result)
+               $scope.sveRecenzije = result.data;
+           });
             document.getElementById("prikaziNoveRadove").style.display="none";
-            document.getElementById("prikaziMojeRecenzije").style.display="block";
-            document.getElementById("prikaziRecenzirane").style.display="none";
+            document.getElementById("prikaziRecenzije").style.display="block";
        }
-       $scope.recenziraniRadovi = function(){
-            document.getElementById("prikaziNoveRadove").style.display="none";
-            document.getElementById("prikaziMojeRecenzije").style.display="none";
-            document.getElementById("prikaziRecenzirane").style.display="block";
-       }
+
 
        $scope.pogledajRad = function(id){
 
@@ -94,6 +96,7 @@ mainModule.controller('tasksController', ['$http','$scope', '$window', 'mainServ
               headers : mainService.createAuthorizationTokenHeader()
        }).then(function(result){
               alert(result.data)
+              location.reload();
 
        });
         }

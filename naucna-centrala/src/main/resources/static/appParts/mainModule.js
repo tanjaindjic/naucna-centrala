@@ -78,5 +78,10 @@ mainModule.config(function($stateProvider, $urlRouterProvider) {
         templateUrl : 'appParts/dodajRecenzenta/dodajRecenzenta.html',
         controller : 'dodajRecenzentaController'
     })
+    .state('core.prijavljeniRadovi', {
+        url: 'prijavljeniRadovi',
+        templateUrl : 'appParts/prijavljeniRadovi/prijavljeniRadovi.html',
+        controller : 'prijavljeniRadoviController'
+    })
 
 });

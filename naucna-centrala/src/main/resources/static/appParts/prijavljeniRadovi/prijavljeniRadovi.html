@@ -17,7 +17,7 @@
         <div class="col-md-9">
             <div class="profile-content">
                 <div id="prikaziNaDoradi" >
-                    <h3 class="nav-link">Novi radovi:</h3>
+                    <h3 class="nav-link">Radovi vraćeni na doradu:</h3>
                     <table>
                         <tr ng-repeat="res in naDoradi">
                             <td>
@@ -27,17 +27,20 @@
 
                                 </p>
 
-                                <label>Komentari: <textarea style="height:300px;width:300px;overflow-y: scroll;" disabled>{{res.komentari}}</textarea></label>
+                                <p><b>Komentari:</b></p>
+                                <textarea style="height:200px;width:500px;overflow-y: scroll;" disabled> >>{{res.komentari.join('\n >>')}}</textarea>
                                 <br>
-
+                                <hr>
                                 <div id="uploadRad">
                                     <p><b>Nova verzija:  </b></p>
                                     <form id="odgovorUploadForm" name="odgovorUploadForm">
-                                        <label>Odgovor: <textarea id="odgovor" style="height:300px;width:300px;overflow-y: scroll;" ></textarea></label>
+                                        <p><b>Odgovor: </b></p>
+                                        <textarea id="odgovor" style="height:200px;width:500px;overflow-y: scroll;" ></textarea>
                                         <br>
                                         <input id="singleFileUploadInput" type="file" name="file" required />
                                     </form>
-                                    <button class="btn btn-primary btn-sm" ng-click="slanje(res.id)">Pošalji</button>
+                                    <br>
+                                    <button class="btn btn-primary" ng-click="slanje(res.id)">Pošalji</button>
                                 </div>
 
 

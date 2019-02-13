@@ -20,20 +20,27 @@
             init();
 
             $scope.slanje = function(id){
-
+                console.log("usao u slanje, id: " + id)
                var singleFileUploadInput = document.querySelector('#singleFileUploadInput');
                var files = singleFileUploadInput.files;
                var fileAddress = "";
                if(files.length === 0) {
-                   alert("select a file!")
+                   alert("Morate dodati novu verziju rada za slanje.")
                }
                var file = files[0];
                var formData = new FormData();
                formData.append("file", file);
-               formData.append("odgovor", document.getElementById("komentar"));
-
+               formData.append("odgovor", $("#odgovor").val());
+               console.log("saljem novu verziju: " + JSON.stringify(formData))
                var xhr = new XMLHttpRequest();
+
                xhr.open("POST", "/rad/"+id+"/novaVerzija");
+               xhr.setRequestHeader('Access-Control-Allow-Headers', 'Content-Type');
+               xhr.send(formData);
+               xhr.onload=function() {
+                   alert(this.response);
+                   location.reload();
+               };
             }
 
             $scope.objavljeno = function(){

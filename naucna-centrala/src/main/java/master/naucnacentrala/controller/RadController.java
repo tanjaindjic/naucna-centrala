@@ -373,7 +373,7 @@ public class RadController {
     public ResponseEntity obrisiRad(@PathVariable Long id){
        System.out.println("ZAVRSAVA PROCES OBJAVE RADA -  RAD ODBIJEN");
         ProcessInstance pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(objavaRadaProcessKey)
-                .variableValueEquals("radId", id)
+                .variableValueEquals("radId", String.valueOf(id))
                 .singleResult();
         runtimeService.setVariable(pi.getId(),"odluka", "odbijanje");
         runtimeService.setVariable(pi.getId(),"poruka", "Vaš rad \"" + radService.getRad(id).getNaslov() + "\" je odbijen.");
@@ -390,10 +390,12 @@ public class RadController {
         System.out.println("USAO U PROCES OBJAVE RADA -  RAD ZA DORADU");
         Rad rad = radService.getRad(id);
         ProcessInstance pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(objavaRadaProcessKey)
-                .variableValueEquals("radId", id)
+                .variableValueEquals("radId", String.valueOf(id))
                 .singleResult();
         runtimeService.setVariable(pi.getId(),"odluka", "dorada");
-        runtimeService.setVariable(pi.getId(),"komentar", komentar);
+        List<String> komentari = (List<String>) runtimeService.getVariable(pi.getId(), "komentari");
+        komentari.add(komentar);
+        runtimeService.setVariable(pi.getId(),"komentari", komentari);
         runtimeService.setVariable(pi.getId(),"poruka", "Vaš rad \"" + rad.getNaslov() + "\" je potrebno doraditi.");
         Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
         System.out.println("ZAVRSAVA TASK: " + task.getName());
@@ -403,16 +405,19 @@ public class RadController {
         return new ResponseEntity("Rad je poslat na doradu.", HttpStatus.OK);
     }
 
-    @RequestMapping(value="/{id}/novaVerzija", method=RequestMethod.POST )
-    public ResponseEntity<String> singleSave(@PathVariable Long id, @RequestParam("file") MultipartFile file, @RequestParam("odgovor") String odgovor ){
+    @RequestMapping(value="/{id}/novaVerzija", method=RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<String> novaVerzija(@PathVariable Long id, @RequestParam("file") MultipartFile file, @RequestParam("odgovor") String odgovor ){
         System.out.println("Primio: " + odgovor);
         System.out.println("USAO U UPLOAD NOVE VERZIJE RADA");
         String fileLocation = fileStorageService.storeFile(file, true);
-        System.out.println(fileLocation);
+
         Rad r = radService.getRad(id);
+        System.out.println("Stara lokacija: " + r.getAdresaNacrta());
         r.setAdresaNacrta(fileLocation);
         r.setStatusRada(StatusRada.RECENZIRANJE);
         radService.addRad(r);
+
+        System.out.println("Nova lokacija: " + fileLocation);
         ProcessInstance pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(objavaRadaProcessKey)
                 .variableValueEquals("radId", String.valueOf(id))
                 .singleResult();

@@ -7,11 +7,7 @@
                     <br>
                     <button id="dugmeRadovi" style="display: block;" class="btn-primary btn-sm" ng-click="radovi()">Novi radovi</button>
                     <br>
-                    <button id="dugmeDorade"  style="display: block;" class="btn-primary btn-sm" ng-click="dorade()">Ispravljeni radovi</button>
-                    <br>
-                    <button id="dugmeCasopisi"  style="display: block;" class="btn-primary btn-sm" ng-click="recenzije()">Moje recenzije</button>
-                    <br>
-                    <button id="dugmePretplate" style="display: block;" class="btn-primary btn-sm" ng-click="recenziraniRadovi()">Recenzije na čekanju</button>
+                    <button id="dugmeCasopisi"  style="display: block;" class="btn-primary btn-sm" ng-click="recenzije()">Recenzije</button>
 
                 </div>
                 <!-- END SIDEBAR BUTTONS -->
@@ -19,7 +15,7 @@
         </div>
         <div class="col-md-9">
             <div class="profile-content">
-                <div id="prikaziNoveRadove" style="display:none">
+                <div id="prikaziNoveRadove" >
                     <h3 class="nav-link">Novi radovi:</h3>
                     <table>
                         <tr ng-repeat="res in noviRadovi">
@@ -49,10 +45,10 @@
                             </td>
                     </table>
                 </div>
-                <div id="prikaziMojeRecenzije" style="display:none">
+                <div id="prikaziRecenzije" style="display:none">
                     <h3 class="nav-link">Recenzije:</h3>
                     <table>
-                        <tr ng-repeat="res in recenzije">
+                        <tr ng-repeat="res in sveRecenzije">
                             <td>
                                 <img ng-src="{{res.rad.urlSlike}}" class="img-responsive" alt="" style="display: block; margin-left: auto;margin-right: auto;width: 40%;">
                             </td>
@@ -60,59 +56,29 @@
                             <td>
                                 <p>
                                     <b>Rad:</b>
-                                    "{{res.rad.naslov}}"
+                                    "{{res.naslov}}"
 
                                 </p>
                                 <p>
-                                    <b>Autor:</b> {{res.rad.autor.ime}} {{res.rad.autor.prezime}}
+                                    <b>Autor:</b> {{res.autor}}
                                 </p>
                                 <p>
-                                    <b>Naučna oblast:</b> {{res.rad.naucnaOblast.replace('_', ' ') | lowercase}}
+                                    <b>Naučna oblast:</b> {{res.naucnaOblast.split('_').join(' ')  | lowercase}}
                                 </p>
-                                <p>
-                                    <b>Komentar:</b> {{res.komentar}}
-                                </p>
-                                <button class="btn btn-primary btn-sm" ng-click="pogledajRad(res.rad)">PRIHVATI</button>
-                                <button class="btn btn-primary btn-sm" ng-click="pogledajRad(res.rad)">ODBIJ</button>
-                                <button class="btn btn-primary btn-sm" ng-click="pogledajRad(res.rad)">PREGLED</button><!--MODAL-->
+                                <p><b>Komentari:</b></p>
+                                <textarea style="height:200px;width:500px;overflow-y: scroll;" disabled> >>{{res.komentari.join('\n >>')}}</textarea>
+                                <br>
+
+                                <p><b>Odgovor:</b></p>
+                                <textarea style="height:200px;width:500px;overflow-y: scroll;" disabled>{{res.odgovor}}</textarea>
+                                <br>
+                                <button class="btn btn-primary btn-sm" ng-click="pogledajRad(res.id)">PREUZMI</button><!--MODAL-->
+                                <button class="btn btn-danger btn-sm" ng-click="obrisi(res.id)">OBRIŠI</button><!--MODAL-->
+                                <button class="btn btn-primary btn-sm" ng-click="dodajRecenzenta(res.id)">DODELA RECENZENTA</button><!--MODAL-->
+                                <button class="btn btn-primary btn-sm" ng-click="dorada(res.id)">DORADA</button><!--MODAL-->
+                                <button class="btn btn-primary btn-sm" ng-click="objavi(res.id)">OBJAVI</button><!--MODAL-->
                                 <hr>
                             </td>
-                    </table>
-
-                </div>
-                <div id="prikaziRecenzirane" style="display:none">
-                    <h3 class="nav-link">Recenzije na čekanju:</h3>
-                    <table>
-                        <tr ng-repeat="res in recenziraniRadovi">
-                            <td>
-                                <img ng-src="{{res.urlSlike}}" class="img-responsive" alt="" style="display: block; margin-left: auto;margin-right: auto;width: 40%;">
-                            </td>
-
-                            <td>
-                                <p>
-                                    <b>Rad:</b>
-                                   "{{res.rad.naslov}}"
-
-                                </p>
-                                <p>
-                                    <b>Autor:</b> {{res.rad.autor.ime}} {{res.rad.autor.prezime}}
-                                </p>
-                                <p>
-                                    <b>Naučna oblast:</b> {{res.rad.naucnaOblast.replace('_', ' ') | lowercase}}
-                                </p>
-                                <p>
-                                    <b>Recenzent: </b>{{res.recenzent.ime}} {{res.recenzent.prezime}}
-                                </p>
-                                <p>
-                                    <b>Komentar:</b> {{res.komentar}}
-                                </p>
-                                <button class="btn btn-primary btn-sm" ng-click="pogledajRad(res.rad)">PRIHVATI</button>
-                                <button class="btn btn-primary btn-sm" ng-click="pogledajRad(res.rad)">ODBIJ</button>
-                                <button class="btn btn-primary btn-sm" ng-click="pogledajRad(res.rad)">PREGLED</button><!--MODAL-->
-                                <hr>
-                            </td>
-                        </tr>
-
                     </table>
 
                 </div>
