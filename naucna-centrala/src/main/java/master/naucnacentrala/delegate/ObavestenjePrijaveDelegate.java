@@ -86,7 +86,7 @@ public class ObavestenjePrijaveDelegate implements JavaDelegate {
             message.setSubject("Naučna centrala - obaveštenje");
             message.setText(execution.getVariable("poruka").toString());
 
-           // Transport.send(message);
+            //Transport.send(message);
 
             System.out.println("Done");
 

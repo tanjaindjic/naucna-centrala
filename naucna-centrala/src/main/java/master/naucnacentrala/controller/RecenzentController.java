@@ -77,9 +77,11 @@ public class RecenzentController {
         komentari.add(recenzijaDTO.getKomentar());
         runtimeService.setVariable(pi.getId(),"komentari", komentari);
 
-        Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).taskAssignee(username).singleResult();
-        System.out.println("ZAVRSAVA TASK: " + task.getName());
-        formService.submitTaskForm(task.getId(), null);
+        List<Task> task = taskService.createTaskQuery().processInstanceId(pi.getId()).taskAssignee(username).list();
+        for(Task t : task) {
+            System.out.println("ZAVRSAVA TASK: " + t.getName());
+            formService.submitTaskForm(t.getId(), null);
+        }
 
         return new ResponseEntity<>("Recenzija uspešno poslata.",HttpStatus.OK);
     }

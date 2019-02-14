@@ -35,7 +35,7 @@ public class EmailDelegate implements JavaDelegate{
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(execution.getVariable("email").toString()));
             message.setSubject("Naučna centrala - obaveštenje");
-            message.setText("Hello!" +
+            message.setText("Poštovani,!" +
                     "\n\n " + execution.getVariable("poruka").toString());
 
             //Transport.send(message);
