@@ -35,9 +35,9 @@
                                     <p><b>Nova verzija:  </b></p>
                                     <form id="odgovorUploadForm" name="odgovorUploadForm">
                                         <p><b>Odgovor: </b></p>
-                                        <textarea id="odgovor" style="height:200px;width:500px;overflow-y: scroll;" ></textarea>
+                                        <textarea id="odgovor{{res.id}}" style="height:200px;width:500px;overflow-y: scroll;" ></textarea>
                                         <br>
-                                        <input id="singleFileUploadInput" type="file" name="file" required />
+                                        <input id="singleFileUploadInput{{res.id}}" type="file" name="file" required />
                                     </form>
                                     <br>
                                     <button class="btn btn-primary" ng-click="slanje(res.id)">Pošalji</button>
@@ -49,31 +49,26 @@
                     </table>
                 </div>
                 <div id="prikaziObjavljeno" style="display:none">
-                    <h3 class="nav-link">Recenzije:</h3>
+                    <h3 class="nav-link">Objavljeni radovi:</h3>
                     <table>
-                        <tr ng-repeat="res in recenzije">
+                        <tr ng-repeat="res in objavljeniRadovi">
                             <td>
-                                <img ng-src="{{res.rad.urlSlike}}" class="img-responsive" alt="" style="display: block; margin-left: auto;margin-right: auto;width: 40%;">
+                                <img ng-src="{{res.urlSlike}}" class="img-responsive" alt="" style="display: block; margin-left: auto;margin-right: auto;width: 30%;">
                             </td>
 
                             <td>
+
                                 <p>
                                     <b>Rad:</b>
-                                    "{{res.rad.naslov}}"
+                                    <a style="cursor:pointer; color:#088aa8" ng-click="naRad(res.id)">
+                                        <i>"{{res.naslov}}"</i>
+                                    </a>
 
                                 </p>
                                 <p>
-                                    <b>Autor:</b> {{res.rad.autor.ime}} {{res.rad.autor.prezime}}
+                                    <b>Naučna oblast:</b> {{res.naucnaOblast.split('_').join(' ')  | lowercase}}
                                 </p>
-                                <p>
-                                    <b>Naučna oblast:</b> {{res.rad.naucnaOblast.replace('_', ' ') | lowercase}}
-                                </p>
-                                <p>
-                                    <b>Komentar:</b> {{res.komentar}}
-                                </p>
-                                <button class="btn btn-primary btn-sm" ng-click="pogledajRad(res.rad)">PRIHVATI</button>
-                                <button class="btn btn-primary btn-sm" ng-click="pogledajRad(res.rad)">ODBIJ</button>
-                                <button class="btn btn-primary btn-sm" ng-click="pogledajRad(res.rad)">PREGLED</button><!--MODAL-->
+
                                 <hr>
                             </td>
                     </table>

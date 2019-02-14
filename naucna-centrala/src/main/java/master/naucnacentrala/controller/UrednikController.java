@@ -81,7 +81,7 @@ public class UrednikController {
 	public List<RadDTO> dorade(@PathVariable String username) {
 
 		Urednik u =  urednikService.getUrednikByUsername(username);
-		List<Rad> radovi =  radService.getRadZaUrednika(u.getUredjuje(), StatusRada.KOREKCIJA);
+		List<Rad> radovi =  radService.getRadZaUrednika(u.getUredjuje(), StatusRada.KOREKCIJA_UREDNIK);
 		List<RadDTO> retval = new ArrayList();
 		for(Rad r : radovi){
 			ProcessInstance pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(objavaRadaProcessKey)

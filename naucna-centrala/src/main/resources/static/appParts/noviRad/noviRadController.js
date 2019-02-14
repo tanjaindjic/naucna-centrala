@@ -85,7 +85,8 @@
                     window.localStorage.setItem('processInstanceId', obj["processInstanceId"]);
 
                 }, function errorCallback(response) {
-                    alert("fail :(")
+                    alert("Neuspešno plaćanje članarine, molimo pokušajte ponovo.")
+                    mainService.goToState("core.home", true);
                     console.log(JSON.stringify(response.data))
 
                 });

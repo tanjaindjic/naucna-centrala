@@ -166,7 +166,7 @@
         <di:waypoint x="2114" y="211" />
         <di:waypoint x="2114" y="361" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="189" y="229" width="52" height="27" />
+          <dc:Bounds x="208" y="229" width="52" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="UserTask_1pdiczt_di" bpmnElement="revizija_UserTask">
@@ -213,7 +213,7 @@
         <di:waypoint x="202" y="386" />
         <di:waypoint x="429" y="386" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="193" y="356" width="61" height="27" />
+          <dc:Bounds x="212" y="354" width="61" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="UserTask_0j5lndq_di" bpmnElement="odabirRecenzenata_UserTask">
@@ -249,7 +249,7 @@
         <di:waypoint x="1787" y="916" />
         <di:waypoint x="1787" y="516" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="221" y="875" width="77" height="27" />
+          <dc:Bounds x="202" y="875" width="77" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_0j793f2_di" bpmnElement="obavestenjeOdbijanja_ServiceTask">
@@ -280,7 +280,7 @@
         <di:waypoint x="177" y="687" />
         <di:waypoint x="1350" y="687" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="219" y="666" width="74" height="14" />
+          <dc:Bounds x="205" y="666" width="74" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_0ak0nkx_di" bpmnElement="EndEvent_0ak0nkx">

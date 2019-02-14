@@ -53,6 +53,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.print.attribute.standard.Media;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.Path;
 import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
 
@@ -104,6 +105,12 @@ public class RadController {
     @Value("${camunda.objavaRadaProcessKey}")
     private String objavaRadaProcessKey;
 
+    @GetMapping(value = "/{username}/objavljeniRadovi")
+    public List<Rad> objavljeno(@PathVariable String username){
+        Korisnik k = korisniService.getKorisnikByUsername(username);
+        return radService.findObjavljeno(k.getId(), StatusRada.PRIHVACEN);
+    }
+
 	@GetMapping(value = "prijavaRada")
 	public ResponseEntity<?> startPrijava(@RequestHeader(value="Authorization") String Authorization) throws URISyntaxException {
 		System.out.println("ZAPOCET PROCES PRIJAVE RADA: " + prijavaRadaProcessKey);
@@ -115,7 +122,8 @@ public class RadController {
 		if(username.equals(""))
 			mapa.put("ulogovan", false);
 		else mapa.put("ulogovan", true);
-		ProcessInstance pi = runtimeService.startProcessInstanceByKey(prijavaRadaProcessKey, UUID.randomUUID().toString(), mapa);
+		mapa.put("username", username);
+		ProcessInstance pi = runtimeService.startProcessInstanceByKey(prijavaRadaProcessKey,  mapa);
 
 		if(username.equals("")){
 		    System.out.println("KORISNIK NIJE ULOGOVAN, PROCES PRIJAVE RADA SE TERMINIRA I PREUSMERAVA NA LOGIN");
@@ -163,27 +171,40 @@ public class RadController {
 
         Task task = taskService.createTaskQuery().taskId(registerDTO.getTaskId()).singleResult();
         System.out.println("USAO U PROCES PRIJAVE RADA, TASK: " + task.getName());
-        String assignee = task.getAssignee();
         HashMap<String, Object> mapa = new HashMap<String, Object>();
         for(FieldIdValueDTO pair : registerDTO.getFormFields())
             mapa.put(pair.getFieldId(), pair.getFieldValue());
         System.out.println(mapa.get("odabraniCasopis").toString());
         Long id = Long.parseLong(mapa.get("odabraniCasopis").toString());
         Boolean isOpenAccess = casopisService.getCasopis(id).isOpenAccess();
+        runtimeService.setVariable(registerDTO.getProcessInstanceId(), "casopisId", mapa.get("odabraniCasopis").toString());
         runtimeService.setVariable(registerDTO.getProcessInstanceId(), "isOpenAccess", isOpenAccess);
         formService.submitTaskForm(registerDTO.getTaskId(), mapa);
 
         if(!isOpenAccess){
             task = taskService.createTaskQuery().processInstanceId(registerDTO.getProcessInstanceId().toString()).list().get(0);
-            task.setAssignee(assignee);
             taskService.saveTask(task);
-            System.out.println("ZAPOCET TASK: " + task.getName() + ", ASSIGNEE: " + assignee );
+            System.out.println("ZAPOCET TASK: " + task.getName() + ", ASSIGNEE: " + task.getAssignee() );
             TaskFormData tfd = formService.getTaskFormData(task.getId());
             List<FormField> properties = tfd.getFormFields();
             FormFieldsDTO dto = new FormFieldsDTO(task.getId(), task.getProcessInstanceId(), properties);
             return new ResponseEntity(dto, HttpStatus.OK);
         }//TODO odraditi ako nije open access
-        else return ResponseEntity.ok(null);
+        else{
+            System.out.println("NIJE OPEN ACCESS");
+            ProcessInstance pi = runtimeService.createProcessInstanceQuery().processInstanceId(registerDTO.getProcessInstanceId()).singleResult();
+            if(pi==null)
+                return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            else{
+                task = taskService.createTaskQuery().processInstanceId(registerDTO.getProcessInstanceId().toString()).list().get(0);
+                taskService.saveTask(task);
+                System.out.println("ZAPOCET TASK: " + task.getName() + ", ASSIGNEE: " + task.getAssignee() );
+                TaskFormData tfd = formService.getTaskFormData(task.getId());
+                List<FormField> properties = tfd.getFormFields();
+                FormFieldsDTO dto = new FormFieldsDTO(task.getId(), task.getProcessInstanceId(), properties);
+                return new ResponseEntity(dto, HttpStatus.OK);
+            }
+        }
     }
 
     @PostMapping(value = "/nacrt", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -317,6 +338,16 @@ public class RadController {
                 if(add)
                     retval.add(new RecenzentDTO(rec));
             }
+            if(c.getRecenzenti().size()==1){
+                add = true;
+                for(Recenzija r : recenzijaRepository.findByRecenzent(c.getGlavniUrednik())) {
+                    if (r.getRad().getId() == id)
+                        add = false;
+                }
+                if(add)
+                    retval.add(new RecenzentDTO(c.getGlavniUrednik()));
+            }
+
         }
 
         return retval;
@@ -449,7 +480,7 @@ public class RadController {
         vecDodati.addAll(usernames);
         runtimeService.setVariable(pi.getId(),"recenzentList", vecDodati);
 
-        if(vecDodati.size()>=2) {
+        if(vecDodati.size()>=2 || rad.getCasopis().getRecenzenti().isEmpty()) {
             Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
             System.out.println("ZAVRSAVA TASK: " + task.getName());
             formService.submitTaskForm(task.getId(), null);
@@ -477,7 +508,7 @@ public class RadController {
         Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
         System.out.println("ZAVRSAVA TASK: " + task.getName());
         formService.submitTaskForm(task.getId(), null);
-        rad.setStatusRada(StatusRada.KOREKCIJA);
+        rad.setStatusRada(StatusRada.KOREKCIJA_AUTOR);
         radService.addRad(rad);
         return new ResponseEntity("Rad je poslat na doradu.", HttpStatus.OK);
     }
@@ -491,6 +522,7 @@ public class RadController {
         Rad r = radService.getRad(id);
         System.out.println("Stara lokacija: " + r.getAdresaNacrta());
         r.setAdresaNacrta(fileLocation);
+        r.setStatusRada(StatusRada.KOREKCIJA_UREDNIK);
         radService.addRad(r);
 
         System.out.println("Nova lokacija: " + fileLocation);

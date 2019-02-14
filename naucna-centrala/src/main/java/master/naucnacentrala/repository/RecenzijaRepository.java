@@ -1,8 +1,10 @@
 package master.naucnacentrala.repository;
 
 import master.naucnacentrala.model.Casopis;
+import master.naucnacentrala.model.Rad;
 import master.naucnacentrala.model.Recenzija;
 import master.naucnacentrala.model.enums.Rezultat;
+import master.naucnacentrala.model.enums.StatusRada;
 import master.naucnacentrala.model.korisnici.Korisnik;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -16,4 +18,5 @@ public interface RecenzijaRepository extends JpaRepository<Recenzija, Long>{
     List<Recenzija> findByRecenzentAndRezultat(Korisnik k, Rezultat r);
 
     List<Recenzija> findByRadId(long radId);
+
 }

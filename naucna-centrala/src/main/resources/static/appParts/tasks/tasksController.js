@@ -25,6 +25,7 @@ mainModule.controller('tasksController', ['$http','$scope', '$window', 'mainServ
             document.getElementById("prikaziNaDoradi").style.display="none";
             document.getElementById("prikaziNaCekanju").style.display="none";
             document.getElementById("prikaziRecenzije").style.display="none";
+            document.getElementById("prikaziMojeRecenzije").style.display="none";
        }
        $scope.dorade = function(){
             $http({
@@ -39,6 +40,7 @@ mainModule.controller('tasksController', ['$http','$scope', '$window', 'mainServ
             document.getElementById("prikaziNaDoradi").style.display="block";
             document.getElementById("prikaziNaCekanju").style.display="none";
             document.getElementById("prikaziRecenzije").style.display="none";
+            document.getElementById("prikaziMojeRecenzije").style.display="none";
        }
 
         $scope.cekanje = function(){
@@ -54,6 +56,7 @@ mainModule.controller('tasksController', ['$http','$scope', '$window', 'mainServ
                    document.getElementById("prikaziNaDoradi").style.display="none";
                    document.getElementById("prikaziNaCekanju").style.display="block";
                    document.getElementById("prikaziRecenzije").style.display="none";
+            document.getElementById("prikaziMojeRecenzije").style.display="none";
               }
         $scope.recenzije = function(){
                 $http({
@@ -68,7 +71,43 @@ mainModule.controller('tasksController', ['$http','$scope', '$window', 'mainServ
                document.getElementById("prikaziNaDoradi").style.display="none";
                document.getElementById("prikaziNaCekanju").style.display="none";
                document.getElementById("prikaziRecenzije").style.display="block";
+            document.getElementById("prikaziMojeRecenzije").style.display="none";
         }
+        $scope.mojeRec = function(){
+            $http({
+                  method: 'GET',
+                  url: ROOT_PATH + "recenzent/" + mainService.getSub() + "/recenzije",
+                  headers : mainService.createAuthorizationTokenHeader()
+              }).then(function(result){
+                  console.log(result)
+                  $scope.mojeRecenzije = result.data;
+              });
+               document.getElementById("prikaziNoveRadove").style.display="none";
+               document.getElementById("prikaziNaDoradi").style.display="none";
+               document.getElementById("prikaziNaCekanju").style.display="none";
+               document.getElementById("prikaziRecenzije").style.display="none";
+               document.getElementById("prikaziMojeRecenzije").style.display="block";
+        }
+
+          $scope.posaljiRecenziju = function(res){
+                    var payload={
+                        "radId":res.rad.id,
+                        "komentar": JSON.stringify($('#komentar' + res.id).val()),
+                        "rezultat": $( "#rezultat" + res.id + " option:selected" ).val()
+                    }
+                    console.log(payload)
+                    $http({
+                           method: 'POST',
+                           url: ROOT_PATH + "recenzent/" + mainService.getSub() + "/recenzije/" + res.id,
+                           data: payload,
+                           headers : mainService.createAuthorizationTokenHeader()
+                       }).then(function(result){
+                           alert(result.data)
+                           location.reload();
+                       });
+
+
+                }
 
 
        $scope.pogledajRad = function(id){

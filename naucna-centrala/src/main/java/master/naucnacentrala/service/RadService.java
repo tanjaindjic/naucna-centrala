@@ -6,6 +6,7 @@ import java.util.List;
 import master.naucnacentrala.model.Casopis;
 import master.naucnacentrala.model.Rad;
 import master.naucnacentrala.model.enums.StatusRada;
+import master.naucnacentrala.model.korisnici.Korisnik;
 
 public interface RadService {
 	
@@ -17,4 +18,6 @@ public interface RadService {
     void deleteRad(Long id);
 
     List<Rad> getRecenziraniRadovi(Long id);
+
+    List<Rad> findObjavljeno(Long id, StatusRada prihvacen);
 }
