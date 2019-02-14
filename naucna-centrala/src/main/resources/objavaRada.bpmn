@@ -72,9 +72,6 @@
       <bpmn:outgoing>SequenceFlow_1jcf102</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:boundaryEvent id="BoundaryEvent_1cv45hz" attachedToRef="ispravkaRada_UserTask">
-      <bpmn:extensionElements>
-        <camunda:executionListener class="" event="start" />
-      </bpmn:extensionElements>
       <bpmn:outgoing>SequenceFlow_0byfbbq</bpmn:outgoing>
       <bpmn:timerEventDefinition>
         <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1M</bpmn:timeDuration>

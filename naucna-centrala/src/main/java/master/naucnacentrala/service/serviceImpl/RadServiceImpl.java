@@ -6,6 +6,9 @@ import java.util.List;
 import master.naucnacentrala.model.Casopis;
 import master.naucnacentrala.model.enums.StatusRada;
 import master.naucnacentrala.model.korisnici.Korisnik;
+import master.naucnacentrala.model.korisnici.Urednik;
+import master.naucnacentrala.service.KorisnikService;
+import master.naucnacentrala.service.UrednikService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +21,9 @@ public class RadServiceImpl implements RadService {
 	
 	@Autowired
 	private RadRepository radRepository;
+
+	@Autowired
+	private UrednikService urednikService;
 
 	@Override
 	public Rad addRad(Rad r) {
@@ -58,6 +64,12 @@ public class RadServiceImpl implements RadService {
 	@Override
 	public List<Rad> findObjavljeno(Long id, StatusRada prihvacen) {
 		return radRepository.findByAutorIdAndStatusRada(id, prihvacen);
+	}
+
+	@Override
+	public List<Rad> getNaRecenziranju(String username) {
+		Urednik k = urednikService.getUrednikByUsername(username);
+		return radRepository.findByCasopisAndStatusRada(k.getUredjuje(), StatusRada.RECENZIRANJE);
 	}
 
 }

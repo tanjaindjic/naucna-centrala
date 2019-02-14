@@ -8,6 +8,7 @@ import master.naucnacentrala.model.Rad;
 import master.naucnacentrala.model.Recenzija;
 import master.naucnacentrala.model.dto.RadDTO;
 import master.naucnacentrala.model.dto.RevizijaDTO;
+import master.naucnacentrala.model.enums.Rezultat;
 import master.naucnacentrala.model.enums.StatusRada;
 import master.naucnacentrala.model.korisnici.Korisnik;
 import master.naucnacentrala.model.korisnici.Recenzent;
@@ -117,17 +118,19 @@ public class UrednikController {
 	@GetMapping(value = "/{username}/zaReviziju" , produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<RevizijaDTO> zaReviziju(@PathVariable String username){
 
-		List<ProcessInstance> pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(objavaRadaProcessKey)
-				.variableValueEquals("urednikNaucneOblasti", username)
-				.list();
 		List<RevizijaDTO> revizije = new ArrayList<>();
-		for(ProcessInstance p : pi){
-			Task task = taskService.createTaskQuery().processInstanceId(p.getId()).list().get(0);
-			if(task.getName().equals("revizija")){
+		Boolean gotovo;
+		for(Rad r : radService.getNaRecenziranju(username)){
+				gotovo = true;
+				List<Recenzija> recenzijeRada = recenzijaService.findByRadId(r.getId());
+				for(Recenzija recenzija : recenzijeRada)
+					if(recenzija.getRezultat().equals(Rezultat.NOVO))
+						gotovo = false;
+				if(gotovo){
 				RevizijaDTO revizijaDTO = new RevizijaDTO();
-				revizijaDTO.setRad(radService.getRad(Long.parseLong(runtimeService.getVariable(p.getId(), "radId").toString())));
+				revizijaDTO.setRad(r);
 				revizijaDTO.setRecenzije(new ArrayList<>());
-				revizijaDTO.getRecenzije().addAll(recenzijaService.findByRadId(Long.parseLong(runtimeService.getVariable(p.getId(), "radId").toString())));
+				revizijaDTO.getRecenzije().addAll(recenzijeRada);
 				revizije.add(revizijaDTO);
 			}
 		}

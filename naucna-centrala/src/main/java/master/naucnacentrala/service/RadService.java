@@ -20,4 +20,6 @@ public interface RadService {
     List<Rad> getRecenziraniRadovi(Long id);
 
     List<Rad> findObjavljeno(Long id, StatusRada prihvacen);
+
+    List<Rad> getNaRecenziranju(String username);
 }
