@@ -3,15 +3,7 @@ package master.naucnacentrala.model.korisnici;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -34,7 +26,7 @@ public class Urednik extends Korisnik {
 	@Column(name = "naucnaOblast_id")
 	private Collection<NaucnaOblast> naucneOblasti;
 
-	@OneToOne(optional = true)
+	@ManyToOne(optional = true)
 	@JsonBackReference
 	private Casopis uredjuje;
 

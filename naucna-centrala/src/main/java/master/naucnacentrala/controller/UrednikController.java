@@ -103,10 +103,12 @@ public class UrednikController {
 		List<Rad> radovi =  radService.getRadZaUrednika(u.getUredjuje(), StatusRada.DODELA_RECENZENATA);
 		List<RadDTO> retval = new ArrayList();
 		for(Rad r : radovi){
-
-			retval.add(new RadDTO(r.getId(), r.getNaslov(), null,
-					r.getAutor().getIme() + " " + r.getAutor().getPrezime(), r.getNaucnaOblast().name(),
-					null));
+			ProcessInstance pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(objavaRadaProcessKey)
+					.variableValueEquals("radId", String.valueOf(r.getId()))
+					.singleResult();
+			if(runtimeService.getVariable(pi.getId(), "urednikNaucneOblasti").toString().equals(username))
+				retval.add(new RadDTO(r.getId(), r.getNaslov(), null,
+					r.getAutor().getIme() + " " + r.getAutor().getPrezime(), r.getNaucnaOblast().name(),null));
 
 		}
 		return retval;
@@ -116,7 +118,7 @@ public class UrednikController {
 	public List<RevizijaDTO> zaReviziju(@PathVariable String username){
 
 		List<ProcessInstance> pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(objavaRadaProcessKey)
-				.variableValueEquals("urednik", username)
+				.variableValueEquals("urednikNaucneOblasti", username)
 				.list();
 		List<RevizijaDTO> revizije = new ArrayList<>();
 		for(ProcessInstance p : pi){

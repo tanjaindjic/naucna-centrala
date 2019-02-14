@@ -22,9 +22,9 @@ public class DodelaUrednikaDelegate  implements JavaDelegate {
         Rad r = radService.getRad(Long.parseLong(execution.getVariable("radId").toString()));
         Casopis c = r.getCasopis();
         String urednikNaucneOblasti = c.getGlavniUrednik().getUsername();
-        for(Map.Entry<String, Korisnik> entry : c.getUredniciNaucnihOblasti().entrySet()){
+        for(Map.Entry<String, String> entry : c.getUredniciNaucnihOblasti().entrySet()){
             if(entry.getKey().equals(r.getNaucnaOblast().name())){
-                urednikNaucneOblasti = entry.getValue().getUsername();
+                urednikNaucneOblasti = entry.getValue();
                 break;
             }
 

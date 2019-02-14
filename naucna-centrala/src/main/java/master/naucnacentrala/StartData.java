@@ -92,6 +92,7 @@ public class StartData {
 		Urednik urednik2 = urednikService.addUrednik(new Urednik("urednik2", bcrypt.encode("urednik2"), "Urednik2", "Urednik2", "Beograd", "Srbija", "mali.patuljko@gmail.com", 44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
 		Urednik urednik3 = urednikService.addUrednik(new Urednik("urednik3", bcrypt.encode("urednik3"), "Urednik3", "Urednik3", "Beograd", "Srbija", "mali.patuljko@gmail.com",  44.7866, 20.4489,new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
 		Urednik urednik4 = urednikService.addUrednik(new Urednik("urednik4", bcrypt.encode("urednik4"), "Urednik4", "Urednik4", "Beograd", "Srbija", "mali.patuljko@gmail.com",44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
+		Urednik urednikNO = urednikService.addUrednik(new Urednik("urednikno", bcrypt.encode("urednikno"), "Urednikno", "Urednikno", "Beograd", "Srbija", "mali.patuljko@gmail.com",44.7866, 20.4489, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "mr", new ArrayList(), null, new ArrayList()));
 		Casopis casopis = casopisService.addCasopis(new Casopis("Naučni časopis", "ISSN 231-561X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik, new HashMap<>(), new ArrayList<>(), "/assets/images/casopis1.jpg", 50F, "casopis001"));
 		Casopis casopis2 = casopisService.addCasopis(new Casopis("Hemijska industrija", "ISSN 234-501X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), false, urednik2, new HashMap<>(), new ArrayList<>(), "/assets/images/casopis2.jpg", 40F, "casopis002"));
 		Casopis casopis3 = casopisService.addCasopis(new Casopis("Socioeconomica", "ISSN 204-561X", new ArrayList(Arrays.asList(NaucnaOblast.values())), new ArrayList(), true, urednik3, new HashMap<>(), new ArrayList<>(), "/assets/images/casopis3.jpg", 50F, "casopis003"));
@@ -119,6 +120,11 @@ public class StartData {
 		urednik4.setUredjuje(casopis4);
 		urednik4.getNaucneOblasti().add(NaucnaOblast.UMETNOST);
 		urednikService.updateUrednik(urednik4);
+
+		casopis.getUredniciNaucnihOblasti().put(NaucnaOblast.PRIRODNO_MATEMATICKE_NAUKE.name(), urednikNO.getUsername());
+		urednikNO.setUredjuje(casopis);
+		urednikService.addUrednik(urednikNO);
+		casopisService.updateCasopis(casopis);
 
 		demo.getPlaceniCasopisi().add(casopis4);
 		korisnikService.addKorisnik(demo);
@@ -180,7 +186,7 @@ public class StartData {
 
 		casopis.getRecenzenti().addAll(Arrays.asList(r, r2, r3, r4, r5, r6));
 		casopisService.updateCasopis(casopis);
-
+/*
 		Recenzija recenzija = recenzijaService.save(new Recenzija(casopis, rad, r, "Sve super.", Rezultat.PRIHVATITI));
 		Recenzija recenzija2 = recenzijaService.save(new Recenzija(casopis, rad, r2, "Sve super.", Rezultat.PRIHVATITI));
 		Recenzija recenzija3 = recenzijaService.save(new Recenzija(casopis, rad, r5, "Sve super.", Rezultat.PRIHVATITI));
@@ -192,7 +198,7 @@ public class StartData {
 		Recenzija recenzija9 = recenzijaService.save(new Recenzija(casopis, rad3, r6, "Sve super.", Rezultat.PRIHVATITI));
 		Recenzija recenzija10 = recenzijaService.save(new Recenzija(casopis, rad4, r6, "Sve super.", Rezultat.PRIHVATITI));
 		Recenzija recenzija11 = recenzijaService.save(new Recenzija(casopis, rad4, r, "Sve super.", Rezultat.PRIHVATITI));
-		Recenzija recenzija12 = recenzijaService.save(new Recenzija(casopis, rad4, r3, "Sve super.", Rezultat.PRIHVATITI));
+		Recenzija recenzija12 = recenzijaService.save(new Recenzija(casopis, rad4, r3, "Sve super.", Rezultat.PRIHVATITI));*/
 
 		/*r.getRecenzira().addAll(Arrays.asList(rad, rad2, rad3, rad4));
 		r2.getRecenzira().addAll(Arrays.asList(rad));
@@ -215,6 +221,7 @@ public class StartData {
 		saveCamundaUser(urednik2);
 		saveCamundaUser(urednik3);
 		saveCamundaUser(urednik4);
+		saveCamundaUser(urednikNO);
 		saveCamundaUser(demo);
 		saveCamundaUser(r);
 		saveCamundaUser(r2);

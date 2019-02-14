@@ -47,8 +47,7 @@ public class Casopis {
     private Urednik glavniUrednik;
 
     @Column
-    @JsonBackReference
-    private HashMap<String, Korisnik> uredniciNaucnihOblasti;
+    private HashMap<String, String> uredniciNaucnihOblasti;
 
     @Column
     @ManyToMany
@@ -73,7 +72,7 @@ public class Casopis {
 
     public Casopis(@NotNull String naziv, @NotNull String issn, @NotNull Collection<NaucnaOblast> naucneOblasti,
                    Collection<Rad> radovi, @NotNull boolean isOpenAccess, Urednik glavniUrednik,
-                   HashMap<String, Korisnik> uredniciNaucnihOblasti, Collection<Korisnik> recenzenti, String urlSlike, Float cena, String identifikacioniKod) {
+                   HashMap<String, String> uredniciNaucnihOblasti, Collection<Korisnik> recenzenti, String urlSlike, Float cena, String identifikacioniKod) {
 		super();
 		this.naziv = naziv;
 		this.issn = issn;
@@ -138,11 +137,11 @@ public class Casopis {
         this.glavniUrednik = glavniUrednik;
     }
 
-    public HashMap<String, Korisnik> getUredniciNaucnihOblasti() {
+    public HashMap<String, String> getUredniciNaucnihOblasti() {
         return uredniciNaucnihOblasti;
     }
 
-    public void setUredniciNaucnihOblasti(HashMap<String, Korisnik> uredniciNaucnihOblasti) {
+    public void setUredniciNaucnihOblasti(HashMap<String, String> uredniciNaucnihOblasti) {
         this.uredniciNaucnihOblasti = uredniciNaucnihOblasti;
     }
 

@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    mainModule.controller('prijavljeniRadoviController', ['$scope', '$http', '$window', '$localStorage', '$location', '$stateParams', 'mainService',
+    mainModule.controller('prijavljeniRadoviController', ['$scope', '$http',  '$location',  '$window', '$localStorage','$stateParams', 'mainService',
         function ($scope, $http, $location, $window, $localStorage, $stateParams, mainService) {
 
 
