@@ -48,6 +48,7 @@ public class ObavestenjePrijaveDelegate implements JavaDelegate {
         mapa.put("mejlovi", execution.getVariable("mejlovi"));
         mapa.put("radId", execution.getVariable("radId").toString());
         mapa.put("email", execution.getVariable("email").toString());
+        mapa.put("opcioniDeo", false);
         mapa.put("recenzentList", new ArrayList());
         mapa.put("odgovor", "");
         mapa.put("komentari", new ArrayList<>());

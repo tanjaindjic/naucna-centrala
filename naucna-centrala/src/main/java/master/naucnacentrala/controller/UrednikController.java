@@ -126,6 +126,7 @@ public class UrednikController {
 				for(Recenzija recenzija : recenzijeRada)
 					if(recenzija.getRezultat().equals(Rezultat.NOVO))
 						gotovo = false;
+
 				if(gotovo){
 				RevizijaDTO revizijaDTO = new RevizijaDTO();
 				revizijaDTO.setRad(r);

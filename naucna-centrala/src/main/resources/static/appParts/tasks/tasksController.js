@@ -140,6 +140,17 @@ mainModule.controller('tasksController', ['$http','$scope', '$window', 'mainServ
             });
        }
 
+       $scope.opcioniDeo = function(id){
+           $http({
+             method: 'GET',
+             url: ROOT_PATH + "rad/" + id + "/dodatnoMisljenje",
+             headers : mainService.createAuthorizationTokenHeader()
+           }).then(function(result){
+               alert(result.data)
+                $location.path("/dodajRecenzenta/"+id)
+           });
+      }
+
         $scope.odabirRecenzenta = function(id){
             $location.path("/dodajRecenzenta/"+id)
         }

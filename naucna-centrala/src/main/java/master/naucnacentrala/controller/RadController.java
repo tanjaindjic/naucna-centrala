@@ -321,7 +321,7 @@ public class RadController {
 */
     @GetMapping(value = "/{id}/recenzenti", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<RecenzentDTO> getRecenzenti(@PathVariable Long id){
-        System.out.println("USAO U PROCES OBJAVE RADA -  RAD ZA RECENZIRANJE");
+        System.out.println("USAO U PROCES OBJAVE RADA -  TRAZI RECENZENTE");
         Rad rad = radService.getRad(id);
         Casopis c = rad.getCasopis();
         List<RecenzentDTO> retval = new ArrayList();
@@ -436,6 +436,26 @@ public class RadController {
 
     }
 
+    @GetMapping(value = "/{id}/dodatnoMisljenje", produces = MediaType.TEXT_PLAIN_VALUE)
+    public ResponseEntity<String> dodatnoMisljenje(@PathVariable Long id){
+        System.out.println("USAO U PROCES OBJAVE RADA -  POTREBNO JOS MISLJENJA RECENZENATA");
+
+        Rad rad = radService.getRad(id);
+        ProcessInstance pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(objavaRadaProcessKey)
+                .variableValueEquals("radId", String.valueOf(id))
+                .singleResult();
+        Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
+        System.out.println("TASK: " + task.getName());
+
+        runtimeService.setVariable(pi.getId(),"opcioniDeo", true);
+        rad.setStatusRada(StatusRada.DODELA_RECENZENATA);
+        radService.addRad(rad);
+
+        formService.submitTaskForm(task.getId(), null);
+
+        return new ResponseEntity<>("Rad je poslat na dodatno recenziranje, potrebno je dodeliti recenzente.", HttpStatus.OK);
+    }
+
     @GetMapping(value = "{id}/naRecenziranje", produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> naRecenziranje(@PathVariable Long id){
         System.out.println("USAO U PROCES OBJAVE RADA -  RAD ZA RECENZIRANJE");
@@ -477,9 +497,22 @@ public class RadController {
             recenzijaRepository.save(recenzija);
         }
         List<String> vecDodati = (List<String>) runtimeService.getVariable(pi.getId(),"recenzentList");
+
+        if((Boolean)runtimeService.getVariable(pi.getId(),"opcioniDeo")) {
+            System.out.println("Usao u opcioni deo");
+            vecDodati = new ArrayList<>();
+            vecDodati.addAll(usernames);
+            runtimeService.setVariable(pi.getId(),"recenzentList", vecDodati);
+            runtimeService.setVariable(pi.getId(),"opcioniDeo", false);
+            Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
+            System.out.println("ZAVRSAVA TASK: " + task.getName());
+            formService.submitTaskForm(task.getId(), null);
+            rad.setStatusRada(StatusRada.RECENZIRANJE);
+            radService.addRad(rad);
+            return new ResponseEntity<>("Uspešna dodela recenzenata.", HttpStatus.OK);
+        }
         vecDodati.addAll(usernames);
         runtimeService.setVariable(pi.getId(),"recenzentList", vecDodati);
-
         if(vecDodati.size()>=2 || rad.getCasopis().getRecenzenti().isEmpty()) {
             Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).list().get(0);
             System.out.println("ZAVRSAVA TASK: " + task.getName());
