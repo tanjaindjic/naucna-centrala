@@ -3,11 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="50a72021-f944-4a91-b5f8-4e339d88f598" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/UrednikController.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/UrednikController.java" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RadController.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RadController.java" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RecenzentController.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RecenzentController.java" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Recenzija.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Recenzija.java" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RecenzijaDTO.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RecenzijaDTO.java" />
       <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RecenzentIndexUnitRepository.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RecenzentIndexUnitRepository.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/RadService.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/RadService.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RadServiceImpl.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RadServiceImpl.java" />
       <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/objavaRada.bpmn" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/objavaRada.bpmn" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/recenzije/recenzije.html" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/recenzije/recenzije.html" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/recenzije/recenzijeController.js" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/recenzije/recenzijeController.js" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasks.html" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasks.html" />
     </list>
     <ignored path="$PROJECT_DIR$/naucna-centrala/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,68 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="IstekloVremeDelegate.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/IstekloVremeDelegate.java">
+      <file leaf-file-name="tasks.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasks.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="20" column="57" lean-forward="false" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RadController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RadController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="469" column="0" lean-forward="false" selection-start-line="469" selection-start-column="0" selection-end-line="469" selection-end-column="0" />
-              <folding>
-                <element signature="e#2554#2569#0" expanded="false" />
-                <element signature="method#startPrijava#0;class#RadController#0" expanded="false" />
-                <element signature="method#getCasopisi#0;class#RadController#0" expanded="false" />
-                <element signature="method#setCasopis#0;class#RadController#0" expanded="false" />
-                <element signature="method#uploadNacrt#0;class#RadController#0" expanded="false" />
-                <element signature="method#uploadFinal#0;class#RadController#0" expanded="false" />
-                <element signature="method#downloadFile#0;class#RadController#0" expanded="false" />
-                <element signature="method#getRecenzenti#0;class#RadController#0" expanded="false" />
-                <element signature="method#indexRad#0;class#RadController#0" expanded="false" />
-                <element signature="method#obrisiRad#0;class#RadController#0" expanded="false" />
-                <element signature="method#naRecenziranje#0;class#RadController#0" expanded="false" />
-                <element signature="method#naDoradu#0;class#RadController#0" expanded="false" />
-                <element signature="method#novaVerzija#0;class#RadController#0" expanded="false" />
-                <marker date="1550138863708" expanded="false" signature="14121:14440" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RadServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RadServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="791">
-              <caret line="71" column="96" lean-forward="false" selection-start-line="71" selection-start-column="96" selection-end-line="71" selection-end-column="96" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RecenzentController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RecenzentController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UrednikController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/UrednikController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="119" column="0" lean-forward="true" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+            <state relative-caret-position="537">
+              <caret line="155" column="128" lean-forward="true" selection-start-line="155" selection-start-column="128" selection-end-line="155" selection-end-column="128" />
               <folding />
             </state>
           </provider>
@@ -108,7 +55,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>text</find>
       <find>Textstore</find>
       <find>HighlightDTO</find>
       <find>res</find>
@@ -138,6 +84,7 @@
       <find>job</find>
       <find>hist</find>
       <find>USAO U PROCES OBJAVE RADA -  DODELA RECENZENATA</find>
+      <find>OBJ</find>
     </findStrings>
     <replaceStrings>
       <replace>selectedCar</replace>
@@ -171,7 +118,6 @@
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RadRepository.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RadDTO.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RecenzentDTO.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Recenzija.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RecenzentRepository.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RecenzentServiceImpl.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/RecenzentService.java" />
@@ -179,9 +125,7 @@
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/index.html" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/KorisnikController.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/security/JwtAuthenticationRequest.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RecenzijaDTO.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/dodajRecenzenta/dodajRecenzentaController.js" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/recenzije/recenzijeController.js" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/mainModule.js" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/coreController.js" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/noviRad/noviRad.html" />
@@ -192,13 +136,10 @@
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/ProveraClanarineDelegate.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/noviRad/noviRadController.js" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/UplataClanarineDelegate.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasks.html" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasksController.js" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/enums/StatusRada.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/recenzije/recenzije.html" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/dodajRecenzenta/dodajRecenzenta.html" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RecenzijaRepository.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RadController.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/core/core.html" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/prijavljeniRadovi/prijavljeniRadovi.html" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Casopis.java" />
@@ -211,11 +152,17 @@
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/EmailDelegate.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/ObavestenjeDelegate.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/ObavestenjePrijaveDelegate.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RecenzentController.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/PrekidRecenziranjaDelegate.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/RadService.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RadServiceImpl.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/UrednikController.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Recenzija.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RadController.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RecenzentController.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RecenzijaDTO.java" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/recenzije/recenzije.html" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/recenzije/recenzijeController.js" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasks.html" />
       </list>
     </option>
   </component>
@@ -293,8 +240,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -345,6 +294,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="naucnacentrala" type="462c0819:PsiDirectoryNode" />
               <item name="delegate" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="naucna-centrala" type="b2602c69:ProjectViewProjectNode" />
+              <item name="naucna-centrala" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="naucnacentrala" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="naucna-centrala" type="b2602c69:ProjectViewProjectNode" />
@@ -444,8 +402,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -608,13 +564,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1544885672016</updated>
-    </task>
-    <task id="LOCAL-00009" summary="napravljen proces od logina i registracije, registracija odvojena kao proseban proces">
-      <created>1548768678147</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1548768678147</updated>
     </task>
     <task id="LOCAL-00010" summary="izmenjen proces logina, prebacen u taskove">
       <created>1548780114154</created>
@@ -952,11 +901,19 @@
       <option name="project" value="LOCAL" />
       <updated>1550159241177</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="valjda radi sve">
+      <created>1550162299468</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1550162299468</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1911" y="-9" width="1938" height="1098" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -971,12 +928,12 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23254564" sideWeight="0.48975188" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23576799" sideWeight="0.48975188" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35382956" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35382956" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25993556" sideWeight="0.5102481" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -997,7 +954,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="sve radi samo kod prikaza ispisuju se html tagovi oko kljucnih reci" />
     <MESSAGE value="reseno sve, ostala geoprostorna pretraga i more like this" />
     <MESSAGE value="dodato slanje mejlova nakon uploada rada" />
     <MESSAGE value="ispravljena verifikacija pri kupovini" />
@@ -1022,7 +978,8 @@
     <MESSAGE value="istestirati, probati sa urednikom naucne oblasti" />
     <MESSAGE value="radi i sa urednikom naucne oblasti" />
     <MESSAGE value="radi kad istekne tajmer za recenziranje" />
-    <option name="LAST_COMMIT_MESSAGE" value="radi kad istekne tajmer za recenziranje" />
+    <MESSAGE value="valjda radi sve" />
+    <option name="LAST_COMMIT_MESSAGE" value="valjda radi sve" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1034,22 +991,10 @@
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RadController.java</url>
-          <line>109</line>
-          <properties />
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/PrekidRecenziranjaDelegate.java</url>
           <line>67</line>
           <properties />
           <option name="timeStamp" value="58" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RadController.java</url>
-          <line>469</line>
-          <properties />
-          <option name="timeStamp" value="60" />
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="61" />
@@ -1111,27 +1056,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/profil/profilController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/profil/profil.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1653">
-          <caret line="114" column="123" lean-forward="false" selection-start-line="114" selection-start-column="89" selection-end-line="114" selection-end-column="123" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/dodajRecenzenta/dodajRecenzentaController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="84" column="61" lean-forward="false" selection-start-line="84" selection-start-column="61" selection-end-line="84" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/mainModule.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="303">
@@ -1146,14 +1070,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RecenzijaServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="46" column="42" lean-forward="true" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/noviRad/noviRad.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
@@ -1165,7 +1081,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
           <caret line="92" column="100" lean-forward="false" selection-start-line="92" selection-start-column="95" selection-end-line="92" selection-end-column="100" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1173,7 +1088,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-252">
           <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1181,7 +1095,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1189,7 +1102,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
           <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1197,9 +1109,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="5" column="75" lean-forward="false" selection-start-line="5" selection-start-column="75" selection-end-line="5" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1215,7 +1124,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-648">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1223,7 +1131,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="26" column="85" lean-forward="false" selection-start-line="26" selection-start-column="85" selection-end-line="26" selection-end-column="85" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1239,7 +1146,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1247,23 +1153,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="3" column="44" lean-forward="false" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/recenzije/recenzijeController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="738">
-          <caret line="41" column="0" lean-forward="true" selection-start-line="22" selection-start-column="6" selection-end-line="41" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/recenzije/recenzije.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1271,7 +1160,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="447">
           <caret line="25" column="132" lean-forward="true" selection-start-line="25" selection-start-column="132" selection-end-line="25" selection-end-column="132" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1279,7 +1167,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1287,15 +1174,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="14" column="14" lean-forward="false" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasks.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="71" column="110" lean-forward="false" selection-start-line="71" selection-start-column="76" selection-end-line="71" selection-end-column="110" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1311,14 +1189,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-255">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1326,35 +1196,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="78" column="35" lean-forward="true" selection-start-line="76" selection-start-column="31" selection-end-line="78" selection-end-column="35" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#nav#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#nav#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#2;n#ul#0;n#div#0;n#nav#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#3;n#ul#0;n#div#0;n#nav#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#4;n#ul#0;n#div#0;n#nav#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#5;n#ul#0;n#div#0;n#nav#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#form#0;n#li#0;n#ul#0;n#div#2;n#nav#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#2;n#nav#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#2;n#ul#0;n#div#2;n#nav#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#3;n#ul#0;n#div#2;n#nav#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="e#3657#3664#1" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#p#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#p#1;n#td#0;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#p#5;n#td#0;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="e#6259#6266#1" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#1;n#select#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#select#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#label#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#button#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1362,9 +1203,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="e#762#763#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1372,7 +1210,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="339">
           <caret line="200" column="13" lean-forward="true" selection-start-line="197" selection-start-column="11" selection-end-line="200" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1391,7 +1228,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="47" column="36" lean-forward="true" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1410,7 +1246,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="28" column="8" lean-forward="false" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1426,7 +1261,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1434,7 +1268,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
           <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1442,23 +1275,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="177" column="38" lean-forward="false" selection-start-line="177" selection-start-column="34" selection-end-line="177" selection-end-column="38" />
-          <folding>
-            <element signature="e#2503#2518#0" expanded="false" />
-            <element signature="method#getPlaceniCasopisi#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#getPlaceniRadovi#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#getKorisnik#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#getRegistrationFOrm#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#getLoginPage#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#initRegistration#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#submitLoginData#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#createAuthenticationToken#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#logout#0;class#KorisnikController#0" expanded="false" />
-            <element signature="e#11375#11491#0" expanded="false" />
-            <element signature="method#refreshAndGetAuthenticationToken#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#handleAuthenticationException#0;class#KorisnikController#0" expanded="false" />
-            <element signature="docComment;method#authenticate#0;class#KorisnikController#0" expanded="false" />
-            <element signature="method#authenticate#0;class#KorisnikController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1482,7 +1298,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="40" column="14" lean-forward="false" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1490,7 +1305,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
           <caret line="31" column="51" lean-forward="false" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1498,7 +1312,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
           <caret line="58" column="14" lean-forward="false" selection-start-line="58" selection-start-column="14" selection-end-line="58" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1506,7 +1319,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="88" column="14" lean-forward="false" selection-start-line="88" selection-start-column="14" selection-end-line="88" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1514,7 +1326,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="93" column="37" lean-forward="false" selection-start-line="93" selection-start-column="37" selection-end-line="93" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1532,64 +1343,132 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="23" column="12" lean-forward="false" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RadServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="717">
+          <caret line="71" column="96" lean-forward="false" selection-start-line="71" selection-start-column="96" selection-end-line="71" selection-end-column="96" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/IstekloVremeDelegate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="57" lean-forward="false" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
+        <state relative-caret-position="396">
+          <caret line="22" column="34" lean-forward="false" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RadServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/dto/RecenzijaDTO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="791">
-          <caret line="71" column="96" lean-forward="false" selection-start-line="71" selection-start-column="96" selection-end-line="71" selection-end-column="96" />
-          <folding />
+        <state relative-caret-position="645">
+          <caret line="51" column="18" lean-forward="false" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
+          <folding>
+            <element signature="e#893#894#0" expanded="true" />
+            <element signature="e#926#927#0" expanded="true" />
+            <element signature="e#978#979#0" expanded="true" />
+            <element signature="e#1022#1023#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/model/Recenzija.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="47" column="37" lean-forward="false" selection-start-line="47" selection-start-column="37" selection-end-line="47" selection-end-column="37" />
+          <folding>
+            <element signature="e#1976#1977#0" expanded="false" />
+            <element signature="e#2009#2010#0" expanded="false" />
+            <element signature="e#2061#2062#0" expanded="false" />
+            <element signature="e#2105#2106#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/UrednikController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="119" column="0" lean-forward="true" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+        <state relative-caret-position="375">
+          <caret line="119" column="0" lean-forward="false" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RecenzentController.java">
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/recenzije/recenzijeController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+        <state relative-caret-position="486">
+          <caret line="27" column="59" lean-forward="false" selection-start-line="27" selection-start-column="59" selection-end-line="27" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/recenzije/recenzije.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="23" column="52" lean-forward="false" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/objavaRada.bpmn">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2541">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RadController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="469" column="0" lean-forward="false" selection-start-line="469" selection-start-column="0" selection-end-line="469" selection-end-column="0" />
+        <state relative-caret-position="645">
+          <caret line="468" column="110" lean-forward="false" selection-start-line="468" selection-start-column="110" selection-end-line="468" selection-end-column="110" />
           <folding>
             <element signature="e#2554#2569#0" expanded="false" />
             <element signature="method#startPrijava#0;class#RadController#0" expanded="false" />
             <element signature="method#getCasopisi#0;class#RadController#0" expanded="false" />
             <element signature="method#setCasopis#0;class#RadController#0" expanded="false" />
+            <element signature="e#7019#7035#0" expanded="true" />
             <element signature="method#uploadNacrt#0;class#RadController#0" expanded="false" />
             <element signature="method#uploadFinal#0;class#RadController#0" expanded="false" />
+            <element signature="e#10497#10513#0" expanded="true" />
             <element signature="method#downloadFile#0;class#RadController#0" expanded="false" />
             <element signature="method#getRecenzenti#0;class#RadController#0" expanded="false" />
             <element signature="method#indexRad#0;class#RadController#0" expanded="false" />
             <element signature="method#obrisiRad#0;class#RadController#0" expanded="false" />
             <element signature="method#naRecenziranje#0;class#RadController#0" expanded="false" />
+            <element signature="method#dodeliRecenzente#0;class#RadController#0" expanded="false" />
             <element signature="method#naDoradu#0;class#RadController#0" expanded="false" />
             <element signature="method#novaVerzija#0;class#RadController#0" expanded="false" />
-            <marker date="1550138863708" expanded="false" signature="14121:14440" ph="{...}" />
+            <marker date="1550246332925" expanded="false" signature="14121:14440" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RecenzentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="61" column="114" lean-forward="false" selection-start-line="61" selection-start-column="114" selection-end-line="61" selection-end-column="114" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/service/serviceImpl/RecenzijaServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="43" column="16" lean-forward="false" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasks.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="155" column="128" lean-forward="true" selection-start-line="155" selection-start-column="128" selection-end-line="155" selection-end-column="128" />
+          <folding />
         </state>
       </provider>
     </entry>

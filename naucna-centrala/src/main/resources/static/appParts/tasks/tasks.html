@@ -142,7 +142,9 @@
                                     <p><b>Komentar:</b></p>
                                     <textarea style="height:100px;width:500px;overflow-y: scroll;" disabled>{{recenzija.komentar}}</textarea>
                                     <br>
-
+                                    <p><b>Komentar za urednika:</b></p>
+                                    <textarea style="height:100px;width:500px;overflow-y: scroll;" disabled>{{recenzija.zaUrednika}}</textarea>
+                                    <br>
                                     <p>
                                         <b>Odluka:</b> {{recenzija.rezultat.split('_').join(' ')  | lowercase}}
                                     </p>

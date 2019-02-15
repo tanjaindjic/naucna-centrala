@@ -30,6 +30,8 @@ public class Recenzija {
 
     private String komentar;
 
+    private String zaUrednika;
+
     @Column
     @Enumerated(EnumType.STRING)
     private Rezultat rezultat;
@@ -37,12 +39,13 @@ public class Recenzija {
     public Recenzija() {
     }
 
-    public Recenzija(@NotNull Casopis casopis, @NotNull Rad rad, @NotNull Korisnik recenzent,String komentar, Rezultat rezultat) {
+    public Recenzija(@NotNull Casopis casopis, @NotNull Rad rad, @NotNull Korisnik recenzent,String komentar, Rezultat rezultat, String zaUrednika) {
         this.casopis = casopis;
         this.rad = rad;
         this.recenzent = recenzent;
         this.komentar = komentar;
         this.rezultat = rezultat;
+        this.zaUrednika = zaUrednika;
     }
 
     public Casopis getCasopis() {
@@ -91,5 +94,13 @@ public class Recenzija {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getZaUrednika() {
+        return zaUrednika;
+    }
+
+    public void setZaUrednika(String zaUrednika) {
+        this.zaUrednika = zaUrednika;
     }
 }

@@ -467,13 +467,13 @@ public class RadController {
 
     @PostMapping(value = "{id}/naRecenziranje", produces = MediaType.TEXT_PLAIN_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> dodeliRecenzente(@PathVariable Long id, @RequestBody List<String> usernames){
-        System.out.println("USAO U PROCES OBJAVE RADA -  DODELA RECENZENATA");
+            System.out.println("USAO U PROCES OBJAVE RADA -  DODELA RECENZENATA");
         Rad rad = radService.getRad(id);
         ProcessInstance pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(objavaRadaProcessKey)
                 .variableValueEquals("radId", String.valueOf(id))
                 .singleResult();
         for(String username : usernames){
-            Recenzija recenzija = new Recenzija(rad.getCasopis(), rad, korisniService.getKorisnikByUsername(username),"", Rezultat.NOVO);
+            Recenzija recenzija = new Recenzija(rad.getCasopis(), rad, korisniService.getKorisnikByUsername(username),"", Rezultat.NOVO, "");
             recenzijaRepository.save(recenzija);
         }
         List<String> vecDodati = (List<String>) runtimeService.getVariable(pi.getId(),"recenzentList");

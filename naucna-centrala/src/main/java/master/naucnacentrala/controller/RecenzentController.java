@@ -67,6 +67,7 @@ public class RecenzentController {
         Recenzija r = recenzijaService.findById(id);
         r.setRezultat(Rezultat.valueOf(recenzijaDTO.getRezultat()));
         r.setKomentar(recenzijaDTO.getKomentar());
+        r.setZaUrednika(recenzijaDTO.getZaUrednika());
         recenzijaService.save(r);
 
         ProcessInstance pi = runtimeService.createProcessInstanceQuery().processDefinitionKey(objavaRadaProcessKey)

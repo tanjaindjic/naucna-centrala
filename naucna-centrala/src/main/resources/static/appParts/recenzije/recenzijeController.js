@@ -24,7 +24,8 @@ mainModule.controller('recenzijeController', ['$http','$scope', '$window', 'main
             var payload={
                 "radId":res.rad.id,
                 "komentar": JSON.stringify($('#komentar' + res.id).val()),
-                "rezultat": $( "#rezultat" + res.id + " option:selected" ).val()
+                "rezultat": $( "#rezultat" + res.id + " option:selected" ).val(),
+                "zaUrednika": JSON.stringify($('#zaUrednika' + res.id).val()),
             }
             console.log(payload)
             $http({
