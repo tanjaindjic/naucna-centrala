@@ -69,12 +69,18 @@ public class PrekidRecenziranjaDelegate implements JavaDelegate{
         }
 
         recenzije = recenzijaService.findByRadId(Long.parseLong(execution.getVariable("radId").toString()));
+        List vecDodati = new ArrayList<>();
+        for(Recenzija r : recenzije){
+            vecDodati.add(r.getRecenzent().getUsername());
+        }
+
+        System.out.println("Recenzija ostalo: " + recenzije.size());
+        System.out.println("Ostali recenzenti: " + vecDodati.toString());
+        runtimeService.setVariable(execution.getProcessInstanceId(),"recenzentList", vecDodati);
+
         if(recenzije.size()>=2)
             return;
 
-        List vecDodati = new ArrayList<>();
-        runtimeService.setVariable(execution.getProcessInstanceId(),"recenzentList", vecDodati);
-        System.out.println("Recenzija ostalo: " + recenzije.size());
         Rad r = radService.getRad(Long.parseLong(execution.getVariable("radId").toString()));
         r.setStatusRada(StatusRada.DODELA_RECENZENATA);
         radService.addRad(r);

@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="50a72021-f944-4a91-b5f8-4e339d88f598" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/RegistracijaDelegate.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/RegistracijaDelegate.java" />
+      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/PrekidRecenziranjaDelegate.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/PrekidRecenziranjaDelegate.java" />
       <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RecenzentIndexUnitRepository.java" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/repository/RecenzentIndexUnitRepository.java" />
-      <change beforePath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/register/registerController.js" afterPath="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/register/registerController.js" />
     </list>
     <ignored path="$PROJECT_DIR$/naucna-centrala/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,21 +24,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="registerController.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/register/registerController.js">
+      <file leaf-file-name="PrekidRecenziranjaDelegate.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/PrekidRecenziranjaDelegate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="447">
+              <caret line="77" column="71" lean-forward="false" selection-start-line="77" selection-start-column="71" selection-end-line="77" selection-end-column="71" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegistracijaDelegate.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/RegistracijaDelegate.java">
+      <file leaf-file-name="RadController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RadController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="35" column="33" lean-forward="false" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+            <state relative-caret-position="429">
+              <caret line="525" column="76" lean-forward="false" selection-start-line="525" selection-start-column="76" selection-end-line="525" selection-end-column="76" />
+              <folding>
+                <element signature="e#2554#2569#0" expanded="false" />
+                <element signature="method#startPrijava#0;class#RadController#0" expanded="false" />
+                <element signature="method#getCasopisi#0;class#RadController#0" expanded="false" />
+                <element signature="method#setCasopis#0;class#RadController#0" expanded="false" />
+                <element signature="method#uploadNacrt#0;class#RadController#0" expanded="false" />
+                <element signature="method#uploadFinal#0;class#RadController#0" expanded="false" />
+                <element signature="method#downloadFile#0;class#RadController#0" expanded="false" />
+                <element signature="method#indexRad#0;class#RadController#0" expanded="false" />
+                <element signature="method#obrisiRad#0;class#RadController#0" expanded="false" />
+                <marker date="1550333798290" expanded="false" signature="14145:14464" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="registerController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/register/registerController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -163,10 +185,10 @@
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/tasks/tasksController.js" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/StartDelegate.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/EndDelegate.java" />
-        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/PrekidRecenziranjaDelegate.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RadController.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/RegistracijaDelegate.java" />
         <option value="$PROJECT_DIR$/naucna-centrala/src/main/resources/static/appParts/register/registerController.js" />
+        <option value="$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/PrekidRecenziranjaDelegate.java" />
       </list>
     </option>
   </component>
@@ -579,13 +601,6 @@
       <option name="presentableId" value="Default" />
       <updated>1544885672016</updated>
     </task>
-    <task id="LOCAL-00013" summary="treba srediti file upload">
-      <created>1548885194130</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1548885194130</updated>
-    </task>
     <task id="LOCAL-00014" summary="radi upload ali je sve teska budzevina treba srediti">
       <created>1548937195029</created>
       <option name="number" value="00014" />
@@ -922,12 +937,18 @@
       <option name="project" value="LOCAL" />
       <updated>1550334319263</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="testirati to infinity and beyond">
+      <created>1550415852714</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1550415852714</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1911" y="-9" width="1938" height="1098" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -937,7 +958,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298647" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32254586" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="13" y="574" width="1862" height="345" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32254586" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="13" y="574" width="1862" height="345" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3193096" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901832" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1118,6 +1139,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="774">
           <caret line="88" column="59" lean-forward="false" selection-start-line="88" selection-start-column="59" selection-end-line="88" selection-end-column="59" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1242,6 +1264,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
           <caret line="248" column="7" lean-forward="false" selection-start-line="248" selection-start-column="7" selection-end-line="248" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1404,40 +1427,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/PrekidRecenziranjaDelegate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1386">
-          <caret line="102" column="51" lean-forward="false" selection-start-line="102" selection-start-column="50" selection-end-line="102" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/UrednikController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1674">
           <caret line="128" column="0" lean-forward="false" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RadController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3672">
-          <caret line="477" column="142" lean-forward="false" selection-start-line="477" selection-start-column="142" selection-end-line="477" selection-end-column="142" />
-          <folding>
-            <element signature="e#2554#2569#0" expanded="false" />
-            <element signature="method#startPrijava#0;class#RadController#0" expanded="false" />
-            <element signature="method#getCasopisi#0;class#RadController#0" expanded="false" />
-            <element signature="method#setCasopis#0;class#RadController#0" expanded="false" />
-            <element signature="method#uploadNacrt#0;class#RadController#0" expanded="false" />
-            <element signature="method#uploadFinal#0;class#RadController#0" expanded="false" />
-            <element signature="method#downloadFile#0;class#RadController#0" expanded="false" />
-            <element signature="method#indexRad#0;class#RadController#0" expanded="false" />
-            <element signature="method#obrisiRad#0;class#RadController#0" expanded="false" />
-            <marker date="1550333798290" expanded="false" signature="14145:14464" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1462,6 +1456,35 @@
         <state relative-caret-position="375">
           <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/controller/RadController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="525" column="76" lean-forward="false" selection-start-line="525" selection-start-column="76" selection-end-line="525" selection-end-column="76" />
+          <folding>
+            <element signature="e#2554#2569#0" expanded="false" />
+            <element signature="method#startPrijava#0;class#RadController#0" expanded="false" />
+            <element signature="method#getCasopisi#0;class#RadController#0" expanded="false" />
+            <element signature="method#setCasopis#0;class#RadController#0" expanded="false" />
+            <element signature="method#uploadNacrt#0;class#RadController#0" expanded="false" />
+            <element signature="method#uploadFinal#0;class#RadController#0" expanded="false" />
+            <element signature="method#downloadFile#0;class#RadController#0" expanded="false" />
+            <element signature="method#indexRad#0;class#RadController#0" expanded="false" />
+            <element signature="method#obrisiRad#0;class#RadController#0" expanded="false" />
+            <marker date="1550333798290" expanded="false" signature="14145:14464" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naucna-centrala/src/main/java/master/naucnacentrala/delegate/PrekidRecenziranjaDelegate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="77" column="71" lean-forward="false" selection-start-line="77" selection-start-column="71" selection-end-line="77" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
