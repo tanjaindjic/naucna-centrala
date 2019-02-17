@@ -44,10 +44,10 @@
                     url: ROOT_PATH + "korisnik/register",
                     data: JSON.stringify(payload)
                 }).then(function successCallback(response) {
-                    alert("Succ")
+                    alert("Uspešna registracija.")
                     mainService.goToState("core.home", true)
                 }, function errorCallback(response) {
-                    alert("fail :(")
+                    alert("Nespešna registracija.")
 
                 });
 

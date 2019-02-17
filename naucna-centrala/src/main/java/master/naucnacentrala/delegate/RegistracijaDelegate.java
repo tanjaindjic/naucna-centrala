@@ -32,9 +32,8 @@ public class RegistracijaDelegate implements JavaDelegate {
 		
 		Map<String, Object> mapa = execution.getVariables();
 		User userWithUsername = identityService.createUserQuery().userId(execution.getVariable("username").toString()) .singleResult();
-		User userWithEmail = identityService.createUserQuery().userEmail(execution.getVariable("email").toString()).singleResult();
 		
-		if(userWithUsername==null && userWithEmail==null) {
+		if(userWithUsername==null) {
 			
 			User newUser = identityService.newUser(execution.getVariable("username").toString());
 			newUser.setEmail(execution.getVariable("email").toString());
