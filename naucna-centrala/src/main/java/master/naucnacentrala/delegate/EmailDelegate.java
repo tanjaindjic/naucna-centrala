@@ -38,7 +38,7 @@ public class EmailDelegate implements JavaDelegate{
             message.setText("Poštovani,!" +
                     "\n\n " + execution.getVariable("poruka").toString());
 
-            //Transport.send(message);
+            Transport.send(message);
 
             System.out.println("Done");
 

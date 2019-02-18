@@ -110,7 +110,7 @@ public class PrekidRecenziranjaDelegate implements JavaDelegate{
             message.setText("Poštovani,!" +
                     "\n\n " + "Potrebno je dodeliti novog recenzenta.");
 
-            //Transport.send(message);
+            Transport.send(message);
 
             System.out.println("Done");
 
